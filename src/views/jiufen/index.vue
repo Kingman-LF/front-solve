@@ -77,7 +77,7 @@ import xzfyfb from "@/components/jiufen/xzfyfb";
 import ssgl from "@/components/jiufen/ssgl";
 import fyay from "@/components/jiufen/fyay";
 import fyjg from "@/components/jiufen/fyjg";
-import gzl from "@/components/jiufen/gzl";
+// import gzl from "@/components/jiufen/gzl";
 
 export default {
   name: "home",
@@ -113,7 +113,7 @@ export default {
     ssgl,
     fyay,
     fyjg,
-    gzl
+    // gzl
   }
 };
 </script>
