@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>物业公司平均故障量排行</p>

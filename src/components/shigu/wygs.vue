@@ -1,8 +1,8 @@
 <template>
-  <div class="box">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>地区主要问题物业公司</p>
+      <p>预警设备地区分布</p>
     </div>
     <div class="wy">
       <div class="wyList">
@@ -41,8 +41,9 @@
   </div>
 </template>
 <style lang="scss" scoped>
-
-  .d-flex {
+.box{
+height: 40rem;
+.d-flex {
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -73,4 +74,6 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+}
+  
 </style>

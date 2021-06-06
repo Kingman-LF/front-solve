@@ -4,7 +4,7 @@
       “破五多”综合治理平台
     </div>
     <div class="Etitle">
-      <p>事故防控模块</p>
+      <p>事故防控</p>
     </div>
     <el-row :gutter="12">
       <el-col :span="8">
@@ -17,39 +17,39 @@
           </el-col>
         </el-row>
         <el-row :gutter="12">
-          <el-col :span="12">
+          <el-col :span="15">
             <pjgzl></pjgzl>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="9">
             <krsg></krsg>
           </el-col>
         </el-row>
       </el-col>
       <el-col :span="8">
         <el-row :gutter="12">
-          <el-col :span="12">
+          <el-col :span="24">
             <tsdjd></tsdjd>
           </el-col>
-          <el-col :span="12">
+          <!-- <el-col :span="12">
             <clfh></clfh>
-          </el-col>
+          </el-col> -->
         </el-row>
-        <el-row :gutter="12">
+        <!-- <el-row :gutter="12">
           <el-col :span="12">
             <wb></wb>
           </el-col>
           <el-col :span="12">
             <yxq></yxq>
           </el-col>
-        </el-row>
-        <el-row :gutter="12">
+        </el-row> -->
+        <!-- <el-row :gutter="12">
           <el-col :span="12">
             <dtgz></dtgz>
           </el-col>
           <el-col :span="12">
             <bhg></bhg>
           </el-col>
-        </el-row>
+        </el-row> -->
       </el-col>
       <el-col :span="8">
         <el-row :gutter="12">
@@ -130,131 +130,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-//.box {
-//  width: 320rem;
-//  height: 90rem;
-//  background: url("~@/assets/images/bg.gif") no-repeat center;
-//  background-size: cover;
-//  position: relative;
-//  .boxLeft {
-//    width: 176.33rem;
-//    height: 8.33rem;
-//    position: absolute;
-//    box-sizing: border-box;
-//    padding-left: 10rem;
-//    box-sizing: border-box;
-//    background: url("~@/assets/images/jfhjmk.png") no-repeat center;
-//    background-size: cover;
-//    span {
-//      font-family: PingFang;
-//      font-weight: bold;
-//      font-style: italic;
-//      color: #ffffff;
-//      font-size: 4rem;
-//      line-height: 6.67rem;
-//      background: linear-gradient(
-//        0deg,
-//        rgba(255, 255, 255, 0.73) 44.7998046875%,
-//        rgba(15, 94, 214, 0.4) 100%
-//      );
-//      -webkit-background-clip: text;
-//      -webkit-text-fill-color: transparent;
-//    }
-//  }
-//  .title {
-//    font-size: 4rem;
-//    font-style: italic;
-//    color: #ffffff;
-//    font-weight: bold;
-//    text-align: center;
-//    line-height: 6.67rem;
-//    font-family: PingFang;
-//    background: linear-gradient(
-//            0deg,
-//            rgba(255, 255, 255, 0.73) 44.7998046875%,
-//            rgba(15, 94, 214, 0.4) 100%
-//    );
-//    -webkit-background-clip: text;
-//    -webkit-text-fill-color: transparent;
-//  }
-//  .content {
-//    display: flex;
-//    padding: 1.25rem 4.67rem 5.58rem 4.67rem;
-//    .left,
-//    .mTop,
-//    .mBtm {
-//      display: flex;
-//      width: 100.92rem;
-//      height: 76.58rem;
-//      position: relative;
-//      flex-wrap: wrap;
-//      box-sizing: border-box;
-//      margin-right: 3.83rem;
-//      justify-content: space-between;
-//    }
-//    .midLeft {
-//      width: 100.76rem;
-//      margin-right: 3.83rem;
-//      .mTop {
-//        height: 36rem;
-//        margin-bottom: 3.92rem;
-//        .common {
-//          width: 48.42rem;
-//          height: 15.92rem;
-//          margin-bottom: 4rem;
-//          background: url("~@/assets/images/shugu/jx1.png") no-repeat center;
-//          background-size: cover;
-//          .contentVal {
-//            text-align: center;
-//            span {
-//              font-size: 6rem;
-//              font-family: digifaw;
-//              font-weight: 400;
-//              color: #ffffff;
-//              text-shadow: 0rem 0rem 0rem blue;
-//            }
-//          }
-//        }
-//      }
-//      .mBtm {
-//        width: 101.58rem;
-//        height: 36rem;
-//      }
-//    }
-//    .midRight {
-//      .rTop {
-//        width: 101.66rem;
-//        height: 50rem;
-//        display: flex;
-//        flex-wrap: wrap;
-//        margin-bottom: 3.08rem;
-//        justify-content: space-between;
-//        .common {
-//          width: 49.33rem;
-//          height: 23.5rem;
-//          margin-bottom: 3rem;
-//          background-image: url("~@/assets/images/shugu/jx2.png");
-//          background-size: 100% 100%;
-//        }
-//      }
-//    }
-//  }
-//}
-//// .contentVal{
-////   font-size: 6rem;
-////   color: #ffffff;
-////   text-align: center;
-////   font-family: digifaw;
-////   margin-left: -3.08rem;
-//// }
-//
-//// .cbchart {
-////   width: 44rem;
-////   height: 16rem;
-//// }
-//// .squareChart{
-////   width: 43.5rem;
-////   height: 28rem;
-////   margin-top: 1rem;
-//// }
+.content{
+  width: 320rem;
+  height: 90rem;
+  background-image: url("~@/assets/images/bg4.gif");
+  background-size: cover;
+  position: relative;
+  
+}
 </style>
