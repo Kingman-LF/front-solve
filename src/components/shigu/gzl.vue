@@ -1,8 +1,8 @@
 <template>
-  <div class="box">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>故障量分布</p>
+      <p>风险单位地区分布</p>
     </div>
     <div id="gzl"></div>
   </div>
@@ -90,7 +90,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-#gzl {
-  height: 29rem;
+.box{
+  height: 40rem;
+  #gzl {
+    height: 30rem;
+  }
 }
+
 </style>
