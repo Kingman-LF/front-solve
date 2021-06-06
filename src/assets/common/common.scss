@@ -1,0 +1,200 @@
+div,
+span,
+ul,
+li,
+i,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+tr,
+th,
+td,
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+  user-select: none;
+}
+
+@font-face {
+  font-family: digifaw;
+  src: url("~@/assets/font/digifaw.ttf");
+}
+
+@font-face {
+  font-family: PingFang Bold;
+  src: url("~@/assets/font/PingFang Bold.ttf");
+}
+
+/*滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 6px;
+  background-color: #359469;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #dddddd;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #3fc2ff;
+}
+
+// 公共padding
+.mypadding {
+  box-sizing: border-box;
+  padding: 1.55rem 0rem 0rem 3.92rem;
+}
+
+
+
+//大模块样式
+.content {
+  width: 320rem;
+  height: 90rem;
+  overflow: hidden;
+  background: url("~@/assets/images/bg3.gif") no-repeat center;
+  background-size: cover;
+  position: relative;
+  padding: 0 2rem;
+}
+
+//破五多标题
+.Dtitle {
+  width: 320rem;
+  font-size: 4rem;
+  color: #ffffff;
+  height: 6.25rem;
+  margin: 0 auto;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  line-height: 5.25rem;
+  font-family: PingFang Bold;
+  background-image: -webkit-linear-gradient(bottom, #3b5ee2, white, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+
+.Etitle {
+  width: 130rem;
+  height: 8rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url("~@/assets/images/jfhjmk.png") no-repeat 0;
+  background-size: auto 100%;
+
+  p {
+    line-height: 6rem;
+    padding-left: 8rem;
+    font-family: PingFang Bold;
+    font-weight: bold;
+    font-style: italic;
+    color: #ffffff;
+    font-size: 4.8rem;
+    background-image: -webkit-linear-gradient(bottom, #3b5ee2, white, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+//小模块样式
+.box {
+  margin-top: 1.1rem;
+  //box-shadow: 0 0 20px rgba(0,240,255,.5) inset;
+  border-radius: 4px;
+  position: relative;
+  //border: 2px solid rgba(0,240,255,.5);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: PingFang Bold;
+  font-weight: bold;
+  font-style: italic;
+  color: #ffffff;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  padding-bottom: 1.056rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #00F0FF;
+}
+
+.title img {
+  width: 2.30rem;
+  margin-right: 1.15rem;
+}
+
+.title p {
+  background-image: -webkit-linear-gradient(bottom, #3b5ee2, white, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: PingFang Bold;
+  flex: 1;
+}
+
+
+// 公共标题
+.innerTitle {
+  line-height: 4.33rem;
+  color: white;
+  font-size: 2.5rem;
+  font-style: oblique;
+  background-image: -webkit-linear-gradient(bottom, #3b5ee2, white, white);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 55%, rgba(15, 94, 214, 0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: PingFang Bold;
+
+  i {
+    width: 4.42rem;
+    height: 4.33rem;
+    background: url("~@/assets/images/tubiao.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .minborder {
+    display: block;
+    width: 10.58rem;
+    height: 0.08rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+    background: url("~@/assets/images/shugu/minBorder.png") no-repeat center;
+    background-size: cover;
+  }
+}
+
+// 公共border
+.myborder {
+  border: 0.17px solid #00F0FF;
+  box-shadow: inset 0rem 0rem 2rem 0rem rgba($color: #00F0FF, $alpha: .7);
+}
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box
+}

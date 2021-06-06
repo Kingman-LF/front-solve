@@ -1,0 +1,147 @@
+<template>
+  <div class="box">
+    <div class="title">
+      <img :src="require('@/assets/images/titlelogo.png')" alt="">
+      <p>区县信访量趋势同比</p>
+    </div>
+    <div id="qushi"></div>
+  </div>
+</template>
+
+<script>
+import * as echarts from "echarts";
+
+export default {
+  name: "xftb",
+  mounted() {
+    let qushi = document.getElementById("qushi");
+    let qushiChart = echarts.init(qushi);
+    this.getZhexian(qushiChart);
+  },
+  methods:{
+    // 折线图
+    getZhexian(charts) {
+      charts.clear()
+      let option = {
+        title: {
+          show: false
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          icon: 'rect',
+          itemWidth: 13,
+          itemHeight: 13,
+          left: '3%',
+          textStyle: {
+            fontSize: 14,
+            fontFamily: 'PingFang',
+            fontWeight: 'bold',
+            color: '#FFFFFF',
+          },
+          data: ['吴兴区', '南浔区', '南太湖新区', '安吉县', '长兴县', '德清县']
+        },
+        grid: {
+          top: '15%',
+          left: '3%',
+          right: '4%',
+          width: '90%',
+          height: '75%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLabel: {
+            color: "#fff"
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255, 255, 255, 0.4)'
+            }
+          },
+          data: ['1月', '2月', '3月', '4月', '5月']
+        },
+        yAxis: {
+          type: 'value',
+          splitLine: {
+            type: 'dashed',
+            lineStyle: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            color: "#fff"
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255, 255, 255, 0.4)'
+            }
+          },
+        },
+        series: [
+          {
+            name: '吴兴区',
+            type: 'line',
+            smooth: true,
+            color: '#00F0FF',
+            data: [4, 3, 2, 7, 9]
+          },
+          {
+            name: '南浔区',
+            type: 'line',
+            smooth: true,
+            color: '#2FA768',
+            data: [5, 0, 4, 2, 0]
+          },
+          {
+            name: '南太湖新区',
+            type: 'line',
+            smooth: true,
+            color: '#F74849',
+            data: [6, 1, 5, 4, 3]
+          },
+          {
+            name: '安吉县',
+            type: 'line',
+            smooth: true,
+            color: '#EC6941',
+            data: [0, 5, 1, 3, 2]
+          },
+          {
+            name: '长兴县',
+            type: 'line',
+            smooth: true,
+            color: '#FFF45C',
+            data: [1, 2, 3, 3, 0]
+          },
+          {
+            name: '德清县',
+            type: 'line',
+            smooth: true,
+            color: '#0078FF',
+            data: [0, 1, 2, 3, 2]
+          },
+        ]
+      }
+      option && charts.setOption(option)
+      window.addEventListener('resize', function () {
+        charts.resize()
+      })
+    },
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+#qushi {
+  height: 25rem;
+}
+</style>
