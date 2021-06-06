@@ -100,10 +100,10 @@ export default {
                 color:'#ffffff',
                 fontSize:16,
                 fontFamily:'PingFang Bold',
-                // emphasis: {//对应的鼠标悬浮效果
-                //   show: true,
-                //   textStyle:{color:"#FFFFFF"}
-                // }
+                emphasis: {//对应的鼠标悬浮效果
+                  show: true,
+                  textStyle:{color:"#FFFFFF"}
+                }
               },
 
               data: [
@@ -123,7 +123,8 @@ export default {
 
                 },
                 emphasis: {
-                  areaColor:"#f00",
+                  color:'#ffffff',
+                  areaColor:"#00ffa3",
                 }
               },
             },
