@@ -4,7 +4,7 @@
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>行政诉讼概览</p>
     </div>
-    <div id="ssgailan"></div>
+    <div id="fygailan"></div>
   </div>
 </template>
 
@@ -12,9 +12,9 @@
 import * as echarts from "echarts";
 
 export default {
-  name: "ssgl",
+  name: "fygl",
   mounted() {
-    let ss = document.getElementById("ssgailan");
+    let ss = document.getElementById("fygailan");
     let ssChart = echarts.init(ss);
     this.sangshen(ssChart, echarts);
   },
@@ -22,44 +22,33 @@ export default {
     sangshen(charts, echarts) {
       charts.clear()
       let city = {
-        '特种设备投诉举报': {color:'#eb6877',depth: 0},
-        '公司注销': {color:'#8957a1',depth: 0},
-        '公司登记': {color:'#87cefa',depth: 0},
-        '食品投诉举报': {color:'#448aca',depth: 0},
+        '合同格式条款违规': {color:'#eb6877',depth: 0},
+        '举报奖励': {color:'#8957a1',depth: 0},
+        '特设检查指令书': {color:'#87cefa',depth: 0},
+        '投诉举报处理': {color:'#448aca',depth: 0},
         '行政处罚': {color:'#ea68a2',depth: 0},
+        '责令整改': {color:'#ea68a2',depth: 0},
 
-        '二审，驳回起诉，再审中': {color:'#86ffff',depth: 1},
-        '一审驳回，二审维持原判': {color:'#f8b551',depth: 1},
-        '一审驳回，二审中': {color:'#f8b551',depth: 1},
-        '驳回': {color:'#13b5af',depth: 1},
-        '撤诉，裁定驳回': {color:'#556fb5',depth: 1},
-        '和解': {color:'#556fb5',depth: 1},
-
-        '领导出庭': {color:'#4a91e2',depth: 2},
-        '非领导出庭': {color:'#ffa500',depth: 2},
-
-
+        '终止（和解）': {color:'#86ffff',depth: 1},
+        '维持（驳回）': {color:'#86ffff',depth: 1},
+        '确定违法': {color:'#86ffff',depth: 1},
       }
       let population = [
-        { source: "特种设备投诉举报", target: "二审，驳回起诉，再审中", value: 1 },
+        { source: "合同格式条款违规", target: "终止（和解）", value: 1 },
 
-        { source: "公司登记", target: "一审驳回，二审维持原判", value: 4 },
-        { source: "公司登记", target: "驳回", value: 1 },
-        { source: "公司登记", target: "和解", value: 1 },
+        { source: "举报奖励", target: "终止（和解）", value: 1 },
 
-        { source: "公司注销", target: "撤诉，裁定驳回", value: 1 },
-        { source: "公司注销", target: "和解", value: 1 },
+        { source: "特设检查指令书", target: "终止（和解）", value: 1 },
 
-        { source: "食品投诉举报", target: "一审驳回，二审中", value: 1 },
+        { source: "投诉举报处理", target: "维持（驳回）", value: 18 },
+        { source: "投诉举报处理", target: "确定违法", value: 3 },
+        { source: "投诉举报处理", target: "终止（和解）", value: 29 },
 
-        { source: "行政处罚", target: "和解", value: 2 },
 
-        { source: "二审，驳回起诉，再审中", target: "领导出庭", value: 1 },
-        { source: "一审驳回，二审维持原判", target: "领导出庭", value: 4 },
-        { source: "一审驳回，二审中", target: "领导出庭", value: 1 },
-        { source: "驳回", target: "领导出庭", value: 1 },
-        { source: "撤诉，裁定驳回", target: "领导出庭", value: 1 },
-        { source: "和解", target: "领导出庭", value: 4 },
+        { source: "行政处罚", target: "终止（和解）", value: 2 },
+        { source: "行政处罚", target: "维持（驳回）", value: 1 },
+
+        { source: "责令整改", target: "终止（和解）", value: 1 },
       ];
       //定义一个数组
       let citylist = [];
@@ -94,9 +83,6 @@ export default {
       }
       console.log(citylist)
       let option = {
-        tooltip:{
-
-      },
         series: [
           {
             type: 'sankey',
@@ -136,7 +122,7 @@ export default {
 .myborder{
   height: 52.92rem;
 }
-#ssgailan {
+#fygailan {
   height: 45.9rem;
 }
 </style>

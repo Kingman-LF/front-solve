@@ -96,7 +96,7 @@ html {
   position: absolute;
   left: 0;
   top: 0;
-  background: url("~@/assets/images/jfhjmk.png") no-repeat 0;
+  //background: url("~@/assets/images/jfhjmk.png") no-repeat 0;
   background-size: auto 100%;
 
   p {
@@ -120,7 +120,7 @@ html {
   border-radius: 4px;
   position: relative;
   //border: 2px solid rgba(0,240,255,.5);
-  padding: 20px;
+  padding: 1.67rem;
   box-sizing: border-box;
 }
 
@@ -129,9 +129,9 @@ html {
   font-weight: bold;
   font-style: italic;
   color: #ffffff;
-  font-size: 2.5rem;
-  line-height: 2.5rem;
-  padding-bottom: 1.056rem;
+  font-size: 3rem;
+  line-height: 3rem;
+  padding-bottom: 0.38rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -139,8 +139,8 @@ html {
 }
 
 .title img {
-  width: 2.30rem;
-  margin-right: 1.15rem;
+  width: 2rem;
+  margin-right: 0.83rem;
 }
 
 .title p {
@@ -184,6 +184,8 @@ html {
 
 // 公共border
 .myborder {
+  margin-top: 1rem;
+  padding:1.67rem;
   border: 0.17px solid #00F0FF;
   box-shadow: inset 0rem 0rem 2rem 0rem rgba($color: #00F0FF, $alpha: .7);
 }

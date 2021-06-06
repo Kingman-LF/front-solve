@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>行政复议地区分布</p>
@@ -21,7 +21,7 @@ export default {
   methods:{
     huanzhuang1(charts, showLable, mygraphic) {
       charts.clear()
-      let gailanTotal = 25656
+      let gailanTotal = 58
       let option = {
         tooltip: {
           trigger: 'item'
@@ -31,22 +31,21 @@ export default {
         },
         graphic: [{
           type: 'text',
-          left: '40%',
-          top: '40%',
+          left: 'center',
+          top: 'center',
           z: 10,
           style: {
             fill: '#fff',
             textAlign: 'center',
             text: [
-              `{name|总记}`,
+              `{name|总计}`,
               '{value|' + gailanTotal + '}',
 
             ].join('\n'),
             rich: {
               value: {
                 color: '#303133',
-                fontSize: '2rem',
-                fontWeight: 'bold',
+                fontSize: '1.5rem',
                 fontFamily: 'PingFang'
               },
               name: {
@@ -62,14 +61,14 @@ export default {
           {
             name: '行政复议',
             type: 'pie',
-            radius: ['50%', '75%'],
-            center: ['46%', '50%'],
+            radius: ['40%', '65%'],
+            center: ['center', 'center'],
             avoidLabelOverlap: false,
             label: {
               show: true,
               color: "#fff",
               fontWeight: 'bold',
-              fontFamily: 'PingFang Bold',
+              fontFamily: 'PingFang SC',
               fontSize: '1.5rem',
               formatter(e){
                 console.log(e)
@@ -92,7 +91,7 @@ export default {
               { value: 7, name: '吴兴区' },
               { value: 6, name: '长兴县' },
               { value: 19, name: '德清县' },
-              { value: 15, name: '安吉县' },
+              { value: 14, name: '安吉县' },
               { value: 4, name: '南太湖新区' },
               { value: 5, name: '南浔区' },
             ]
@@ -112,7 +111,11 @@ export default {
 </script>
 
 <style scoped>
+.myborder{
+  height: 27.67rem;
+}
 #fuyi{
-  height: 19rem;
+  margin-top: 1rem;
+  height: 19.62rem;
 }
 </style>

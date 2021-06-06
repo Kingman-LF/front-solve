@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>区县信访量趋势同比</p>
@@ -31,12 +31,12 @@ export default {
         },
         legend: {
           icon: 'rect',
-          itemWidth: 13,
+          itemWidth: 25,
           itemHeight: 13,
           left: '3%',
           textStyle: {
-            fontSize: 14,
-            fontFamily: 'PingFang',
+            fontSize: '1.17rem',
+            fontFamily: "PingFang SC",
             fontWeight: 'bold',
             color: '#FFFFFF',
           },
@@ -46,15 +46,16 @@ export default {
           top: '15%',
           left: '3%',
           right: '4%',
-          width: '90%',
-          height: '75%',
+          bottom:0,
           containLabel: true
         },
         xAxis: {
           type: 'category',
           boundaryGap: false,
           axisLabel: {
-            color: "#fff"
+            color: "#fff",
+            fontSize: '1.5rem',
+            fontFamily: "PingFang SC"
           },
           axisTick: {
             show: false
@@ -78,13 +79,13 @@ export default {
             show: false
           },
           axisLabel: {
-            color: "#fff"
+            color: "#fff",
+            fontSize: '1.5rem',
+            fontFamily: "PingFang SC"
           },
           axisLine: {
-            lineStyle: {
-              color: 'rgba(255, 255, 255, 0.4)'
-            }
-          },
+            show: true
+          }
         },
         series: [
           {
@@ -141,7 +142,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.myborder{
+  height: 31.92rem;
+}
 #qushi {
-  height: 25rem;
+  margin-top: 1rem;
+  height: 24rem;
 }
 </style>

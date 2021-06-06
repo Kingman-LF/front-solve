@@ -73,11 +73,11 @@
   </div>
 </template>
 <script>
-import qiyemap from "@/components/jiufen/qiyemap"
+import qiyemap from "@/components/jiufen/gjian"
 import xfTotal from "@/components/jiufen/xfTotal"
 import ja from "@/components/jiufen/ja"
 import xfStatus from "@/components/jiufen/xfStatus"
-import jagl from "@/components/jiufen/jagl"
+import jagl from "@/components/jiufen/xfgl"
 import xftb from "@/components/jiufen/xftb"
 import xfmd from "@/components/jiufen/xfmd"
 import xzssfb from "@/components/jiufen/xzssfb"

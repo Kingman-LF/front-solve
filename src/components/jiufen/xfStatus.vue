@@ -1,10 +1,32 @@
 <template>
-  <div class="box">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>办结率</p>
+      <p>信访状态</p>
     </div>
-    <div id="banjiChart"></div>
+    <div class="status">
+      <div class="staItem">
+        <div class="t">已办结</div>
+        <div class="tiao">
+          <div class="in" style="width: 60%"></div>
+        </div>
+        <div class="num">1154(30%)</div>
+      </div>
+      <div class="staItem">
+        <div class="t">办理中</div>
+        <div class="tiao">
+          <div class="in" style="width: 60%"></div>
+        </div>
+        <div class="num">1154(30%)</div>
+      </div>
+      <div class="staItem">
+        <div class="t">待办理</div>
+        <div class="tiao">
+          <div class="in" style="width: 60%"></div>
+        </div>
+        <div class="num">1154(30%)</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,102 +37,65 @@ import {getBarJiaoNang} from "@/utils/getCharts";
 export default {
   name: "xfStatus",
   mounted() {
-    this.$nextTick(()=>{
-      let banjiChart = document.getElementById("banjiChart");
-      let chart = echarts.init(banjiChart);
-      this.huanzhuang(chart);
-    })
+
   },
   methods:{
-    huanzhuang(charts, showLable, mygraphic) {
-      charts.clear()
-      let gailanTotal = 3
-      let option = {
-        tooltip: {
-          trigger: 'item'
-        },
-        legend: {
-          show: false
-        },
-        // graphic: [{
-        //   type: 'text',
-        //   left: '40%',
-        //   top: '40%',
-        //   z: 10,
-        //   style: {
-        //     fill: '#fff',
-        //     textAlign: 'center',
-        //     text: [
-        //       `{name|总记}`,
-        //       '{value|' + gailanTotal + '}',
-        //
-        //     ].join('\n'),
-        //     rich: {
-        //       value: {
-        //         color: '#303133',
-        //         fontSize: '2rem',
-        //         fontWeight: 'bold',
-        //         fontFamily: 'PingFang'
-        //       },
-        //       name: {
-        //         color: '#909399',
-        //         lineHeight:30,
-        //         fontSize: '2rem'
-        //       },
-        //     },
-        //     font: '16px PingFang'
-        //   }
-        // }],
-        series: [
-          {
-            name: '案件状态',
-            type: 'pie',
-            radius: ['50%', '75%'],
-            center: ['46%', '50%'],
-            avoidLabelOverlap: false,
-            label: {
-              show: true,
-              color: "#fff",
-              fontWeight: 'bold',
-              fontFamily: 'PingFang Bold',
-              fontSize: '2rem',
-              formatter(e){
-                console.log(e)
-                // return `${e.name}\n${e.value}个 ${e.percent}%`
-                return `${e.name} ${e.percent}%`
-              }
-            },
-            itemStyle: {
-              color: function (params) {
-                var colorlist = ['#fc8452', '#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272'];
-                return colorlist[params.dataIndex];
-              },
-            },
-            labelLine: {
-              show: true,
-              length: 20,
-              length2: 20,
-            },
-            data: [
-              { value: 2, name: '办结' },
-              { value: 1, name: '未办结' },
-            ]
-          }, {
 
-          }
-        ]
-      }
-      option && charts.setOption(option)
-      window.addEventListener('resize', function () {
-        charts.resize()
-      })
-    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#banjiChart {
-  height: 19rem;
+.myborder{
+  height: 13.33rem;
+  .status{
+    display: flex;
+    align-items: center;
+    height: 8rem;
+    font-family: PingFang SC;
+    font-weight: bold;
+    .staItem{
+      flex: 1;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      line-height: 2rem;
+      .t{
+
+        margin-right: 2.08rem;
+      }
+      .tiao{
+        width: 10.75rem;
+        height: 1.33rem;
+        background-color: rgba(255,255,255,.2);
+        position: relative;
+        border-radius: 1rem;
+        margin-right: 2.17rem;
+        .in{
+          width: 0;
+          transition: width .5s;
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+        }
+
+      }
+      &:nth-of-type(1) .in{
+        background: #00F0FF;
+        border-radius: 1rem;
+      }
+      &:nth-of-type(2) .in{
+        background: #43FF55;
+        border-radius: 1rem;
+      }
+      &:nth-of-type(3) .in{
+        background: #FF9600;
+        border-radius: 1rem;
+      }
+    }
+
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>信访目的</p>
@@ -37,11 +37,9 @@ export default {
             show: false
           },
           axisLabel: {
-            interval: 0,
-            rotate: rotate ? rotate : 0,
             color: "#fff",
-            fontfamily: 'PingFang',
-            fontweight: 'bold'
+            fontSize: '1.5rem',
+            fontFamily: "PingFang SC"
           },
           data: xData
         },
@@ -63,24 +61,33 @@ export default {
           },
           axisLabel: {
             color: "#fff",
-            fontfamily: 'PingFang',
-            fontweight: 'bold'
+            fontSize: '1.5rem',
+            fontFamily: "PingFang SC"
           },
           type: 'value'
         },
         grid: {
-          top: '15%',
+          top: '10%',
           left: '3%',
           right: '4%',
-          width: '90%',
-          height: '75%',
+          bottom:0,
           containLabel: true
         },
         series: [{
           data: yData,
           type: 'bar',
-          barWidth: 20,
-          color: colors,
+          // barWidth: 20,
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                offset: 1,
+                color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+              },{
+                offset: 0,
+                color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+              }], false),
+            }
+          },
           label: {
             show: true,
             position: 'top',
@@ -97,9 +104,12 @@ export default {
   }
 }
 </script>
-
 <style scoped>
+.myborder{
+  height: 31.92rem;
+}
 #mudi {
-  height: 25rem;
+  margin-top: 1rem;
+  height: 24rem;
 }
 </style>
