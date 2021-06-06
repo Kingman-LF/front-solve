@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>重点监管药品售卖统计</p>
@@ -106,7 +106,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.box{
+  height: 49.33rem;
   #zdjg {
-    height: 16rem;
+    height: 39.33rem;
   }
+}
+  
 </style>
