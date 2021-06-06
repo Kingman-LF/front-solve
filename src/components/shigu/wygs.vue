@@ -4,76 +4,134 @@
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>预警设备地区分布</p>
     </div>
-    <div class="wy">
-      <div class="wyList">
-        <div class="wyItem d-flex">
-          <div class="wyItemInfo">南浔区</div>
-          <div class="wyItemInfo">625</div>
-          <div class="wyItemInfo">物业公司的名字</div>
-        </div>
-        <div class="wyItem d-flex">
-          <div class="wyItemInfo">南浔区</div>
-          <div class="wyItemInfo">625</div>
-          <div class="wyItemInfo">物业公司的名字物业公司的名字</div>
-        </div>
-        <div class="wyItem d-flex">
-          <div class="wyItemInfo">南浔区</div>
-          <div class="wyItemInfo">625</div>
-          <div class="wyItemInfo">物业公司的名字</div>
-        </div>
-        <div class="wyItem d-flex">
-          <div class="wyItemInfo">南浔区</div>
-          <div class="wyItemInfo">625</div>
-          <div class="wyItemInfo">物业公司的名字</div>
-        </div>
-        <div class="wyItem d-flex">
-          <div class="wyItemInfo">南浔区</div>
-          <div class="wyItemInfo">625</div>
-          <div class="wyItemInfo">物业公司的名字</div>
-        </div>
-        <div class="wyItem d-flex">
-          <div class="wyItemInfo">南浔区</div>
-          <div class="wyItemInfo">625</div>
-          <div class="wyItemInfo">物业公司的名字</div>
-        </div>
-      </div>
-    </div>
+    <div id="wy"></div>
   </div>
 </template>
+<script>
+import * as echarts from "echarts";
+
+export default {
+  mounted() {
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.wy();
+      }, 500);
+    });
+  },
+  methods: {
+    wy() {
+      let wy = document.getElementById("wy");
+      let wyChart = echarts.init(wy);
+      function huanzhuang(charts, showLable, mygraphic) {
+        charts.clear();
+        let gailanTotal = 6;
+        let option = {
+          tooltip: {
+            trigger: "item",
+          },
+          legend: {
+            show: false,
+          },
+          graphic: mygraphic
+            ? [
+                {
+                  type: "text",
+                  left: "center",
+                  top: "45%",
+                  z: 10,
+                  style: {
+                    fill: "#fff",
+                    text: gailanTotal,
+                    textAlign: "center",
+                    text: ["{value|" + gailanTotal + "}"].join(
+                      "\n"
+                    ),
+                    rich: {
+                      value: {
+                        color: "#303133",
+                        fontSize: '3.27rem',
+                        lineHeight: 30,
+                        fontWeight: "bold",
+                        fontFamily: "digifaw",
+                        textShadowColor: "#0096ff",
+                        textShadowBlur: "12"
+                      },
+                      name: {
+                        color: "#909399",
+                        lineHeight: 30,
+                        fontSize: '2rem',
+                      },
+                    },
+                    font: "16px PingFang",
+                  },
+                },
+              ]
+            : [],
+          series: [
+            {
+              name: "访问来源",
+              type: "pie",
+              radius: ["45%", "70%"],
+              center: ["center", "center"],
+              avoidLabelOverlap: false,
+              label: {
+                show: true,
+                color: "#fff",
+                fontWeight: 'bold',
+                fontFamily: 'PingFang Bold',
+                fontSize: '1.5rem',
+                formatter(e){
+                  console.log(e)
+                  return `${e.name}${e.value}个`
+                },
+                
+
+              },
+              itemStyle: {
+                color: function (params) {
+                  var colorlist = [
+                    "#0F5ED6",
+                    "#79FFB5",
+                    "#843DFF",
+                    "#4304B1",
+                    "#688FD8",
+                    "#F25334",
+                    "#49A732",
+                  ];
+                  return colorlist[params.dataIndex];
+                },
+              },
+              labelLine: {
+                show: true,
+                length: 10,
+                length2: 5
+              },
+              data: [
+                { value: 3, name: "湖州南太湖新区" },
+                { value: 2, name: "安吉县" },
+                { value: 1, name: "德清县" },
+              ],
+            },
+            {},
+          ],
+        };
+        option && charts.setOption(option);
+        window.addEventListener("resize", function () {
+          charts.resize();
+        });
+      }
+      huanzhuang(wyChart, true, true);
+    },
+  },
+};
+</script>
 <style lang="scss" scoped>
 .box{
 height: 40rem;
-.d-flex {
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
+  #wy {
+    height: 30rem;
   }
-  .wy {
-    //width: 42rem;
-    //height: 29rem;
-    //margin-left: 1rem;
-    //margin-top: 2rem;
-  }
-  .wyItem {
-    height: 4.41rem;
-
-    width: 100%;
-    margin-bottom: 0.5rem;
-    &:last-of-type{
-      margin-bottom: 0;
-    }
-  }
-  .wyItemInfo {
-    width: 22.5rem;
-    font-size: 1.5rem;
-    font-family: PingFang Bold;
-    line-height: 4.41rem;
-    color: #ffffff;
-    text-align: left;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+  
 }
   
 </style>

@@ -9,82 +9,116 @@
 </template>
 <script>
 import * as echarts from "echarts";
-import huzJson from "./huz";
+
 export default {
   mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
         this.gzl();
-      },500);
+      }, 500);
     });
   },
   methods: {
     gzl() {
       let gzl = document.getElementById("gzl");
       let gzlChart = echarts.init(gzl);
-      function miduFenbu(charts, echarts) {
+      function huanzhuang(charts, showLable, mygraphic) {
         charts.clear();
-        charts.showLoading();
-            charts.hideLoading();
-            echarts.registerMap("huz", huzJson);
-            charts.setOption({
-                title: {
-                  show: false,
-                },
-                tooltip: {
-                  trigger: "item",
-                  // formatter: "{b}<br/>{c} (p / km2)",
-                },
-                visualMap: {
-                  min: 800,
-                  max: 50000,
-                  // text: ['最高', '最低'],
-                  realtime: false,
-                  calculable: true,
-                  inRange: {
-                    color: ['lightskyblue', '#6ab82b', 'orangered']
-                  },
-                  textStyle:{
-                    color:'#ffffff'
-                  }
-
-                },
-                series: [
-                  {
-                    name:"电梯故障分布",
-                    type: "map",
-                    mapType: "huz", // 自定义扩展图表类型
-                    label: {
-                      show: false,
-                      color:'#ffffff',
-                      fontSize:16,
-                      fontFamily:'PingFang Bold',
-                      emphasis: {//对应的鼠标悬浮效果
-                        show: true,
-                        textStyle:{color:"#FFFFFF"}
-                      }
+        let gailanTotal = 6;
+        let option = {
+          tooltip: {
+            trigger: "item",
+          },
+          legend: {
+            show: false,
+          },
+          graphic: mygraphic
+            ? [
+                {
+                  type: "text",
+                  left: "center",
+                  top: "45%",
+                  z: 10,
+                  style: {
+                    fill: "#fff",
+                    text: gailanTotal,
+                    textAlign: "center",
+                    text: ["{value|" + gailanTotal + "}"].join(
+                      "\n"
+                    ),
+                    rich: {
+                      value: {
+                        color: "#303133",
+                        fontSize: '3.27rem',
+                        lineHeight: 30,
+                        fontWeight: "bold",
+                        fontFamily: "digifaw",
+                        textShadowColor: "#0096ff",
+                        textShadowBlur: "12"
+                      },
+                      name: {
+                        color: "#909399",
+                        lineHeight: 30,
+                        fontSize: '2rem',
+                      },
                     },
-                    data: [
-                      { name: "吴兴区", value: 42400 },
-                      { name: "南浔区", value: 3 },
-                      { name: "长兴县", value: 26058 },
-                      { name: "德清县", value: 10800 },
-                      { name: "南太湖新区", value: 320 },
-                      { name: "安吉县", value: 2 },
-                    ],
-                    // 自定义名称映射
-                    itemStyle: {
-                      areaColor: "rgba(0, 0, 0, 0.37)",
-                    },
+                    font: "16px PingFang",
                   },
-                ],
-              })
-        // option && myChart.setOption(option);
+                },
+              ]
+            : [],
+          series: [
+            {
+              name: "访问来源",
+              type: "pie",
+              radius: ["45%", "70%"],
+              center: ["center", "center"],
+              avoidLabelOverlap: false,
+              label: {
+                show: true,
+                color: "#fff",
+                fontWeight: 'bold',
+                fontFamily: 'PingFang Bold',
+                fontSize: '1.5rem',
+                formatter(e){
+                  console.log(e)
+                  return `${e.name}${e.value}个`
+                }
+              },
+              itemStyle: {
+                color: function (params) {
+                  var colorlist = [
+                    "#0F5ED6",
+                    "#79FFB5",
+                    "#843DFF",
+                    "#4304B1",
+                    "#688FD8",
+                    "#F25334",
+                    "#49A732",
+                  ];
+                  return colorlist[params.dataIndex];
+                },
+              },
+              labelLine: {
+                show: true,
+                length: 10,
+                length2: 5
+              },
+              data: [
+                { value: 2, name: "安吉县" },
+                { value: 1, name: "德清县" },
+                { value: 1, name: "南太湖新区区" },
+              ],
+            },
+            {},
+          ],
+        };
+        option && charts.setOption(option);
         window.addEventListener("resize", function () {
           charts.resize();
         });
       }
-      miduFenbu(gzlChart,echarts)
+      huanzhuang(gzlChart, true, true);
     },
   },
 };

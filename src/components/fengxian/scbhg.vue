@@ -51,7 +51,7 @@ export default {
               fontweight: "bold",
               fontSize:'1.2rem'
             },
-            data: ["吴兴区", "南浔区"],
+            data: ["违法广告", "正常"],
           },
           grid: {
             top: "15%",
@@ -65,7 +65,7 @@ export default {
             type: "category",
             axisLabel: {
               interval: 0,
-              rotate: rotate ? rotate : 0,
+              rotate: rotate ? rotate : 30,
               color: "#fff",
               fontfamily: "PingFang",
               fontweight: "bold",
@@ -78,7 +78,7 @@ export default {
                 color: "rgba(255, 255, 255, 0.4)",
               },
             },
-            data: ["针织服装", "童装", "针织服装", "童装", "针织服装", "童装", "针织服装"],
+            data: ["非商业类", "普通服务类", "普通商品类", "金融服务类", "形象宣传类", "房地产类", "知识产品类"],
           },
           yAxis: {
             type: "value",
@@ -103,26 +103,34 @@ export default {
           },
           series: [
             {
-              name: "吴兴区",
+              name: "违法广告",
               type: "bar",
               stack: "total",
               barWidth: 30,
               label: {
                 show: false,
               },
+              color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(120,255,182, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(120,255,182, 0)" // 100% 处的颜色
+            }], false),
               emphasis: {
                 focus: "series",
               },
               data: [320, 302, 301, 334, 390, 330, 320],
             },
             {
-              name: "南浔区",
+              name: "正常",
               type: "bar",
               stack: "total",
               barWidth: 30,
               label: {
                 show: false,
               },
+              color:"rgba(127,60,249)",
               emphasis: {
                 focus: "series",
               },
@@ -156,8 +164,8 @@ export default {
             ? [
                 {
                   type: "text",
-                  left: "37%",
-                  top: "45%",
+                  left: "center",
+                  top: "center",
                   z: 10,
                   style: {
                     fill: "#fff",
@@ -169,9 +177,8 @@ export default {
                     rich: {
                       value: {
                         color: "#303133",
-                        fontSize: '4.27rem',
+                        fontSize: '3rem',
                         lineHeight: 30,
-                        fontWeight: "bold",
                         fontFamily: "digifaw",
                         textShadowColor: "#0096ff",
                         textShadowBlur: "12"
@@ -191,8 +198,8 @@ export default {
             {
               name: "访问来源",
               type: "pie",
-              radius: ["45%", "70%"],
-              center: ["50%", "50%"],
+              radius: ["40%", "60%"],
+              center: ["center", "center"],
               avoidLabelOverlap: false,
               label: {
                 show: true,

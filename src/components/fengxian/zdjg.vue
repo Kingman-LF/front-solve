@@ -29,7 +29,13 @@ export default {
           ? xdata
           : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
         let yData = ydata ? ydata : [120, 220, 150, 80, 70, 110, 130];
-        let colors = color ? color : "#00F0FF";
+        let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false);
         charts.clear();
         let option = {
           xAxis: {

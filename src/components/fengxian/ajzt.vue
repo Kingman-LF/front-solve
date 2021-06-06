@@ -26,7 +26,10 @@ export default {
 
     option = {
         legend: {
-            data: ['邮件营销', '联盟广告', '视频广告', '直接访问']
+            data: ['邮件营销', '联盟广告', '视频广告', '直接访问'],
+            textStyle: {
+              color: "rgba(255, 255, 225, 1)"
+            }
         },
         grid: {
             left: '3%',
@@ -38,10 +41,16 @@ export default {
         xAxis: {
             type: 'category',
             boundaryGap: false,
+              axisLabel: {
+                color: "rgba(255, 255, 255, 1)"
+              },
             data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+              axisLabel: {
+                color: "rgba(255, 255, 255, 1)"
+              },
         },
         series: [
             {

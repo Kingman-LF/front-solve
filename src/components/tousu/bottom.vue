@@ -64,12 +64,25 @@ export default {
       if(charts._dom.id==='be_complained'){
         var xData = xdata ? xdata : ['龙之梦动...', '太湖古镇...', '浙江唯品...', '龙之梦动...', '龙之梦雅...', '龙之梦钻...', '大润发超市', '湖州宝迪...', '德清开元...', '孔雀城二...']
         var yData = ydata ? ydata : [126, 101, 99, 57, 49, 38, 27, 24, 20, 18]
-        var colors = color ? color : 'rgba(0, 240, 255, 1)'
+        var colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false)
       }else{
         var xData = xdata ? xdata : ['王先生', '李先生', '杨女士', '金先生', '朱女士', '褚锡炯', '庄晓清', '慎先生', '陈女士', '史先生']
         var yData = ydata ? ydata : [9, 7, 5, 5, 5, 4, 4, 4, 4, 4]
-        var colors = color ? color : 'rgba(0, 240, 255, 1)'
+        var colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false)
       }
+      
       charts.clear()
       let option = {
         xAxis: {
@@ -84,7 +97,7 @@ export default {
           },
           axisLabel: {
             interval: 0,
-            rotate: 20,
+            rotate: 30,
             color: "#fff",
             fontfamily: 'PingFang',
             fontweight: 'bold',
@@ -115,14 +128,18 @@ export default {
           type: 'value',
           
         },
+        
         grid: {
           top: '15%',
           left: '5%',
           right: '4%',
           height: '90%',
-          containLabel: true
+          containLabel: true,
+          
         },
+        
         series: [{
+          
           data: yData,
           type: 'bar',
           barWidth: 20,

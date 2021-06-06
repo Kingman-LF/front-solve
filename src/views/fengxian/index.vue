@@ -53,14 +53,7 @@
             <ajzt></ajzt>
           </el-col>
         </el-row>
-        <!-- <el-row :gutter="8">
-          <el-col :span="12">
-            <scqy></scqy>
-          </el-col>
-          <el-col :span="12">
-            <ajztqk></ajztqk>
-          </el-col>
-        </el-row> -->
+        
       </el-col>
     </el-row>
   </div>

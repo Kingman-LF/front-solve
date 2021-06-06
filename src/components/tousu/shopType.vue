@@ -35,8 +35,8 @@ export default {
             ? [
                 {
                   type: "text",
-                  left: "39%",
-                  top: "45%",
+                  left: "center",
+                  top: "center",
                   z: 10,
                   style: {
                     fill: "#fff",
@@ -48,7 +48,7 @@ export default {
                     rich: {
                       value: {
                         color: "#303133",
-                        fontSize: '2rem',
+                        fontSize: '3rem',
                         lineHeight: 30,
                         fontWeight: "bold",
                         fontFamily: "digifaw",
@@ -70,8 +70,8 @@ export default {
             {
               name: "访问来源",
               type: "pie",
-              radius: ["50%", "75%"],
-              center: ["46%", "50%"],
+              radius: ["45%", "70%"],
+              center: ["center", "center"],
               avoidLabelOverlap: false,
               label: {
                 show: true,

@@ -17,9 +17,15 @@ export default {
   },
    methods: {
     zhuzhuang(charts, color, xdata, ydata, rotate) {
-      let xData = xdata ? xdata : ['15805826078', '18369207068', '13967271350', '15968280605', '15705825603']
+      let xData = xdata ? xdata : ['王女士', '李先生', '万延秋', '李艳', '王泽']
       let yData = ydata ? ydata : [9, 7, 5, 5, 5, 4]
-      let colors = color ? color : 'rgba(0, 240, 255, 1)'
+      let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false)
       
       charts.clear()
       let option = {
