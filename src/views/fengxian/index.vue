@@ -17,14 +17,6 @@
             <ggfx></ggfx>
           </el-col>
         </el-row>
-        <!-- <el-row :gutter="12">
-          <el-col :span="12">
-            <wygs></wygs>
-          </el-col>
-          <el-col :span="12">
-            <spzd></spzd>
-          </el-col>
-        </el-row> -->
       </el-col>
       <el-col :span="8">
         <numbers></numbers>
@@ -32,29 +24,21 @@
           <el-col :span="12">
             <el-row>
               <el-col :span="24">
-                <tzsb></tzsb>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="24">
-                <gzl></gzl>
+                <yxhqy></yxhqy>
               </el-col>
             </el-row>
           </el-col>
           <el-col :span="12">
             <el-row>
               <el-col :span="24">
-                <yaoshi></yaoshi>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="24">
                 <zdjg></zdjg>
               </el-col>
             </el-row>
+          </el-col>
+          <el-col :span="24">
             <el-row>
               <el-col :span="24">
-                <ypjc></ypjc>
+                <yaoshi></yaoshi>
               </el-col>
             </el-row>
           </el-col>
@@ -69,14 +53,14 @@
             <ajzt></ajzt>
           </el-col>
         </el-row>
-        <el-row :gutter="12">
+        <!-- <el-row :gutter="8">
           <el-col :span="12">
             <scqy></scqy>
           </el-col>
           <el-col :span="12">
             <ajztqk></ajztqk>
           </el-col>
-        </el-row>
+        </el-row> -->
       </el-col>
     </el-row>
   </div>
@@ -84,9 +68,9 @@
 <script>
 import spcj from "@/components/fengxian/spcj"
 import ggfx from "@/components/fengxian/ggfx"
-import wygs from "@/components/fengxian/wygs"
-import spzd from "@/components/fengxian/spzd"
-import tzsb from "@/components/fengxian/tzsb"
+// import wygs from "@/components/fengxian/wygs"
+// import spzd from "@/components/fengxian/spzd"
+import yxhqy from "@/components/fengxian/yxhqy"
 import gzl from "@/components/fengxian/gzl"
 import zdjg from "@/components/fengxian/zdjg"
 import ypjc from "@/components/fengxian/ypjc"
@@ -133,9 +117,9 @@ export default {
   components: {
     spcj,
     ggfx,
-    wygs,
-    spzd,
-    tzsb,
+    // wygs,
+    // spzd,
+    yxhqy,
     gzl,
     zdjg,
     ypjc,
