@@ -35,7 +35,10 @@ export default {
             }
         },
         legend: {
-            data: ['2021', '2022']
+            data: ['2021', '2022'],
+            textStyle: {
+              color: "rgba(255, 255, 225, 1)"
+            }
         },
         xAxis: [
             {
@@ -43,7 +46,10 @@ export default {
                 data: ['针织服装', '童装', '纸尿裤', '童装', '针织服装'],
                 axisPointer: {
                     type: 'shadow'
-                }
+                },
+              axisLabel: {
+                color: "rgba(255, 255, 255, 1)"
+              }
             }
         ],
         yAxis: [
@@ -54,6 +60,9 @@ export default {
                 interval: 50,
                 axisLabel: {
                     formatter: '{value}%'
+                },
+                axisLabel: {
+                  color: "rgba(255, 255, 255, 1)"
                 }
             },
             {
@@ -65,11 +74,25 @@ export default {
             {
                 name: '2021',
                 type: 'bar',
+                color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false),
                 data: [20.0, 40.9, 70.0, 23.2, 25.6]
             },
             {
                 name: '2022',
                 type: 'bar',
+                color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(120,255,182, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(120,255,182, 0)" // 100% 处的颜色
+            }], false),
                 data: [20.6, 50.9, 90.0, 26.4, 28.7]
             }
         ]
@@ -78,9 +101,15 @@ export default {
   },
   methods: {
     zhuzhuangtu2(charts, color, xdata, ydata, rotate) {
-        let xData = xdata ? xdata : ['龙之梦动...', '太湖古镇...', '浙江唯品...', '龙之梦动...', '龙之梦雅...', '龙之梦钻...', '大润发超市', '湖州宝迪...', '德清开元...', '孔雀城二...']
-        let yData = ydata ? ydata : [126, 101, 99, 57, 49, 38, 27, 24, 20, 18]
-        let colors = color ? color : 'rgba(0, 240, 255, 1)'
+        let xData = xdata ? xdata : ['纺织行业', '化工行业', '机械行业', '建材行业', '轻工行业', '冶金行业']
+        let yData = ydata ? ydata : [55, 84, 95, 100, 78, 100]
+        let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false)
         charts.clear()
         let option = {
           xAxis: {

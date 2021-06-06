@@ -1,117 +1,77 @@
 <template>
-  <div class="box">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>故障类型</p>
+      <p>电梯概览</p>
     </div>
-    <div id="gzlx"></div>
+    <div class="filed dis">
+      <div class="num">总管辖</div>
+      <div class="number">43023 </div>
+    </div>
+    <div class="in_hand dis">
+      <div class="num">在用电梯</div>
+      <div class="number">33899 </div>
+    </div>
+    <div class="coms dis">
+      <div class="num">电梯维保中</div>
+      <div class="number">27</div>
+    </div>
+    <div class="filed dis">
+      <div class="num">待复核</div>
+      <div class="number">2755</div>
+    </div>
+    <div class="in_hand dis">
+      <div class="num">待上传</div>
+      <div class="number">0</div>
+    </div>
+    <div class="coms dis">
+      <div class="num">当前困人处置中</div>
+      <div class="number">2</div>
+    </div>
   </div>
 </template>
 <script>
-import * as echarts from "echarts";
 export default {
-  mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-          this.gzlx();
-      },500)
-    });
-  },
-  methods: {
-    gzlx() {
-      // 检验
-      let gzlx = document.getElementById("gzlx");
-      let gzlxChart = echarts.init(gzlx);
-      function zhuzhuangtu(charts, color, xdata, ydata, rotate) {
-        let xData = xdata
-          ? xdata
-          : ["平层困人", "紧急呼救", "门区外停梯",'电动车报警','嬉戏打闹报警','长时间遮挡门','误报（AI过滤）'];
-        let yData = ydata ? ydata : [29, 46, 31,20,10,40,35];
-        let colors = color ? color : "#00F0FF";
-        charts.clear();
-        let option = {
-          xAxis: {
-            type: "category",
-            axisLine: {
-              lineStyle: {
-                color: "rgba(255, 255, 255, 0.4)",
-              },
-            },
-            axisTick: {
-              show: false,
-            },
-            axisLabel: {
-              interval: 0,
-              color: "#fff",
-              fontfamily: "PingFang Bold",
-              fontweight: "bold",
-              rotate:30,
-              formatter(e){
-                if(e.length>5){
-                  return (e.slice(0,5)+"...")
-                }else{
-                  return e
-                }
-              }
-            },
-            data: xData,
-          },
-          yAxis: {
-            splitLine: {
-              lineStyle: {
-                type: "dashed",
-                color: "rgba(255, 255, 255, 0.1)",
-              },
-            },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: "rgba(255, 255, 255, 0.4)",
-              },
-            },
-            axisTick: {
-              show: false,
-            },
-            axisLabel: {
-              color: "#fff",
-              fontfamily: "PingFang",
-              fontweight: "bold",
-            },
-            type: "value",
-          },
-          grid: {
-            top: "15%",
-            left: "3%",
-            right: "4%",
-            bottom:'0%',
-            containLabel: true,
-          },
-          series: [
-            {
-              data: yData,
-              type: "bar",
-              barWidth: 20,
-              color: colors,
-              label: {
-                show: true,
-                position: "top",
-                color: "#fff",
-              },
-            },
-          ],
-        };
-        option && charts.setOption(option);
-        window.addEventListener("resize", function () {
-          charts.resize();
-        });
-      }
-      zhuzhuangtu(gzlxChart, "#42cbff");
-    },
-  },
+  
 };
 </script>
 <style lang="scss" scoped>
-  #gzlx {
-    height: 18.25rem;
-  }
+.box{
+  height: 40rem;
+  .dis{
+      width: 14rem;
+      height: 10rem;
+      float: left;
+      .num{
+        width: 14.67rem;
+        height: 4.7rem;
+        line-height: 4.7rem;
+        text-align: center;
+        font-size: 2rem;
+        font-family: PingFang SC;
+        font-weight: bold;
+        font-style: italic;
+        color: #FFFFFF;
+      }
+      .number{
+        width: 13.67rem;
+        height: 4.7rem;
+        text-align: center;
+        line-height: 4.7rem;
+        font-size: 3.33rem;
+          font-family: digifaw;
+          text-shadow: 0rem 0rem 1rem #fff;
+          font-weight: 400;
+          color: #FFFFFF;
+          margin-left: 1rem;
+      }
+      
+      .filed::after {
+          width: 16.33rem;
+          height: 0.17rem;
+          background: linear-gradient(90deg, rgba(0, 240, 255, 0));
+        }
+    }
+}
+  
 </style>

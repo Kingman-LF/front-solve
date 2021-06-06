@@ -35,8 +35,8 @@ export default {
             ? [
                 {
                   type: "text",
-                  left: "39%",
-                  top: "45%",
+                  left: "center",
+                  top: "center",
                   z: 10,
                   style: {
                     fill: "#fff",
@@ -71,7 +71,7 @@ export default {
               name: "访问来源",
               type: "pie",
               radius: ["35%", "55%"],
-              center: ["46%", "50%"],
+              center: ["center", "center"],
               avoidLabelOverlap: false,
               label: {
                 show: true,

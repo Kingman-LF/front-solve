@@ -30,12 +30,10 @@ export default {
           }
       },
       legend: {
-          data: ['投诉', '举报']
-      },
-      toolbox: {
-          feature: {
-              saveAsImage: {}
-          }
+          data: ['投诉', '举报'],
+        textStyle: {
+            color: "rgba(255, 255, 255)"
+        }
       },
       grid: {
           left: '3%',

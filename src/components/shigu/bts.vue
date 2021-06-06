@@ -1,8 +1,8 @@
 <template>
-  <div class="box">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>投诉问题及处置情况</p>
+      <p>设备类别预警个数</p>
     </div>
     <div id="bts"></div>
   </div>
@@ -13,8 +13,8 @@ export default {
   mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
-        this.bts();
-      }, 500);
+          this.bts();
+      },500)
     });
   },
   methods: {
@@ -22,40 +22,35 @@ export default {
       // 检验
       let bts = document.getElementById("bts");
       let btsChart = echarts.init(bts);
-      function zhuzhuangDuidie(charts, rotate) {
+      function zhuzhuangtu(charts, color, xdata, ydata, rotate) {
+        let xData = xdata
+          ? xdata
+          : ["起重机", "场(厂)内机动车辆", "压力容器"];
+        let yData = ydata ? ydata : [1, 2, 3];
+        let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false);
         charts.clear();
         let option = {
-          tooltip: {
-            trigger: "axis",
-            axisPointer: {
-              // Use axis to trigger tooltip
-              type: "shadow", // 'shadow' as default; can also be 'line' or 'shadow'
-            },
-          },
-          legend: {
-            left:'right',
-            textStyle: {
-              color: "#fff",
-              fontfamily: "PingFang",
-              fontweight: "bold",
-            },
-            data: ["及时", "不及时"],
-          },
-          grid: {
-            top: "15%",
-            left: "3%",
-            right: "4%",
-            bottom:'0%',
-            containLabel: true,
-          },
           xAxis: {
             type: "category",
+            axisLine: {
+              lineStyle: {
+                color: "rgba(255, 255, 255, 0.4)",
+              },
+            },
+            axisTick: {
+              show: false,
+            },
             axisLabel: {
               interval: 0,
               color: "#fff",
               fontfamily: "PingFang Bold",
               fontweight: "bold",
-              rotate:30,
               formatter(e){
                 if(e.length>5){
                   return (e.slice(0,5)+"...")
@@ -64,29 +59,9 @@ export default {
                 }
               }
             },
-            axisTick: {
-              show: false,
-            },
-            axisLine: {
-              lineStyle: {
-                color: "rgba(255, 255, 255, 0.4)",
-              },
-            },
-            data: [
-              "操作按钮失灵",
-              "电梯运行异响",
-              "使用登记标志超期",
-              "其他",
-              "电梯运行抖动",
-              "运行中出现下坠情况",
-              "开关门不正常",
-              "故障多无法正常使用",
-              "电梯管理差",
-              "紧急呼叫按钮无人接听"
-            ],
+            data: xData,
           },
           yAxis: {
-            type: "value",
             splitLine: {
               lineStyle: {
                 type: "dashed",
@@ -104,40 +79,35 @@ export default {
             },
             axisLabel: {
               color: "#fff",
+              fontfamily: "PingFang",
+              fontweight: "bold",
             },
+            type: "value",
+          },
+          grid: {
+            top: "20%",
+            left: "3%",
+            right: "4%",
+            bottom:"0%",
+            containLabel: true,
           },
           series: [
             {
-              name: "及时",
+              data: yData,
               type: "bar",
-              stack: "total",
-              barWidth: 30,
+              barWidth: 20,
+              color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false),
               label: {
-                show: false,
+                show: true,
+                position: "top",
+                color: "#fff",
               },
-              emphasis: {
-                focus: "series",
-              },
-              data: [19, 28, 2, 23, 21, 4, 22, 10, 8, 1],
-              itemStyle:{
-                color:"#00f0ff"
-              }
-            },
-            {
-              name: "不及时",
-              type: "bar",
-              stack: "total",
-              barWidth: 30,
-              label: {
-                show: false,
-              },
-              emphasis: {
-                focus: "series",
-              },
-              data: [37, 86, 14, 42, 41, 10, 58, 21, 21, 10],
-              itemStyle:{
-                color:"#ff9600"
-              }
             },
           ],
         };
@@ -146,13 +116,17 @@ export default {
           charts.resize();
         });
       }
-      zhuzhuangDuidie(btsChart);
+      zhuzhuangtu(btsChart, "#42cbff");
     },
   },
 };
 </script>
 <style lang="scss" scoped>
+.box{
+  height: 40rem;
   #bts {
-    height: 18.25rem;
+    height: 30rem;
   }
+}
+  
 </style>

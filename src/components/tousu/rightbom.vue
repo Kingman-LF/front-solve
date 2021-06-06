@@ -64,11 +64,23 @@ export default {
         if(charts._dom.id==='be_complained2'){
             var xData = xdata ? xdata : ['棋牌室', '永辉超市', '德清乡巴...', '某店家', '奥园', '老太婆粥摊', '世纪华联...', '安吉浙北...', '中石化加...', '废旧轮胎...']
             var yData = ydata ? ydata : [10, 10, 7, 5, 4, 4, 4, 4, 4, 4]
-            var colors = color ? color : 'rgba(0, 240, 255, 1)'
+            var colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false)
         }else{
-            var xData = xdata ? xdata : ['13673691287', '18839552330', '12345678912', '14761269514', '13914346963', '18305051061', '18395871342', '18969276013', '17137371444', '18042485035']
+            var xData = xdata ? xdata : ['张学战', '周敏姐', '吴健松', '许红霞', '田先生', '储一铜', '胡女士', '徐达', '杰先生', '王伟']
             var yData = ydata ? ydata : [30, 18, 16, 8, 7, 5, 4, 4, 3, 3]
-            var colors = color ? color : 'rgba(0, 240, 255, 1)'
+            var colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false)
         }
         charts.clear()
         let option = {

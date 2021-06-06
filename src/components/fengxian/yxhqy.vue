@@ -99,7 +99,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [320, 302, 301, 334, 390, 330, 320],
+              data: [0, 0, 0, 0, 0, 0, 0],
             },
             {
               name: "药品生产",
@@ -112,7 +112,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [120, 132, 101, 134, 90, 230, 210],
+              data: [0, 0, 0, 0, 0, 0, 0],
             },
             {
               name: "医疗器械",
@@ -125,7 +125,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [220, 182, 191, 234, 290, 330, 310],
+              data: [0, 0, 0, 0, 0, 0, 0],
             },
             {
               name: "化妆品",
@@ -138,7 +138,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [220, 182, 191, 234, 290, 330, 310],
+              data: [7, 7, 7, 7, 7, 7, 7],
             },
             
           ],

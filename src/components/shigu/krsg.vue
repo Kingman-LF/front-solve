@@ -2,128 +2,89 @@
   <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>困人事故故障类型</p>
+      <p>检查统计</p>
     </div>
-    <div id="kunren"></div>
+    <div class="filed dis">
+      <div class="num">检查单位</div>
+      <div class="number"><p class="p1">6809</p><p class="p2">家</p></div>
+    </div>
+    <div class="in_hand dis">
+      <div class="num">检查设备</div>
+      <div class="number"><p class="p1">6809</p><p class="p2">台</p></div>
+    </div>
+    <div class="coms dis">
+      <div class="num">已整改</div>
+      <div class="number"><p class="p1">6809</p><p class="p2">项</p></div>
+    </div>
+    <div class="filed dis">
+      <div class="num">排查隐患</div>
+      <div class="number"><p class="p1">6809</p><p class="p2">项</p></div>
+    </div>
+    <div class="in_hand dis">
+      <div class="num">督察指令书</div>
+      <div class="number"><p class="p1">6809</p><p class="p2">份</p></div>
+    </div>
+    <div class="coms dis">
+      <div class="num">立案数</div>
+      <div class="number"><p class="p1">6809</p><p class="p2">件</p></div>
+    </div>
   </div>
 </template>
 <script>
-import * as echarts from "echarts";
 export default {
-  mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.krsg();
-      }, 500);
-    });
-  },
-  methods: {
-    krsg() {
-      // 困人
-      let kunren = document.getElementById("kunren");
-      let kunrenChart = echarts.init(kunren);
-      function huanzhuang(charts, showLable, mygraphic) {
-        charts.clear();
-        let gailanTotal = 658;
-        let option = {
-          tooltip: {
-            trigger: "item",
-          },
-          // legend: {
-          //   show: true,
-          //   textStyle:{
-          //     color:"#ffffff",
-          //     fontSize:'1.5rem'
-          //   },
-          //   bottom:0
-          // },
-          graphic: [{
-            type: 'text',
-            left: '42%',
-            top: '42%',
-            z: 10,
-            style: {
-              fill: '#fff',
-              textAlign: 'center',
-              text: [
-                `{name|总记}`,
-                '{value|' + gailanTotal + '}',
-
-              ].join('\n'),
-              rich: {
-                value: {
-                  color: '#303133',
-                  fontSize: '2rem',
-                  fontWeight: 'bold',
-                  fontFamily: 'PingFang'
-                },
-                name: {
-                  color: '#909399',
-                  lineHeight:30,
-                  fontSize: '2rem'
-                },
-              },
-              font: '16px PingFang'
-            }
-          }],
-          series: [
-            {
-              name: "困人事故故障类型",
-              type: "pie",
-              radius: ["40%", "60%"],
-              center: ["46%", "50%"],
-              // avoidLabelOverlap: false,
-              label: {
-                show: true,
-                color: "#fff",
-                fontWeight: 'bold',
-                fontFamily: 'PingFang Bold',
-                fontSize: '1.5rem',
-                formatter(e){
-                  console.log(e)
-                  return `${e.name}\n${e.value}个 ${e.percent}%`
-                }
-              },
-              itemStyle: {
-                color: function (params) {
-                  var colorlist = [
-                    "#fc8452",
-                    "#5470c6",
-                    "#91cc75",
-                    "#fac858",
-                    "#ee6666",
-                    "#73c0de",
-                    "#3ba272",
-                  ];
-                  return colorlist[params.dataIndex];
-                },
-              },
-              labelLine: {
-                show: true,
-                length: 20,
-                length2: 20,
-              },
-              data: [
-                { value: 29, name: "平层困人" },
-                { value: 49, name: "紧急呼救" },
-                { value: 580, name: "门区外停梯" },
-              ],
-            },
-            {},
-          ],
-        };
-        option && charts.setOption(option);
-        window.addEventListener("resize", function () {
-          charts.resize();
-        });
-      }
-      huanzhuang(kunrenChart);
-    },
-  },
+  
+  
 };
 </script>
 <style lang="scss" scoped>
-#kunren {
-  height: 31.5rem;
+.box {
+  height: 39.92rem;
+  .dis{
+      width: 14rem;
+      height: 10rem;
+      float: left;
+      .num{
+        width: 13.67rem;
+        height: 4.7rem;
+        line-height: 4.7rem;
+        text-align: center;
+        font-size: 2rem;
+        font-family: PingFang SC;
+        font-weight: bold;
+        font-style: italic;
+        color: #FFFFFF;
+      }
+      .number{
+        width: 13.67rem;
+        height: 4.7rem;
+        text-align: center;
+        line-height: 4.7rem;
+        
+        p{
+          display: block;
+          float: left;
+        }
+        .p1{
+          font-size: 3.33rem;
+          font-family: digifaw;
+          text-shadow: 0rem 0rem 1rem #fff;
+          font-weight: 400;
+          color: #FFFFFF;
+          margin-left: 1rem;
+        }
+        .p2{
+          font-size: 2rem;
+          font-family: PingFang SC;
+          font-weight: bold;
+          color: #FFFFFF;
+        }
+      }
+      
+      .filed::after {
+          width: 16.33rem;
+          height: 0.17rem;
+          background: linear-gradient(90deg, rgba(0, 240, 255, 0));
+        }
+    }
 }
 </style>

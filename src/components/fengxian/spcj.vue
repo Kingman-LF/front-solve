@@ -33,13 +33,13 @@ export default {
     zhuzhuangtu2(charts, color, xdata, ydata, rotate) {
         let xData = xdata ? xdata : ['龙之梦动...', '太湖古镇...', '浙江唯品...', '龙之梦动...', '龙之梦雅...', '龙之梦钻...', '大润发超市', '湖州宝迪...', '德清开元...', '孔雀城二...']
         let yData = ydata ? ydata : [126, 101, 99, 57, 49, 38, 27, 24, 20, 18]
-        let colors = color ? color : new echarts.graphic.LinearGradient(0, 0, 0, 1,
-                        [
-                            {offset: 0, color: '#2378f7'},
-                            {offset: 0.5, color: '#2378f7'},
-                            {offset: 1, color: '#83bff6'}
-                        ]
-                    )
+        let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false)
         charts.clear()
         let option = {
           xAxis: {
@@ -54,10 +54,17 @@ export default {
             },
             axisLabel: {
               interval: 0,
-              rotate: 20,
+              rotate: 30,
               color: "#fff",
               fontfamily: 'PingFang',
               fontweight: 'bold',
+              formatter(e){
+                if(e.length>5){
+                  return (e.slice(0,5)+"...")
+                }else{
+                  return e
+                }
+              }
             },
             data: xData
           },
