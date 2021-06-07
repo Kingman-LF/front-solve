@@ -2,7 +2,7 @@
   <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="" />
-      <p>投诉数量与举报数量同比</p>
+      <p>投诉与举报量走势</p>
     </div>
     <div id="tousunmap"></div>
   </div>
@@ -50,7 +50,7 @@ export default {
                 }
               },
               boundaryGap: false,
-              data: ['1月', '2月', '3月']
+              data: ['1月', '2月', '3月', '4月', '5月']
           }
       ],
       yAxis: [
@@ -114,7 +114,7 @@ export default {
               },
               data: [420, 582, 311]
           },
-          
+
       ]
   };
 
