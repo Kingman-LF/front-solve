@@ -56,28 +56,24 @@ export default {
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "投诉举报",
-          number: "78.76%",
+          number: "8381",
         },
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "调解成功率",
-          number: "99.40%",
+          number: "100%",
         },
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "初查率",
-          number: "92.62%",
+          number: "100%",
         },
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "办结率",
-          number: "33.33%",
-        },
-        {
-          id: Math.random() + new Date().valueOf() + "",
-          text: "诉转率",
           number: "100%",
         },
+        
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "核查率",
@@ -89,11 +85,53 @@ export default {
           number: "100%",
         },
       ],
+      qxdata:[
+        {
+          id:1,
+          text:"湖州",
+          number:"8381"
+        },
+        {
+          id:2,
+          text:"吴兴区",
+          number:"1609"
+        },
+        {
+          id:3,
+          text:"南浔区",
+          number:"487"
+        },
+        {
+          id:4,
+          text:"德清县",
+          number:"893"
+        },
+        {
+          id:5,
+          text:"长兴县",
+          number:"1515"
+        },
+        {
+          id:6,
+          text:"安吉县",
+          number:"217"
+        },
+        {
+          id:7,
+          text:"南太湖新区",
+          number:"1"
+        },
+      ]
     };
   },
+  // watch:{
+  //       this.$data.lvList[0].number=this.$data.qxdata[index-1].number
+  //     },
   methods: {
     clickF(item, index) {
       this.tabIndex = index;
+      this.$data.lvList[0].number=this.$data.qxdata[index].number
+      console.log(this.$data.qxdata[index].number);
     },
   },
 };
@@ -157,3 +195,30 @@ export default {
   }
 }
 </style>
+// var vm = new Vue({
+//       el: '#todo-list-example',
+//       data: {
+//         docState: [{
+//             state: 'saved'
+//           },
+//           {
+//             state: 'edited'
+//           },
+//           {
+//             state: 'editing'
+//           }
+//         ]
+//       },
+//       methods: {
+//         buttonMessage: function() {
+//           switch (this.docState) {
+//             case 'saved':
+//               return 'Edit'
+//             case 'edited':
+//               return 'Save'
+//             case 'editing':
+//               return 'Cancel'
+//           }
+//         }
+//       }
+//     })

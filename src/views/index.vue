@@ -2,27 +2,29 @@
   <div class="index">
     <div class="icontent">
       <div class="ititle">
-        <img :src="require('@/assets/images/largeData/title.png')" />
+        <img :src="require('@/assets/images/largeData/toptitle2.png')" />
       </div>
       <div class="iearth">
         <img :src="require('@/assets/images/largeData/earth.gif')" />
       </div>
       <div class="ilist">
-        <div class="iitem" style="left: 62.5rem; bottom: -2rem" @click="toffjc">
-          <img :src="require('@/assets/images/largeData/ffjc.png')" />
-        </div>
-        <div class="iitem" style="bottom: 7rem; left: 32.5rem" @click="toqjgl">
+        <div class="iitem" style="bottom: 0rem; left: 50%;transform: translate(-50%)" @click="toqjgl">
           <img :src="require('@/assets/images/largeData/qjgl.png')" />
         </div>
-        <div class="iitem" style="bottom: 7rem; left: 92.5rem" @click="pwd">
-          <img :src="require('@/assets/images/largeData/pwd.png')" />
+        <div class="iitem" style="left: 25%; top: 50%;transform: translate(-50%,-50%)" @click="toffjc">
+          <img :src="require('@/assets/images/largeData/ffjc.png')" />
         </div>
-        <div class="iitem" style="bottom: 30rem; left: 17.5rem" @click="totsjg">
-          <img :src="require('@/assets/images/largeData/tsjg.png')" />
-        </div>
-        <div class="iitem" style="bottom: 30rem; left: 105.5rem" @click="toyq">
+        <div class="iitem" style="left: 75%; top: 50%;;transform: translate(-50%,-50%)" @click="toyq">
           <img :src="require('@/assets/images/largeData/yyxt.png')" />
         </div>
+        <div class="iitem" style="top: 0rem; right: 0rem" @click="totsjg">
+          <img :src="require('@/assets/images/largeData/tsjg.png')" />
+        </div>
+        <div class="iitem" style="top: 0rem; left: 0rem" @click="pwd">
+          <img :src="require('@/assets/images/largeData/pwd.png')" />
+        </div>
+        
+        
       </div>
     </div>
   </div>
@@ -55,12 +57,11 @@ export default {
   height: 90rem;
   background-image: url("~@/assets/images/largeData/bg.gif");
   background-size: cover;
+  overflow: hidden;
 }
 .icontent {
   width: 140rem;
   height: 80rem;
-  padding: 5rem 0;
-
   margin: 0 auto;
   position: relative;
 }
@@ -68,30 +69,42 @@ export default {
   width: 140rem;
   height: 13rem;
   text-align: center;
+  position: relative;
+  z-index: 99;
 }
 .iearth {
-  //   width: 140rem;
-  height: 57rem;
+    // width: 60rem;
+  height: 60rem;
   text-align: center;
+  // margin-top: 20rem;
   //   transform:scale(1.49)
 }
 .ititle img {
   width: 112rem;
+  
 }
 .iearth img {
-  width: 70rem;
+  opacity: .6;
+  width: 150rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 .ilist {
-  width: 140rem;
-  height: 50rem;
-  position: absolute;
+  width: 155rem;
+  height: 55rem;
+  position: relative;
+  left: 50%;
+  top: -60%;
   bottom: 5rem;
+  transform: translate(-50%);
 }
 .iitem {
   position: absolute;
   cursor: pointer;
 }
 .iitem img {
-  width: 15rem;
+  width: 18rem;
 }
 </style>

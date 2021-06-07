@@ -76,7 +76,7 @@ export default {
         series: [{
           data: yData,
           type: 'bar',
-          // barWidth: 20,
+          barWidth: 20,
           itemStyle: {
             normal: {
               color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{

@@ -6,15 +6,15 @@
       </div>
       <div class="filed dis">
         <div class="num">办结已归档</div>
-        <div class="number">6888</div>
+        <div class="number">8175</div>
       </div>
       <div class="in_hand dis">
         <div class="num">处理中</div>
-        <div class="number">121</div>
+        <div class="number">148</div>
       </div>
       <div class="coms dis">
-        <div class="num">代办理</div>
-        <div class="number">33</div>
+        <div class="num">待办理</div>
+        <div class="number">53</div>
       </div>
     </div>
 </template>

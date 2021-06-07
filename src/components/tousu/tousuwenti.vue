@@ -23,7 +23,7 @@ export default {
       let tousuissueChart = echarts.init(tousuissue);
       function huanzhuang(charts, showLable, mygraphic) {
         charts.clear();
-        let gailanTotal = 452;
+        let gailanTotal = 7044;
         let option = {
           tooltip: {
             trigger: "item",
@@ -133,7 +133,7 @@ export default {
   width: 38.33rem;
   height: 31.67rem;
   #tousuissue{
-    height: 21rem;
+    height: 25rem;
   }
 }
 </style>

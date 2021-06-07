@@ -103,7 +103,7 @@ export default {
           },
           series: [
             {
-              name: "违法广告",
+              name: "正常",
               type: "bar",
               stack: "total",
               barWidth: 30,
@@ -123,7 +123,7 @@ export default {
               data: [320, 302, 301, 334, 390, 330, 320],
             },
             {
-              name: "正常",
+              name: "违法广告",
               type: "bar",
               stack: "total",
               barWidth: 30,
@@ -136,6 +136,7 @@ export default {
               },
               data: [120, 132, 101, 134, 90, 230, 210],
             },
+            
             
           ],
         };
@@ -152,7 +153,7 @@ export default {
       let ggwfdqfbChart = echarts.init(ggwfdqfb);
       function huanzhuang(charts, showLable, mygraphic) {
         charts.clear();
-        let gailanTotal = 2522;
+        let gailanTotal = 16078;
         let option = {
           tooltip: {
             trigger: "item",
@@ -235,16 +236,13 @@ export default {
                 length2: 5
               },
               data: [
-                { value: 1118, name: "餐饮和住宿服务" },
-                { value: 349, name: "其他服务" },
-                { value: 283, name: "停车服务" },
-                { value: 218, name: "美容、美发、洗浴服务" },
-                { value: 108, name: "教育培训服务" },
-                { value: 90, name: "文化、娱乐、体育服务" },
-                { value: 87, name: "旅游服务" },
-                { value: 79, name: "行政事业性服务" },
-                { value: 66, name: "洗涤染色服务" },
-                { value: 48, name: "专业技术服务" },
+                { value: 8113, name: "湖州市" },
+                { value: 2464, name: "德清县" },
+                { value: 1433, name: "长兴县" },
+                { value: 0, name: "吴兴县" },
+                { value: 0, name: "南浔区" },
+                { value: 0, name: "南太湖新区" },
+                { value: 4068, name: "安吉县" },
               ],
             },
             {},

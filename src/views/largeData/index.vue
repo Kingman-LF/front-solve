@@ -11,16 +11,16 @@
         <div class="item" style="left: 62.5rem; bottom: -2rem">
           <img :src="require('@/assets/images/largeData/ffjc.png')" />
         </div>
-        <div class="item" style="bottom: 7rem; left: 32.5rem">
+        <div class="item" style="bottom: 7rem; left: 20.5rem">
           <img :src="require('@/assets/images/largeData/qjgl.png')" />
         </div>
-        <div class="item" style="bottom: 7rem; left: 92.5rem">
+        <div class="item" style="bottom: 7rem; left: 104.5rem">
           <img :src="require('@/assets/images/largeData/pwd.png')" />
         </div>
-        <div class="item" style="bottom: 30rem; left: 17.5rem">
+        <div class="item" style="bottom: 30rem; left: 5.5rem">
           <img :src="require('@/assets/images/largeData/tsjg.png')" />
         </div>
-        <div class="item" style="bottom: 30rem; left: 105.5rem">
+        <div class="item" style="bottom: 30rem; left: 200.5rem">
           <img :src="require('@/assets/images/largeData/yyxt.png')" />
         </div>
       </div>

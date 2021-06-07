@@ -25,8 +25,8 @@ export default {
       function zhuzhuangtu(charts, color, xdata, ydata, rotate) {
         let xData = xdata
           ? xdata
-          : ["起重机", "场(厂)内机动车辆", "压力容器"];
-        let yData = ydata ? ydata : [1, 2, 3];
+          : ["起重机", "场(厂)内机动车辆", "压力容器","压力管道","大型游乐设施","电梯","客运索道","锅炉"];
+        let yData = ydata ? ydata : [1, 2, 3,0,0,0,0,0];
         let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,
             color: "rgba(0, 240, 255, 1)" // 100% 处的颜色

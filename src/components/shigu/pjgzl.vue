@@ -33,12 +33,8 @@
           <div class="mark">91330000146977551H</div>
           <div class="stauts stauts_gao">高风险</div>
         </div>
-        <div class="wu_dis">
-          <div class="county">安吉县</div>
-          <div class="company">安吉世通竹业有限公司</div>
-          <div class="village">安吉县萧峰镇赤坞村</div>
-          <div class="mark">9133052370466781c</div>
-          <div class="stauts stauts_di">低风险</div>
+        <div class="wu_dis wsj">
+          没有更多了
         </div>
     </div>
   </div>
@@ -96,6 +92,11 @@ export default {
       .stauts_di{
         color: #00C6FF;
       }
+    }
+    .wsj{
+      width: 100%;
+      text-align: center;
+      color: #f1f3f5;
     }
   }
 }

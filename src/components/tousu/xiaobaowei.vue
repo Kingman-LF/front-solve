@@ -42,9 +42,9 @@ export default {
                     fill: "#fff",
                     text: gailanTotal,
                     textAlign: "center",
-                    // text: ["{value|" + gailanTotal + "}"].join(
-                    //   "\n"
-                    // ),
+                    text: ["{value|" + gailanTotal + "}"].join(
+                      "\n"
+                    ),
                     rich: {
                       value: {
                         color: "#303133",
@@ -99,8 +99,8 @@ export default {
               },
               labelLine: {
                 show: true,
-                length: 20,
-                length2: 10
+                length: 15,
+                length2: 5
               },
               data: [
                 { value: 175, name: "服装鞋帽类" },
@@ -133,7 +133,7 @@ export default {
     width: 38.33rem;
     height: 40rem;
     #baoxiao{
-      height: 30rem;
+      height: 32rem;
     }
 }
 </style>

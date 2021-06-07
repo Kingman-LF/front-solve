@@ -95,7 +95,6 @@ export default {
     option && ajlyfbChart.setOption(option);
   },
   methods: {
-    // 生产不合格产品TOP5
     ajzt() {
       let ajzt = document.getElementById("ajzt");
       let ajztChart = echarts.init(ajzt);
@@ -117,7 +116,7 @@ export default {
               fontweight: "bold",
               fontSize:'1.2rem'
             },
-            data: ["吴兴区", "南浔区", "南太湖新区", "德清县", "长兴县", "安吉县"],
+            data: ["吴兴区", "南浔区",  "德清县", "长兴县", "安吉县","南太湖新区"],
           },
           grid: {
             top: "15%",

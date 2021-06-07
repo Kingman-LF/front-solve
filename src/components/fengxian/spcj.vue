@@ -2,12 +2,12 @@
   <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>不合格食品项目</p>
+      <p>不合格食品类别</p>
     </div>
     <div class="spcj" id="bhgsp"></div>
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>食品抽查不合格食品类别</p>
+      <p>不合格食品项目</p>
     </div>
     <div class="spcj" id="spcc"></div>
 
@@ -29,7 +29,7 @@ export default {
     });
   },
   methods: {
-    // 不合格食品项目
+    // 食品抽查不合格食品类别
     zhuzhuangtu2(charts, color, xdata, ydata, rotate) {
         let xData = xdata ? xdata : ['龙之梦动...', '太湖古镇...', '浙江唯品...', '龙之梦动...', '龙之梦雅...', '龙之梦钻...', '大润发超市', '湖州宝迪...', '德清开元...', '孔雀城二...']
         let yData = ydata ? ydata : [126, 101, 99, 57, 49, 38, 27, 24, 20, 18]
@@ -55,6 +55,7 @@ export default {
             axisLabel: {
               interval: 0,
               rotate: 30,
+              fontSize:"1.5rem",
               color: "#fff",
               fontfamily: 'PingFang',
               fontweight: 'bold',
@@ -87,6 +88,7 @@ export default {
             axisLabel: {
               color: "#fff",
               fontfamily: 'PingFang',
+              fontSize:"1.5rem",
               fontweight: 'bold'
             },
             type: 'value',
@@ -119,7 +121,7 @@ export default {
         })
 
       },
-      // 食品抽查不合格食品类别
+      // 不合格食品项目
     spcc() {
       function getBarJiaoNang(charts, leftData, rightData, colorlist, data) {
         charts.clear();
@@ -175,7 +177,7 @@ export default {
               data: ldata,
               axisLabel: {
                 color: "#fff",
-                fontSize: 14,
+                fontSize: "1.5rem",
                 fontWeight: "bold",
               },
               axisTick: {
@@ -191,7 +193,7 @@ export default {
               },
               axisLabel: {
                 color: "#fff",
-                fontSize: 14,
+                fontSize: "1.5rem",
                 fontWeight: "bold",
                 formatter: function (data) {
                   let obj = JSON.parse(data);

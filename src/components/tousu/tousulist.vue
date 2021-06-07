@@ -6,14 +6,14 @@
                 <div class="category">投诉类别:质量</div>
                 <div class="cont">内容:xxxxxxxxx....</div>
                 <div class="date">时间:2021-6-2 12:00:00</div>
-                <div class="agency">代办理</div>
+                <div class="agency">待办理</div>
             </div>
             <div class="">
                 <div class="type">投诉</div>
                 <div class="category">投诉类别:质量</div>
                 <div class="cont">内容:xxxxxxxxx....</div>
                 <div class="date">时间:2021-6-2 12:00:00</div>
-                <div class="agency">代办理</div>
+                <div class="agency">待办理</div>
             </div>
         </div>
     </div>

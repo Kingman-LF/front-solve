@@ -35,7 +35,7 @@ export default {
             }
         },
         legend: {
-            data: ['2021', '2022'],
+            data: ['2020', '2021'],
             textStyle: {
               color: "rgba(255, 255, 225, 1)"
             }
@@ -48,7 +48,8 @@ export default {
                     type: 'shadow'
                 },
               axisLabel: {
-                color: "rgba(255, 255, 255, 1)"
+                color: "rgba(255, 255, 255, 1)",
+                fontSize:"1.5rem",
               }
             }
         ],
@@ -59,7 +60,8 @@ export default {
                 max: 100,
                 interval: 50,
                 axisLabel: {
-                    formatter: '{value}%'
+                    formatter: '{value}%',
+                    fontSize:"1.5rem",
                 },
                 axisLabel: {
                   color: "rgba(255, 255, 255, 1)"
@@ -72,7 +74,7 @@ export default {
         ],
         series: [
             {
-                name: '2021',
+                name: '2020',
                 type: 'bar',
                 color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,
@@ -84,7 +86,7 @@ export default {
                 data: [20.0, 40.9, 70.0, 23.2, 25.6]
             },
             {
-                name: '2022',
+                name: '2021',
                 type: 'bar',
                 color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,

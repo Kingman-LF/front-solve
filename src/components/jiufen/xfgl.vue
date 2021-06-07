@@ -7,60 +7,53 @@
     <div class="c">
       <div class="total">
         <span>总量</span>
-        <span>77452</span>
+        <span>37</span>
       </div>
       <div class="area">
         <div class="item">
-          <p>77452</p>
+          <p>6</p>
+          <p>特检院</p>
+        </div>
+        <div class="item">
+          <p>6</p>
+          <p>办公室</p>
+        </div>
+        <div class="item">
+          <p>3</p>
+          <p>机关党委</p>
+        </div>
+        <div class="item">
+          <p>4</p>
+          <p>执法队</p>
+        </div>
+      </div>
+      <div class="area">
+        <div class="item">
+          <p>0</p>
           <p>吴兴区</p>
         </div>
         <div class="item">
-          <p>77452</p>
+          <p>4</p>
           <p>南浔区</p>
         </div>
         <div class="item">
-          <p>77452</p>
+          <p>2</p>
           <p>德清县</p>
         </div>
         <div class="item">
-          <p>77452</p>
+          <p>3</p>
           <p>长兴县</p>
         </div>
         <div class="item">
-          <p>77452</p>
+          <p>3</p>
           <p>安吉县</p>
         </div>
         <div class="item">
-          <p>77452</p>
+          <p>6</p>
           <p>南太湖新区</p>
         </div>
       </div>
-      <div class="area">
-        <div class="item">
-          <p>77452</p>
-          <p>处室</p>
-        </div>
-        <div class="item">
-          <p>77452</p>
-          <p>处室</p>
-        </div>
-        <div class="item">
-          <p>77452</p>
-          <p>处室</p>
-        </div>
-        <div class="item">
-          <p>77452</p>
-          <p>处室</p>
-        </div>
-        <div class="item">
-          <p>77452</p>
-          <p>处室</p>
-        </div>
-        <div class="item">
-          <p>77452</p>
-          <p>处室</p>
-        </div>
-      </div>
+      
     </div>
   </div>
 </template>

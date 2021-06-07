@@ -23,7 +23,7 @@ export default {
       let jubaowentisChart = echarts.init(jubaowentis);
       function huanzhuang(charts, showLable, mygraphic) {
         charts.clear();
-        let gailanTotal = 452;
+        let gailanTotal = 1337;
         let option = {
           tooltip: {
             trigger: "item",
@@ -133,7 +133,7 @@ export default {
   width: 38.33rem;
   height: 31.67rem;
   #jubaowentis{
-    height: 21.67rem;
+    height: 23.67rem;
   }
 }
 </style>

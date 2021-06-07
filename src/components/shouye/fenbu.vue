@@ -33,12 +33,12 @@ export default {
           text: "投诉调处",
         },
         {
-          id: 2,
-          text: "风险防控",
-        },
-        {
           id: 3,
           text: "纠纷化解",
+        },
+        {
+          id: 2,
+          text: "风险管控",
         },
         {
           id: 5,
