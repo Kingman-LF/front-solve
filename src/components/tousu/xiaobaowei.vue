@@ -23,7 +23,7 @@ export default {
       let baoxiaoChart = echarts.init(baoxiao);
       function huanzhuang(charts, showLable, mygraphic) {
         charts.clear();
-        let gailanTotal = 4521;
+        let gailanTotal = 773;
         let option = {
           tooltip: {
             trigger: "item",
@@ -42,9 +42,9 @@ export default {
                     fill: "#fff",
                     text: gailanTotal,
                     textAlign: "center",
-                    text: ["{value|" + gailanTotal + "}"].join(
-                      "\n"
-                    ),
+                    // text: ["{value|" + gailanTotal + "}"].join(
+                    //   "\n"
+                    // ),
                     rich: {
                       value: {
                         color: "#303133",
@@ -103,14 +103,16 @@ export default {
                 length2: 10
               },
               data: [
-                { value: 890, name: "日用百货类" },
-                { value: 533, name: "研究饮料食品类" },
-                { value: 485, name: "家用电子电器类" },
-                { value: 355, name: "家用机械类" },
-                { value: 302, name: "建材类" },
-                { value: 165, name: "医药和医疗用品类" },
-                { value: 148, name: "农用生产资料类" },
-                { value: 125, name: "其他" }
+                { value: 175, name: "服装鞋帽类" },
+                { value: 172, name: "食品类" },
+                { value: 154, name: "日用商品类" },
+                { value: 93, name: "家用电子电器类" },
+                { value: 79, name: "交通工具类" },
+                { value: 51, name: "房屋及建材" },
+                { value: 20, name: "烟、酒饮料类" },
+                { value: 18, name: "首饰及问题用品" },
+                { value: 9, name: "医药及医疗用品类" },
+                { value: 2, name: "农用生产资料类" }
               ],
             },
             {},
