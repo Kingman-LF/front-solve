@@ -49,7 +49,7 @@ export default {
               color: "#fff",
               fontfamily: "PingFang",
               fontweight: "bold",
-              fontSize:'1.2rem'
+              fontSize:'1.5rem',
             },
             data: ["违法广告", "正常"],
           },
@@ -67,6 +67,7 @@ export default {
               interval: 0,
               rotate: rotate ? rotate : 30,
               color: "#fff",
+              fontSize:'1.5rem',
               fontfamily: "PingFang",
               fontweight: "bold",
             },
@@ -86,12 +87,14 @@ export default {
               lineStyle: {
                 type: "dashed",
                 color: "rgba(255, 255, 255, 0.1)",
+                fontSize:'1.5rem',
               },
             },
             axisLine: {
               show: true,
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
             axisTick: {
@@ -99,6 +102,7 @@ export default {
             },
             axisLabel: {
               color: "#fff",
+              fontSize:'1.5rem',
             },
           },
           series: [
@@ -117,6 +121,7 @@ export default {
             offset: 0,
             color: "rgba(120,255,182, 0)" // 100% 处的颜色
             }], false),
+            fontSize:'1.5rem',
               emphasis: {
                 focus: "series",
               },
@@ -130,6 +135,7 @@ export default {
               label: {
                 show: false,
               },
+              fontSize:'1.5rem',
               color:"rgba(127,60,249)",
               emphasis: {
                 focus: "series",
@@ -197,7 +203,6 @@ export default {
             : [],
           series: [
             {
-              name: "访问来源",
               type: "pie",
               radius: ["40%", "60%"],
               center: ["center", "center"],
@@ -237,12 +242,12 @@ export default {
               },
               data: [
                 { value: 8113, name: "湖州市" },
-                { value: 2464, name: "德清县" },
-                { value: 1433, name: "长兴县" },
                 { value: 0, name: "吴兴县" },
                 { value: 0, name: "南浔区" },
-                { value: 0, name: "南太湖新区" },
+                { value: 2464, name: "德清县" },
+                { value: 1433, name: "长兴县" },
                 { value: 4068, name: "安吉县" },
+                { value: 0, name: "南太湖新区" },
               ],
             },
             {},

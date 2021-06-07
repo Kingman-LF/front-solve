@@ -98,6 +98,7 @@ export default {
           axisLabel: {
             interval: 0,
             rotate: 30,
+            fontSize:"1.5rem",
             color: "#fff",
             fontfamily: 'PingFang',
             fontweight: 'bold',
@@ -123,7 +124,8 @@ export default {
           axisLabel: {
             color: "#fff",
             fontfamily: 'PingFang',
-            fontweight: 'bold'
+            fontweight: 'bold',
+            fontSize:"1.5rem"
           },
           type: 'value',
           
@@ -133,21 +135,21 @@ export default {
           top: '15%',
           left: '5%',
           right: '4%',
-          height: '90%',
+          height: '85%',
           containLabel: true,
           
         },
         
         series: [{
-          
           data: yData,
           type: 'bar',
-          barWidth: 20,
+          barWidth: "60%",
           color: colors,
           label: {
             show: true,
             position: 'top',
-            color: '#fff'
+            color: '#fff',
+            fontSize:"1.5rem"
           },
           
 

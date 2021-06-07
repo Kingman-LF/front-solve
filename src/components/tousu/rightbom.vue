@@ -85,66 +85,69 @@ export default {
         charts.clear()
         let option = {
             xAxis: {
-            type: 'category',
-            axisLine: {
-                lineStyle: {
-                color: 'rgba(255, 255, 255, 0.4)'
-                }
-            },
-            axisTick: {
-                show: false
-            },
-            axisLabel: {
-                interval: 0,
-                rotate: 20,
-                color: "#fff",
-                fontfamily: 'PingFang',
-                fontweight: 'bold',
-            },
-            data: xData
+              type: 'category',
+              axisLine: {
+                  lineStyle: {
+                  color: 'rgba(255, 255, 255, 0.4)'
+                  }
+              },
+              axisTick: {
+                  show: false
+              },
+              axisLabel: {
+                  interval: 0,
+                  rotate: 30,
+                  color: "#fff",
+                  fontSize:"1.5rem",
+                  fontfamily: 'PingFang',
+                  fontweight: 'bold',
+              },
+              data: xData
             },
             yAxis: {
-            splitLine: {
+              splitLine: {
+                fontSize:"1.5rem",
                 lineStyle: {
                 type: 'dashed',
                 color: 'rgba(255, 255, 255, 0.1)'
                 }
-            },
-            axisLine: {
-                show: true,
-                lineStyle: {
-                color: 'rgba(255, 255, 255, 0.4)'
-                }
-            },
-            axisTick: {
-                show: false
-            },
-            axisLabel: {
-                color: "#fff",
-                fontfamily: 'PingFang',
-                fontweight: 'bold'
-            },
-            type: 'value',
+              },
+            
+              axisLine: {
+                  show: true,
+                  lineStyle: {
+                  color: 'rgba(255, 255, 255, 0.4)'
+                  }
+              },
+              axisTick: {
+                  show: false
+              },
+              axisLabel: {
+                  color: "#fff",
+                  fontfamily: 'PingFang',
+                  fontweight: 'bold',
+                  fontSize:"1.5rem"
+              },
+              type: 'value',
             },
             grid: {
-            top: '15%',
-            left: '5%',
-            right: '4%',
-            height: '90%',
-            containLabel: true
+              top: '15%',
+              left: '5%',
+              right: '4%',
+              height: '85%',
+              containLabel: true
             },
             series: [{
-            data: yData,
-            type: 'bar',
-            barWidth: 20,
-            color: colors,
-            label: {
-                show: true,
-                position: 'top',
-                color: '#fff'
-            },
-            
-
+              data: yData,
+                type: 'bar',
+                barWidth: "60%",
+                color: colors,
+                label: {
+                    show: true,
+                    position: 'top',
+                    color: '#fff',
+                    fontSize:"1.5rem"
+                },
             }]
         }
         option && charts.setOption(option)

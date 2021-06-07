@@ -49,16 +49,16 @@
           page:1,
           total:0,
           task:[
-            {name:'监管领域舆情',department:"办公室",principal:'杨小红',date:'2021-5-17 10:00:00',percentage:60,type:1},
-            {name:'行政发案率高、行政纠错率高问题',department:"法规处",principal:'匡一锋',date:'2021-5-17 10:00:00',percentage:60,type:1},
-            {name:'重点领域虚假违法',department:"商标广告处",principal:'史琰',date:'2021-5-17 10:00:00',percentage:60,type:2},
+            {name:'监管领域舆情',department:"办公室",principal:'杨小红',date:'2021-5-17 10:00:00',percentage:60,type:4},
+            {name:'行政发案率高、行政纠错率高问题',department:"法规处",principal:'匡一锋',date:'2021-5-17 10:00:00',percentage:60,type:2},
+            {name:'重点领域虚假违法',department:"商标广告处",principal:'史琰',date:'2021-5-17 10:00:00',percentage:60,type:3},
             {name:'用品产品质量问题',department:"产品监管处",principal:'钟荣根',date:'2021-5-17 10:00:00',percentage:60,type:3},
             {name:'保健食品投诉举报',department:"食品生产处",principal:'邢峰',date:'2021-5-17 10:00:00',percentage:60,type:3},
             {name:'食品安全风险隐患',department:"食品抽检处",principal:'鲍金荣',date:'2021-5-17 10:00:00',percentage:60,type:3},
             {name:'网络销售药品',department:"药品流通处",principal:'邢晓峰',date:'2021-5-17 10:00:00',percentage:60,type:3},
-            {name:'电梯故障增多',department:"特种设备处",principal:'许则春',date:'2021-5-17 10:00:00',percentage:60,type:3},
-            {name:'投诉举报处理程序',department:"消保分局",principal:'陈晓冰',date:'2021-5-17 10:00:00',percentage:60,type:4},
-            {name:'监管领域违法',department:"综合执法队",principal:'章健',date:'2021-5-17 10:00:00',percentage:60,type:5},
+            {name:'电梯故障增多',department:"特种设备处",principal:'许则春',date:'2021-5-17 10:00:00',percentage:60,type:5},
+            {name:'投诉举报处理程序',department:"消保分局",principal:'陈晓冰',date:'2021-5-17 10:00:00',percentage:60,type:1},
+            {name:'监管领域违法',department:"综合执法队",principal:'章健',date:'2021-5-17 10:00:00',percentage:60,type:3},
 
           ]
         }
@@ -145,7 +145,7 @@
             transition: height .2s;
             &.show{
               border-width: .15rem;
-              height: 28.35rem;
+              height: 34.35rem;
             }
             .option{
               position: relative;

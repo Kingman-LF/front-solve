@@ -128,7 +128,7 @@
           <img class="img_ty2" :src="require('@/assets/images/shouye/ty4.png')" alt="">
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(5)">
-            <div class="innerTitle num">故事多</div>
+            <div class="innerTitle num">事故多</div>
             <div class="innerTitle number">{{list5.length}}</div>
           </div>
         </div>

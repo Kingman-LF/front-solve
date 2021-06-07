@@ -1,8 +1,8 @@
 <template>
-  <div class="myborder">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>区县信访量趋势同比</p>
+      <p>区县信访量趋势</p>
     </div>
     <div id="qushi"></div>
   </div>
@@ -35,12 +35,12 @@ export default {
           itemHeight: 13,
           left: '3%',
           textStyle: {
-            fontSize: '1.17rem',
+            fontSize: '1.5rem',
             fontFamily: "PingFang SC",
             fontWeight: 'bold',
             color: '#FFFFFF',
           },
-          data: ['吴兴区', '南浔区', '南太湖新区', '安吉县', '长兴县', '德清县']
+          data: ['吴兴区', '南浔区',, '德清县' , '长兴县','安吉县','南太湖新区',]
         },
         grid: {
           top: '15%',

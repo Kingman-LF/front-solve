@@ -16,7 +16,7 @@ export default {
     var myChart = echarts.init(tousunmap);
     var option;
     option = {
-      color: ['#80FFA5', '#00DDFF'],
+      color: ['#00DDFF','#80FFA5', ],
       title: {
           text: ''
       },
@@ -30,10 +30,14 @@ export default {
           }
       },
       legend: {
-          data: ['投诉', '举报'],
+        left:'right',
+        data: ['投诉', '举报'],
         textStyle: {
-            color: "rgba(255, 255, 255)"
-        }
+            color: "rgba(255, 255, 255)",
+            fontSize: 20
+        },
+        itemWidth:50,
+        itemHeight:20,
       },
       grid: {
           left: '3%',
@@ -49,8 +53,12 @@ export default {
                   color: 'rgba(255, 255, 255, 1)'
                 }
               },
+              axisLabel:{
+                fontSize:"1.5rem"
+              },
               boundaryGap: false,
-              data: ['1月', '2月', '3月', '4月', '5月']
+              data: ['1月', '2月', '3月', '4月', '5月'],
+              
           }
       ],
       yAxis: [
@@ -61,50 +69,29 @@ export default {
                   color: 'rgba(255, 255, 255, 1)'
                 }
               },
+              axisLabel:{
+                fontSize:"1.5rem"
+              },
           }
       ],
       series: [
-          {
-              name: '投诉',
-              type: 'line',
-              stack: '总量',
-              smooth: true,
-              lineStyle: {
-                  width: 0
-              },
-              showSymbol: false,
-              areaStyle: {
-                  opacity: 0.8,
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                      offset: 0,
-                      color: 'rgba(128, 255, 165)'
-                  }, {
-                      offset: 1,
-                      color: 'rgba(1, 191, 236)'
-                  }])
-              },
-              emphasis: {
-                  focus: 'series'
-              },
-              data: [1696, 1369, 1549, 1016, 1411]
-          },
-          {
+            {
               name: '举报',
               type: 'line',
-              stack: '总量',
+              // stack: '总量',
               smooth: true,
               lineStyle: {
-                  width: 0
+                  width: 3
               },
               showSymbol: false,
               areaStyle: {
-                  opacity: 0.8,
+                  // opacity: 0.8,
                   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                       offset: 0,
-                      color: 'rgba(0, 221, 255)'
+                      color: 'rgba(0, 221, 255,1)'
                   }, {
                       offset: 1,
-                      color: 'rgba(77, 119, 255)'
+                      color: 'rgba(77, 119, 255,0)'
                   }])
               },
               emphasis: {
@@ -112,6 +99,31 @@ export default {
               },
               data: [299, 300, 281, 172, 293]
           },
+          {
+              name: '投诉',
+              type: 'line',
+              // stack: '总量',
+              smooth: true,
+              lineStyle: {
+                  width: 3
+              },
+              showSymbol: false,
+              areaStyle: {
+                  // opacity: 0.8,
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                      offset: 0,
+                      color: 'rgba(128, 255, 165,1)'
+                  }, {
+                      offset: 1,
+                      color: 'rgba(1, 191, 236,0)'
+                  }])
+              },
+              emphasis: {
+                  focus: 'series'
+              },
+              data: [1696, 1369, 1549, 1016, 1411]
+          },
+
 
       ]
   };

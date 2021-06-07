@@ -41,6 +41,7 @@ export default {
             axisLine: {
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
             axisTick: {
@@ -49,6 +50,7 @@ export default {
             axisLabel: {
               interval: 0,
               color: "#fff",
+              fontSize:'1.5rem',
               fontfamily: "PingFang Bold",
               fontweight: "bold",
               formatter(e){
@@ -66,12 +68,14 @@ export default {
               lineStyle: {
                 type: "dashed",
                 color: "rgba(255, 255, 255, 0.1)",
+                fontSize:'1.5rem',
               },
             },
             axisLine: {
               show: true,
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
             axisTick: {
@@ -81,6 +85,7 @@ export default {
               color: "#fff",
               fontfamily: "PingFang",
               fontweight: "bold",
+              fontSize:'1.5rem',
             },
             type: "value",
           },
@@ -95,7 +100,8 @@ export default {
             {
               data: yData,
               type: "bar",
-              barWidth: 20,
+              barWidth: "60%",
+              fontSize:'1.5rem',
               color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,
             color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
@@ -107,6 +113,7 @@ export default {
                 show: true,
                 position: "top",
                 color: "#fff",
+                fontSize:'1.5rem',
               },
             },
           ],

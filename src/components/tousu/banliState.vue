@@ -27,7 +27,8 @@
     }
     .dis{
       width: 16.67rem;
-      height: 9.5rem;
+      height: 10.5rem;
+      position: relative;
       .num{
         width: 16.67rem;
         height: 4.7rem;
@@ -50,11 +51,18 @@
         font-weight: 400;
         color: #FFFFFF;
       }
-      .filed::after {
-          width: 16.33rem;
-          height: 0.17rem;
-          background: linear-gradient(90deg, rgba(0, 240, 255, 0));
-        }
+      &:after{
+        content: "";
+        position: absolute;
+        bottom: 0.08rem;
+        width: 16.67rem;
+        height: 0.08rem;
+        background-image: url("~@/assets/images/fengxian/jx5.png");
+        background-size: 100% 100%;
+      }
+      &:last-of-type:after{
+        display: none;
+      }
     }
 
 

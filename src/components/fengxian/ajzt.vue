@@ -7,7 +7,7 @@
     <div id="ajzt"></div>
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>案件来源分布</p>
+      <p>案件分析</p>
     </div>
     <div id="ajlyfb"></div>
   </div>
@@ -25,11 +25,17 @@ export default {
     var option;
 
     option = {
+        tooltip: {
+          trigger: 'axis'
+        },
         legend: {
-            data: ['邮件营销', '联盟广告', '视频广告', '直接访问'],
+            data: ['罚没款', '大要案数', '移送司法机关', '一般案件'],
             textStyle: {
-              color: "rgba(255, 255, 225, 1)"
-            }
+              color: "rgba(255, 255, 225, 1)",
+              fontSize: 20
+            },
+            itemWidth:50,
+            itemHeight:20,
         },
         grid: {
             left: '3%',
@@ -42,52 +48,47 @@ export default {
             type: 'category',
             boundaryGap: false,
               axisLabel: {
-                color: "rgba(255, 255, 255, 1)"
+                color: "rgba(255, 255, 255, 1)",
+                fontSize:'1.5rem',
               },
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            data: ['1 月', '6 月', '12 月']
         },
         yAxis: {
             type: 'value',
               axisLabel: {
-                color: "rgba(255, 255, 255, 1)"
+                color: "rgba(255, 255, 255, 1)",
+                fontSize:'1.5rem',
               },
         },
         series: [
             {
-                name: '邮件营销',
+                name: '罚没款',
                 type: 'line',
                 stack: '总量',
                 smooth: true,
-                data: [120, 132, 101, 134, 90, 230, 210]
+                data: [720, 22, 900],
             },
             {
-                name: '联盟广告',
+                name: '大要案数',
                 type: 'line',
                 stack: '总量',
                 smooth: true,
                 smooth: true,
-                data: [220, 182, 191, 234, 290, 330, 310]
+                data: [220, 882, 191]
             },
             {
-                name: '视频广告',
+                name: '移送司法机关',
                 type: 'line',
                 stack: '总量',
                 smooth: true,
-                data: [150, 232, 201, 154, 190, 330, 410]
+                data: [150, 732, 201]
             },
             {
-                name: '直接访问',
+                name: '一般案件',
                 type: 'line',
                 stack: '总量',
                 smooth: true,
-                data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-                name: '搜索引擎',
-                type: 'line',
-                stack: '总量',
-                smooth: true,
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
+                data: [820, 400, 901]
             }
         ]
     };
@@ -114,9 +115,9 @@ export default {
               color: "#fff",
               fontfamily: "PingFang",
               fontweight: "bold",
-              fontSize:'1.2rem'
+              fontSize:'1.5rem',
             },
-            data: ["吴兴区", "南浔区",  "德清县", "长兴县", "安吉县","南太湖新区"],
+            data: ["侵害消费者权益", "食品安全",  "质量领域", "知识产权", "药械化","其它"],
           },
           grid: {
             top: "15%",
@@ -132,6 +133,8 @@ export default {
               interval: 0,
               rotate: rotate ? rotate : 0,
               color: "#fff",
+              fontSize:'1.5rem',
+              rotate: 20,
               fontfamily: "PingFang",
               fontweight: "bold",
             },
@@ -141,9 +144,10 @@ export default {
             axisLine: {
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
-            data: ["针织服装", "童装", "针织服装", "童装", "针织服装"],
+            data: ["市本级", "吴兴区", "南浔区", "德清县", "长兴县","安吉县","南太湖新区"],
           },
           yAxis: {
             type: "value",
@@ -151,12 +155,14 @@ export default {
               lineStyle: {
                 type: "dashed",
                 color: "rgba(255, 255, 255, 0.1)",
+                fontSize:'1.5rem',
               },
             },
             axisLine: {
               show: true,
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
             axisTick: {
@@ -164,11 +170,12 @@ export default {
             },
             axisLabel: {
               color: "#fff",
+              fontSize:'1.5rem',
             },
           },
           series: [
             {
-              name: "吴兴区",
+              name: "侵害消费者权益",
               type: "bar",
               stack: "total",
               barWidth: 30,
@@ -179,9 +186,10 @@ export default {
                 focus: "series",
               },
               data: [320, 302, 301, 334, 390, 330, 320],
+              
             },
             {
-              name: "南浔区",
+              name: "食品安全",
               type: "bar",
               stack: "total",
               barWidth: 30,
@@ -194,7 +202,7 @@ export default {
               data: [120, 132, 101, 134, 90, 230, 210],
             },
             {
-              name: "南太湖新区",
+              name: "质量领域",
               type: "bar",
               stack: "total",
               barWidth: 30,
@@ -207,7 +215,7 @@ export default {
               data: [220, 182, 191, 234, 290, 330, 310],
             },
             {
-              name: "德清县",
+              name: "知识产权",
               type: "bar",
               stack: "total",
               barWidth: 30,
@@ -220,7 +228,7 @@ export default {
               data: [220, 182, 191, 234, 290, 330, 310],
             },
             {
-              name: "长兴县",
+              name: "药械化",
               type: "bar",
               stack: "total",
               barWidth: 30,
@@ -233,7 +241,7 @@ export default {
               data: [220, 182, 191, 234, 290, 330, 310],
             },
             {
-              name: "安吉县",
+              name: "其它",
               type: "bar",
               stack: "total",
               barWidth: 30,

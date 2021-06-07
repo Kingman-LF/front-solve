@@ -1,5 +1,5 @@
 <template>
-  <div class="myborder">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>信访目的</p>
@@ -76,7 +76,7 @@ export default {
         series: [{
           data: yData,
           type: 'bar',
-          barWidth: 20,
+          barWidth: "60%",
           itemStyle: {
             normal: {
               color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
@@ -91,7 +91,8 @@ export default {
           label: {
             show: true,
             position: 'top',
-            color: '#fff'
+            color: '#fff',
+            fontSize: '1.5rem',
           }
         }]
       }

@@ -1,5 +1,5 @@
 <template>
-  <div class="myborder">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>行政诉讼概览</p>
@@ -23,17 +23,17 @@ export default {
       charts.clear()
       let city = {
         '特种设备投诉举报': {color:'#eb6877',depth: 0},
-        '公司注销': {color:'#8957a1',depth: 0},
-        '公司登记': {color:'#87cefa',depth: 0},
-        '食品投诉举报': {color:'#448aca',depth: 0},
-        '行政处罚': {color:'#ea68a2',depth: 0},
+        '公司注销': {color:'#eb6877',depth: 0},
+        '公司登记': {color:'#eb6877',depth: 0},
+        '食品投诉举报': {color:'#eb6877',depth: 0},
+        '行政处罚': {color:'#eb6877',depth: 0},
 
-        '二审，驳回起诉，再审中': {color:'#86ffff',depth: 1},
+        '二审，驳回起诉，再审中': {color:'#f8b551',depth: 1},
         '一审驳回，二审维持原判': {color:'#f8b551',depth: 1},
         '一审驳回，二审中': {color:'#f8b551',depth: 1},
-        '驳回': {color:'#13b5af',depth: 1},
-        '撤诉，裁定驳回': {color:'#556fb5',depth: 1},
-        '和解': {color:'#556fb5',depth: 1},
+        '驳回': {color:'#f8b551',depth: 1},
+        '撤诉，裁定驳回': {color:'#f8b551',depth: 1},
+        '和解': {color:'#f8b551',depth: 1},
 
         '领导出庭': {color:'#4a91e2',depth: 2},
         '非领导出庭': {color:'#ffa500',depth: 2},

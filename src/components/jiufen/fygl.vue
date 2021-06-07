@@ -1,8 +1,8 @@
 <template>
-  <div class="myborder">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>行政诉讼概览</p>
+      <p>行政复议概览</p>
     </div>
     <div id="fygailan"></div>
   </div>
@@ -23,15 +23,15 @@ export default {
       charts.clear()
       let city = {
         '合同格式条款违规': {color:'#eb6877',depth: 0},
-        '举报奖励': {color:'#8957a1',depth: 0},
-        '特设检查指令书': {color:'#87cefa',depth: 0},
-        '投诉举报处理': {color:'#448aca',depth: 0},
-        '行政处罚': {color:'#ea68a2',depth: 0},
-        '责令整改': {color:'#ea68a2',depth: 0},
+        '举报奖励': {color:'#eb6877',depth: 0},
+        '特设检查指令书': {color:'#eb6877',depth: 0},
+        '投诉举报处理': {color:'#eb6877',depth: 0},
+        '行政处罚': {color:'#eb6877',depth: 0},
+        '责令整改': {color:'#eb6877',depth: 0},
 
-        '终止（和解）': {color:'#86ffff',depth: 1},
-        '维持（驳回）': {color:'#86ffff',depth: 1},
-        '确定违法': {color:'#86ffff',depth: 1},
+        '终止（和解）': {color:'#4a91e2',depth: 1},
+        '维持（驳回）': {color:'#4a91e2',depth: 1},
+        '确定违法': {color:'#4a91e2',depth: 1},
       }
       let population = [
         { source: "合同格式条款违规", target: "终止（和解）", value: 1 },

@@ -2,12 +2,12 @@
   <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>不合格食品类别</p>
+      <p>不合格食品项目</p>
     </div>
     <div class="spcj" id="bhgsp"></div>
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>不合格食品项目</p>
+      <p>不合格食品类别</p>
     </div>
     <div class="spcj" id="spcc"></div>
 
@@ -46,7 +46,8 @@ export default {
             type: 'category',
             axisLine: {
               lineStyle: {
-                color: 'rgba(255, 255, 255, 0.4)'
+                color: 'rgba(255, 255, 255, 0.4)',
+                fontSize:'1.5rem',
               }
             },
             axisTick: {
@@ -73,13 +74,15 @@ export default {
             splitLine: {
               lineStyle: {
                 type: 'dashed',
-                color: 'rgba(255, 255, 255, 0.1)'
+                color: 'rgba(255, 255, 255, 0.1)',
+                fontSize:'1.5rem',
               }
             },
             axisLine: {
               show: true,
               lineStyle: {
-                color: 'rgba(255, 255, 255, 0.4)'
+                color: 'rgba(255, 255, 255, 0.4)',
+                fontSize:'1.5rem',
               }
             },
             axisTick: {
@@ -104,12 +107,13 @@ export default {
           series: [{
             data: yData,
             type: 'bar',
-            barWidth: 20,
+            barWidth: "60%",
             color: colors,
             label: {
               show: true,
               position: 'top',
-              color: '#fff'
+              color: '#fff',
+              fontSize:'1.5rem',
             },
             
 
@@ -204,11 +208,13 @@ export default {
                 rich: {
                   a: {
                     color: "#FF4657",
+                    fontSize:'1.5rem',
                     fontSize: 14,
                     fontWeight: "bold",
                   },
                   b: {
                     color: "#43FF55",
+                    fontSize:'1.5rem',
                     fontSize: 14,
                     fontWeight: "bold",
                   },
@@ -227,6 +233,7 @@ export default {
               showBackground: true,
               backgroundStyle: {
                 borderWidth: 1,
+                fontSize:'1.5rem',
                 color: "rgba(255, 255, 255, 0.2)",
                 borderRadius: 9,
               },

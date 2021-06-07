@@ -167,6 +167,7 @@ export default {
   }
   .lv {
     @extend .flex-row;
+    justify-content: space-around;
     div {
       @extend .flex-col;
       align-items: center;

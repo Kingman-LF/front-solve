@@ -17,8 +17,8 @@ export default {
   },
    methods: {
     zhuzhuang(charts, color, xdata, ydata, rotate) {
-      let xData = xdata ? xdata : ['王女士', '李先生', '万延秋', '李艳', '王泽']
-      let yData = ydata ? ydata : [9, 7, 5, 5, 5, 4]
+      let xData = xdata ? xdata : ['吴兴区', '南浔区', '德清县', '长兴县', '安吉县','南太湖新区']
+      let yData = ydata ? ydata : [0, 0, 0, 0, 0, 0]
       let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,
             color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
@@ -41,8 +41,9 @@ export default {
           },
           axisLabel: {
             interval: 0,
-            rotate: 20,
             color: "#fff",
+            
+            fontSize:"1.5rem",
             fontfamily: 'PingFang',
             fontweight: 'bold',
           },
@@ -67,7 +68,8 @@ export default {
           axisLabel: {
             color: "#fff",
             fontfamily: 'PingFang',
-            fontweight: 'bold'
+            fontweight: 'bold',
+            fontSize:"1.5rem"
           },
           type: 'value',
           
@@ -76,18 +78,20 @@ export default {
           top: '15%',
           left: '5%',
           right: '4%',
-          height: '90%',
+          height: '85%',
           containLabel: true
         },
         series: [{
           data: yData,
           type: 'bar',
-          barWidth: 20,
+          barWidth: "60%",
+          fontSize:"1.5rem",
           color: colors,
           label: {
             show: true,
             position: 'top',
-            color: '#fff'
+            color: '#fff',
+            fontSize:"1.5rem"
           },
           
 

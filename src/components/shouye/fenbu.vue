@@ -108,7 +108,7 @@ export default {
               },
 
               data: [
-                { name: "吴兴区", value: 42400,label:{offset:[-55,40]} },
+                { name: "吴兴区", value: 42400,label:{offset:[-70,40]} },
                 { name: "南浔区", value: 3 },
                 { name: "长兴县", value: 26058 },
                 { name: "德清县", value: 10800 },

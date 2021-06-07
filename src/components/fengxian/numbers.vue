@@ -14,7 +14,7 @@
     </div>
     <div class="lv">
       <div>
-        <span>产品抽查总数</span>
+        <span>产品抽检总数</span>
         <span>55782</span>
       </div>
     </div>

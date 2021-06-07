@@ -68,7 +68,6 @@ export default {
             : [],
           series: [
             {
-              name: "访问来源",
               type: "pie",
               radius: ["35%", "55%"],
               center: ["center", "center"],

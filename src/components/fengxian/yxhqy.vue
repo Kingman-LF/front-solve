@@ -35,7 +35,7 @@ export default {
               color: "#fff",
               fontfamily: "PingFang",
               fontweight: "bold",
-              fontSize:'1.2rem'
+              fontSize:'1.5rem'
             },
             data: ["药品流通", "药品生产", "医疗器械", "化妆品"],
           },
@@ -51,6 +51,7 @@ export default {
             type: "category",
             axisLabel: {
               interval: 0,
+              fontSize:'1.5rem',
               rotate: rotate ? rotate : 0,
               color: "#fff",
               fontfamily: "PingFang",
@@ -62,9 +63,10 @@ export default {
             axisLine: {
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
-            data: ["吴兴区", "南浔区", "德清区", "长兴区", "南太湖新区"],
+            data: ["吴兴区", "南浔区", "德清区", "长兴区", "安吉县","南太湖新区"],
           },
           yAxis: {
             type: "value",
@@ -72,19 +74,23 @@ export default {
               lineStyle: {
                 type: "dashed",
                 color: "rgba(255, 255, 255, 0.1)",
+                fontSize:'1.5rem',
               },
             },
             axisLine: {
               show: true,
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
             axisTick: {
               show: false,
+              fontSize:'1.5rem',
             },
             axisLabel: {
               color: "#fff",
+              fontSize:'1.5rem',
             },
           },
           series: [

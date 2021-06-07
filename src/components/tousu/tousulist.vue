@@ -27,12 +27,12 @@
     padding: 10px;
     box-sizing: border-box;
     .ul{
-        height: 6.33rem;
+        height: 4rem;
         overflow: hidden;
         div{
             float: left;
-            height: 5rem;
-            line-height: 5rem;
+            height: 4rem;
+            line-height: 4rem;
             font-size: 2rem;
             font-family: PingFang SC;
             font-weight: bold;

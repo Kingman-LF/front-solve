@@ -30,15 +30,19 @@ export default {
             axisPointer: {
                 type: 'cross',
                 crossStyle: {
-                    color: '#999'
+                    color: '#999',
+                    fontSize:'1.5rem',
                 }
             }
         },
         legend: {
             data: ['2020', '2021'],
             textStyle: {
-              color: "rgba(255, 255, 225, 1)"
-            }
+              color: "rgba(255, 255, 225, 1)",
+              fontSize: 20
+            },
+            itemWidth:50,
+            itemHeight:20,
         },
         xAxis: [
             {
@@ -48,8 +52,9 @@ export default {
                     type: 'shadow'
                 },
               axisLabel: {
+                rotate:20,
                 color: "rgba(255, 255, 255, 1)",
-                fontSize:"1.5rem",
+                fontSize:'1.5rem',
               }
             }
         ],
@@ -64,7 +69,9 @@ export default {
                     fontSize:"1.5rem",
                 },
                 axisLabel: {
-                  color: "rgba(255, 255, 255, 1)"
+                  color: "rgba(255, 255, 255, 1)",
+                  fontSize:'1.5rem',
+
                 }
             },
             {
@@ -76,27 +83,30 @@ export default {
             {
                 name: '2020',
                 type: 'bar',
+                fontSize:'1.5rem',
                 color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-            offset: 1,
-            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
-            },{
-            offset: 0,
-            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
-            }], false),
-                data: [20.0, 40.9, 70.0, 23.2, 25.6]
-            },
+                offset: 1,
+                color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+                },{
+                offset: 0,
+                
+                color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+                }], false),
+                    data: [70.0, 60.9, 50.0, 30.2, 25.6]
+                },
             {
                 name: '2021',
                 type: 'bar',
+                fontSize:'1.5rem',
                 color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-            offset: 1,
-            color: "rgba(120,255,182, 1)" // 100% 处的颜色
-            },{
-            offset: 0,
-            color: "rgba(120,255,182, 0)" // 100% 处的颜色
-            }], false),
-                data: [20.6, 50.9, 90.0, 26.4, 28.7]
-            }
+                   offset: 1,
+                   color: "rgba(120,255,182, 1)" // 100% 处的颜色
+                   },{
+                   offset: 0,
+                   color: "rgba(120,255,182, 0)" // 100% 处的颜色
+                   }], false),
+                data: [80.6, 70.9, 60.0, 40.4, 35.7]
+              }
         ]
     };
     option && myChart.setOption(option);
@@ -118,7 +128,8 @@ export default {
             type: 'category',
             axisLine: {
               lineStyle: {
-                color: 'rgba(255, 255, 255, 0.4)'
+                color: 'rgba(255, 255, 255, 0.4)',
+                fontSize:"1.5rem"
               }
             },
             axisTick: {
@@ -128,6 +139,7 @@ export default {
               interval: 0,
               rotate: 20,
               color: "#fff",
+              fontSize:'1.5rem',
               fontfamily: 'PingFang',
               fontweight: 'bold',
             },
@@ -137,13 +149,14 @@ export default {
             splitLine: {
               lineStyle: {
                 type: 'dashed',
-                color: 'rgba(255, 255, 255, 0.1)'
+                color: 'rgba(255, 255, 255, 0.1)',
+                fontSize:'1.5rem',
               }
             },
             axisLine: {
               show: true,
               lineStyle: {
-                color: 'rgba(255, 255, 255, 0.4)'
+                color: 'rgba(255, 255, 255, 0.4)',
               }
             },
             axisTick: {
@@ -152,7 +165,8 @@ export default {
             axisLabel: {
               color: "#fff",
               fontfamily: 'PingFang',
-              fontweight: 'bold'
+              fontweight: 'bold',
+              fontSize:"1.5rem"
             },
             type: 'value',
             
@@ -167,12 +181,13 @@ export default {
           series: [{
             data: yData,
             type: 'bar',
-            barWidth: 20,
+            barWidth: "60%",
             color: colors,
             label: {
               show: true,
               position: 'top',
-              color: '#fff'
+              color: '#fff',
+              fontSize:'1.5rem',
             },
             
 

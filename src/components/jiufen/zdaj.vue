@@ -1,5 +1,5 @@
 <template>
-  <div class="myborder">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>重点案件地区分布</p>
@@ -66,7 +66,7 @@ export default {
               label: {
                 show: true,
                 color:'#ffffff',
-                fontSize:16,
+                fontSize:'2rem',
                 fontFamily:'PingFang Bold',
                 emphasis: {//对应的鼠标悬浮效果
                   show: true,
@@ -75,21 +75,21 @@ export default {
               },
 
               data: [
-                { name: "吴兴区", value: 42400 },
+                { name: "吴兴区", value: 42400,label:{offset:[-70,40]} },
                 { name: "南浔区", value: 3 },
                 { name: "长兴县", value: 26058 },
                 { name: "德清县", value: 10800 },
-                { name: "南太湖新区", value: 320 },
+                { name: "南太湖新区", value: 320,label:{offset:[-20,0]} },
                 { name: "安吉县", value: 2 },
               ],
               // 自定义名称映射
               itemStyle: {
-                normal: {
-                  borderWidth: .5,//区域边框宽度
-                  borderColor: '#00f0ff',//区域边框颜色
-                  areaColor:"#DCDCDC",//区域颜色
+                // normal: {
+                //   borderWidth: .5,//区域边框宽度
+                //   borderColor: '#00f0ff',//区域边框颜色
+                //   areaColor:"#DCDCDC",//区域颜色
 
-                },
+                // },
                 emphasis: {
                   color:'#ffffff',
                   areaColor:"#00ffa3",

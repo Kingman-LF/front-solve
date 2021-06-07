@@ -1,8 +1,8 @@
 <template>
-  <div class="myborder">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>国级积案概览</p>
+      <p>省级积案概览</p>
       <div class="tips">1件  化解率100%</div>
     </div>
     <div class="data">

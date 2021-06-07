@@ -32,9 +32,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.yaoshi{
+.box{
+  height: 17.5rem;
+  .yaoshi{
   height: 7.87rem;
   overflow: auto;
+  margin-top: 1rem;
 }
 .yaof {
   width: 95%;
@@ -67,4 +70,6 @@ export default {
     display: none;
   }
 }
+}
+
 </style>

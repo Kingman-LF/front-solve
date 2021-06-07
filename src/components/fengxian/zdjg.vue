@@ -43,6 +43,7 @@ export default {
             axisLine: {
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
             axisTick: {
@@ -54,6 +55,7 @@ export default {
               color: "#fff",
               fontfamily: "PingFang",
               fontweight: "bold",
+              fontSize:'1.5rem',
             },
             data: xData,
           },
@@ -62,12 +64,14 @@ export default {
               lineStyle: {
                 type: "dashed",
                 color: "rgba(255, 255, 255, 0.1)",
+                fontSize:'1.5rem',
               },
             },
             axisLine: {
               show: true,
               lineStyle: {
                 color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
               },
             },
             axisTick: {
@@ -77,6 +81,7 @@ export default {
               color: "#fff",
               fontfamily: "PingFang",
               fontweight: "bold",
+              fontSize:'1.5rem',
             },
             type: "value",
           },
@@ -91,12 +96,13 @@ export default {
             {
               data: yData,
               type: "bar",
-              barWidth: 20,
+              barWidth: "60%",
               color: colors,
               label: {
                 show: true,
                 position: "top",
                 color: "#fff",
+                fontSize:'1.5rem',
               },
             },
           ],

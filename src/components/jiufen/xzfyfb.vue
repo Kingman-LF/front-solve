@@ -1,5 +1,5 @@
 <template>
-  <div class="myborder">
+  <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>行政复议地区分布</p>
@@ -45,7 +45,8 @@ export default {
             rich: {
               value: {
                 color: '#303133',
-                fontSize: '1.5rem',
+                fontSize: '2rem',
+                fontWeight: 'bold',
                 fontFamily: 'PingFang'
               },
               name: {
@@ -67,7 +68,6 @@ export default {
             label: {
               show: true,
               color: "#fff",
-              fontWeight: 'bold',
               fontFamily: 'PingFang SC',
               fontSize: '1.5rem',
               formatter(e){

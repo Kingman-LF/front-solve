@@ -69,7 +69,6 @@ export default {
             : [],
           series: [
             {
-              name: "访问来源",
               type: "pie",
               radius: ["45%", "70%"],
               center: ["center", "center"],
@@ -107,9 +106,10 @@ export default {
                 length2: 5
               },
               data: [
-                { value: 3, name: "湖州南太湖新区" },
-                { value: 2, name: "安吉县" },
                 { value: 1, name: "德清县" },
+                { value: 2, name: "安吉县" },
+                { value: 3, name: "湖州南太湖新区" },
+
               ],
             },
             {},
