@@ -50,7 +50,6 @@ export default {
                         color: "#303133",
                         fontSize: '3rem',
                         lineHeight: 30,
-                        fontWeight: "bold",
                         fontFamily: "digifaw",
                         textShadowColor: "#0096ff",
                         textShadowBlur: "12"
