@@ -56,8 +56,6 @@ export default {
       yAxis: [
           {
               type: 'value',
-              min:0,
-              max:1000,
               axisLine: {
                 lineStyle: {
                   color: 'rgba(255, 255, 255, 1)'
@@ -88,7 +86,7 @@ export default {
               emphasis: {
                   focus: 'series'
               },
-              data: [140, 232, 101]
+              data: [1696, 1369, 1549, 1016, 1411]
           },
           {
               name: '举报',
@@ -112,7 +110,7 @@ export default {
               emphasis: {
                   focus: 'series'
               },
-              data: [420, 582, 311]
+              data: [299, 300, 281, 172, 293]
           },
 
       ]
