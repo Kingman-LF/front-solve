@@ -38,19 +38,24 @@ export default {
         let option = {
           tooltip: {
             trigger: "axis",
+            textStyle: {
+              fontSize:26,
+            },
             axisPointer: {
-              // Use axis to trigger tooltip
-              type: "shadow", // 'shadow' as default; can also be 'line' or 'shadow'
+              type: "shadow",
             },
           },
+          
           legend: {
             top:"5%",
             textStyle: {
               color: "#fff",
               fontfamily: "PingFang",
               fontweight: "bold",
-              fontSize:'1.5rem',
+              fontSize:20,
             },
+            itemWidth:50,
+            itemHeight:20,
             data: ["违法广告", "正常"],
           },
           grid: {
@@ -163,15 +168,42 @@ export default {
         let option = {
           tooltip: {
             trigger: "item",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+              // console.log(e);
+            }
           },
           legend: {
-            show: false,
+            // show: false,
+            orient: 'vertical',
+            left: '70%',
+            top:'center',
+            textStyle:{
+              color:"#fff",
+              fontSize: '2rem',
+            },
+            formatter(e){
+              if(e.length>4){
+                return (e.slice(0,4)+"...")
+              }else{
+                return e
+              }
+            }
           },
           graphic: mygraphic
             ? [
                 {
+                  tooltip: {
+                    formatter(e){
+                      return `总量：${gailanTotal}`
+                    }
+                  },
                   type: "text",
-                  left: "center",
+                  left: "28%",
                   top: "center",
                   z: 10,
                   style: {
@@ -204,11 +236,11 @@ export default {
           series: [
             {
               type: "pie",
-              radius: ["40%", "60%"],
-              center: ["center", "center"],
-              avoidLabelOverlap: false,
+              radius: ["50%", "75%"],
+              center: ["40%", "center"],
+              // avoidLabelOverlap: false,
               label: {
-                show: true,
+                show: false,
                 color: "#fff",
                 fontWeight: 'bold',
                 fontFamily: 'PingFang Bold',
@@ -235,11 +267,11 @@ export default {
                   return colorlist[params.dataIndex];
                 },
               },
-              labelLine: {
-                show: true,
-                length: 10,
-                length2: 5
-              },
+              // labelLine: {
+              //   show: true,
+              //   length: 10,
+              //   length2: 5
+              // },
               data: [
                 { value: 8113, name: "湖州市" },
                 { value: 0, name: "吴兴县" },

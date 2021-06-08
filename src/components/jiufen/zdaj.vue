@@ -41,8 +41,9 @@ export default {
           },
           tooltip: {
             trigger: "item",
+            borderWidth:"0",
             textStyle: {
-              fontSize:60,
+              fontSize:26,
             },
             formatter: "{b} {c}",
           },

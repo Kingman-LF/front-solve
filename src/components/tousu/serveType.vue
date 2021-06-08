@@ -148,6 +148,7 @@ export default {
 .myborder {
   width: 58rem;
   height: 31.5rem;
+  border-radius: 4px;
   #serveType {
     margin-top: 1rem;
     height: 25rem;

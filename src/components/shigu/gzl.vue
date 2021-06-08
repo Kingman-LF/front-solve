@@ -28,6 +28,14 @@ export default {
         let option = {
           tooltip: {
             trigger: "item",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value}个 ${e.percent}%`
+              // console.log(e);
+            }
           },
           legend: {
             show: false,
@@ -35,9 +43,14 @@ export default {
           graphic: mygraphic
             ? [
                 {
+                  tooltip: {
+                    formatter(e){
+                      return `总量：${gailanTotal}`
+                    }
+                  },
                   type: "text",
                   left: "center",
-                  top: "45%",
+                  top: "center",
                   z: 10,
                   style: {
                     fill: "#fff",
@@ -72,7 +85,7 @@ export default {
               type: "pie",
               radius: ["45%", "70%"],
               center: ["center", "center"],
-              avoidLabelOverlap: false,
+              // avoidLabelOverlap: false,
               label: {
                 show: true,
                 color: "#fff",
@@ -100,8 +113,11 @@ export default {
               },
               labelLine: {
                 show: true,
-                length: 10,
-                length2: 5
+                lineStyle:{
+                  width:2
+                }
+                // length: 10,
+                // length2: 5
               },
               data: [
                 { value: 1, name: "德清县" },

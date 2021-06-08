@@ -42,6 +42,19 @@ export default {
             }], false)
         charts.clear()
         let option = {
+          tooltip: {
+            trigger: "axis",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            axisPointer: {
+              type: "shadow",
+            },
+            formatter(e){
+              return `${e[0].name}：${e[0].value}`
+            }
+          },  
           xAxis: {
             type: 'category',
             axisLine: {
@@ -158,7 +171,11 @@ export default {
             axisPointer: {
               type: "none",
             },
-            formatter: "{b}:{c}%",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter: "{b}:{c}",
           },
           xAxis: {
             type: "value",

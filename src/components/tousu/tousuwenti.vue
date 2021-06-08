@@ -31,6 +31,7 @@ export default {
             textStyle: {
               fontSize:26,
             },
+            
             formatter(e){
               return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
               // console.log(e);
@@ -39,12 +40,21 @@ export default {
           legend: {
             // show: false,
             orient: 'vertical',
-            left: '60%',
+            left: '45%',
             top:'center',
             textStyle:{
               color:"#fff",
               fontSize: '1.5rem',
             },
+            itemWidth:10,
+            itemHeight:10,
+            formatter(e){
+              if(e.length>4){
+                return (e.slice(0,4)+"...")
+              }else{
+                return e
+              }
+            }
           },
           graphic: mygraphic
             ? [
@@ -55,7 +65,7 @@ export default {
                     }
                   },
                   type: "text",
-                  left: "22%",
+                  left: "17%",
                   top: "center",
                   z: 10,
                   style: {
@@ -90,7 +100,7 @@ export default {
             {
               type: "pie",
               radius: ["35%", "55%"],
-              center: ["30%", "center"],
+              center: ["25%", "center"],
               // avoidLabelOverlap: false,
               label: {
                 show: false,
@@ -151,6 +161,7 @@ export default {
 .myborder {
   width: 38.33rem;
   height: 31.67rem;
+  border-radius: 4px;
   #tousuissue{
     margin-top: 1rem;
     height: 25rem;

@@ -36,7 +36,7 @@ export default {
           tooltip: {
             trigger: "item",
             textStyle: {
-              fontSize:60,
+              fontSize:26,
             },
             formatter: "{b} {c}",
           },

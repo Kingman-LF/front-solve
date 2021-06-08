@@ -23,93 +23,7 @@ export default {
     // 产品质量不合格率TOP5
     var cpzlDom = document.getElementById('cpzl');
     var myChart = echarts.init(cpzlDom);
-    var option;
-    option = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                crossStyle: {
-                    color: '#999',
-                    fontSize:'1.5rem',
-                }
-            }
-        },
-        legend: {
-            data: ['2020', '2021'],
-            textStyle: {
-              color: "rgba(255, 255, 225, 1)",
-              fontSize: 20
-            },
-            itemWidth:50,
-            itemHeight:20,
-        },
-        xAxis: [
-            {
-                type: 'category',
-                data: ['针织服装', '童装', '纸尿裤', '童装', '针织服装'],
-                axisPointer: {
-                    type: 'shadow'
-                },
-              axisLabel: {
-                rotate:20,
-                color: "rgba(255, 255, 255, 1)",
-                fontSize:'1.5rem',
-              }
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                min: 0,
-                max: 100,
-                interval: 50,
-                axisLabel: {
-                    formatter: '{value}%',
-                    fontSize:"1.5rem",
-                },
-                axisLabel: {
-                  color: "rgba(255, 255, 255, 1)",
-                  fontSize:'1.5rem',
-
-                }
-            },
-            {
-                type: 'value',
-                interval: 5,
-            }
-        ],
-        series: [
-            {
-                name: '2020',
-                type: 'bar',
-                fontSize:'1.5rem',
-                color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-                offset: 1,
-                color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
-                },{
-                offset: 0,
-                
-                color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
-                }], false),
-                    data: [70.0, 60.9, 50.0, 30.2, 25.6]
-                },
-            {
-                name: '2021',
-                type: 'bar',
-                fontSize:'1.5rem',
-                color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-                   offset: 1,
-                   color: "rgba(120,255,182, 1)" // 100% 处的颜色
-                   },{
-                   offset: 0,
-                   color: "rgba(120,255,182, 0)" // 100% 处的颜色
-                   }], false),
-                data: [80.6, 70.9, 60.0, 40.4, 35.7]
-              }
-        ]
-    };
-    option && myChart.setOption(option);
+    this.zhuzhuangtu3(myChart)
   },
   methods: {
     zhuzhuangtu2(charts, color, xdata, ydata, rotate) {
@@ -124,6 +38,20 @@ export default {
             }], false)
         charts.clear()
         let option = {
+          tooltip: {
+            trigger: "axis",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            axisPointer: {
+              type: "shadow", 
+            },
+            formatter(e){
+              return `${e[0].name}：${e[0].value}%`
+              // console.log(e);
+            }
+          },  
           xAxis: {
             type: 'category',
             axisLine: {
@@ -198,7 +126,117 @@ export default {
           charts.resize()
         })
 
-      },
+    },
+    zhuzhuangtu3(charts, color, xdata, ydata, rotate){
+      let xData = xdata ? xdata : ['针织服装', '童装', '纸尿裤', '童装', '针织服装']
+      let yData = ydata ? ydata : [80.6, 70.9, 60.0, 40.4, 35.7]
+      let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+          offset: 1,
+          color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+          },{
+          offset: 0,
+          color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+          }], false)
+      charts.clear()
+      let options = {
+          tooltip: {
+              trigger: 'axis',
+              borderWidth:0,
+              textStyle: {
+                fontSize:26,
+              },
+              formatter(e){
+                return `${e[0].name}<br/>${e[0].seriesName}：${e[0].value}<br/>${e[0].seriesName}：${e[1].value}`
+                // console.log(e);
+              },
+              
+              axisPointer: {
+                  type: 'shadow',
+                  crossStyle: {
+                      color: '#fff',
+                      fontSize:26,
+                  }
+              }
+          },
+          legend: {
+              data: ['2020', '2021'],
+              textStyle: {
+                color: "rgba(255, 255, 225, 1)",
+                fontSize: 20
+              },
+              itemWidth:50,
+              itemHeight:20,
+          },
+          xAxis: [
+              {
+                  type: 'category',
+                  data: xData,
+                  axisPointer: {
+                      type: 'shadow'
+                  },
+                axisLabel: {
+                  rotate:20,
+                  color: "rgba(255, 255, 255, 1)",
+                  fontSize:'1.5rem',
+                }
+              }
+          ],
+          yAxis: [
+              {
+                  type: 'value',
+                  min: 0,
+                  max: 100,
+                  interval: 50,
+                  axisLabel: {
+                      formatter: '{value}%',
+                      fontSize:"1.5rem",
+                  },
+                  axisLabel: {
+                    color: "rgba(255, 255, 255, 1)",
+                    fontSize:'1.5rem',
+
+                  }
+              },
+              {
+                  type: 'value',
+                  interval: 5,
+              }
+          ],
+          series: [
+              {
+                  name: '2020',
+                  type: 'bar',
+                  fontSize:'1.5rem',
+                  color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                  offset: 1,
+                  color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+                  },{
+                  offset: 0,
+                  
+                  color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+                  }], false),
+                      data: [70.0, 60.9, 50.0, 30.2, 25.6]
+                  },
+              {
+                  name: '2021',
+                  type: 'bar',
+                  fontSize:'1.5rem',
+                  color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                    offset: 1,
+                    color: "rgba(120,255,182, 1)" // 100% 处的颜色
+                    },{
+                    offset: 0,
+                    color: "rgba(120,255,182, 0)" // 100% 处的颜色
+                    }], false),
+                  data: yData
+                }
+          ]
+      };
+      options && charts.setOption(options);
+      window.addEventListener('resize', function () {
+        charts.resize()
+      })
+    }
   },
 };
 </script>

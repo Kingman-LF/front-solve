@@ -24,14 +24,34 @@ export default {
       let gailanTotal = 12
       let option = {
         tooltip: {
-          trigger: 'item'
+          trigger: 'item',
+          borderWidth:0,
+          textStyle: {
+            fontSize:26,
+          },
+          formatter(e){
+            return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+            // console.log(e);
+          }
         },
         legend: {
-          show: false
+          // show: false
+          orient: 'horizontal',
+          left: '50%',
+          top:'center',
+          textStyle:{
+            color:"#fff",
+            fontSize: '1.5rem',
+          },
         },
         graphic: [{
+          tooltip: {
+            formatter(e){
+              return `总计：${gailanTotal}`
+            }
+          },
           type: 'text',
-          left: 'center',
+          left: '20%',
           top: 'center',
           z: 10,
           style: {
@@ -47,7 +67,9 @@ export default {
                 color: '#303133',
                 fontSize: '2rem',
                 fontWeight: 'bold',
-                fontFamily: 'PingFang'
+                fontFamily: "digifaw",
+                textShadowColor: "#0096ff",
+                textShadowBlur: "12"
               },
               name: {
                 color: '#909399',
@@ -62,11 +84,11 @@ export default {
           {
             name: '行政诉讼',
             type: 'pie',
-            radius: ['40%', '65%'],
-            center: ['center', 'center'],
-            avoidLabelOverlap: false,
+            radius: ['50%', '75%'],
+            center: ['25%', 'center'],
+            // avoidLabelOverlap: false,
             label: {
-              show: true,
+              show: false,
               color: "#fff",
               fontFamily: 'PingFang SC',
               fontSize: '1.5rem',

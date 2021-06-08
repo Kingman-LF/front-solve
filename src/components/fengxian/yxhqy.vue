@@ -24,6 +24,10 @@ export default {
         let option = {
           tooltip: {
             trigger: "axis",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
             axisPointer: {
               // Use axis to trigger tooltip
               type: "shadow", // 'shadow' as default; can also be 'line' or 'shadow'

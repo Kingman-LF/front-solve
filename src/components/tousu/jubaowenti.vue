@@ -33,18 +33,28 @@ export default {
             },
             formatter(e){
               return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
-              // console.log(e);
+              // console.log(e.name.length);
             }
           },
           legend: {
             // show: false,
             orient: 'vertical',
-            left: '50%',
+            left: '45%',
             top:'center',
             textStyle:{
               color:"#fff",
               fontSize: '1.5rem',
             },
+            itemWidth:10,
+            itemHeight:10,
+            formatter(e){
+              if(e.length>4){
+                return (e.slice(0,4)+"...")
+              }else{
+                return e
+              }
+                // console.log(e);
+            }
           },
           graphic: mygraphic
             ? [
@@ -151,6 +161,7 @@ export default {
 .myborder {
   width: 38.33rem;
   height: 31.67rem;
+  border-radius: 4px;
   #jubaowentis{
     margin-top: 1rem;
     height: 24.67rem;

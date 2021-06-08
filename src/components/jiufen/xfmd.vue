@@ -28,11 +28,12 @@ export default {
       let option = {
         tooltip: {
             trigger: "axis",
+            borderWidth:0,
             textStyle: {
-              fontSize:60,
+              fontSize:26,
             },
             formatter(e){
-              return `${e[0].name}：${e[0].value}次`
+              return `${e[0].name}：${e[0].value}`
               // console.log(e);
             }
           },  
@@ -47,6 +48,7 @@ export default {
             show: false
           },
           axisLabel: {
+            rotate:20,
             color: "#fff",
             fontSize: '1.5rem',
             fontFamily: "PingFang SC"
@@ -57,13 +59,15 @@ export default {
           splitLine: {
             lineStyle: {
               type: 'dashed',
-              color: 'rgba(255, 255, 255, 0.1)'
+              color: 'rgba(255, 255, 255, 0.1)',
+              fontSize: '1.5rem',
             }
           },
           axisLine: {
             show: true,
             lineStyle: {
-              color: 'rgba(255, 255, 255, 0.4)'
+              color: 'rgba(255, 255, 255, 0.4)',
+              fontSize: '1.5rem',
             }
           },
           axisTick: {
@@ -89,6 +93,7 @@ export default {
           barWidth: "60%",
           itemStyle: {
             normal: {
+              fontSize: '1.5rem',
               color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
                 offset: 1,
                 color: "rgba(0, 240, 255, 1)" // 100% 处的颜色

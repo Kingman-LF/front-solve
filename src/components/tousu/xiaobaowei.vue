@@ -45,6 +45,13 @@ export default {
               color:"#fff",
               fontSize: '1.5rem',
             },
+            formatter(e){
+                if(e.length>5){
+                  return (e.slice(0,5)+"...")
+                }else{
+                  return e
+                }
+              }
           },
           graphic: mygraphic
             ? [
@@ -154,6 +161,7 @@ export default {
 .myborder{
     width: 38.33rem;
     height: 40rem;
+    border-radius: 4px;
     #baoxiao{
       margin-top: 1rem;
       height: 33rem;
