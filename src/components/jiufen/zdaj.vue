@@ -41,7 +41,10 @@ export default {
           },
           tooltip: {
             trigger: "item",
-            formatter: "{b}<br/>{c}",
+            textStyle: {
+              fontSize:60,
+            },
+            formatter: "{b} {c}",
           },
           visualMap: {
             show:false,

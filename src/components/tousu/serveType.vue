@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>服务类别投诉接收量</p>
@@ -27,6 +27,13 @@ export default {
         let option = {
           tooltip: {
             trigger: "item",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+            }
           },
           legend: {
             show: false,
@@ -34,6 +41,11 @@ export default {
           graphic: mygraphic
             ? [
                 {
+                  tooltip: {
+                    formatter(e){
+                      return `总量：${gailanTotal}`
+                    }
+                  },
                   type: "text",
                   left: "center",
                   top: "center",
@@ -70,17 +82,16 @@ export default {
               type: "pie",
               radius: ["45%", "70%"],
               center: ["center", "center"],
-              avoidLabelOverlap: false,
+              // avoidLabelOverlap: false,
               label: {
                 show: true,
                 color: "#fff",
                 fontWeight: 'bold',
                 fontFamily: 'PingFang Bold',
                 fontSize: '1.5rem',
-                formatter(e){
-                  console.log(e)
-                  return `${e.name}\n${e.value}个 ${e.percent}%`
-                }
+                // formatter(e){
+                //   return `${e.name}\n${e.value}个 `
+                // }
               },
               itemStyle: {
                 color: function (params) {
@@ -101,8 +112,11 @@ export default {
               },
               labelLine: {
                 show: true,
-                length: 20,
-                length2: 10
+                lineStyle:{
+                  width:2
+                }
+                // length: 20,
+                // length2: 10
               },
               data: [
                 { value: 1118, name: "餐饮和住宿服务" },
@@ -131,11 +145,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box {
+.myborder {
   width: 58rem;
   height: 31.5rem;
   #serveType {
-    height: 24rem;
+    margin-top: 1rem;
+    height: 25rem;
   }
 }
 </style>

@@ -27,7 +27,20 @@ export default {
           show: false
         },
         tooltip: {
-          trigger: 'axis'
+          trigger: 'axis',
+          borderWidth:0,
+          textStyle: {
+            fontSize:25,
+          },
+          formatter(e){
+            return `${e[0].name}<br/><div style="width:18px;height:18px;border-radius:18px;background-color:${e[0].color};display:inline-block"></div>${e[0].seriesName} ${e[0].value}
+            <br/><div style="width:18px;height:18px;border-radius:18px;background-color:${e[1].color};display:inline-block"></div>${e[1].seriesName} ${e[1].value}
+            <br/><div style="width:18px;height:18px;border-radius:18px;background-color:${e[2].color};display:inline-block"></div>${e[2].seriesName} ${e[2].value}
+            <br/><div style="width:18px;height:18px;border-radius:18px;background-color:${e[3].color};display:inline-block"></div>${e[3].seriesName} ${e[3].value}
+            <br/><div style="width:18px;height:18px;border-radius:18px;background-color:${e[4].color};display:inline-block"></div>${e[4].seriesName} ${e[4].value}
+            <br/><div style="width:18px;height:18px;border-radius:18px;background-color:${e[5].color};display:inline-block"></div>${e[5].seriesName} ${e[5].value}`
+            // console.log(e);
+          }
         },
         legend: {
           icon: 'rect',

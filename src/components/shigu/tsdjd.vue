@@ -35,7 +35,10 @@ export default {
           },
           tooltip: {
             trigger: "item",
-            formatter: "{b}<br/>{c}",
+            textStyle: {
+              fontSize:60,
+            },
+            formatter: "{b} {c}",
           },
           visualMap: {
             min: 800,
@@ -70,11 +73,11 @@ export default {
 
               data: [
                 { name: "吴兴区", value: 42400,label:{offset:[-70,40]} },
-                { name: "南浔区", value: 300 },
+                { name: "南浔区", value: 8000 },
                 { name: "长兴县", value: 30060 },
                 { name: "德清县", value: 10800 },
-                { name: "南太湖新区", value: 320,label:{offset:[-20,0]} },
-                { name: "安吉县", value: 2 },
+                { name: "南太湖新区", value: 2020,label:{offset:[-20,0]} },
+                { name: "安吉县", value: 800},
               ],
               // 自定义名称映射
               itemStyle: {

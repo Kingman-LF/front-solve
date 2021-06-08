@@ -84,11 +84,22 @@ export default {
         }
         charts.clear()
         let option = {
+          tooltip: {
+            trigger: "axis",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e[0].name}：${e[0].value}次`
+              // console.log(e);
+            }
+          },  
             xAxis: {
               type: 'category',
               axisLine: {
                   lineStyle: {
-                  color: 'rgba(255, 255, 255, 0.4)'
+                    color: 'rgba(255, 255, 255, 0.4)'
                   }
               },
               axisTick: {
@@ -101,6 +112,9 @@ export default {
                   fontSize:"1.5rem",
                   fontfamily: 'PingFang',
                   fontweight: 'bold',
+              },
+              nameTextStyle:{
+                verticalAlign:"middle",
               },
               data: xData
             },

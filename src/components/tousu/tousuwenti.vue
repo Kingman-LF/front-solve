@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>投诉问题类别</p>
@@ -27,15 +27,35 @@ export default {
         let option = {
           tooltip: {
             trigger: "item",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+              // console.log(e);
+            }
           },
           legend: {
-            show: false,
+            // show: false,
+            orient: 'vertical',
+            left: '60%',
+            top:'center',
+            textStyle:{
+              color:"#fff",
+              fontSize: '1.5rem',
+            },
           },
           graphic: mygraphic
             ? [
                 {
+                  tooltip: {
+                    formatter(e){
+                      return `总量：${gailanTotal}`
+                    }
+                  },
                   type: "text",
-                  left: "center",
+                  left: "22%",
                   top: "center",
                   z: 10,
                   style: {
@@ -69,11 +89,11 @@ export default {
           series: [
             {
               type: "pie",
-              radius: ["40%", "60%"],
-              center: ["center", "center"],
-              avoidLabelOverlap: false,
+              radius: ["35%", "55%"],
+              center: ["30%", "center"],
+              // avoidLabelOverlap: false,
               label: {
-                show: true,
+                show: false,
                 color: "#fff",
                 fontWeight: 'bold',
                 fontFamily: 'PingFang Bold',
@@ -96,11 +116,11 @@ export default {
                   return colorlist[params.dataIndex];
                 },
               },
-              labelLine: {
-                show: true,
-                length: 20,
-                length2: 10
-              },
+              // labelLine: {
+              //   show: false,
+              //   length: 20,
+              //   length2: 10
+              // },
               data: [
                 { value: 3134, name: "质量" },
                 { value: 2154, name: "其他" },
@@ -128,10 +148,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box {
+.myborder {
   width: 38.33rem;
   height: 31.67rem;
   #tousuissue{
+    margin-top: 1rem;
     height: 25rem;
   }
 }

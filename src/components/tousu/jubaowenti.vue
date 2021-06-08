@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>举报问题类别</p>
@@ -27,15 +27,35 @@ export default {
         let option = {
           tooltip: {
             trigger: "item",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+              // console.log(e);
+            }
           },
           legend: {
-            show: false,
+            // show: false,
+            orient: 'vertical',
+            left: '50%',
+            top:'center',
+            textStyle:{
+              color:"#fff",
+              fontSize: '1.5rem',
+            },
           },
           graphic: mygraphic
             ? [
                 {
+                  tooltip: {
+                    formatter(e){
+                      return `总量：${gailanTotal}`
+                    }
+                  },
                   type: "text",
-                  left: "center",
+                  left: "17%",
                   top: "center",
                   z: 10,
                   style: {
@@ -70,10 +90,10 @@ export default {
             {
               type: "pie",
               radius: ["35%", "55%"],
-              center: ["center", "center"],
-              avoidLabelOverlap: false,
+              center: ["25%", "center"],
+              // avoidLabelOverlap: false,
               label: {
-                show: true,
+                show: false,
                 color: "#fff",
                 fontWeight: 'bold',
                 fontFamily: 'PingFang Bold',
@@ -96,11 +116,11 @@ export default {
                   return colorlist[params.dataIndex];
                 },
               },
-              labelLine: {
-                show: true,
-                length: 20,
-                length2: 10
-              },
+              // labelLine: {
+              //   show: true,
+              //   // length: 20,
+              //   // length2: 10
+              // },
               data: [
                 { value: 289, name: "违法登记管理行为" },
                 { value: 187, name: "侵害消费者权益行为" },
@@ -128,11 +148,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box {
+.myborder {
   width: 38.33rem;
   height: 31.67rem;
   #jubaowentis{
-    height: 23.67rem;
+    margin-top: 1rem;
+    height: 24.67rem;
   }
 }
 </style>

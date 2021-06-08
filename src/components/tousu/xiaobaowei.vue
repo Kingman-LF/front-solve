@@ -1,5 +1,5 @@
 <template>
-    <div class="box myborder">
+    <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>消保委投诉类型统计</p>
@@ -27,15 +27,35 @@ export default {
         let option = {
           tooltip: {
             trigger: "item",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+              // console.log(e);
+            }
           },
           legend: {
-            show: false,
+            // show: false,
+            orient: 'vertical',
+            left: '60%',
+            top:'center',
+            textStyle:{
+              color:"#fff",
+              fontSize: '1.5rem',
+            },
           },
           graphic: mygraphic
             ? [
                 {
+                  tooltip: {
+                    formatter(e){
+                      return `总量：${gailanTotal}`
+                    }
+                  },
                   type: "text",
-                  left: "center",
+                  left: "23%",
                   top: "center",
                   z: 10,
                   style: {
@@ -70,10 +90,10 @@ export default {
             {
               type: "pie",
               radius: ["30%", "50%"],
-              center: ["center", "center"],
-              avoidLabelOverlap: false,
+              center: ["30%", "center"],
+              // avoidLabelOverlap: false,
               label: {
-                show: true,
+                show: false,
                 color: "#fff",
                 fontWeight: 'bold',
                 fontFamily: 'PingFang Bold',
@@ -96,11 +116,14 @@ export default {
                   return colorlist[params.dataIndex];
                 },
               },
-              labelLine: {
-                show: true,
-                length: 15,
-                length2: 5
-              },
+              // labelLine: {
+              //   show: false,
+              //   // lineStyle:{
+              //   //   width:2
+              //   // }
+              //   // length: 15,
+              //   // length2: 5
+              // },
               data: [
                 { value: 175, name: "服装鞋帽类" },
                 { value: 172, name: "食品类" },
@@ -128,11 +151,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box {
+.myborder{
     width: 38.33rem;
     height: 40rem;
     #baoxiao{
-      height: 32rem;
+      margin-top: 1rem;
+      height: 33rem;
     }
 }
 </style>

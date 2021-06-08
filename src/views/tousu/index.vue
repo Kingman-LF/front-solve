@@ -77,6 +77,7 @@ export default {
   position: relative;
   .con {
     @extend .flex-row;
+    justify-content: space-around;
     .left {
       width: 117rem;
       @extend .flex-col;

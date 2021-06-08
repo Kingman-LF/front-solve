@@ -26,6 +26,16 @@ export default {
       let colors = color ? color : '#00F0FF'
       charts.clear()
       let option = {
+        tooltip: {
+            trigger: "axis",
+            textStyle: {
+              fontSize:60,
+            },
+            formatter(e){
+              return `${e[0].name}：${e[0].value}次`
+              // console.log(e);
+            }
+          },  
         xAxis: {
           type: 'category',
           axisLine: {

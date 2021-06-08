@@ -85,6 +85,17 @@ export default {
       
       charts.clear()
       let option = {
+        tooltip: {
+          trigger: "axis",
+          borderWidth:0,
+          textStyle: {
+            fontSize:26,
+          },
+          formatter(e){
+            return `${e[0].name}：${e[0].value}次`
+            // console.log(e);
+          }
+        },  
         xAxis: {
           type: 'category',
           axisLine: {
@@ -102,6 +113,9 @@ export default {
             color: "#fff",
             fontfamily: 'PingFang',
             fontweight: 'bold',
+          },
+          nameTextStyle:{
+             verticalAlign:"middle",
           },
           data: xData
         },
