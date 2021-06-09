@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>被投诉对象 TOP10</p>
@@ -227,13 +227,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.box {
+.myborder {
   width: 117rem;
   height: 31.83rem;
+  border-radius: 4px;
   .list{
     width: 70%;
     height: 4rem;
-    margin: 0 auto;
+    margin: 1rem auto;
     span{
       display: block;
       float: left;

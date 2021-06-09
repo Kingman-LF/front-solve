@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>药械化企业检查严重缺陷</p>
@@ -164,10 +164,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box{
+.myborder{
   height: 49.33rem;
+  border-radius: 4px;
   #tzsb {
-    height: 39.33rem;
+    height: 41.33rem;
+    margin-top: 1rem;
   }
 }
 

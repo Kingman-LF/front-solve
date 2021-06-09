@@ -40,7 +40,7 @@ export default {
           legend: {
             // show: false,
             orient: 'vertical',
-            left: '45%',
+            left: '70%',
             top:'center',
             textStyle:{
               color:"#fff",
@@ -65,7 +65,7 @@ export default {
                     }
                   },
                   type: "text",
-                  left: "17%",
+                  left: "23%",
                   top: "center",
                   z: 10,
                   style: {
@@ -78,7 +78,7 @@ export default {
                     rich: {
                       value: {
                         color: "#303133",
-                        fontSize: '2rem',
+                        fontSize: '3rem',
                         lineHeight: 30,
                         fontWeight: "bold",
                         fontFamily: "digifaw",
@@ -99,8 +99,8 @@ export default {
           series: [
             {
               type: "pie",
-              radius: ["35%", "55%"],
-              center: ["25%", "center"],
+              radius: ["40%", "60%"],
+              center: ["35%", "center"],
               // avoidLabelOverlap: false,
               label: {
                 show: false,
@@ -160,11 +160,11 @@ export default {
 <style lang="scss" scoped>
 .myborder {
   width: 38.33rem;
-  height: 31.67rem;
+  height: 36.67rem;
   border-radius: 4px;
   #tousuissue{
     margin-top: 1rem;
-    height: 25rem;
+    height: 30rem;
   }
 }
 </style>

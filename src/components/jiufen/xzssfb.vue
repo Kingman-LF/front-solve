@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>行政诉讼地区分布</p>
@@ -58,14 +58,13 @@ export default {
             fill: '#fff',
             textAlign: 'center',
             text: [
-              `{name|总计}`,
               '{value|' + gailanTotal + '}',
 
             ].join('\n'),
             rich: {
               value: {
                 color: '#303133',
-                fontSize: '2rem',
+                fontSize: '3rem',
                 fontWeight: 'bold',
                 fontFamily: "digifaw",
                 textShadowColor: "#0096ff",
@@ -111,11 +110,11 @@ export default {
             data: [
               { value: 2, name: '市本级' },
               { value: 1, name: '吴兴区' },
-              { value: 4, name: '长兴县' },
+              { value: 0, name: '南浔区' },
               { value: 3, name: '德清县' },
+              { value: 4, name: '长兴县' },
               { value: 1, name: '安吉县' },
               { value: 1, name: '南太湖新区' },
-              { value: 0, name: '南浔区' },
             ]
           }, {
 
@@ -134,6 +133,7 @@ export default {
 <style lang="scss" scoped>
 .myborder{
   height: 27.67rem;
+  border-radius: 4px;
 }
 #susong{
   margin-top: 1rem;

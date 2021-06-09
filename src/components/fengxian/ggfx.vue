@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>产品质量不合格率TOP5</p>
@@ -241,10 +241,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box{
+.myborder{
   height: 81.58rem;
+  border-radius: 4px;
   .ggfx {
     height: 35rem;
+    margin-top: 1rem;
   }
 }
   

@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>风险单位地区分布</p>
@@ -140,9 +140,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box{
+.myborder{
   height: 40rem;
+  border-radius: 4px;
   #gzl {
+    margin-top: 1rem;
     height: 30rem;
   }
 }

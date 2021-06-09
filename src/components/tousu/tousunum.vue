@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>投诉与举报量走势</p>
@@ -38,7 +38,7 @@ export default {
                 formatter(e){
                   return `${e[0].name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e[0].color};display:inline-block"></div>${e[0].seriesName} ${e[0].value}
                           <br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e[1].color};display:inline-block"></div>${e[1].seriesName} ${e[1].value}`
-                  console.log(e);
+                  // console.log(e);
                 },
                 axisPointer: {
                     type: 'cross',
@@ -82,6 +82,7 @@ export default {
             yAxis: [
                 {
                     type: 'value',
+                    splitNumber:2,
                     axisLine: {
                       lineStyle: {
                         color: 'rgba(255, 255, 255, 1)'
@@ -156,10 +157,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.box {
-  height: 40rem;
+.myborder {
+  height: 30rem;
+  border-radius: 4px;
   #tousunmap{
-    height: 30rem;
+    height: 23rem;
     margin-top: 1rem;
   }
 }

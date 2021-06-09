@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>不合格食品项目</p>
@@ -317,10 +317,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-  .box{
+  .myborder{
+    border-radius: 4px;
     height: 81.58rem;
     .spcj {
       height: 35rem;
+      margin-top: 1rem;
     }
   }
   

@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>信访目的</p>
@@ -123,9 +123,10 @@ export default {
 <style scoped>
 .myborder{
   height: 31.92rem;
+  border-radius: 4px;
 }
 #mudi {
   margin-top: 1rem;
-  height: 24rem;
+  height: 25rem;
 }
 </style>

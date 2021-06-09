@@ -65,25 +65,21 @@ export default {
         },
         {
           id: Math.random() + new Date().valueOf() + "",
-          text: "初查率",
-          number: "100%",
+          text: "办结已归档",
+          number: "8175",
         },
         {
           id: Math.random() + new Date().valueOf() + "",
-          text: "办结率",
-          number: "100%",
+          text: "处理中",
+          number: "148",
         },
         
         {
           id: Math.random() + new Date().valueOf() + "",
-          text: "核查率",
-          number: "100%",
+          text: "待办理",
+          number: "53",
         },
-        {
-          id: Math.random() + new Date().valueOf() + "",
-          text: "投诉处置率",
-          number: "100%",
-        },
+        
       ],
       qxdata:[
         {

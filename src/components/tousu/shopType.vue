@@ -5,11 +5,25 @@
       <p>商品类别投诉接收量TOP10</p>
     </div>
     <div id="shopType"></div>
+    <!-- <el-button  type="text" @click="dialogTableVisible = true"></el-button> -->
+    <el-dialog title="详细信息" :visible.sync="dialogTableVisible">
+      <el-table :data="gridData">
+        <el-table-column property="name" label="类别"></el-table-column>
+        <el-table-column property="value" label="投诉量"></el-table-column>
+      </el-table>
+    </el-dialog>
   </div>
 </template>
 <script>
 import * as echarts from "echarts";
+
 export default {
+  data() {
+    return {
+      dialogTableVisible: false,
+      gridData: [{}],
+    }
+  },
   mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
@@ -19,6 +33,7 @@ export default {
   },
   methods: {
     shopType() {
+      let thit=this;
       let shopType = document.getElementById("shopType");
       let shopTypeChart = echarts.init(shopType);
       function huanzhuang(charts, showLable, mygraphic) {
@@ -137,6 +152,10 @@ export default {
           ],
         };
         option && charts.setOption(option);
+        shopTypeChart.on('click', function (params) {
+            thit.dialogTableVisible = true;
+            thit.gridData[0]=params.data
+        });
         window.addEventListener("resize", function () {
           charts.resize();
         });
@@ -155,5 +174,6 @@ export default {
     margin-top: 1rem;
     height: 25rem;
   }
+  
 }
 </style>

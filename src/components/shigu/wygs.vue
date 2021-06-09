@@ -143,9 +143,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .box{
-height: 40rem;
+  border-radius: 4px;
+  height: 40rem;
   #wy {
     height: 30rem;
+    margin-top: 1rem;
   }
   
 }

@@ -20,6 +20,10 @@ html {
   padding: 0px;
   user-select: none;
 }
+//修改element中el-row默认定位
+.el-col-pull-0, .el-col-pull-1, .el-col-pull-10, .el-col-pull-11, .el-col-pull-13, .el-col-pull-14, .el-col-pull-15, .el-col-pull-16, .el-col-pull-17, .el-col-pull-18, .el-col-pull-19, .el-col-pull-2, .el-col-pull-20, .el-col-pull-21, .el-col-pull-22, .el-col-pull-23, .el-col-pull-24, .el-col-pull-3, .el-col-pull-4, .el-col-pull-5, .el-col-pull-6, .el-col-pull-7, .el-col-pull-8, .el-col-pull-9, .el-col-push-0, .el-col-push-1, .el-col-push-10, .el-col-push-11, .el-col-push-12, .el-col-push-13, .el-col-push-14, .el-col-push-15, .el-col-push-16, .el-col-push-17, .el-col-push-18, .el-col-push-19, .el-col-push-2, .el-col-push-20, .el-col-push-21, .el-col-push-22, .el-col-push-23, .el-col-push-24, .el-col-push-3, .el-col-push-4, .el-col-push-5, .el-col-push-6, .el-col-push-7, .el-col-push-8, .el-col-push-9, .el-row{
+  position: inherit
+}
 
 @font-face {
   font-family: digifaw;
@@ -30,7 +34,9 @@ html {
   font-family: PingFang Bold;
   src: url("~@/assets/font/PingFang Bold.ttf");
 }
-
+body{
+  overflow: visible !important;
+}
 /*滚动条*/
 ::-webkit-scrollbar {
   width: 0;
@@ -200,3 +206,22 @@ html {
   justify-content: space-between;
   box-sizing: border-box
 }
+
+//弹出框
+  
+.content{
+  .el-dialog__wrapper{
+    position: absolute;
+    width: 320rem;
+    
+  }
+  .el-dialog {
+    position: absolute;
+    color: #fff;
+    background: rgba($color: #fff, $alpha: 1);
+    width: 150rem;
+    left: 50%;
+    transform: translate(-50%);
+  }
+}   
+

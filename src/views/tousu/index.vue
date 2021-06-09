@@ -23,7 +23,7 @@
       </div>
       <div class="right">
         <div class="rightTop">
-          <banliState></banliState>
+          <!-- <banliState></banliState> -->
           <chulichaoqi></chulichaoqi>
           <xiaobaowei></xiaobaowei>
         </div>
@@ -45,10 +45,10 @@ import banliState from "@/components/tousu/banliState.vue";
 import chulichaoqi from '@/components/tousu/chulichaoqi.vue'
 import xiaobaowei from "@/components/tousu/xiaobaowei.vue";
 import rightbom from "@/components/tousu/rightbom.vue"
+
 export default {
   methods: {
     toHome() {
-      console.log(123);
       this.$router.replace("/home");
     },
   },
@@ -64,7 +64,7 @@ export default {
     banliState,
     chulichaoqi,
     xiaobaowei,
-    rightbom
+    rightbom,
   },
 };
 </script>

@@ -13,13 +13,6 @@
         <div class="num">1154(30%)</div>
       </div>
       <div class="staItem">
-        <div class="t">办理中</div>
-        <div class="tiao">
-          <div class="in" style="width: 60%"></div>
-        </div>
-        <div class="num">1154(30%)</div>
-      </div>
-      <div class="staItem">
         <div class="t">待办理</div>
         <div class="tiao">
           <div class="in" style="width: 60%"></div>
@@ -59,14 +52,14 @@ export default {
       color: #ffffff;
       display: flex;
       align-items: center;
+      justify-content: space-around;
       font-size: 2rem;
       line-height: 2rem;
       .t{
-
         margin-right: 2.08rem;
       }
       .tiao{
-        width: 10.75rem;
+        width: 25.75rem;
         height: 1.33rem;
         background-color: rgba(255,255,255,.2);
         position: relative;

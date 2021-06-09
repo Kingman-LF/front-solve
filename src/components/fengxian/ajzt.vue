@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>案件总体情况结案数分布</p>
@@ -49,6 +49,8 @@ export default {
               fontweight: "bold",
               fontSize:'1.5rem',
             },
+            itemWidth:15,
+            itemHeight:15,
             data: ["侵害消费者权益", "食品安全",  "质量领域", "知识产权", "药械化","其它"],
           },
           grid: {
@@ -195,98 +197,117 @@ export default {
       zhuzhuangDuidie(ajztChart);
     },
     ajlyfb(){
-      var ajlyfbDom = document.getElementById('ajlyfb');
-      var ajlyfbChart = echarts.init(ajlyfbDom);
-      
-      function zhuzhuangajlyfbDom(charts, rotate){
+      let ajlyfb = document.getElementById("ajlyfb");
+      let ajlyfbChart = echarts.init(ajlyfb);
+      function xuritu(charts) {
         charts.clear();
+        let colors = ["#FFAE57", "#FF7853", "#EA5151", "#CC3F57", "#9A2555"];
+        let itemStyle = {
+          star5: {
+            color: colors[0],
+          },
+          star4: {
+            color: colors[1],
+          },
+          star3: {
+            color: colors[2],
+          },
+          star2: {
+            color: colors[3],
+          },
+        };
+        let data = [
+          {
+            name: "来源1",
+            children: [
+              {
+                name: "来源1-1",
+                value: 15,
+              },
+              {
+                name: "来源1-2",
+                value: 15,
+              },
+              {
+                name: "来源1-3",
+                value: 15,
+              },
+            ],
+          },
+          {
+            name: "来源2",
+            children: [
+              {
+                name: "来源2-1",
+                value: 15,
+              },
+              {
+                name: "来源2-2",
+                value: 15,
+              },
+              {
+                name: "来源2-3",
+                value: 15,
+              },
+            ],
+          },
+          {
+            name: "来源3",
+            children: [
+              {
+                name: "来源3-1",
+                value: 15,
+              },
+              {
+                name: "来源3-2",
+                value: 15,
+              },
+              {
+                name: "来源3-3",
+                value: 15,
+              },
+            ],
+          },
+        ];
         let option = {
+          series: {
+            type: "sunburst",
+            data: data,
+            radius: [0, "90%"],
+            label: {
+              rotate: "radial",
+              color: "#fff",
+            },
+          },
           tooltip: {
-            trigger: 'axis',
+            trigger: "item",
             borderWidth:0,
-              textStyle: {
-                fontSize:26,
-              },
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value}`
+              
+            }
           },
-          legend: {
-              data: ['罚没款', '大要案数', '移送司法机关', '一般案件'],
-              textStyle: {
-                color: "rgba(255, 255, 225, 1)",
-                fontSize: 20
-              },
-              itemWidth:50,
-              itemHeight:20,
-          },
-          grid: {
-              left: '3%',
-              right: '4%',
-              bottom: '3%',
-              containLabel: true
-          },
-
-          xAxis: {
-              type: 'category',
-              boundaryGap: false,
-                axisLabel: {
-                  color: "rgba(255, 255, 255, 1)",
-                  fontSize:'1.5rem',
-                },
-              data: ['1 月', '6 月', '12 月']
-          },
-          yAxis: {
-              type: 'value',
-                axisLabel: {
-                  color: "rgba(255, 255, 255, 1)",
-                  fontSize:'1.5rem',
-                },
-          },
-          series: [
-              {
-                  name: '罚没款',
-                  type: 'line',
-                  stack: '总量',
-                  smooth: true,
-                  data: [720, 22, 900],
-              },
-              {
-                  name: '大要案数',
-                  type: 'line',
-                  stack: '总量',
-                  smooth: true,
-                  smooth: true,
-                  data: [220, 882, 191]
-              },
-              {
-                  name: '移送司法机关',
-                  type: 'line',
-                  stack: '总量',
-                  smooth: true,
-                  data: [150, 732, 201]
-              },
-              {
-                  name: '一般案件',
-                  type: 'line',
-                  stack: '总量',
-                  smooth: true,
-                  data: [820, 400, 901]
-              }
-          ]
-          };
-          option && charts.setOption(option);
-          window.addEventListener("resize", function () {
-              charts.resize();
-          });
-        }
-        zhuzhuangajlyfbDom(ajlyfbChart)
+        };
+        option && charts.setOption(option);
+        window.addEventListener("resize", function () {
+          charts.resize();
+        });
+      }
+      xuritu(ajlyfbChart);
     },
   }
 };
 </script>
 <style lang="scss" scoped>
-.box{
+.myborder{
   height: 81.58rem;
+  border-radius: 4px;
   #ajzt,#ajlyfb {
-    height: 35rem;
+    margin-top: 1rem;
+    height: 34.5rem;
   }
 }
   

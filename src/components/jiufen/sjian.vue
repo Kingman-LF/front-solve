@@ -5,12 +5,31 @@
       <p>省级积案概览</p>
       <div class="tips">1件  化解率100%</div>
     </div>
-    <div class="data">
-      <div class="t">标题:湖州某房地产公司延迟支付违约金等等等啊实打实大苏打</div>
-      <div class="c">内容分类:住房保障与房地产-房地产开发管理</div>
-      <div class="area">地区：吴兴</div>
-      <div class="date">时间:2021-5-21 16:54:00</div>
+    <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
+      <div class="ul" :style = {transform:transform} :class="{ul_unanim:num===0}">
+        <div class="data"
+          v-for="(item,index) in contentArr" 
+          :key=index 
+          :style="{height:height+'rem'}"
+        >
+          <div class="t">标题:{{item.type}}</div>
+          <div class="c">内容分类:{{item.cont}}</div>
+          <div class="area">地区:{{item.area}}</div>
+          <div class="date">时间:{{item.date}}</div>
+        </div>
+        <div class="data"
+          v-for="(item,index) in contentArr" 
+          :key=index+contentArr.length 
+          :style="{height:height+'rem'}"
+        >
+          <div class="t">标题:{{item.type}}</div>
+          <div class="c">内容分类:{{item.cont}}</div>
+          <div class="area">地址:{{item.area}}</div>
+          <div class="date">时间:{{item.date}}</div>
+        </div>
+      </div>
     </div>
+    
   </div>
 </template>
 
@@ -20,18 +39,41 @@ import {getBarJiaoNang, getZhexian, huanzhuang, sangshen, zhuzhuangtu} from "@/u
 
 export default {
   name: "sjian",
-  data(){
-    return {
-
+  props: {
+    height: {
+      default: 15,
+      type: Number
+    },
+    lineNum: {
+      default: 1,
+      type: Number
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-
-    });
+  data: function () {
+    return {
+      contentArr: [
+                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'1住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
+                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'2住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
+                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'3住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
+                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'4住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
+                  ],
+      num: 0
+    }
   },
-  methods:{
-
+  computed: {
+    transform: function () {
+      return 'translateY(-' + this.num * this.height + 'rem)'
+    }
+  },
+  created: function () {
+    let _this = this
+    setInterval(function () {
+      if (_this.num !== _this.contentArr.length) {
+        _this.num++
+      } else {
+        _this.num = 0
+      }
+    }, 2000)
   }
 }
 </script>
@@ -46,50 +88,63 @@ export default {
       -webkit-text-fill-color: transparent;
       font-family: "PingFang SC";;
     }
-    .data{
-      display: flex;
-      font-size: 2rem;
-      font-family: PingFang SC;
-      flex-wrap: wrap;
-      justify-content: center;
-      //font-weight: 400;
-      color: #FFFFFF;
-      padding: 1.67rem 3rem 1.58rem 3.25rem;
-      .t{
-        width: 43.5rem;
-        height: 1.92rem;
-        line-height: 1.92rem;
+    .disx{
+      display: inline-block;
+        position:relative;
         overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin-bottom: 2.75rem;
+      .ul{
+        transition: 1s linear;
+        .data{
+          display: flex;
+          font-size: 2rem;
+          font-family: PingFang SC;
+          flex-wrap: wrap;
+          justify-content: center;
+          justify-content: space-between;
+          //font-weight: 400;
+          color: #FFFFFF;
+          padding: 1.67rem 3rem 1.58rem 3.25rem;
+          .t{
+            width: 43.5rem;
+            height: 1.92rem;
+            line-height: 1.92rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 2.75rem;
+          }
+          .c{
+            width: 43.5rem;
+            height: 1.92rem;
+            line-height: 1.92rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 2.75rem;
+          }
+          .area{
+            width: 12rem;
+            height: 1.92rem;
+            line-height: 1.92rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-right: 5rem;
+          }
+          .date{
+            width: 24.67rem;
+            height: 1.92rem;
+            line-height: 1.92rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
       }
-      .c{
-        width: 43.5rem;
-        height: 1.92rem;
-        line-height: 1.92rem;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin-bottom: 2.75rem;
-      }
-      .area{
-        width: 12rem;
-        height: 1.92rem;
-        line-height: 1.92rem;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin-right: 5rem;
-      }
-      .date{
-        width: 24.67rem;
-        height: 1.92rem;
-        line-height: 1.92rem;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
+      .ul_unanim{
+            transition: none
+        }
     }
+    
   }
 </style>

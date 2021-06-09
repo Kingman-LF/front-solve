@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>广告发布类型排名</p>
@@ -296,10 +296,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box{
+.myborder{
   height: 81.58rem;
+  border-radius: 4px;
   #scbhg,#ggwfdqfb {
     height: 35rem;
+    margin-top: 1rem;
   }
 }
   

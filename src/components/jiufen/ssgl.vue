@@ -92,11 +92,10 @@ export default {
             }
         )
       }
-      console.log(citylist)
       let option = {
         tooltip:{
 
-      },
+        },
         series: [
           {
             type: 'sankey',

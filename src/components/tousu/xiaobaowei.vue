@@ -39,7 +39,7 @@ export default {
           legend: {
             // show: false,
             orient: 'vertical',
-            left: '60%',
+            left: '65%',
             top:'center',
             textStyle:{
               color:"#fff",
@@ -75,7 +75,7 @@ export default {
                     rich: {
                       value: {
                         color: "#303133",
-                        fontSize: '2rem',
+                        fontSize: '3.5rem',
                         lineHeight: 30,
                         fontWeight: "bold",
                         fontFamily: "digifaw",
@@ -96,7 +96,7 @@ export default {
           series: [
             {
               type: "pie",
-              radius: ["30%", "50%"],
+              radius: ["50%", "75%"],
               center: ["30%", "center"],
               // avoidLabelOverlap: false,
               label: {
@@ -159,7 +159,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .myborder{
-    width: 38.33rem;
+    width: 58rem;
     height: 40rem;
     border-radius: 4px;
     #baoxiao{

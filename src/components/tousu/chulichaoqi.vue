@@ -1,5 +1,5 @@
 <template>
-    <div class="box myborder">
+    <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>处理超期区县分布</p>
@@ -119,11 +119,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.box {
-    width: 55rem;
+.myborder {
+    width: 58rem;
     height: 40rem;
+    border-radius: 4px;
     #chulichao{
-      height: 30rem;
+      margin-top: 1rem;
+      height: 33rem;
     }
 }
 </style>

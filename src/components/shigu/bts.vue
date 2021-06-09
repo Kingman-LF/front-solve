@@ -1,5 +1,5 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>设备类别预警个数</p>
@@ -143,10 +143,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.box{
+.myborder{
   height: 40rem;
+  border-radius: 4px;
   #bts {
-    height: 30rem;
+    height: 32rem;
+    margin-top: 1rem;
   }
 }
   
