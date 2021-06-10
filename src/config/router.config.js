@@ -68,6 +68,17 @@ export const constantRouterMap = [
         },
         component: () => import('@/views/fengxian/index'),
     },
+
+    //新--舆情
+    {
+        path: '/yuqing',
+        name: 'yuqing',
+        meta: {
+            fullScreen:true,
+            competence: ['administrator']
+        },
+        component: () => import('@/views/yuqing/index'),
+    },
     // 新-破五多首页
     {
         path: '/shouye',

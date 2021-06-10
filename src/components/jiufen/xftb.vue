@@ -156,10 +156,10 @@ export default {
 
 <style lang="scss" scoped>
 .myborder{
-  height: 31.92rem;
+  height: 40.6rem;
 }
 #qushi {
   margin-top: 1rem;
-  height: 24rem;
+  height: 32.6rem;
 }
 </style>

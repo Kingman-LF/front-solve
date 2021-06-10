@@ -5,7 +5,7 @@
       <p>信访总量</p>
     </div>
     <div class="c">
-      <div class="total">
+      <!-- <div class="total">
         <span>总量</span>
         <span>37</span>
       </div>
@@ -52,7 +52,7 @@
           <p>6</p>
           <p>南太湖新区</p>
         </div>
-      </div>
+      </div> -->
       
     </div>
   </div>
@@ -66,7 +66,7 @@ export default {
 
 <style lang="scss" scoped>
 .myborder{
-  height: 34.33rem;
+  height: 40rem;
   position: relative;
   .title{
     width: 16.08rem;

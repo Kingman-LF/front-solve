@@ -38,7 +38,7 @@ export default {
       let shopTypeChart = echarts.init(shopType);
       function huanzhuang(charts, showLable, mygraphic) {
         charts.clear();
-        let gailanTotal = 4521;
+        let gailanTotal = 4522;
         let option = {
           tooltip: {
             trigger: "item",
@@ -137,7 +137,7 @@ export default {
               },
               data: [
                 { value: 890, name: "一般食品" },
-                { value: 848, name: "其他商品" },
+                // { value: 848, name: "其他商品" },
                 { value: 533, name: "家居用品" },
                 { value: 485, name: "服装鞋帽" },
                 { value: 355, name: "交通工具" },
@@ -146,6 +146,7 @@ export default {
                 { value: 165, name: "烟、酒和饮料" },
                 { value: 148, name: "首饰" },
                 { value: 125, name: "通讯产品" },
+                { value: 59, name: "药品9" },
               ],
             },
             {},

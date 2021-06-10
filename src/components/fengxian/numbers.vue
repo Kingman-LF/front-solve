@@ -8,7 +8,7 @@
     </div>
     <div class="lv">
       <div>
-        <span>药品检查总数</span>
+        <span>药械化抽查总数</span>
         <span>55782</span>
       </div>
     </div>

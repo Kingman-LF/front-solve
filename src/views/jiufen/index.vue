@@ -24,15 +24,16 @@
       </el-col>
       <el-col :span="8">
         <el-row :gutter="12">
-          <el-col :span="24">
+          <el-col :span="12">
             <xfgl></xfgl>
           </el-col>
-        </el-row>
-        <el-row :gutter="12">
-          <el-col :span="24">
+          <el-col :span="12">
             <xfStatus></xfStatus>
           </el-col>
         </el-row>
+        <!-- <el-row :gutter="12">
+          
+        </el-row> -->
         <el-row :gutter="12">
           <el-col :span="12">
             <xftb></xftb>

@@ -1,11 +1,11 @@
 <template>
-  <div class="box myborder">
+  <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>信访状态</p>
     </div>
-    <div class="status">
-      <div class="staItem">
+    <div id="status">
+      <!-- <div class="staItem">
         <div class="t">已办结</div>
         <div class="tiao">
           <div class="in" style="width: 60%"></div>
@@ -18,7 +18,7 @@
           <div class="in" style="width: 60%"></div>
         </div>
         <div class="num">1154(30%)</div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -30,65 +30,146 @@ import {getBarJiaoNang} from "@/utils/getCharts";
 export default {
   name: "xfStatus",
   mounted() {
-
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.status();
+      }, 500);
+    });
   },
-  methods:{
-
-  }
+  methods: {
+    status() {
+      let thit=this;
+      let status = document.getElementById("status");
+      let statusChart = echarts.init(status);
+      function huanzhuang(charts, showLable, mygraphic) {
+        charts.clear();
+        let gailanTotal = 4521;
+        let option = {
+          tooltip: {
+            trigger: "item",
+            borderWidth:0,
+            textStyle: {
+              fontSize:26,
+            },
+            formatter(e){
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+              // console.log(e);
+            }
+          },
+          legend: {
+            show: false,
+          },
+          graphic: mygraphic
+            ? [
+                {
+                  tooltip: {
+                    formatter(e){
+                      return `总量：${gailanTotal}`
+                    }
+                  },
+                  type: "text",
+                  left: "center",
+                  top: "center",
+                  z: 10,
+                  style: {
+                    fill: "#fff",
+                    text: gailanTotal,
+                    textAlign: "center",
+                    text: ["{value|" + gailanTotal + "}"].join(
+                      "\n"
+                    ),
+                    rich: {
+                      value: {
+                        color: "#303133",
+                        fontSize: '3.5rem',
+                        lineHeight: 30,
+                        fontFamily: "digifaw",
+                        textShadowColor: "#0096ff",
+                        textShadowBlur: "12",
+                      },
+                      name: {
+                        color: "#909399",
+                        lineHeight: 30,
+                        fontSize: '3rem',
+                      },
+                    },
+                    font: "16px PingFang",
+                  },
+                },
+              ]
+            : [],
+          series: [
+            {
+              type: "pie",
+              radius: ["55%", "70%"],
+              center: ["center", "center"],
+              // avoidLabelOverlap: false,
+              label: {
+                show: true,
+                color: "#fff",
+                fontWeight: 'bold',
+                fontFamily: 'PingFang Bold',
+                fontSize: '2rem',
+                // formatter(e){
+                //   console.log(e)
+                //   return `${e.name}`
+                // }
+              },
+              itemStyle: {
+                color: function (params) {
+                  var colorlist = [
+                    "#0F5ED6",
+                    "#79FFB5",
+                    "#843DFF",
+                    "#4304B1",
+                    "#688FD8",
+                    "#F25334",
+                    "#49A732",
+                    "#EB3633",
+                    "#FCBD01",
+                    "#CAD9F0",
+                  ];
+                  return colorlist[params.dataIndex];
+                },
+              },
+              labelLine: {
+                show: true,
+                lineStyle:{
+                  width:2
+                }
+                // length: 20,
+                // length2: 10
+              },
+              data: [
+                { value: 1154, name: "已办结" },
+                { value: 254, name: "待办理" },
+              ],
+            },
+            {},
+          ],
+        };
+        option && charts.setOption(option);
+        statusChart.on('click', function (params) {
+            thit.dialogTableVisible = true;
+            thit.gridData[0]=params.data
+        });
+        window.addEventListener("resize", function () {
+          charts.resize();
+        });
+      }
+      huanzhuang(statusChart, true, true);
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .myborder{
-  height: 13.33rem;
-  .status{
-    display: flex;
-    align-items: center;
-    height: 8rem;
-    font-family: PingFang SC;
-    font-weight: bold;
-    .staItem{
-      flex: 1;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      font-size: 2rem;
-      line-height: 2rem;
-      .t{
-        margin-right: 2.08rem;
-      }
-      .tiao{
-        width: 25.75rem;
-        height: 1.33rem;
-        background-color: rgba(255,255,255,.2);
-        position: relative;
-        border-radius: 1rem;
-        margin-right: 2.17rem;
-        .in{
-          width: 0;
-          transition: width .5s;
-          position: absolute;
-          left: 0;
-          top: 0;
-          height: 100%;
-        }
-
-      }
-      &:nth-of-type(1) .in{
-        background: #00F0FF;
-        border-radius: 1rem;
-      }
-      &:nth-of-type(2) .in{
-        background: #43FF55;
-        border-radius: 1rem;
-      }
-      &:nth-of-type(3) .in{
-        background: #FF9600;
-        border-radius: 1rem;
-      }
-    }
-
+  height: 40rem;
+  border-radius: 4px;
+  #status{
+    margin-top: 1rem;
+    height: 32rem;
   }
 }
 </style>

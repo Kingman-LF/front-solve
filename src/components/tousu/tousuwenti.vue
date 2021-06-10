@@ -133,7 +133,7 @@ export default {
               // },
               data: [
                 { value: 3134, name: "质量" },
-                { value: 2154, name: "其他" },
+                // { value: 2154, name: "其他" },
                 { value: 724, name: "售后服务" },
                 { value: 465, name: "价格投诉" },
                 { value: 200, name: "合同" },

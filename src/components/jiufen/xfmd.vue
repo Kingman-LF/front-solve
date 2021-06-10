@@ -122,11 +122,11 @@ export default {
 </script>
 <style scoped>
 .myborder{
-  height: 31.92rem;
+  height: 40.6rem;
   border-radius: 4px;
 }
 #mudi {
   margin-top: 1rem;
-  height: 25rem;
+  height: 32.6rem;
 }
 </style>

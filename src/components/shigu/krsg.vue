@@ -6,7 +6,7 @@
     </div>
     <div class="filed dis">
       <div class="num">检查单位</div>
-      <div class="number"><p class="p1">6809</p><p class="p2">家</p></div>
+      <div class="number"><p class="p1">3515</p><p class="p2">家</p></div>
     </div>
     <div class="in_hand dis">
       <div class="num">检查设备</div>

@@ -158,7 +158,8 @@ export default {
           this.$router.push({path:'/shigu'})
           break;
         case 5:
-          window.location.href='http://tsgz.istarshine.com/#/userLogin?token=fdee4086-d3ad-422b-9e59-6682df580f85&type=token&goback=false';
+          // window.location.href='http://tsgz.istarshine.com/#/userLogin?token=fdee4086-d3ad-422b-9e59-6682df580f85&type=token&goback=false';
+          this.$router.push({path:'/yuqing'})
           break;
       }
     },

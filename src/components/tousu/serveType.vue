@@ -120,7 +120,7 @@ export default {
               },
               data: [
                 { value: 1118, name: "餐饮和住宿服务" },
-                { value: 349, name: "其他服务" },
+                // { value: 349, name: "其他服务" },
                 { value: 283, name: "停车服务" },
                 { value: 218, name: "美容、美发、洗浴服务" },
                 { value: 108, name: "教育培训服务" },
@@ -129,6 +129,7 @@ export default {
                 { value: 79, name: "行政事业性服务" },
                 { value: 66, name: "洗涤染色服务" },
                 { value: 48, name: "专业技术服务" },
+                { value: 349, name: "其他服务" },
               ],
             },
             {},

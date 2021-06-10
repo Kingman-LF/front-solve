@@ -124,7 +124,7 @@ export default {
               data: [
                 { value: 1, name: "德清县" },
                 { value: 2, name: "安吉县" },
-                { value: 3, name: "湖州南太湖新区" },
+                { value: 3, name: "南太湖新区" },
 
               ],
             },

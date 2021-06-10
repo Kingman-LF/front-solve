@@ -7,7 +7,7 @@
     <div id="ajzt"></div>
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>案件分析</p>
+      <p>案件来源分布</p>
     </div>
     <div id="ajlyfb"></div>
   </div>
@@ -19,7 +19,7 @@ export default {
     this.$nextTick(() => {
     // 案件总体情况结案数分布
       this.ajzt();
-    //案件分析 
+    //案件来源分布 
       this.ajlyfb();
     }, 500);
 
@@ -276,7 +276,8 @@ export default {
             radius: [0, "90%"],
             label: {
               rotate: "radial",
-              color: "#fff",
+              color: "#000",
+              fontSize:16
             },
           },
           tooltip: {
