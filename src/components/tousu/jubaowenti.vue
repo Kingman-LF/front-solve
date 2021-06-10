@@ -136,7 +136,7 @@ export default {
               data: [
                 { value: 289, name: "违法登记管理行为" },
                 { value: 187, name: "侵害消费者权益行为" },
-                { value: 156, name: "其他" },
+                // { value: 156, name: "其他" },
                 { value: 152, name: "广告行为违法" },
                 { value: 140, name: "违反食品安全法法规" },
                 { value: 110, name: "价格违法行为" },
@@ -144,6 +144,7 @@ export default {
                 { value: 40, name: "产品质量违法行为" },
                 { value: 26, name: "不正当竞争行为" },
                 { value: 25, name: "其他市场监管领域违法行为" },
+                // { value: 156, name: "其他" }
               ],
             },
             {},
