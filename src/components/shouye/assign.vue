@@ -16,9 +16,9 @@
               </div>
               <div class="wentiInfo">
                 <div class="name">{{wentiList[(page-1)*4].name}}</div>
-                <div class="calss">类型：{{wentiList[(page-1)*4].class}}</div>
-                <div class="type">内容：{{wentiList[(page-1)*4].type}}</div>
-                <div class="num">次数：{{wentiList[(page-1)*4].num}}</div>
+                <div class="calss">{{wentiList[(page-1)*4].class}}</div>
+                <div class="type">{{wentiList[(page-1)*4].type}}</div>
+                <div class="num">{{wentiList[(page-1)*4].bumen}}</div>
               </div>
             </div>
             <div class="item two" :class="{hide:showItem}"  v-if="wentiList[(page-1)*4+1]">
@@ -28,9 +28,9 @@
               </div>
               <div class="wentiInfo">
                 <div class="name">{{wentiList[(page-1)*4+1].name}}</div>
-                <div class="calss">类型：{{wentiList[(page-1)*4+1].class}}</div>
-                <div class="type">内容：{{wentiList[(page-1)*4+1].type}}</div>
-                <div class="num">次数：{{wentiList[(page-1)*4+1].num}}</div>
+                <div class="calss">{{wentiList[(page-1)*4+1].class}}</div>
+                <div class="type">{{wentiList[(page-1)*4+1].type}}</div>
+                <div class="num">{{wentiList[(page-1)*4+1].bumen}}</div>
               </div>
             </div>
             <div class="item three" :class="{hide:showItem}"  v-if="wentiList[(page-1)*4+2]">
@@ -40,9 +40,9 @@
               </div>
               <div class="wentiInfo">
                 <div class="name">{{wentiList[(page-1)*4+2].name}}</div>
-                <div class="calss">类型：{{wentiList[(page-1)*4+2].class}}</div>
-                <div class="type">内容：{{wentiList[(page-1)*4+2].type}}</div>
-                <div class="num">次数：{{wentiList[(page-1)*4+2].num}}</div>
+                <div class="calss">{{wentiList[(page-1)*4+2].class}}</div>
+                <div class="type">{{wentiList[(page-1)*4+2].type}}</div>
+                <div class="num">{{wentiList[(page-1)*4+2].bumen}}</div>
               </div>
             </div>
             <div class="item four" :class="{hide:showItem}"  v-if="wentiList[(page-1)*4+3]">
@@ -52,9 +52,9 @@
               </div>
               <div class="wentiInfo">
                 <div class="name">{{wentiList[(page-1)*4+3].name}}</div>
-                <div class="calss">类型：{{wentiList[(page-1)*4+3].class}}</div>
-                <div class="type">内容：{{wentiList[(page-1)*4+3].type}}</div>
-                <div class="num">次数：{{wentiList[(page-1)*4+3].num}}</div>
+                <div class="calss">{{wentiList[(page-1)*4+3].class}}</div>
+                <div class="type">{{wentiList[(page-1)*4+3].type}}</div>
+                <div class="num">{{wentiList[(page-1)*4+3].bumen}}</div>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
             <div class="bumen">
               <div class="bumenBox">
                 <div class="bumenName">{{item.bumen}}</div>
-                <div class="bumenFZR">负责人：{{item.principal}}</div>
+<!--                <div class="bumenFZR">负责人：{{item.principal}}</div>-->
               </div>
             </div>
           </div>
@@ -102,7 +102,8 @@
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(2)">
             <div class="innerTitle num">纠纷多</div>
-            <div class="innerTitle number">{{list2.length}}</div>
+            <div class="innerTitle number">{{a}}</div>
+<!--            <div class="innerTitle number">{{list2.length}}</div>-->
           </div>
         </div>
         <div class="sm-circle sm_3">
@@ -111,7 +112,7 @@
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(3)">
             <div class="innerTitle num">风险多</div>
-            <div class="innerTitle number">{{list3.length}}</div>
+            <div class="innerTitle number">{{b}}</div>
           </div>
         </div>
         <div class="sm-circle sm_4">
@@ -120,7 +121,8 @@
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(4)">
             <div class="innerTitle num">舆情多</div>
-            <div class="innerTitle number">{{list4.length}}</div>
+            <div class="innerTitle number">{{c}}</div>
+<!--            <div class="innerTitle number">{{list4.length}}</div>-->
           </div>
         </div>
         <div class="sm-circle sm_5">
@@ -129,7 +131,7 @@
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(5)">
             <div class="innerTitle num">事故多</div>
-            <div class="innerTitle number">{{list5.length}}</div>
+            <div class="innerTitle number">{{d}}</div>
           </div>
         </div>
         <div class="big-circle sm_6">
@@ -158,16 +160,14 @@ export default {
       wentiList:[],
       //投诉
       list1:[
-        {id:1,name:'商品投诉',tips:'投诉',class:'其他商品',type:'质量',num:527,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:2,name:'商品投诉',tips:'投诉',class:'一般食品',type:'质量',num:526,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:6,name:'服务投诉',tips:'投诉',class:'餐饮和住宿服务',type:'其他',num:487,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:7,name:'服务投诉',tips:'投诉',class:'餐饮和住宿服务',type:'质量',num:384,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:3,name:'商品投诉',tips:'投诉',class:'服装、鞋帽',type:'质量',num:313,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:4,name:'商品投诉',tips:'投诉',class:'家居用品',type:'质量',num:312,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:8,name:'服务投诉',tips:'投诉',class:'其他服务',type:'其他',num:245,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:5,name:'商品投诉',tips:'投诉',class:'一般食品',type:'其他',num:227,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:7,name:'服务投诉',tips:'投诉',class:'停车服务',type:'价格投诉 ',num:142,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
-        {id:10,name:'服务投诉',tips:'投诉',class:'一般食品',type:'其他',num:131,color:'#4103FB',bumen:"消保分局",principal:'沈思音'},
+        {id:1,name:'豪丰木业厂',tips:'投诉',class:'家居用品',type:'质量',color:'#4103FB',bumen:"南浔镇分局"},
+        {id:2,name:'工商所',tips:'投诉',class:'行政事业性服务',type:'其他',color:'#4103FB',bumen:"组宣人事科"},
+        {id:3,name:'闹闹便利店',tips:'投诉',class:'一般食品',type:'包装标识',color:'#4103FB',bumen:"康山所"},
+        {id:4,name:'苏杭超市',tips:'投诉',class:'一般食品',type:'质量',color:'#4103FB',bumen:"长兴县消保分局"},
+        {id:5,name:'浙江佐力药业股份有限公司',tips:'举报',class:'药品',type:'违反药品管理法法规',color:'#4103FB',bumen:"德清消保分局"},
+        {id:6,name:'浙江默客机电有限公司',tips:'举报',class:'其他商品',type:'违反《产品质量法》的违法行为',color:'#4103FB',bumen:"德清消保分局"},
+        {id:7,name:'橘南小巷',tips:'举报',class:'烟、酒和饮料',type:'违反食品安全法法规',color:'#4103FB',bumen:"安吉昌硕市场监管所"},
+        {id:8,name:'湖州圣岛酒店有限公司',tips:'举报',class:'餐饮和住宿服务',type:'违反市场监督管理法规',color:'#4103FB',bumen:"埭溪所"},
       ],
       //纠纷
       list2:[
@@ -186,7 +186,12 @@ export default {
 
       ],
       jiaobanList:[],
-      showItemTime:null
+      showItemTime:null,
+
+      a:3,
+      b:6,
+      c:19,
+      d:13
     }
   },
   mounted() {
@@ -263,7 +268,11 @@ export default {
             this.list3 = [];
             this.list4 = [];
             this.list5 = [];
-          },1500)
+            this.a = 0;
+            this.b = 0;
+            this.c = 0;
+            this.d = 0;
+          },2000)
         }
       },500)
     }
@@ -371,8 +380,9 @@ export default {
           display: flex;
           flex-wrap: wrap;
           .name{
-            //font-style: italic;
-            //font-style: oblique;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
             transform: skew(
                     -12deg
             );

@@ -8,8 +8,8 @@
     <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
       <div class="ul" :style = {transform:transform} :class="{ul_unanim:num===0}">
         <div class="data"
-          v-for="(item,index) in contentArr" 
-          :key=index 
+          v-for="(item,index) in contentArr"
+          :key=index
           :style="{height:height+'rem'}"
         >
           <div class="t">标题:{{item.type}}</div>
@@ -18,8 +18,8 @@
           <div class="date">时间:{{item.date}}</div>
         </div>
         <div class="data"
-          v-for="(item,index) in contentArr" 
-          :key=index+contentArr.length 
+          v-for="(item,index) in contentArr"
+          :key=index+contentArr.length
           :style="{height:height+'rem'}"
         >
           <div class="t">标题:{{item.type}}</div>
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </template>
 
@@ -52,10 +52,7 @@ export default {
   data: function () {
     return {
       contentArr: [
-                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'1住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
-                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'2住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
-                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'3住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
-                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'4住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
+                    {type:'对湖州质量技术监督局的处理态度极其不满',cont:'市场监管_市场秩序_制售假冒伪劣商品',date:'2019-09-26 08:56:33',area:'市本级',},
                   ],
       num: 0
     }
@@ -145,6 +142,6 @@ export default {
             transition: none
         }
     }
-    
+
   }
 </style>
