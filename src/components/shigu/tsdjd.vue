@@ -5,6 +5,16 @@
       <p>故障量分布</p>
     </div>
     <div id="num"></div>
+    <div class="total">
+      <div class="i">锅炉：1298</div>
+      <div class="i">压力容器：28225</div>
+      <div class="i">电梯：41968</div>
+      <div class="i">起重机械：1298</div>
+      <div class="i">场内车辆：20173</div>
+      <div class="i">大型游乐设施：196</div>
+      <div class="i">压力管道：1985</div>
+      <div class="i">客运索道：9</div>
+    </div>
   </div>
 </template>
 
@@ -38,11 +48,34 @@ export default {
             textStyle: {
               fontSize:26,
             },
-            formatter: "{b} {c}",
+            formatter: e => {
+              var r
+              switch (e.name){
+                case "吴兴区":
+                  r = `${e.name}<br>锅炉：146<br>压力容器：4009<br>电梯：9735<br>起重机械：3807<br>场内车辆：2164<br>大型游乐设施：13<br>压力管道：130<br>客运索道：3`
+                  break;
+                case "南浔区":
+                  r = `${e.name}<br>锅炉：342<br>压力容器：6644<br>电梯：5128<br>起重机械：2798<br>场内车辆：5168<br>大型游乐设施：7<br>压力管道：394<br>客运索道：0`
+                  break;
+                case "南太湖新区":
+                  r = `${e.name}<br>锅炉：52<br>压力容器：2201<br>电梯：6714<br>起重机械：1678<br>场内车辆：838<br>大型游乐设施：22<br>压力管道：262<br>客运索道：0`
+                  break;
+                case "长兴县":
+                  r = `${e.name}<br>锅炉：194<br>压力容器：6299<br>电梯：6768<br>起重机械：3903<br>场内车辆：5650<br>大型游乐设施：75<br>压力管道：349<br>客运索道：0`
+                  break;
+                case "安吉县":
+                  r = `${e.name}<br>锅炉：375<br>压力容器：2910<br>电梯：7071<br>起重机械：2176<br>场内车辆：3745<br>大型游乐设施：61<br>压力管道：455<br>客运索道：5`
+                  break;
+                case "德清县":
+                  r = `${e.name}<br>锅炉：189<br>压力容器：6162<br>电梯：6552<br>起重机械：5811<br>场内车辆：4345<br>大型游乐设施：18<br>压力管道：395<br>客运索道：1`
+                  break;
+              }
+              return r
+            },
           },
           visualMap: {
-            min: 800,
-            max: 50000,
+            min: 10000,
+            max: 25000,
             // text: ['最高', '最低'],
             realtime: false,
             calculable: true,
@@ -72,12 +105,12 @@ export default {
               },
 
               data: [
-                { name: "吴兴区", value: 42400,label:{offset:[-70,40]} },
-                { name: "南浔区", value: 8000 },
-                { name: "长兴县", value: 30060 },
-                { name: "德清县", value: 10800 },
-                { name: "南太湖新区", value: 2020,label:{offset:[-20,0]} },
-                { name: "安吉县", value: 800},
+                { name: "吴兴区", value: 20007,label:{offset:[-70,40]} },
+                { name: "南浔区", value: 19481 },
+                { name: "长兴县", value: 23238 },
+                { name: "德清县", value: 23473 },
+                { name: "南太湖新区", value: 11767,label:{offset:[-20,0]} },
+                { name: "安吉县", value: 16798},
               ],
               // 自定义名称映射
               itemStyle: {
@@ -133,8 +166,17 @@ export default {
 <style lang="scss" scoped>
 .box{
   height: 80.92rem;
+  position: relative;
   #num{
     height: 70.92rem;
+  }
+  .total{
+    position: absolute;
+    left: 2rem;
+    top: 8rem;
+    color: #FFFFFF;
+    font-size: 2rem;
+    font-family: "PingFang SC";
   }
 }
 
