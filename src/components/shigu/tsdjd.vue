@@ -2,18 +2,19 @@
   <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>故障量分布</p>
+      <p>特种设备分布</p>
     </div>
     <div id="num"></div>
     <div class="total">
-      <div class="i">锅炉：1298</div>
-      <div class="i">压力容器：28225</div>
-      <div class="i">电梯：41968</div>
-      <div class="i">起重机械：1298</div>
-      <div class="i">场内车辆：20173</div>
-      <div class="i">大型游乐设施：196</div>
-      <div class="i">压力管道：1985</div>
-      <div class="i">客运索道：9</div>
+      <h3>特种设备总数：95152</h3>
+      <div class="i"><span>锅炉<i></i></span>：1298</div>
+      <div class="i"><span>压力容器<i></i></span>：28225</div>
+      <div class="i"><span>电梯<i></i></span>：41968</div>
+      <div class="i"><span>起重机械<i></i></span>：1298</div>
+      <div class="i"><span>场内车辆<i></i></span>：20173</div>
+      <div class="i"><span>大型游乐设施<i></i></span>：196</div>
+      <div class="i"><span>压力管道<i></i></span>：1985</div>
+      <div class="i"><span>客运索道<i></i></span>：9</div>
     </div>
   </div>
 </template>
@@ -177,6 +178,20 @@ export default {
     color: #FFFFFF;
     font-size: 2rem;
     font-family: "PingFang SC";
+    .i{
+      display: flex;
+      height: 3rem;
+      overflow: hidden;
+      span{
+        display: inline-block;
+        text-align:justify;
+        width: 12rem;
+        i{
+          display: inline-block;
+          width: 100%;
+        }
+      }
+    }
   }
 }
 

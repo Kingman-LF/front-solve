@@ -56,7 +56,7 @@
       
       <div class="zl">
         <div class="num">总量</div>
-        <div class="number">77452</div>
+        <div class="number">37</div>
       </div>
       <div class="fb">
         <div class="lb">
@@ -73,7 +73,7 @@
             :key="index"
             :style="tabIndex==0?'width:33.33%':'width:50%'"
           ><span>{{item.num}}</span><span class="numb">{{item.value}}</span></div>
-          
+
         </div>
       </div>
     </div>
@@ -98,12 +98,12 @@ export default {
       ],
       lvList:[
         [
-          {id: Math.random() + new Date().valueOf() + "",num:'吴兴区',value:'2700'},
-          {id: Math.random() + new Date().valueOf() + "",num:'南浔区',value:'5418'},
-          {id: Math.random() + new Date().valueOf() + "",num:'德清县',value:'1452'},
-          {id: Math.random() + new Date().valueOf() + "",num:'长兴县',value:'5554'},
-          {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'156'},
-          {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'1241'},
+          {id: Math.random() + new Date().valueOf() + "",num:'吴兴区',value:'0'},
+          {id: Math.random() + new Date().valueOf() + "",num:'南浔区',value:'4'},
+          {id: Math.random() + new Date().valueOf() + "",num:'德清县',value:'2'},
+          {id: Math.random() + new Date().valueOf() + "",num:'长兴县',value:'3'},
+          {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'3'},
+          {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'6'},
         ],
         [
           {id: Math.random() + new Date().valueOf() + "",num:'特检院',value:'6'},
