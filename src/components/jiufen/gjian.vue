@@ -2,14 +2,14 @@
   <div class="box myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>国级积案概览</p>
+      <p>国家积案</p>
       <div class="tips">2件  化解率100%</div>
     </div>
     <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
       <div class="ul" :style = {transform:transform} :class="{ul_unanim:num===0}">
-        <div class="data" 
-          v-for="(item,index) in contentArr" 
-          :key=index 
+        <div class="data"
+          v-for="(item,index) in contentArr"
+          :key=index
           :style="{height:height+'rem'}"
         >
           <div class="t">标题:{{item.type}}</div>
@@ -18,8 +18,8 @@
           <div class="date">时间:{{item.date}}</div>
         </div>
         <div class="data"
-          v-for="(item,index) in contentArr" 
-          :key=index+contentArr.length 
+          v-for="(item,index) in contentArr"
+          :key=index+contentArr.length
           :style="{height:height+'rem'}"
         >
           <div class="t">标题:{{item.type}}</div>
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </template>
 
@@ -52,10 +52,8 @@ export default {
   data: function () {
     return {
       contentArr: [
-                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'1住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
-                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'2住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
-                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'3住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
-                    {type:'湖州某房地产公司延迟支付违约金等等等啊实打实大苏打',cont:'4住房保障与房地产-房地产开发管理',date:'2021-6-2 12:00:00',area:'吴兴',}, 
+                    {type:'\[网上投诉\]\<刘利民\>浙江省湖州市吴兴区\<宏观金融管理\>',cont:'经济管理_金融_宏观金融管理',date:'2020-09-03 18:07:33',area:'市本级',},
+                    {type:'[网上投诉]<王浩>浙江省杭州市西湖区<食品安全>',cont:'市场监管_食品药品_食品生产',date:'2020-09-03 18:06:23',area:'市本级',},
                   ],
       num: 0
     }
@@ -145,6 +143,6 @@ export default {
             transition: none
         }
     }
-    
+
   }
 </style>

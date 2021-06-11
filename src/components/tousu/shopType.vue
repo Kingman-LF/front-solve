@@ -5,12 +5,59 @@
       <p>商品类别投诉接收量TOP10</p>
     </div>
     <div id="shopType"></div>
-    <!-- <el-button  type="text" @click="dialogTableVisible = true"></el-button> -->
     <el-dialog title="详细信息" :visible.sync="dialogTableVisible">
-      <el-table :data="gridData">
-        <el-table-column property="name" label="类别"></el-table-column>
-        <el-table-column property="value" label="投诉量"></el-table-column>
-      </el-table>
+      <!-- <div class="block">
+          <el-pagination align='center' @size-change="handleSizeChange" @current-change="handleCurrentChange" 
+          :current-page="currentPage" 
+          :page-sizes="[4,8,12,16]" 
+          :page-size="pageSize" 
+          :background="false"
+          layout="total, sizes, prev, pager, next, jumper" 
+          :total="tableData.length">
+          </el-pagination>
+      </div>
+      <el-table :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)" style="width: 100%">
+            <el-table-column prop="date" label="序号"></el-table-column>
+            <el-table-column prop="name" label="登记编号"></el-table-column>
+            <el-table-column prop="address" label="提供方"></el-table-column>
+            <el-table-column prop="date" label="登记时间"></el-table-column>
+            <el-table-column prop="name" label="类型"></el-table-column>
+            <el-table-column prop="address" label="办理情况状态"></el-table-column>
+            <el-table-column prop="date" label="登记部门"></el-table-column>
+            <el-table-column prop="name" label="处理部门"></el-table-column>
+            <el-table-column prop="address" label="办理期限"></el-table-column>
+            <el-table-column prop="name" label="联系方式"></el-table-column>
+            <el-table-column prop="address" label="涉及金额"></el-table-column>
+        </el-table> -->
+          <div class="block">
+            <el-pagination align='center' @size-change="handleSizeChange" @current-change="handleCurrentChange" 
+            :current-page="currentPage" 
+            :page-sizes="[10,20]" 
+            :page-size="pageSize" 
+            :background="false"
+            layout="total, sizes, prev, pager, next, jumper" 
+            :total="tableData.length">
+            </el-pagination>
+        </div>
+        <template>
+          <el-table
+            :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+            height="53rem"
+            style="margin-top:2rem"
+            border>
+            <el-table-column prop="date" label="序号"></el-table-column>
+            <el-table-column prop="name" label="登记编号"></el-table-column>
+            <el-table-column prop="address" label="提供方"></el-table-column>
+            <el-table-column prop="date" label="登记时间"></el-table-column>
+            <el-table-column prop="name" label="类型"></el-table-column>
+            <el-table-column prop="address" label="办理情况状态"></el-table-column>
+            <el-table-column prop="date" label="登记部门"></el-table-column>
+            <el-table-column prop="name" label="处理部门"></el-table-column>
+            <el-table-column prop="address" label="办理期限"></el-table-column>
+            <el-table-column prop="name" label="联系方式"></el-table-column>
+            <el-table-column prop="address" label="涉及金额"></el-table-column>
+          </el-table>
+        </template>
     </el-dialog>
   </div>
 </template>
@@ -21,7 +68,101 @@ export default {
   data() {
     return {
       dialogTableVisible: false,
-      gridData: [{}],
+      tableData: [
+            {
+                date: "2016-05-02",
+                name: "第一页",
+                address: "上海市普陀区金沙江路 1518 弄"
+            },
+            {
+                date: "2016-05-04",
+                name: "第二页",
+                address: "上海市普陀区金沙江路 1517 弄"
+            },
+            {
+                date: "2016-05-01",
+                name: "第三页",
+                address: "上海市普陀区金沙江路 1519 弄"
+            },
+            {
+                date: "2016-05-03",
+                name: "第四页",
+                address: "上海市普陀区金沙江路 1516 弄"
+            },
+            {
+                date: "2016-05-01",
+                name: "第五页",
+                address: "上海市普陀区金沙江路 1519 弄"
+            },
+            {
+                date: "2016-05-03",
+                name: "第六页",
+                address: "上海市普陀区金沙江路 1516 弄"
+            },
+            {
+                date: "2016-05-02",
+                name: "第一页",
+                address: "上海市普陀区金沙江路 1518 弄"
+            },
+            {
+                date: "2016-05-04",
+                name: "第二页",
+                address: "上海市普陀区金沙江路 1517 弄"
+            },
+            {
+                date: "2016-05-01",
+                name: "第三页",
+                address: "上海市普陀区金沙江路 1519 弄"
+            },
+            {
+                date: "2016-05-03",
+                name: "第四页",
+                address: "上海市普陀区金沙江路 1516 弄"
+            },
+            {
+                date: "2016-05-01",
+                name: "第五页",
+                address: "上海市普陀区金沙江路 1519 弄"
+            },
+            {
+                date: "2016-05-03",
+                name: "第六页",
+                address: "上海市普陀区金沙江路 1516 弄"
+            },
+            {
+                date: "2016-05-02",
+                name: "第一页",
+                address: "上海市普陀区金沙江路 1518 弄"
+            },
+            {
+                date: "2016-05-04",
+                name: "第二页",
+                address: "上海市普陀区金沙江路 1517 弄"
+            },
+            {
+                date: "2016-05-01",
+                name: "第三页",
+                address: "上海市普陀区金沙江路 1519 弄"
+            },
+            {
+                date: "2016-05-03",
+                name: "第四页",
+                address: "上海市普陀区金沙江路 1516 弄"
+            },
+            {
+                date: "2016-05-01",
+                name: "第五页",
+                address: "上海市普陀区金沙江路 1519 弄"
+            },
+            {
+                date: "2016-05-03",
+                name: "第六页",
+                address: "上海市普陀区金沙江路 1516 弄"
+            },
+          ],
+      currentPage: 1, // 当前页码
+      total: 20, // 总条数
+      pageSize: 10, // 每页的数据条数
     }
   },
   mounted() {
@@ -32,6 +173,17 @@ export default {
     });
   },
   methods: {
+    //每页条数改变时触发 选择一页显示多少行
+    handleSizeChange(val) {
+        // console.log(`每页 ${val} 条`);
+        this.currentPage = 1;
+        this.pageSize = val;
+    },
+    //当前页改变时触发 跳转其他页
+    handleCurrentChange(val) {
+        // console.log(`当前页: ${val}`);
+        this.currentPage = val;
+    },
     shopType() {
       let thit=this;
       let shopType = document.getElementById("shopType");
@@ -155,7 +307,7 @@ export default {
         option && charts.setOption(option);
         shopTypeChart.on('click', function (params) {
             thit.dialogTableVisible = true;
-            thit.gridData[0]=params.data
+            // console.log(thit);
         });
         window.addEventListener("resize", function () {
           charts.resize();
@@ -175,6 +327,5 @@ export default {
     margin-top: 1rem;
     height: 25rem;
   }
-  
 }
 </style>

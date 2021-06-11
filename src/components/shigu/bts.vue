@@ -26,7 +26,7 @@ export default {
         let xData = xdata
           ? xdata
           : ["起重机", "场(厂)内机动车辆", "压力容器","压力管道","大型游乐设施","电梯","客运索道","锅炉"];
-        let yData = ydata ? ydata : [1, 2, 3,0,0,0,0,0];
+        let yData = ydata ? ydata : [0, 0, 2,0,0,0,0,0];
         let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,
             color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
@@ -49,7 +49,7 @@ export default {
               return `${e[0].name}：${e[0].value}`
               // console.log(e);
             }
-          },  
+          },
           xAxis: {
             type: "category",
             axisLine: {
@@ -151,5 +151,5 @@ export default {
     margin-top: 1rem;
   }
 }
-  
+
 </style>

@@ -24,7 +24,7 @@ export default {
       let wyChart = echarts.init(wy);
       function huanzhuang(charts, showLable, mygraphic) {
         charts.clear();
-        let gailanTotal = 6;
+        let gailanTotal = 2;
         let option = {
           tooltip: {
             trigger: "item",
@@ -96,7 +96,7 @@ export default {
                   console.log(e)
                   return `${e.name}${e.value}个`
                 },
-                
+
 
               },
               itemStyle: {
@@ -123,8 +123,7 @@ export default {
               },
               data: [
                 { value: 1, name: "德清县" },
-                { value: 2, name: "安吉县" },
-                { value: 3, name: "南太湖新区" },
+                { value: 1, name: "安吉县" },
 
               ],
             },
@@ -149,7 +148,7 @@ export default {
     height: 30rem;
     margin-top: 1rem;
   }
-  
+
 }
-  
+
 </style>
