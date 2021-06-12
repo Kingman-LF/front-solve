@@ -3,7 +3,7 @@
     <div class="lv">
       <div>
         <span>食品抽检总数</span>
-        <span>55782</span>
+        <span>20</span>
       </div>
     </div>
     <div class="lv">
@@ -70,7 +70,7 @@ export default {
         font-weight: 400;
         color: #FFFFFF;
         text-shadow: 0rem 0rem 0rem #000000;
-      
+
       }
     }
   }
