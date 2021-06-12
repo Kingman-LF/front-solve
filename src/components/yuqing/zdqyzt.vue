@@ -158,8 +158,12 @@ export default {
             trigger: "item",
             borderWidth:0,
             textStyle: {
-              fontSize:26,
+              fontSize:35,
             },
+            formatter(e){
+              return ` <div style="width:20px;height:20px;border-radius:20px;background-color:${e.color};display:inline-block"></div> ${e.name}`
+              // console.log(e);
+            }
           },
           legend: {
             show: false,
@@ -178,7 +182,7 @@ export default {
                   z: 10,
                   style: {
                     fill: "#fff",
-                    text: ["{value|" + gailanTotal + "}"].join( "\n" ),
+                    text: ["{value|" + gailanTotal + "}"],
                     textAlign: "center",
                     rich: {
                       value: {
@@ -233,7 +237,7 @@ export default {
               labelLine: {
                 show: true,
                 lineStyle:{
-                  width:2
+                  width:3
                 }
               },
               data: dataVal
@@ -269,7 +273,7 @@ export default {
             trigger: 'axis',
             borderWidth:0,
             textStyle: {
-              fontSize:26,
+              fontSize:35,
             },
             axisPointer: {
               type: 'cross',

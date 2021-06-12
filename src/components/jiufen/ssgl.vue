@@ -21,107 +21,146 @@ export default {
   methods:{
     sangshen(charts, echarts) {
       charts.clear()
-      let city = {
-        '特种设备投诉举报': {color:'#eb6877',depth: 0},
-        '公司注销': {color:'#eb6877',depth: 0},
-        '公司登记': {color:'#eb6877',depth: 0},
-        '食品投诉举报': {color:'#eb6877',depth: 0},
-        '行政处罚': {color:'#eb6877',depth: 0},
-
-        '二审，驳回起诉，再审中': {color:'#f8b551',depth: 1},
-        '一审驳回，二审维持原判': {color:'#f8b551',depth: 1},
-        '一审驳回，二审中': {color:'#f8b551',depth: 1},
-        '驳回': {color:'#f8b551',depth: 1},
-        '撤诉，裁定驳回': {color:'#f8b551',depth: 1},
-        '和解': {color:'#f8b551',depth: 1},
-
-        '领导出庭': {color:'#4a91e2',depth: 2},
-        '非领导出庭': {color:'#ffa500',depth: 2},
-
-
-      }
-      let population = [
-        { source: "特种设备投诉举报", target: "二审，驳回起诉，再审中", value: 1 },
-
-        { source: "公司登记", target: "一审驳回，二审维持原判", value: 4 },
-        { source: "公司登记", target: "驳回", value: 1 },
-        { source: "公司登记", target: "和解", value: 1 },
-
-        { source: "公司注销", target: "撤诉，裁定驳回", value: 1 },
-        { source: "公司注销", target: "和解", value: 1 },
-
-        { source: "食品投诉举报", target: "一审驳回，二审中", value: 1 },
-
-        { source: "行政处罚", target: "和解", value: 2 },
-
-        { source: "二审，驳回起诉，再审中", target: "领导出庭", value: 1 },
-        { source: "一审驳回，二审维持原判", target: "领导出庭", value: 4 },
-        { source: "一审驳回，二审中", target: "领导出庭", value: 1 },
-        { source: "驳回", target: "领导出庭", value: 1 },
-        { source: "撤诉，裁定驳回", target: "领导出庭", value: 1 },
-        { source: "和解", target: "领导出庭", value: 4 },
+      charts.clear()
+      var option;
+      var legData=['领导出庭', '领导未出庭']
+      var data = [
+          [[28604,77,708888888,'合同格式条款违规','领导出庭'],[31163,77.4,1088888888,'举报奖励','领导出庭'],[1516,68,198888888,'特设检查指令书','领导出庭'],[13670,74.7,988888888,'投诉举报处理','领导出庭'],[28599,75,388888888,'行政处罚','领导出庭'],[29476,77.1,288888888,'责令整改','领导出庭']],
+          [[44056,81.8,708888888,'合同格式条款违规','领导未出庭'],[43294,81.7,1088888888,'举报奖励','领导未出庭'],[13334,76.9,198888888,'特设检查指令书','领导未出庭'],[21291,78.5,988888888,'投诉举报处理','领导未出庭'],[38923,80.8,388888888,'行政处罚','领导未出庭'],[37599,81.9,288888888,'责令整改','领导未出庭']]
       ];
-      //定义一个数组
-      let citylist = [];
-      //遍历city
-      for (let key in city) {
-        citylist.push(
-            { name: key, itemStyle: { color: city[key].color },depth: city[key].depth }   //构造节点对象，包括name和itemStyle
-        )
-      }
-      //定义一个数组
-      let data = [];
-      for (let i = 0; i < population.length; i++) {
-        let color = new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-              offset: 0,
-              // color: city[population[i].source].color  //获取起始节点的颜色属性
-              color: "#146cff"  //获取起始节点的颜色属性
-            }, {
+      option = {
+          backgroundColor: new echarts.graphic.RadialGradient(1, 1, 1, [{
               offset: 1,
-              // color: city[population[i].target].color  //获取结尾节点的颜色属性
-              color: "#85fdd7"  //获取起始节点的颜色属性
-            }]
-        )
-        data.push({
-              source: population[i].source,
-              target: population[i].target,
-              value: population[i].value,
-              lineStyle: {   //添加样式配置
-                color: color
+              color: 'rgb(255, 255,255,0)'
+          }, {
+              offset: 1,
+              color: 'rgb(255, 255,255,0)'
+          }]),
+          tooltip: {
+              trigger: "axis",
+              borderWidth:0,
+              textStyle: {
+                fontSize:40,
+              },
+              formatter(e){
+                // console.log(e);
+                return `${e[0].value[3]}`
               }
-            }
-        )
-      }
-      let option = {
-        tooltip:{
-
-        },
-        series: [
-          {
-            type: 'sankey',
-            data: citylist,
-            links: data,
-            focusNodeAdjacency: 'allEdges',    //鼠标悬停到节点或边上，相邻接的节点和边高亮显示
-            label: {
+            },  
+          legend: {
+              right: '10%',
+              top: '3%',
+              textStyle:{
+                  fontSize:'2rem',
+                  color:'#fff'
+              },
+              itemHeight:'25',
+              data: legData
+          },
+          grid: {
+              left: '8%',
+              top: '10%'
+          },
+          xAxis: {
+              splitLine: {
+                  lineStyle: {
+                      type: 'dashed',
+                  }
+              },
+              // data:data[0],
+              axisTick: {
+              show: false
+            },
+            axisLabel: {
+              // rotate:20,
               color: "#fff",
               fontSize: '1.5rem',
-              position: "insideLeft",
-              formatter:e=>{
-                console.log(e.name.replace(/，/,'\n'))
-                return e.name.replace(/，/,'\n')
-              }
+              fontFamily: "PingFang SC"
             },
-            // itemStyle: {
-            //     borderWidth: 1,
-            //     borderColor: '#fff'
-            // },
-            lineStyle: {
-              curveness: 0.5,
-              opacity: 0.5
-            }
-          }
-        ]
-      }
+          },
+          yAxis: {
+              splitLine: {
+                  lineStyle: {
+                      type: 'dashed'
+                  },
+              },
+              axisTick: {
+              show: false
+            },
+            axisLabel: {
+              color: "#fff",
+              fontSize: '1.5rem',
+              fontFamily: "PingFang SC"
+            },
+              scale: true
+          },
+          series: [{
+              name: '领导出庭',
+              data: data[0],
+              type: 'scatter',
+              symbolSize: function (data) {
+                  return Math.sqrt(data[2]) / 5e2;
+              },
+              emphasis: {
+                  focus: 'series',
+                  label: {
+                      show: true,
+                      textStyle: {
+                        fontSize:40,
+                      },
+                      formatter: function (param) {
+                          return param.data[3];
+                      },
+                      position: 'top'
+                  }
+              },
+              itemStyle: {
+                  shadowBlur: 10,
+                  shadowColor: 'rgba(120, 36, 50, 0.5)',
+                  shadowOffsetY: 5,
+                  color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                      offset: 0,
+                      color: 'rgb(251, 118, 123)'
+                  }, {
+                      offset: 1,
+                      color: 'rgb(204, 46, 72)'
+                  }])
+              }
+          }, {
+              name: '领导未出庭',
+              data: data[1],
+              type: 'scatter',
+              symbolSize: function (data) {
+                  return Math.sqrt(data[2]) / 5e2;
+              },
+              emphasis: {
+                  focus: 'series',
+                  label: {
+                      show: true,
+                      textStyle: {
+                        fontSize:40,
+                      },
+                      formatter: function (param) {
+                          return param.data[3];
+                      },
+                      position: 'top'
+                  }
+              },
+              itemStyle: {
+                  shadowBlur: 10,
+                  shadowColor: 'rgba(25, 100, 150, 0.5)',
+                  shadowOffsetY: 5,
+                  
+                  color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                      offset: 0,
+                      color: 'rgb(129, 227, 238)'
+                  }, {
+                      offset: 1,
+                      color: 'rgb(25, 183, 207)'
+                  }])
+              }
+          }]
+      };
       option && charts.setOption(option)
       window.addEventListener('resize', function () {
         charts.resize()

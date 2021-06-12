@@ -19,6 +19,7 @@ export default {
   },
   methods: {
     serveType() {
+      let thit=this;
       let serveType = document.getElementById("serveType");
       let serveTypeChart = echarts.init(serveType);
       function huanzhuang(charts, showLable, mygraphic) {
@@ -136,6 +137,11 @@ export default {
           ],
         };
         option && charts.setOption(option);
+        serveTypeChart.on('click', function (params) {
+            // console.log(params);
+            // thit.dialogTableVisible = true;
+            thit.$emit("tkshow", true,params);
+        });
         window.addEventListener("resize", function () {
           charts.resize();
         });

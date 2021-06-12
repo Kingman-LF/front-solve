@@ -29,7 +29,7 @@ export default {
             trigger: "item",
             borderWidth:0,
             textStyle: {
-              fontSize:26,
+              fontSize:35,
             },
             formatter(e){
               return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
@@ -51,6 +51,9 @@ export default {
           graphic: [
                 {
                   tooltip: {
+                    textStyle: {
+                      fontSize:35,
+                    },
                     formatter(e){
                       return `总量：${gailanTotal}`
                     }

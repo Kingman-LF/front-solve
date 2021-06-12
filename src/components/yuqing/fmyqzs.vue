@@ -36,12 +36,12 @@ export default {
             trigger: 'axis',
             borderWidth:0,
             textStyle: {
-              fontSize:26,
+              fontSize:35,
             },
             formatter(e){
-              // return `${e[0].name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e[0].color};display:inline-block"></div>${e[0].seriesName} ${e[0].value}
-              //             <br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e[1].color};display:inline-block"></div>${e[1].seriesName} ${e[1].value}`
-              // console.log(e);
+              return `${e[0].name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e[0].color};display:inline-block"></div> ${e[0].value}
+                          `
+              console.log(e);
             },
             axisPointer: {
               type: 'cross',

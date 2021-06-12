@@ -99,7 +99,7 @@ export default {
             {value:'18',name:'网媒 18 12%'},
             {value:'15',name:'微博 15 12%'},
             {value:'10',name:'微信 10 10%'},
-            {value:'30',name:'贴吧 30 18'},
+            {value:'30',name:'贴吧 30 18%'},
             {value:'20',name:'论坛 20 18%'},
             {value:'18',name:'小视频 18 16%'},
             {value:'19',name:'网路视频 19 14%'},
@@ -142,8 +142,12 @@ export default {
           trigger: "item",
           borderWidth:0,
           textStyle: {
-            fontSize:26,
+            fontSize:35,
           },
+          formatter(e){
+              return ` <div style="width:20px;height:20px;border-radius:20px;background-color:${e.color};display:inline-block"></div> ${e.name}`
+              // console.log(e);
+            }
         },
         legend: {
           show: false,
@@ -217,7 +221,7 @@ export default {
             labelLine: {
               show: true,
               lineStyle:{
-                width:2
+                width:3
               }
             },
             data: dataVal
@@ -253,7 +257,7 @@ export default {
           trigger: 'axis',
           borderWidth:0,
           textStyle: {
-            fontSize:26,
+            fontSize:35,
           },
           axisPointer: {
             type: 'cross',

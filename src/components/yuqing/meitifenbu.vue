@@ -33,10 +33,10 @@ export default {
             trigger: "item",
             borderWidth:0,
             textStyle: {
-              fontSize:26,
+              fontSize:35,
             },
             formatter(e){
-              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+              return `${e.name}<br> <div style="width:20px;height:20px;border-radius:20px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
             }
           },
           legend: {
@@ -114,7 +114,7 @@ export default {
               labelLine: {
                 show: true,
                 lineStyle:{
-                  width:2
+                  width:3,
                 }
               },
               data: [
@@ -128,7 +128,7 @@ export default {
                 { value: 8, name: "电视视频" },
                 { value: 25, name: "App" },
                 { value: 0, name: "报刊" },
-                { value: 13, name: "其他" },
+                // { value: 13, name: "其他" },
               ],
             },
             {},

@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 
+
 // 引入适配文件
 import "@/utils/shiping.js"
 

@@ -37,7 +37,7 @@ export default {
           trigger: "axis",
           borderWidth:0,
           textStyle: {
-            fontSize:26,
+            fontSize:35,
           },
           axisPointer: {
             type: 'shadow',

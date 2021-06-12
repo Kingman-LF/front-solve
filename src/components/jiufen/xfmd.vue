@@ -20,7 +20,6 @@ export default {
   methods:{
     // 绘制柱状图
     zhuzhuangtu(charts, color, xdata, ydata, rotate) {
-      console.log(123)
       let xData = xdata ? xdata : ['揭发控告', '其他', '申诉', '求决', '咨询', '意见建议']
       let yData = ydata ? ydata : [23, 17, 15, 6, 0, 0]
       let colors = color ? color : '#00F0FF'
