@@ -82,7 +82,6 @@ export default {
           complainantYData:[1],
         },
       ],
-
     };
   },
   mounted() {

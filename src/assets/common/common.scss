@@ -298,14 +298,26 @@ body{
           border: none !important;
           background: rgba($color: #061a5b, $alpha: 1);
         }
+        .el-table th, .el-table tr{
+          background-color: rgba($color: #061a5b, $alpha: 1);
+        }
+        
+        .el-table th:hover, .el-table tr:hover{
+          color: #00F0FF;
+        }
         .block{
           margin-bottom: 2rem;
           .zts{
             width: 10rem;
-            height: 5rem;
-            position: relative;
-            right: 0;
-            left: 0;
+            height: 3rem;
+            color: #fff;
+            position: fixed;
+            right: 2rem;
+            bottom: 2.5rem;
+            line-height: 3rem;
+            text-align: center;
+            font-family: PingFang Bold;
+            font-size: 2rem;
           }
           .el-pagination{
             span{
@@ -314,6 +326,129 @@ body{
               height: 2.5rem;
               line-height: 2.5rem;
             }
+          }
+        }
+        .two{
+          height: 60rem;
+          .coun{
+            height: 5rem;
+            .tabs{
+              height: 3rem;
+              border-bottom: .5px solid #00F0FF;
+              color: #fff;
+              line-height: 3rem;
+              text-align: center;
+              font-family: PingFang Bold;
+              font-size: 2rem;
+              div{
+                width: 10rem;
+                height: 3rem;
+                float: left;
+                cursor: pointer;
+              }
+              div:hover{
+                color: #00F0FF;
+              }
+              .clie{
+                color: #00F0FF;
+              }
+            }
+          }
+          .labse{
+            height: 50rem;
+            font-family: PingFang Bold;
+            color: #fff;
+            font-size: 2rem;
+            .lab_dis{
+              height: 50rem;
+              .ify{
+                cursor: pointer;
+                .tatl{
+                  font-size: 2rem;
+                  color: #00F0FF;
+                  border-bottom: .5px solid #ccc;
+                }
+                .xx{
+                  font-size: 1.75rem;
+                  display: flex;
+                  justify-content: flex-start;
+                  flex-wrap: wrap;
+                  .xx_const{
+                    width: 25%;
+                    height: 4rem;
+                    div{
+                      width: 50%;
+                      height: 4rem;
+                      line-height: 4rem;
+                      float: left;
+                      overflow: hidden;
+                    }
+                    .num{
+                      text-align: right;
+                    }
+                  }
+                  
+                }
+              }
+              table{
+                width: 100%;
+                text-align: center;
+                line-height: 4rem;
+                cursor: pointer;
+                thead{
+                  height: 4rem;
+                  tr{
+                    height: 4rem;
+                  }
+                }
+                tbody{
+                  height: 4rem;
+                  tr{
+                    height: 4rem;
+                  }
+                }
+              }
+              .sjcons{
+                height: 7rem;
+                cursor: pointer;
+                display: flex;
+                .data{
+                  width: 25%;
+                  height: 7rem;
+                  line-height: 7rem;
+                  text-align: center;
+                }
+                .cons{
+                  width: 75%;
+                  height: 7rem;
+                  text-align: left;
+                  div{
+                    width: 100%;
+                    height: 3.5rem;
+                    span{
+                      color: #00F0FF;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .retu{
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translate(-50%);
+            cursor: pointer;
+            width: 10rem;
+            height: 3rem;
+            color: #fff;
+            line-height: 3rem;
+            text-align: center;
+            font-family: PingFang Bold;
+            font-size: 2rem;
+          }
+          .retu:hover{
+            color: #00F0FF;
           }
         }
       }
@@ -330,5 +465,6 @@ body{
     left: 50%;
     transform: translate(-50%);
   }
+  
 }   
 
