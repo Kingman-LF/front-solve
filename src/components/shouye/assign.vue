@@ -191,7 +191,7 @@ export default {
       a:3,
       b:6,
       c:19,
-      d:13
+      d:2
     }
   },
   mounted() {

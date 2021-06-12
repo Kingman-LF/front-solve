@@ -213,12 +213,88 @@ body{
   .el-dialog__wrapper{
     position: absolute;
     width: 320rem;
+    .el-dialog{
+      height: 70rem;
+      overflow: hidden;
+      font-size: 3rem;
+      font-family: PingFang Bold;
+      .el-dialog__header{
+        span{
+          font-size: 3rem;
+        }
+        .el-dialog__title{
+          color: #fff;
+          font-family: PingFang Bold;
+        }
+        .el-dialog__headerbtn{
+          .el-dialog__close{
+            color: #fff;
+            font-size: 3rem;
+          }
+        }
+      }
+      .el-dialog__body{
+        height: 60rem;
+        .el-table td, .el-table th.is-leaf{
+          font-family: PingFang Bold;
+          color: #fff;
+          font-size: 2rem;
+          border-bottom: .2px solid #EBEEF5;
+          background: rgba($color: #061a5b, $alpha: .9);
+        }
+        .el-table, .el-table--fit, .el-table--border, .el-table--scrollable-y, .el-table--enable-row-hover, .el-table--enable-row-transition{
+          background: rgba($color: #061a5b, $alpha: .9);
+        }
+        .el-table td, .el-table th{
+          text-align: center;
+        }
+        .el-table .cell{
+          height: 5rem;
+          line-height: 5rem;
+        }
+        .el-pagination__sizes .el-input .el-input__inner{
+          font-size: 1rem;
+          color: #fff;
+          background: rgba($color: #061a5b, $alpha: .9);
+        }
+        .el-select .el-input .el-select__caret{
+          font-size: 2rem;
+        }
+        .el-pager li{
+          font-size: 1.5rem;
+          border:1px solid #fff;
+        }
+        .el-pagination__editor{
+          background: rgba($color: #061a5b, $alpha: .9);
+          font-size: 1.5rem;
+        }
+        .el-pagination button:disabled{
+          background: rgba($color: #061a5b, $alpha: .9);
+          color: #fff;
+          border:1px solid #fff;
+        }
+        .el-pagination .btn-next, .el-pagination .btn-prev{
+          font-size: 1.5rem;
+        }
+        .block{
+          margin-bottom: 2rem;
+          .el-pagination{
+            span{
+              color: #fff;
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
     
   }
   .el-dialog {
     position: absolute;
-    color: #fff;
-    background: rgba($color: #fff, $alpha: 1);
+    color: #000;
+    background: rgba($color: #061a5b, $alpha: .9);
+    border: .3rem solid #00F0FF;
+    box-shadow: 0rem 0rem 2.5rem #0096ff;
     width: 150rem;
     left: 50%;
     transform: translate(-50%);

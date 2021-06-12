@@ -49,8 +49,8 @@ export default {
           },
           visualMap: {
             show:false,
-            min: 800,
-            max: 50000,
+            min: 0,
+            max: 10,
             text: ['High', 'Low'],
             realtime: false,
             calculable: true,
@@ -59,7 +59,6 @@ export default {
             },
             textStyle:{
               color:"#ffffff",
-
             }
           },
           series: [
@@ -79,12 +78,12 @@ export default {
               },
 
               data: [
-                { name: "吴兴区", value: 42400,label:{offset:[-70,40]} },
-                { name: "南浔区", value: 3 },
-                { name: "长兴县", value: 26058 },
-                { name: "德清县", value: 10800 },
-                { name: "南太湖新区", value: 320,label:{offset:[-20,0]} },
-                { name: "安吉县", value: 2 },
+                { name: "吴兴区", value: 0,label:{offset:[-70,40]} },
+                { name: "南浔区", value: 1 },
+                { name: "长兴县", value: 0 },
+                { name: "德清县", value: 1 },
+                { name: "南太湖新区", value: 0,label:{offset:[-20,0]} },
+                { name: "安吉县", value: 1 },
               ],
               // 自定义名称映射
               itemStyle: {

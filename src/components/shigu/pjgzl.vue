@@ -5,13 +5,7 @@
       <p>风险单位</p>
     </div>
     <div class="squareChart" id="wuye">
-        <div class="wu_dis">
-          <div class="county">安吉县</div>
-          <div class="company">强龙家具股份有限公司</div>
-          <div class="village">安吉县递铺镇范潭工业区</div>
-          <div class="mark">91330000147278971M</div>
-          <div class="stauts stauts_gao">高风险</div>
-        </div>
+        
         <div class="wu_dis">
           <div class="county">安吉县</div>
           <div class="company">永艺家具股份有限公司</div>
@@ -26,16 +20,9 @@
           <div class="mark">913300006095805007</div>
           <div class="stauts stauts_gao">高风险</div>
         </div>
-        <div class="wu_dis">
-          <div class="county">开发区</div>
-          <div class="company">浙江红鹰集团股份有限公司</div>
-          <div class="village">开发区彩凤路1318号</div>
-          <div class="mark">91330000146977551H</div>
-          <div class="stauts stauts_gao">高风险</div>
-        </div>
-        <div class="wu_dis wsj">
+        <!-- <div class="wu_dis wsj">
           没有更多了
-        </div>
+        </div> -->
     </div>
   </div>
 </template>
