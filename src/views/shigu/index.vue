@@ -9,24 +9,24 @@
     <el-row :gutter="12">
       <el-col :span="8">
         <el-row :gutter="12">
-          <el-col :span="12">
+          <el-col :span="8" >
             <!-- 风险单位地区分布 -->
             <gzl></gzl>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="16">
             <!-- 预警设备地区分布 -->
             <wygs></wygs>
           </el-col>
         </el-row>
         <el-row :gutter="12">
-          <el-col :span="16">
+          <el-col :span="24">
             <!-- 风险单位 -->
             <pjgzl></pjgzl>
           </el-col>
-          <el-col :span="8">
-            <!-- 检查统计 -->
-            <krsg></krsg>
-          </el-col>
+<!--          <el-col :span="8">-->
+<!--            &lt;!&ndash; 检查统计 &ndash;&gt;-->
+<!--            <krsg></krsg>-->
+<!--          </el-col>-->
         </el-row>
       </el-col>
       <el-col :span="8">
@@ -39,8 +39,16 @@
       </el-col>
       <el-col :span="8">
         <el-row :gutter="12">
-          <el-col :span="24">
-            <!-- 设备类别预警个数 -->
+          <el-col :span="8">
+            <!-- 检查统计 -->
+            <krsg></krsg>
+          </el-col>
+          <el-col :span="5">
+<!--            智能识别-->
+            <znsb></znsb>
+          </el-col>
+          <el-col :span="11">
+<!--            不文明乘梯-->
             <bts></bts>
           </el-col>
         </el-row>
@@ -69,6 +77,7 @@ import jyjc from "@/components/shigu/jyjc";
 import gzlx from "@/components/shigu/gzlx";
 import sjwh from "@/components/shigu/sjwh";
 import bts from "@/components/shigu/bts";
+import znsb from "@/components/shigu/znsb"
 // import bhg from "@/components/shigu/bhg";
 import tsdjd from "@/components/shigu/tsdjd"
 // import clfh from "@/components/shigu/clfh"
@@ -96,7 +105,7 @@ export default {
     sjwh,
     bts,
     // bhg,
-
+    znsb,
     tsdjd,
     // clfh,
     // wb,
@@ -117,6 +126,6 @@ export default {
   background-image: url("~@/assets/images/bg4.gif");
   background-size: cover;
   position: relative;
-  
+
 }
 </style>

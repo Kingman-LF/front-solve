@@ -5,13 +5,14 @@
       <p>风险单位</p>
     </div>
     <div class="squareChart" id="wuye">
-        
+
         <div class="wu_dis">
           <div class="county">安吉县</div>
           <div class="company">永艺家具股份有限公司</div>
           <div class="village">安吉县灵峰灵峰街道永艺西路1号</div>
           <div class="mark">913300007284720000</div>
           <div class="stauts stauts_gao">高风险</div>
+          <div class="taskStauts">核实不符</div>
         </div>
         <div class="wu_dis">
           <div class="county">德清县</div>
@@ -19,6 +20,7 @@
           <div class="village">德清县洛舍镇工业区</div>
           <div class="mark">913300006095805007</div>
           <div class="stauts stauts_gao">高风险</div>
+          <div class="taskStauts">核实不符</div>
         </div>
         <!-- <div class="wu_dis wsj">
           没有更多了
@@ -56,19 +58,24 @@ export default {
         -o-text-overflow:ellipsis;
       }
       .county{
-        width: 5rem;
+        width: 10rem;
+        text-align: center;
+
       }
       .company{
-        width: 15rem;
+        width: 25rem;
       }
       .village{
-        width: 16rem;
+        width: 25rem;
       }
       .mark{
         width: 17rem;
       }
       .stauts {
         width: 5rem;
+      }
+      .taskStauts{
+        width: 8rem;
       }
       .stauts_gao{
         color: #EB3633;

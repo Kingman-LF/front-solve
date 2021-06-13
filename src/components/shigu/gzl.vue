@@ -14,117 +14,105 @@ export default {
   mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
-        this.gzl();
+        this.spcc();
       }, 500);
     });
   },
   methods: {
-    gzl() {
-      let gzl = document.getElementById("gzl");
-      let gzlChart = echarts.init(gzl);
-      function huanzhuang(charts, showLable, mygraphic) {
+    spcc() {
+      function getBarJiaoNang(charts, leftData, rightData, colorlist, data) {
         charts.clear();
-        let gailanTotal = 2;
+        let dataV = data ? data : [25, 75, 58];
+        let clist = colorlist ? colorlist : ["#FF9600", "#43FF55", "#00F0FF"];
+        let ldata = leftData ? leftData : ["已办结", "办理中", "待办理"];
+        let rdata = rightData
+            ? rightData
+            : [
+              JSON.stringify({
+                state: 0,
+                num: 875,
+                lv: "30%",
+              }),
+              JSON.stringify({
+                state: 1,
+                num: 1154,
+                lv: "30%",
+              }),
+              JSON.stringify({
+                state: 1,
+                num: 900,
+                lv: "30%",
+              }),
+            ];
+        // 指定图表的配置项和数据
         let option = {
-          tooltip: {
-            trigger: "item",
-            borderWidth:0,
-            textStyle: {
-              fontSize:26,
-            },
-            formatter(e){
-              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value}个 ${e.percent}%`
-              // console.log(e);
-            }
+          grid: {
+            top: "3%",
+            left: "3%",
+            bottom: "3%",
+            containLabel: true,
           },
-          legend: {
+          xAxis: {
+            type: "value",
             show: false,
           },
-          graphic: mygraphic
-            ? [
-                {
-                  tooltip: {
-                    formatter(e){
-                      return `总量：${gailanTotal}`
-                    }
-                  },
-                  type: "text",
-                  left: "center",
-                  top: "center",
-                  z: 10,
-                  style: {
-                    fill: "#fff",
-                    text: gailanTotal,
-                    textAlign: "center",
-                    text: ["{value|" + gailanTotal + "}"].join(
-                      "\n"
-                    ),
-                    rich: {
-                      value: {
-                        color: "#303133",
-                        fontSize: '3.27rem',
-                        lineHeight: 30,
-                        fontWeight: "bold",
-                        fontFamily: "digifaw",
-                        textShadowColor: "#0096ff",
-                        textShadowBlur: "12"
-                      },
-                      name: {
-                        color: "#909399",
-                        lineHeight: 30,
-                        fontSize: '2rem',
-                      },
-                    },
-                    font: "16px PingFang",
-                  },
-                },
-              ]
-            : [],
+          yAxis: [
+            {
+              type: "category",
+              scale: true,
+              axisLine: {
+                // 坐标轴 轴线
+                show: false, // 是否显示
+              },
+              data: ["南太湖新区", "长兴县", "德清县", "安吉县", "南浔区", "吴兴区"],
+              axisLabel: {
+                color: "#fff",
+                fontSize: "1.5rem",
+                fontWeight: "bold",
+              },
+              axisTick: {
+                show: false,
+              },
+            },
+            {
+              type: "category",
+              scale: true,
+              axisLine: {
+                // 坐标轴 轴线
+                show: false, // 是否显示
+              },
+              axisLabel: {
+                color: "#fff",
+                fontSize: "1.5rem",
+                fontWeight: "bold",
+              },
+              axisTick: {
+                show: false,
+              },
+              data: [0,0,0,0,1,1]
+            },
+          ],
           series: [
             {
-              type: "pie",
-              radius: ["45%", "70%"],
-              center: ["center", "center"],
-              // avoidLabelOverlap: false,
-              label: {
-                show: true,
-                color: "#fff",
-                fontWeight: 'bold',
-                fontFamily: 'PingFang Bold',
-                fontSize: '1.5rem',
-                formatter(e){
-                  console.log(e)
-                  return `${e.name}${e.value}个`
-                }
+              data: [0,0,0,0,1,1],
+              type: "bar",
+              showBackground: true,
+              backgroundStyle: {
+                borderWidth: 1,
+                fontSize:'1.5rem',
+                color: "rgba(255, 255, 255, 0.2)",
+                borderRadius: 9,
               },
               itemStyle: {
-                color: function (params) {
-                  var colorlist = [
-                    "#0F5ED6",
-                    "#79FFB5",
-                    "#843DFF",
-                    "#4304B1",
-                    "#688FD8",
-                    "#F25334",
-                    "#49A732",
-                  ];
-                  return colorlist[params.dataIndex];
+                // 图形的形状
+                normal: {
+                  barBorderRadius: 9,
+                  color: "#FF4657",
                 },
               },
-              labelLine: {
-                show: true,
-                lineStyle:{
-                  width:2
-                }
-                // length: 10,
-                // length2: 5
-              },
-              data: [
-                { value: 1, name: "德清县" },
-                { value: 1, name: "安吉县" },
-              ],
+              barCategoryGap: 46,
+              barWidth: 18,
             },
-            {},
           ],
         };
         option && charts.setOption(option);
@@ -132,7 +120,17 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(gzlChart, true, true);
+      let leftData = [
+        "南太湖新区",
+        "长兴县",
+        "德清县",
+        "安吉县",
+        "南浔区",
+        "吴兴区",
+      ];
+      let spcc = document.getElementById("gzl");
+      let spccChart = echarts.init(spcc);
+      getBarJiaoNang(spccChart);
     },
   },
 };
@@ -143,7 +141,7 @@ export default {
   border-radius: 4px;
   #gzl {
     margin-top: 1rem;
-    height: 30rem;
+    height: 33.5rem;
   }
 }
 

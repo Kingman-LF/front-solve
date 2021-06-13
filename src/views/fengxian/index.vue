@@ -6,7 +6,7 @@
     <div class="Etitle">
       <p>风险管控</p>
     </div>
-    
+
     <el-row :gutter="12">
       <el-col :span="8">
         <el-row :gutter="12">
@@ -53,7 +53,7 @@
             <ajzt></ajzt>
           </el-col>
         </el-row>
-        
+
       </el-col>
     </el-row>
   </div>
@@ -142,7 +142,7 @@ export default {
   background-image: url("~@/assets/images/bg4.gif");
   background-size: cover;
   position: relative;
-  
+
 }
-      
+
 </style>

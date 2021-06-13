@@ -38,8 +38,35 @@ import spcjbhg from "@/components/shouye/spcjbhg";
 import dtjcbhg from "@/components/shouye/dtjcbhg";
 import jbwt from "@/components/shouye/jbwt";
 import jacontent from "@/components/shouye/jacontent";
+
+import {yqInfo} from "@/assets/api/index"
+
+import CryptoJS  from "crypto-js";
 export default {
   name: "index",
+  mounted() {
+    yqInfo({session:'5957cc0591c84fd28cd007fa5e4e8391',userid:75479,btime:'20210529000000',etime:'20210601000000',pageSize:10}).then(res => {
+      console.log(res)
+    })
+// AES加密方法,encrypt：要加密的数据
+//     function aesEncrypt (encrypt) {
+//
+//       var aesPrivateKey = '1234567890123456';//密钥
+//
+//       var key = CryptoJS.enc.Utf8.parse(aesPrivateKey);
+//
+//       var srcs = CryptoJS.enc.Utf8.parse(JSON.stringify(encrypt));
+//
+//       var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+//
+//       return encrypted.toString();
+//     }
+//
+//     var data1 = {yhbh:'2018048'};
+//
+//     var AES = aesEncrypt(data1);
+//     console.log(AES)
+  },
   components: {
     assign,//一键交办
     fenbu, //地图分布,

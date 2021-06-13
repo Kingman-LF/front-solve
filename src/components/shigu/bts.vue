@@ -2,7 +2,7 @@
   <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>设备类别预警个数</p>
+      <p>不文明乘梯</p>
     </div>
     <div id="bts"></div>
   </div>

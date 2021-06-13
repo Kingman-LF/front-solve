@@ -50,7 +50,7 @@
         </el-col>
         <!--负面舆情走势-->
         <el-col :span="6">
-          <el-row :gutter="24">
+          <el-row :gutter="12">
         <!--     媒体分布       -->
             <el-col :span="12">
               <mtfb></mtfb>

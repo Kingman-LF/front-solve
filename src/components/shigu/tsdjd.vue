@@ -6,15 +6,15 @@
     </div>
     <div id="num"></div>
     <div class="total">
-      <h3>特种设备总数：95152</h3>
-      <div class="i"><span>锅炉<i></i></span>：1298</div>
-      <div class="i"><span>压力容器<i></i></span>：28225</div>
-      <div class="i"><span>电梯<i></i></span>：41968</div>
-      <div class="i"><span>起重机械<i></i></span>：1298</div>
-      <div class="i"><span>场内车辆<i></i></span>：20173</div>
-      <div class="i"><span>大型游乐设施<i></i></span>：196</div>
-      <div class="i"><span>压力管道<i></i></span>：1985</div>
-      <div class="i"><span>客运索道<i></i></span>：9</div>
+      <h3>特种设备总数：<span>95152</span></h3>
+      <div class="i"><span>锅炉<i></i></span>1298</div>
+      <div class="i"><span>压力容器<i></i></span>28225</div>
+      <div class="i"><span>电梯<i></i></span>41968</div>
+      <div class="i"><span>起重机械<i></i></span>1298</div>
+      <div class="i"><span>场内车辆<i></i></span>20173</div>
+      <div class="i"><span>大型游乐设施<i></i></span>196</div>
+      <div class="i"><span>压力管道<i></i></span>1985</div>
+      <div class="i"><span>客运索道<i></i></span>9</div>
     </div>
   </div>
 </template>
@@ -174,18 +174,46 @@ export default {
   .total{
     position: absolute;
     left: 2rem;
-    top: 8rem;
+    top: 7rem;
     color: #FFFFFF;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: "PingFang SC";
+    h3{
+      font-size: 2rem;
+      margin-bottom: 2.08rem;
+      span{
+        font-size: 2.5rem;
+        font-family: digifaw;
+        text-shadow: 0rem 0rem 1rem #fff;
+        font-weight: 400;
+        margin-left: 2rem;
+      }
+    }
     .i{
       display: flex;
-      height: 3rem;
+      height: 1.5rem;
       overflow: hidden;
+      align-items: center;
+      margin-bottom: 1.83rem;
+      font-family: digifaw;
+      text-shadow: 0rem 0rem 1rem #fff;
+      font-weight: 400;
+      &:before{
+        content: "";
+        width: 0.17rem;
+        height: 1.5rem;
+        background-color: #00F0FF;
+        margin-right: 0.5rem;
+      }
       span{
         display: inline-block;
         text-align:justify;
-        width: 12rem;
+        width: 10rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        font-family: "PingFang SC";
+        text-shadow: none;
+        margin-right: 2rem;
         i{
           display: inline-block;
           width: 100%;
