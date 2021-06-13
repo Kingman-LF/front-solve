@@ -9,22 +9,41 @@
 </template>
 <script>
 import * as echarts from "echarts";
+import {sortKey,serveTypes} from "@/assets/api/tousu"
+
 export default {
   mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.serveType();
-      }, 500);
-    });
+    serveTypes({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+      let resdata=res.data;
+      this.dataList=[]
+      let num=0;
+      let sums=0;
+      sortKey(resdata,'value')
+      resdata.forEach((v,i) => {
+        sums+=v.value;
+        if(v.name.substring(0,2)==="其他"){
+          resdata.splice(i,1)
+        }else if(num<10){
+          num+=1;
+          this.dataList.push(v)
+        }
+      });
+      this.sums=sums
+      this.$nextTick(() => {
+        // setTimeout(() => {
+          this.serveType(this.dataList,this.sums);
+        // }, 500);
+      });
+    })
   },
   methods: {
-    serveType() {
+    serveType(datas,sum) {
       let thit=this;
       let serveType = document.getElementById("serveType");
       let serveTypeChart = echarts.init(serveType);
-      function huanzhuang(charts, showLable, mygraphic) {
+      function huanzhuang(charts, showLable, mygraphic,datas,sum) {
         charts.clear();
-        let gailanTotal = 2522;
+        let gailanTotal = sum;
         let option = {
           tooltip: {
             trigger: "item",
@@ -119,19 +138,7 @@ export default {
                 // length: 20,
                 // length2: 10
               },
-              data: [
-                { value: 1118, name: "餐饮和住宿服务" },
-                // { value: 349, name: "其他服务" },
-                { value: 283, name: "停车服务" },
-                { value: 218, name: "美容、美发、洗浴服务" },
-                { value: 108, name: "教育培训服务" },
-                { value: 90, name: "文化、娱乐、体育服务" },
-                { value: 87, name: "旅游服务" },
-                { value: 79, name: "行政事业性服务" },
-                { value: 66, name: "洗涤染色服务" },
-                { value: 48, name: "专业技术服务" },
-                // { value: 349, name: "其他服务" },
-              ],
+              data: datas,
             },
             {},
           ],
@@ -146,7 +153,7 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(serveTypeChart, true, true);
+      huanzhuang(serveTypeChart, true, true,datas,sum);
     },
   },
 };

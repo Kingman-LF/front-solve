@@ -39,15 +39,15 @@ import dtjcbhg from "@/components/shouye/dtjcbhg";
 import jbwt from "@/components/shouye/jbwt";
 import jacontent from "@/components/shouye/jacontent";
 
-import {yqInfo} from "@/assets/api/index"
+// import {yqInfo} from "@/assets/api/index"
 
 import CryptoJS  from "crypto-js";
 export default {
   name: "index",
   mounted() {
-    yqInfo({session:'5957cc0591c84fd28cd007fa5e4e8391',userid:75479,btime:'20210529000000',etime:'20210601000000',pageSize:10}).then(res => {
-      console.log(res)
-    })
+    // yqInfo({session:'5957cc0591c84fd28cd007fa5e4e8391',userid:75479,btime:'20210529000000',etime:'20210601000000',pageSize:10}).then(res => {
+    //   console.log(res)
+    // })
 // AES加密方法,encrypt：要加密的数据
 //     function aesEncrypt (encrypt) {
 //
