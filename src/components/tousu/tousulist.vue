@@ -2,15 +2,15 @@
     <div class="boxs myborder">
         <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
             <div class="ul" :style = {transform:transform} :class="{ul_unanim:num===0}">
-                <div v-for="(item,index) in contentArr" :key=index :style="{height:height+'rem'}">
+                <div class="li" v-for="(item,index) in contentArr" :key=index :style="{height:height+'rem'}">
                     <div class="type">{{item.tsType}}</div>
-                    <div class="cont">内容:{{item.cont.length>7?item.cont.slice(0,7)+"...":item.cont}}</div>
+                    <div class="cont">内容:{{item.tsContent}}</div>
                     <div class="date">时间:{{item.tsHandleTerm}}</div>
                     <div class="agency">{{item.tsHandlingStatus}}</div>
                 </div>
-                <div v-for="(item,index) in contentArr" :key=index+contentArr.length :style="{height:height+'rem'}">
+                <div class="li" v-for="(item,index) in contentArr" :key=index+contentArr.length :style="{height:height+'rem'}">
                     <div class="type">{{item.tsType}}</div>
-                    <div class="cont">内容:{{item.cont.length>7?item.cont.slice(0,7)+"...":item.cont}}</div>
+                    <div class="cont">内容:{{item.tsContent}}</div>
                     <div class="date">时间:{{item.tsHandleTerm}}</div>
                     <div class="agency">{{item.tsHandlingStatus}}</div>
                 </div>
@@ -25,7 +25,7 @@ import {overdue} from "@/assets/api/tousu"
 export default {
   props: {
     height: {
-      default: 4,
+      default: 4.5,
       type: Number
     },
     lineNum: {
@@ -35,23 +35,22 @@ export default {
   },
   data: function () {
     return {
-      contentArr: [
-                    {type:'投诉',category:'质量',cont:'1xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
-                    {type:'投诉',category:'质量',cont:'2xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
-                    {type:'投诉',category:'质量',cont:'3xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
-                    {type:'投诉',category:'质量',cont:'4xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
-                    {type:'投诉',category:'质量',cont:'5xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
-                    {type:'投诉',category:'质量',cont:'6xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
-                    {type:'投诉',category:'质量',cont:'7xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}
-                ],
+      contentArr: [],
       num: 0
     }
   },
   mounted() {
     overdue({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       let resdata=res.data;
-      console.log(resdata);
-      // this.contentArr=resdata
+      this.contentArr=resdata
+      let _this = this
+      setInterval(function () {
+        if (_this.num !== _this.contentArr.length) {
+          _this.num++
+        } else {
+          _this.num = 0
+        }
+      }, 2000)
     })
   },
   
@@ -59,16 +58,6 @@ export default {
     transform: function () {
       return 'translateY(-' + this.num * this.height + 'rem)'
     }
-  },
-  created: function () {
-    let _this = this
-    setInterval(function () {
-      if (_this.num !== _this.contentArr.length) {
-        _this.num++
-      } else {
-        _this.num = 0
-      }
-    }, 2000)
   }
 }
 </script>
@@ -81,6 +70,7 @@ export default {
     padding: 10px;
     box-sizing: border-box;
     .disx{
+        width: 100%;
         height: 7.75rem;
         display: inline-block;
         position:relative;
@@ -89,8 +79,10 @@ export default {
             height: 7.5rem;
             margin-top: 1rem;
             transition: 1s linear;
-            div{
-                float: left;
+            .li{
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
                 height: 4rem;
                 line-height: 4rem;
                 font-size: 2rem;
@@ -102,14 +94,14 @@ export default {
             .type{
                 width: 7rem;
             }
-            .category{
-                width: 16rem;
-            }
             .cont{
-                width: 20rem;
+                width: 27rem;
+                overflow:hidden; //超出的文本隐藏
+                text-overflow:ellipsis; //溢出用省略号显示
+                white-space:nowrap; //溢出不换行
             }
             .date{
-                width: 26rem;
+                width: 20rem;
             }
             .agency{
                 font-size: 1.67rem;
