@@ -6,43 +6,55 @@
     <div class="Etitle">
       <p>风险管控</p>
     </div>
-
     <el-row :gutter="12">
       <el-col :span="8">
         <el-row :gutter="12">
           <el-col :span="12">
+<!--            食品-->
             <spcj></spcj>
           </el-col>
           <el-col :span="12">
+<!--            产品-->
             <ggfx></ggfx>
           </el-col>
         </el-row>
       </el-col>
       <el-col :span="8">
-        <numbers></numbers>
         <el-row :gutter="12">
-          <el-col :span="12">
-            <el-row>
-              <el-col :span="24">
-                <yxhqy></yxhqy>
-              </el-col>
-            </el-row>
-          </el-col>
-          <el-col :span="12">
-            <el-row>
-              <el-col :span="24">
-                <zdjg></zdjg>
-              </el-col>
-            </el-row>
-          </el-col>
           <el-col :span="24">
-            <el-row>
-              <el-col :span="24">
-                <yaoshi></yaoshi>
-              </el-col>
-            </el-row>
+<!--            总计-->
+            <numbers></numbers>
           </el-col>
         </el-row>
+        <el-row :gutter="12">
+          <el-col :span="24">
+<!--            药品-->
+            <ypcj></ypcj>
+          </el-col>
+        </el-row>
+<!--        <el-row :gutter="12">-->
+<!--          <el-col :span="12">-->
+<!--            <el-row>-->
+<!--              <el-col :span="24">-->
+<!--                <yxhqy></yxhqy>-->
+<!--              </el-col>-->
+<!--            </el-row>-->
+<!--          </el-col>-->
+<!--          <el-col :span="12">-->
+<!--            <el-row>-->
+<!--              <el-col :span="24">-->
+<!--                <zdjg></zdjg>-->
+<!--              </el-col>-->
+<!--            </el-row>-->
+<!--          </el-col>-->
+<!--          <el-col :span="24">-->
+<!--            <el-row>-->
+<!--              <el-col :span="24">-->
+<!--                <yaoshi></yaoshi>-->
+<!--              </el-col>-->
+<!--            </el-row>-->
+<!--          </el-col>-->
+<!--        </el-row>-->
       </el-col>
       <el-col :span="8">
         <el-row :gutter="12">
@@ -73,6 +85,8 @@ import scqy from "@/components/fengxian/scqy"
 import ajztqk from "@/components/fengxian/ajztqk"
 import numbers from "@/components/fengxian/numbers"
 import yaoshi from "@/components/fengxian/yaoshi"
+import ypcj from "@/components/fengxian/ypcj"
+
 // ajztqk
 import * as echarts from "echarts";
 export default {
@@ -121,7 +135,8 @@ export default {
     scqy,
     ajztqk,
     numbers,
-    yaoshi
+    yaoshi,
+    ypcj
   },
   methods: {
     // 按钮
