@@ -1,6 +1,6 @@
 <template>
     <div class="boxs myborder">
-        <!-- <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
+        <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
             <div class="ul" :style = {transform:transform} :class="{ul_unanim:num===0}">
                 <div v-for="(item,index) in contentArr" :key=index :style="{height:height+'rem'}">
                     <div class="type">{{item.tsType}}</div>
@@ -15,7 +15,8 @@
                     <div class="agency">{{item.tsHandlingStatus}}</div>
                 </div>
             </div>
-        </div> -->
+        </div>
+        
     </div>
 </template>
 <script>
@@ -34,7 +35,15 @@ export default {
   },
   data: function () {
     return {
-      contentArr: [],
+      contentArr: [
+                    {type:'投诉',category:'质量',cont:'1xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
+                    {type:'投诉',category:'质量',cont:'2xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
+                    {type:'投诉',category:'质量',cont:'3xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
+                    {type:'投诉',category:'质量',cont:'4xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
+                    {type:'投诉',category:'质量',cont:'5xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
+                    {type:'投诉',category:'质量',cont:'6xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}, 
+                    {type:'投诉',category:'质量',cont:'7xxxxxxxxx....',date:'2021-6-2 12:00:00',agency:'待办理',}
+                ],
       num: 0
     }
   },
@@ -42,7 +51,7 @@ export default {
     overdue({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       let resdata=res.data;
       console.log(resdata);
-      this.contentArr=resdata
+      // this.contentArr=resdata
     })
   },
   
@@ -52,7 +61,6 @@ export default {
     }
   },
   created: function () {
-    console.log(this.contentArr);
     let _this = this
     setInterval(function () {
       if (_this.num !== _this.contentArr.length) {
