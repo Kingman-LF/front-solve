@@ -9,11 +9,11 @@
 </template>
 <script>
 import * as echarts from "echarts";
-
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
 import {sortKey,shopTypes} from "@/assets/api/tousu"
 export default {
   mounted() {
-    shopTypes({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+    shopTypes({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       let resdata=res.data;
       this.dataList=[]
       let num=0;
@@ -35,7 +35,6 @@ export default {
         // }, 500);
       });
     })
-
   },
   methods: {
     date(){

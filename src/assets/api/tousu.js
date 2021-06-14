@@ -47,6 +47,38 @@ export function tousuwenti(parameter){
         data:parameter
     })
 }
+// 举报问题类别
+export function jubaowenti(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/reports',
+        method:'post',
+        data:parameter
+    })
+}
+// 投诉与举报量走势
+export function tousunum(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/trend',
+        method:'post',
+        data:parameter
+    })
+}
+// 投诉率统计
+export function complaintRate(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/complaintRate',
+        method:'post',
+        data:parameter
+    })
+}
+// 临近超期未办理
+export function overdue(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/overdue',
+        method:'post',
+        data:parameter
+    })
+}
 // 处置超期区县分布
 export function overdueArea(parameter){
     return axios({

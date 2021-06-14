@@ -9,21 +9,42 @@
 </template>
 <script>
 import * as echarts from "echarts";
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {sortKey,tousuwenti} from "@/assets/api/tousu"
+
 export default {
   mounted() {
-    this.$nextTick(() => {
+    tousuwenti({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+      let resdata=res.data;
+      this.dataList=[]
+      let num=0;
+      let sums=0;
+      sortKey(resdata,'value')
+      resdata.forEach((v,i) => {
+        sums+=v.value;
+        if(v.name.substring(0,2)==="其他"){
+          resdata.splice(i,1)
+        }else if(num<10){
+          num+=1;
+          this.dataList.push(v)
+        }
+      });
+      this.sums=sums
+      this.$nextTick(() => {
       setTimeout(() => {
-        this.tousuissue();
+        this.tousuissue(this.dataList,this.sums);
       }, 500);
     });
+    })
+    
   },
   methods: {
-    tousuissue() {
+    tousuissue(data,sum) {
       let tousuissue = document.getElementById("tousuissue");
       let tousuissueChart = echarts.init(tousuissue);
-      function huanzhuang(charts, showLable, mygraphic) {
+      function huanzhuang(charts, showLable, mygraphic,data,sum) {
         charts.clear();
-        let gailanTotal = 7044;
+        let gailanTotal = sum;
         let option = {
           tooltip: {
             trigger: "item",
@@ -131,18 +152,7 @@ export default {
               //   length: 20,
               //   length2: 10
               // },
-              data: [
-                { value: 3134, name: "质量" },
-                // { value: 2154, name: "其他" },
-                { value: 724, name: "售后服务" },
-                { value: 465, name: "价格投诉" },
-                { value: 200, name: "合同" },
-                { value: 84, name: "广告" },
-                { value: 55, name: "食品安全" },
-                { value: 51, name: "违反《产品质量法》的违法行为" },
-                { value: 49, name: "无照经营" },
-                { value: 39, name: "计量" },
-              ],
+              data: data,
             },
             {},
           ],
@@ -152,7 +162,7 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(tousuissueChart, true, true);
+      huanzhuang(tousuissueChart, true, true,data,sum);
     },
   },
 };

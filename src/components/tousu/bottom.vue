@@ -20,6 +20,7 @@
 </template>
 <script>
 import * as echarts from "echarts"
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
 import {bottomleft,bottomright} from "@/assets/api/tousu"
 
 export default {
@@ -94,7 +95,7 @@ export default {
     };
   },
   mounted() {
-    bottomleft({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+    bottomleft({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       for (const i in res.data) {
         this.topList.forEach((v,j) => {
           if(i===v.name){
