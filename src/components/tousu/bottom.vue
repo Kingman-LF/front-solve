@@ -20,7 +20,7 @@
 </template>
 <script>
 import * as echarts from "echarts"
-import {bottomleft} from "@/assets/api/tousu"
+import {bottomleft,bottomright} from "@/assets/api/tousu"
 
 export default {
   data() {
@@ -33,8 +33,8 @@ export default {
           text: "湖州市",
           be_complainedXData:[],
           be_complainedYData:[],
-          complainantXData:['王先生', '李先生', '杨女士', '金先生', '朱女士', '褚锡炯', '庄晓清', '慎先生', '陈女士', '史先生'],
-          complainantYData:[9, 7, 5, 5, 5, 4, 4, 4, 4, 4],
+          complainantXData:[],
+          complainantYData:[],
         },
         {
           id: Math.random(),
@@ -42,8 +42,8 @@ export default {
           text: "吴兴区",
           be_complainedXData:[],
           be_complainedYData:[],
-          complainantXData:['陈女士', '陈先生', '刘女士', '陈女士', '王女士', '潘先生', '姜女士', '潘女士', '慎先生', '李女士'],
-          complainantYData:[4, 3, 3, 3, 3, 3, 3, 3, 3, 2],
+          complainantXData:[],
+          complainantYData:[],
         },
         {
           id: Math.random(),
@@ -51,8 +51,8 @@ export default {
           text: "南浔区",
           be_complainedXData:[],
           be_complainedYData:[],
-          complainantXData:['朱女士', '朱女士', '王先生', '贾女士', '鲁先生', '黄先生', '梁女士', '黄先生', '吴先生', '胡女士'],
-          complainantYData:[4, 3, 3, 2, 2, 2, 2, 2, 2, 2],
+          complainantXData:[],
+          complainantYData:[],
         },
         {
           id: Math.random(),
@@ -60,17 +60,17 @@ export default {
           text: "德清县",
           be_complainedXData:[],
           be_complainedYData:[],
-          complainantXData:['朱女士', '朱女士', '王先生', '贾女士', '鲁先生', '黄先生', '梁女士', '黄先生', '吴先生', '胡女士'],
-          complainantYData:[3, 3, 3, 3, 2, 2, 2, 2, 2, 2],
+          complainantXData:[],
+          complainantYData:[],
         },
         {
           id: Math.random(),
           name:'CX',
           text: "长兴县",
           be_complainedXData:[],
-          be_complainedYData:[126, 101, 57, 49, 38, 18, 15, 13, 8, 8],
-          complainantXData:['杨女士', '金先生', '卫先生', '汤先生', '王先生', '张先生', '赵女士', '刘先生', '鲍先生', '徐女士'],
-          complainantYData:[5, 5, 4, 3, 3, 3, 3, 3, 3, 3],
+          be_complainedYData:[],
+          complainantXData:[],
+          complainantYData:[],
         },
         {
           id: Math.random(),
@@ -78,8 +78,8 @@ export default {
           text: "安吉县",
           be_complainedXData:[],
           be_complainedYData:[],
-          complainantXData:['李先生', '某先生', '黄女士', '王女士', '赵女士', '范红', '傅先生', '陈女士', '某先生', '白先生'],
-          complainantYData:[4, 3, 3, 2, 2, 2, 2, 2, 2, 2],
+          complainantXData:[],
+          complainantYData:[],
         },
         {
           id: Math.random(),
@@ -87,8 +87,8 @@ export default {
           text: "南太湖新区",
           be_complainedXData:[],
           be_complainedYData:[],
-          complainantXData:['李先生'],
-          complainantYData:[1],
+          complainantXData:[],
+          complainantYData:[],
         },
       ],
     };
@@ -105,27 +105,21 @@ export default {
       }
       let complained = document.getElementById("be_complained");
       this.complainedChart = echarts.init(complained);
+      this.zhuzhuangtu2(this.complainedChart);
+    })
+    bottomright({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+      for (const i in res.data) {
+        this.topList.forEach((v,j) => {
+          if(i===v.name){
+            v.complainantXData=res.data[i].names
+            v.complainantYData=res.data[i].values
+          }
+        });
+      }
       let complainant = document.getElementById("complainant");
       this.complainantChart = echarts.init(complainant);
-      this.zhuzhuangtu2(this.complainedChart);
       this.zhuzhuangtu2(this.complainantChart);
     })
-    // bottomleft({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
-    //   for (const i in res.data) {
-    //     this.topList.forEach((v,j) => {
-    //       if(i===v.name){
-    //         v.be_complainedXData=res.data[i].names
-    //         v.be_complainedYData=res.data[i].values
-    //       }
-    //     });
-    //   }
-    //   let complained = document.getElementById("be_complained");
-    //   this.complainedChart = echarts.init(complained);
-    //   let complainant = document.getElementById("complainant");
-    //   this.complainantChart = echarts.init(complainant);
-    //   this.zhuzhuangtu2(this.complainedChart);
-    //   this.zhuzhuangtu2(this.complainantChart);
-    // })
   },
   methods: {
     clickF(item, index) {

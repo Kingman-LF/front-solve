@@ -31,3 +31,11 @@ export function bottomleft(parameter){
         data:parameter
     })
 }
+// 投诉人TOP10
+export function bottomright(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/complainter',
+        method:'post',
+        data:parameter
+    })
+}
