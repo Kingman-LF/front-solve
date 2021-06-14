@@ -9,13 +9,13 @@
 </template>
 <script>
 import * as echarts from "echarts";
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
 import {sortKey,jubaowenti} from "@/assets/api/tousu"
 
 export default {
   mounted() {
-    jubaowenti({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+    jubaowenti({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       let resdata=res.data;
-      console.log(resdata);
       this.dataList=[]
       let num=0;
       let sums=0;

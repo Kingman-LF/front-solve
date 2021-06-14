@@ -10,24 +10,41 @@
 
 <script>
 import * as echarts from 'echarts';
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
 import {tousunum} from "@/assets/api/tousu"
 
 export default {
   mounted() {
-    tousunum({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
-      console.log(res)
+    tousunum({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+      // console.log(res.data)
+      this.monthData=[],
+      this.complaint=[],
+      this.report=[],
+      this.M = new Date().getMonth()+1;
+      res.data.complaint.forEach((v,i) => {
+        if(i+1<this.M){
+          this.monthData.push(v.name)
+          this.complaint.push(v.value)
+        }
+      });
+      res.data.report.forEach((v,i) => {
+        if(i+1<this.M){
+          this.report.push(v.value)
+        }
+      });
+      this.$nextTick(() => {
+        // setTimeout(() => {
+          this.tousunmap(this.monthData,this.complaint,this.report);
+        // }, 500);
+      });
     })
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.tousunmap();
-      }, 500);
-    });
+    
   },
   methods: {
-    tousunmap(){
+    tousunmap(monthData,complaint,report){
       var tousunmap = document.getElementById('tousunmap');
       var myChart = echarts.init(tousunmap);
-      function huanzhuang(charts, showLable, mygraphic){
+      function huanzhuang(charts, showLable, mygraphic,monthData,complaint,report){
         charts.clear();
         let option = {
             color: ['#00DDFF','#80FFA5', ],
@@ -80,7 +97,7 @@ export default {
                       fontSize:"1.5rem"
                     },
                     boundaryGap: false,
-                    data: ['1月', '2月', '3月', '4月', '5月'],
+                    data: monthData,
                     
                 }
             ],
@@ -121,7 +138,7 @@ export default {
                     emphasis: {
                         focus: 'series'
                     },
-                    data: [299, 300, 281, 172, 293]
+                    data: report
                 },
                 {
                     name: '投诉',
@@ -145,7 +162,7 @@ export default {
                     emphasis: {
                         focus: 'series'
                     },
-                    data: [1696, 1369, 1549, 1016, 1411]
+                    data: complaint
                 },
 
 
@@ -156,7 +173,7 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(myChart, true, true);
+      huanzhuang(myChart, true, true,monthData,complaint,report);
     }
   },
 }

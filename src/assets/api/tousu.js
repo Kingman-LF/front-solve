@@ -63,3 +63,27 @@ export function tousunum(parameter){
         data:parameter
     })
 }
+// 投诉率统计
+export function complaintRate(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/complaintRate',
+        method:'post',
+        data:parameter
+    })
+}
+// 临近超期未办理
+export function overdue(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/overdue',
+        method:'post',
+        data:parameter
+    })
+}
+// 处置超期区县分布
+export function overdueArea(parameter){
+    return axios({
+        url:'api/complaint/xzzf/overdueArea',
+        method:'post',
+        data:parameter
+    })
+}

@@ -18,6 +18,8 @@
   </div>
 </template>
 <script>
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {complaintRate} from "@/assets/api/tousu"
 export default {
   data() {
     return {
@@ -25,31 +27,73 @@ export default {
       topList: [
         {
           id: Math.random(),
+          name:'HZS',
           text: "湖州市",
+          number:"8381",
+          tjcgl:'',
+          bjygd:'',
+          clz:'',
+          dbl:''
         },
         {
           id: Math.random(),
+          name:'WXQ',
           text: "吴兴区",
+          number:"1609",
+          tjcgl:'',
+          bjygd:'',
+          clz:'',
+          dbl:''
         },
         {
           id: Math.random(),
+          name:'NXQ',
           text: "南浔区",
+          number:"487",
+          tjcgl:'',
+          bjygd:'',
+          clz:'',
+          dbl:''
         },
         {
           id: Math.random(),
+          name:'DQX',
           text: "德清县",
+          number:"893",
+          tjcgl:'',
+          bjygd:'',
+          clz:'',
+          dbl:''
         },
         {
           id: Math.random(),
+          name:'CXX',
           text: "长兴县",
+          number:"1515",
+          tjcgl:'',
+          bjygd:'',
+          clz:'',
+          dbl:''
         },
         {
           id: Math.random(),
+          name:'AJX',
           text: "安吉县",
+          number:"217",
+          tjcgl:'',
+          bjygd:'',
+          clz:'',
+          dbl:''
         },
         {
           id: Math.random(),
+          name:'NTHXQ',
           text: "南太湖新区",
+          number:"1",
+          tjcgl:'',
+          bjygd:'',
+          clz:'',
+          dbl:''
         },
       ],
       lvList: [
@@ -73,49 +117,10 @@ export default {
           text: "处理中",
           number: "153",
         },
-        
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "待办理",
           number: "53",
-        },
-        
-      ],
-      qxdata:[
-        {
-          id:1,
-          text:"湖州",
-          number:"8381"
-        },
-        {
-          id:2,
-          text:"吴兴区",
-          number:"1609"
-        },
-        {
-          id:3,
-          text:"南浔区",
-          number:"487"
-        },
-        {
-          id:4,
-          text:"德清县",
-          number:"893"
-        },
-        {
-          id:5,
-          text:"长兴县",
-          number:"1515"
-        },
-        {
-          id:6,
-          text:"安吉县",
-          number:"217"
-        },
-        {
-          id:7,
-          text:"南太湖新区",
-          number:"1"
         },
       ]
     };
@@ -123,11 +128,30 @@ export default {
   // watch:{
   //       this.$data.lvList[0].number=this.$data.qxdata[index-1].number
   //     },
+  mounted() {
+    complaintRate({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+      for (const i in res.data) {
+        this.topList.forEach((v,j) => {
+          if(i===v.name){
+            v.number=res.data[i].tsjb
+            v.tjcgl=res.data[i].tjcgl
+            v.bjygd=res.data[i].bjygd
+            v.clz=res.data[i].clz
+            v.dbl=res.data[i].dbl
+          }
+        });
+      }
+    })
+  },
   methods: {
     clickF(item, index) {
       this.tabIndex = index;
-      this.$data.lvList[0].number=this.$data.qxdata[index].number
-      console.log(this.$data.qxdata[index].number);
+      this.$data.lvList[0].number=this.$data.topList[index].number||0
+      this.$data.lvList[1].number=this.$data.topList[index].tjcgl||0
+      this.$data.lvList[2].number=this.$data.topList[index].bjygd||0
+      this.$data.lvList[3].number=this.$data.topList[index].clz||0
+      this.$data.lvList[4].number=this.$data.topList[index].dbl||0
+      // console.log(this.$data.topList[index].number);
     },
   },
 };
@@ -192,30 +216,4 @@ export default {
   }
 }
 </style>
-// var vm = new Vue({
-//       el: '#todo-list-example',
-//       data: {
-//         docState: [{
-//             state: 'saved'
-//           },
-//           {
-//             state: 'edited'
-//           },
-//           {
-//             state: 'editing'
-//           }
-//         ]
-//       },
-//       methods: {
-//         buttonMessage: function() {
-//           switch (this.docState) {
-//             case 'saved':
-//               return 'Edit'
-//             case 'edited':
-//               return 'Save'
-//             case 'editing':
-//               return 'Cancel'
-//           }
-//         }
-//       }
-//     })
+

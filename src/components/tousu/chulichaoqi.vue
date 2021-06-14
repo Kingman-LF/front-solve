@@ -9,13 +9,20 @@
 </template>
 <script>
 import * as echarts from "echarts"
+import {overdueArea} from "@/assets/api/tousu"
+import {getYearStartDate,getNowDate,getDate} from "@/utils/date"
 export default {
   mounted() {
     let chulichao = document.getElementById("chulichao");
     let chulichaoChart = echarts.init(chulichao);
     this.zhuzhuang(chulichaoChart);
+    this.getData()
   },
    methods: {
+    getData(){
+      console.log(getDate(new Date("2020-10-02")))
+      // overdueArea()
+    },
     zhuzhuang(charts, color, xdata, ydata, rotate) {
       let xData = xdata ? xdata : ['吴兴区', '南浔区', '德清县', '长兴县', '安吉县','南太湖新区']
       let yData = ydata ? ydata : [0, 0, 0, 0, 0, 0]
@@ -26,7 +33,7 @@ export default {
             offset: 0,
             color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
             }], false)
-      
+
       charts.clear()
       let option = {
         tooltip: {
@@ -39,7 +46,7 @@ export default {
             return `${e[0].name}：${e[0].value}`
             // console.log(e);
           }
-        },  
+        },
         xAxis: {
           type: 'category',
           axisLine: {
@@ -53,7 +60,7 @@ export default {
           axisLabel: {
             interval: 0,
             color: "#fff",
-            
+
             fontSize:"1.5rem",
             fontfamily: 'PingFang',
             fontweight: 'bold',
@@ -83,7 +90,7 @@ export default {
             fontSize:"1.5rem"
           },
           type: 'value',
-          
+
         },
         grid: {
           top: '15%',
@@ -104,7 +111,7 @@ export default {
             color: '#fff',
             fontSize:"1.5rem"
           },
-          
+
 
         }]
       }
@@ -115,7 +122,7 @@ export default {
 
     },
   },
-  
+
 }
 </script>
 <style lang="scss" scoped>
