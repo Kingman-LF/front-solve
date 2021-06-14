@@ -8,7 +8,7 @@
       <div class="left">
         <top-list></top-list>
         <div class="middle">
-          <shop-type 
+          <shop-type
             @tkshow="tkshowCli"
             ref="meetingroomselect"
           ></shop-type>
@@ -53,12 +53,12 @@
           </el-table>
         </template>
         <div class="block" style="margin-top:2rem">
-            <el-pagination align='center' @size-change="handleSizeChange" @current-change="handleCurrentChange" 
-            :current-page="currentPage" 
-            :page-sizes="[10,20]" 
+            <el-pagination align='center' @size-change="handleSizeChange" @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-sizes="[10,20]"
             :page-size="pageSize"
             background
-            layout=" prev, pager, next" 
+            layout=" prev, pager, next"
             :total="tableData.length">
             </el-pagination>
             <div class="zts">共{{tableData.length}}条</div>
@@ -67,7 +67,7 @@
       <div class="two" v-show="!leabeShow">
         <div class="coun">
           <div class="tabs">
-            <div 
+            <div
             v-for="(item, index) in twoList"
             :key="item.id"
             :class="twoTab === index ? 'clie' : ''"
@@ -532,7 +532,7 @@
                   <div class="num">销售地：</div>
                   <div class="conts">{{twoList[3].data.tsxx.xsd}}</div>
                 </div>
-               
+
               </div>
             </div>
           </div>
@@ -691,7 +691,7 @@
                   <div class="num">销售地：</div>
                   <div class="conts">工商</div>
                 </div>
-               
+
               </div>
             </div>
           </div>
@@ -818,6 +818,8 @@ import chulichaoqi from '@/components/tousu/chulichaoqi.vue'
 import xiaobaowei from "@/components/tousu/xiaobaowei.vue";
 import rightbom from "@/components/tousu/rightbom.vue"
 
+
+import {list} from "@/assets/api/tousu"
 export default {
   data() {
     return {
@@ -825,6 +827,7 @@ export default {
       dialogTableVisible: false,
       // 内容显示隐藏
       leabeShow: true,
+      //列表
       tableData: [
             {
               id:1,
@@ -835,33 +838,12 @@ export default {
               start:'代办理',
               consumptionType:"一般食品",
               feedbackContent:"你好！接到你的投诉后，我局工作人员及时与你进行了联系，了解了相关情况，你所投诉的内容我局工作人员已经在全国12315平台上进行处理了，会按规定在平台上给你相关处理答复，请耐心等待。回复人朱金勇，电话0572-5052627。"
-            },
-            {
-              id:2,
-              categoryName:3305230000000202105312269,
-              complainants:"李先生",
-              content:"（信访标题：[来电]浙江省湖州市安吉县；信访编号：HZDH20210528210013）我在网上购买了安吉县孝丰镇狮古桥工业宝蝶竹业有限公司的竹席，商家宣传竹席有刺绣包边，但是收到货并没有刺绣包边，而且竹席做工很差，有很多毛刺，竹席编织的很不紧凑，现在我要求商家退一赔三，请相关单位处理。",
-              complaint:"宝蝶竹业有限公司",
-              start:'处理中',
-              consumptionType:"一般食品",
-              feedbackContent:"你好！接到你的投诉后，我局工作人员及时与你进行了联系，了解了相关情况，你所投诉的内容我局工作人员已经在全国12315平台上进行处理了，会按规定在平台上给你相关处理答复，请耐心等待。回复人朱金勇，电话0572-5052627。"
-            },
-            {
-              id:3,
-              categoryName:3305230000000202105312269,
-              complainants:"王女士",
-              content:"（信访标题：[来电]浙江省湖州市安吉县；信访编号：HZDH20210528210013）我在网上购买了安吉县孝丰镇狮古桥工业宝蝶竹业有限公司的竹席，商家宣传竹席有刺绣包边，但是收到货并没有刺绣包边，而且竹席做工很差，有很多毛刺，竹席编织的很不紧凑，现在我要求商家退一赔三，请相关单位处理。",
-              complaint:"宝蝶竹业有限公司",
-              start:'办结已归档',
-              consumptionType:"一般食品",
-              feedbackContent:"你好！接到你的投诉后，我局工作人员及时与你进行了联系，了解了相关情况，你所投诉的内容我局工作人员已经在全国12315平台上进行处理了，会按规定在平台上给你相关处理答复，请耐心等待。回复人朱金勇，电话0572-5052627。"
-            },
-          ],
+            }],
       currentPage: 1, // 当前页码
       total: 20, // 总条数
       pageSize: 10, // 每页的数据条数
 
-
+      //详情
       twoTab:0,
       twoList: [
         {
@@ -939,11 +921,18 @@ export default {
         // console.log(`当前页: ${val}`);
         this.currentPage = val;
     },
-    // 详情显示隐藏
+    // 点击图标数字显示列表
     tkshowCli(boll,data){
-      // console.log(boll,data);
+      //显示弹窗
       this.dialogTableVisible=boll
+      //详情隐藏，显示列表
       this.leabeShow=true
+
+      list(data).then(res => {
+
+      })
+      // console.log(boll,data);
+
     },
     // 详细信息显示隐藏
     rowClick(row, column, event){
@@ -1004,6 +993,6 @@ export default {
       }
     }
   }
- 
+
 }
 </style>

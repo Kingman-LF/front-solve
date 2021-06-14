@@ -9,15 +9,23 @@
 </template>
 <script>
 import * as echarts from "echarts";
+import {cpcTypeStatistics} from "@/assets/api/tousu"
+import {getYearStartDate,getNowDate,getDate} from "@/utils/date"
 export default {
   mounted() {
     this.$nextTick(() => {
+      this.cpcTypeStatistics()
       setTimeout(() => {
         this.baoxiao();
       }, 500);
     });
   },
   methods: {
+    cpcTypeStatistics(){
+      cpcTypeStatistics({startTime:getYearStartDate(),endTime:getNowDate()}).then(res => {
+          console.log(res)
+      })
+    },
     baoxiao() {
       let baoxiao = document.getElementById("baoxiao");
       let baoxiaoChart = echarts.init(baoxiao);
