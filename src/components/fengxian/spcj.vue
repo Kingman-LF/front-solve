@@ -54,7 +54,7 @@ export default {
             formatter(e){
               return `${e[0].name}：${e[0].value}`
             }
-          },  
+          },
           xAxis: {
             type: 'category',
             axisLine: {
@@ -108,7 +108,7 @@ export default {
               fontweight: 'bold'
             },
             type: 'value',
-            
+
           },
           grid: {
             top: '15%',
@@ -128,7 +128,7 @@ export default {
               color: '#fff',
               fontSize:'1.5rem',
             },
-            
+
 
           }]
         }
@@ -226,13 +226,11 @@ export default {
                   a: {
                     color: "#FF4657",
                     fontSize:'1.5rem',
-                    fontSize: 14,
                     fontWeight: "bold",
                   },
                   b: {
                     color: "#43FF55",
                     fontSize:'1.5rem',
-                    fontSize: 14,
                     fontWeight: "bold",
                   },
                 },
@@ -325,5 +323,5 @@ export default {
       margin-top: 1rem;
     }
   }
-  
+
 </style>
