@@ -82,8 +82,42 @@ export function overdue(parameter){
 // 处置超期区县分布
 export function overdueArea(parameter){
     return axios({
-        url:'api/complaint/xzzf/overdueArea',
+        url:'api/complaintlist/xzzf/overdueArea',
         method:'post',
         data:parameter
     })
 }
+// 消保委投诉类型统计接口
+export function cpcTypeStatistics(parameter){
+    return axios({
+        url:'api/consumption/qgxfz/cpcTypeStatistics',
+        method:'post',
+        data:parameter
+    })
+}
+// 被举报对象TOP10接口
+export function passiveReporter(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/passiveReporter',
+        method:'post',
+        data:parameter
+    })
+}
+// 举报人TOP10接口
+export function reporter(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/reporter',
+        method:'post',
+        data:parameter
+    })
+}
+// 列表
+export function list(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/list',
+        method:'post',
+        data:parameter
+    })
+}
+
+
