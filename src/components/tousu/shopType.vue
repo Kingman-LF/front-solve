@@ -35,7 +35,6 @@ export default {
         // }, 500);
       });
     })
-    
   },
   methods: {
     date(){

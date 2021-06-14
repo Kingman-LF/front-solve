@@ -246,7 +246,7 @@ export default {
                 fontFamily: 'PingFang Bold',
                 fontSize: '1.5rem',
                 formatter(e){
-                  console.log(e)
+                  // console.log(e)
                   return `${e.name}\n${e.value}个 ${e.percent}%`
                 }
               },

@@ -47,3 +47,19 @@ export function tousuwenti(parameter){
         data:parameter
     })
 }
+// 举报问题类别
+export function jubaowenti(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/reports',
+        method:'post',
+        data:parameter
+    })
+}
+// 投诉与举报量走势
+export function tousunum(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/trend',
+        method:'post',
+        data:parameter
+    })
+}

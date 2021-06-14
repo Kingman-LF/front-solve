@@ -10,8 +10,13 @@
 
 <script>
 import * as echarts from 'echarts';
+import {tousunum} from "@/assets/api/tousu"
+
 export default {
   mounted() {
+    tousunum({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+      console.log(res)
+    })
     this.$nextTick(() => {
       setTimeout(() => {
         this.tousunmap();

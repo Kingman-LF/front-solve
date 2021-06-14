@@ -9,21 +9,42 @@
 </template>
 <script>
 import * as echarts from "echarts";
+import {sortKey,jubaowenti} from "@/assets/api/tousu"
+
 export default {
   mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.jubaowentis();
-      }, 500);
+    jubaowenti({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+      let resdata=res.data;
+      console.log(resdata);
+      this.dataList=[]
+      let num=0;
+      let sums=0;
+      sortKey(resdata,'value')
+      resdata.forEach((v,i) => {
+        sums+=v.value;
+        if(v.name.substring(0,4)==="违反其他"||v.name.substring(0,2)==="其他"){
+          resdata.splice(i,1)
+        }else if(num<10){
+          num+=1;
+          this.dataList.push(v)
+        }
+      });
+      this.sums=sums
+      this.$nextTick(() => {
+      // setTimeout(() => {
+        this.jubaowentis(this.dataList,this.sums);
+      // }, 500);
     });
+    })
+    
   },
   methods: {
-    jubaowentis() {
+    jubaowentis(data,sum) {
       let jubaowentis = document.getElementById("jubaowentis");
       let jubaowentisChart = echarts.init(jubaowentis);
-      function huanzhuang(charts, showLable, mygraphic) {
+      function huanzhuang(charts, showLable, mygraphic,data,sum) {
         charts.clear();
-        let gailanTotal = 1337;
+        let gailanTotal = sum;
         let option = {
           tooltip: {
             trigger: "item",
@@ -133,19 +154,7 @@ export default {
               //   // length: 20,
               //   // length2: 10
               // },
-              data: [
-                { value: 289, name: "违法登记管理行为" },
-                { value: 187, name: "侵害消费者权益行为" },
-                // { value: 156, name: "其他" },
-                { value: 152, name: "广告行为违法" },
-                { value: 140, name: "违反食品安全法法规" },
-                { value: 110, name: "价格违法行为" },
-                { value: 79, name: "违反个体私营登记管理违规" },
-                { value: 40, name: "产品质量违法行为" },
-                { value: 26, name: "不正当竞争行为" },
-                { value: 25, name: "其他市场监管领域违法行为" },
-                // { value: 156, name: "其他" }
-              ],
+              data: data,
             },
             {},
           ],
@@ -155,7 +164,7 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(jubaowentisChart, true, true);
+      huanzhuang(jubaowentisChart, true, true,data,sum);
     },
   },
 };
