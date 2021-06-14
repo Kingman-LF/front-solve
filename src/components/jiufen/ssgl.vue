@@ -21,7 +21,6 @@ export default {
   methods:{
     sangshen(charts, echarts) {
       charts.clear()
-      charts.clear()
       var option;
       var legData=['领导出庭', '领导未出庭']
       var data = [
