@@ -39,3 +39,12 @@ export function bottomright(parameter){
         data:parameter
     })
 }
+// 处置超期区县分布
+export function overdueArea(parameter){
+    return axios({
+        url:'api/complaint/xzzf/overdueArea',
+        method:'post',
+        data:parameter
+    })
+}
+

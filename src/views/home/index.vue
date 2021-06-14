@@ -38,10 +38,7 @@ import spcjbhg from "@/components/shouye/spcjbhg";
 import dtjcbhg from "@/components/shouye/dtjcbhg";
 import jbwt from "@/components/shouye/jbwt";
 import jacontent from "@/components/shouye/jacontent";
-
 import {yqInfo} from "@/assets/api/index"
-
-import CryptoJS  from "crypto-js";
 export default {
   name: "index",
   mounted() {
