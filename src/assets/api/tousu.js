@@ -39,3 +39,11 @@ export function bottomright(parameter){
         data:parameter
     })
 }
+// 投诉问题类别
+export function tousuwenti(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/complaints',
+        method:'post',
+        data:parameter
+    })
+}
