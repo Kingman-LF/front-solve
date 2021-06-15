@@ -43,7 +43,7 @@ export function Encrypt(encrypt) {
     }
     data.data = JSON.stringify(encrypt)
     data.sign = md5(data.data).toUpperCase()
-    // console.log(data)
+    console.log(data)
     var key = CryptoJS.enc.Utf8.parse(aesPrivateKey);
 
     var srcs = CryptoJS.enc.Utf8.parse(JSON.stringify(data));

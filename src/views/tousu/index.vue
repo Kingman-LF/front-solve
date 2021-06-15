@@ -34,44 +34,48 @@
       </div>
     </div>
     <el-dialog title="详细信息" :visible.sync="dialogTableVisible">
-      <div class="one" v-show="leabeShow">
+      <div class="one" v-if="leabeShow">
         <template>
           <el-table
-            :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+            :data="tableData"
             height="53rem"
+            highlight-current-row
             style="margin-top:1rem"
-            @row-click="rowClick"
+            @row-click="toDetail"
             >
-            <el-table-column prop="id" label="序号"></el-table-column>
-            <el-table-column prop="categoryName" label="登记编号"></el-table-column>
-            <el-table-column prop="complainants" label="投诉方"></el-table-column>
-            <el-table-column prop="content" label="内容"></el-table-column>
-            <el-table-column prop="complaint" label="被投诉对象"></el-table-column>
-            <el-table-column prop="consumptionType" label="消费类型(中类)"></el-table-column>
-            <el-table-column prop="start" label="办结状态"></el-table-column>
-            <el-table-column prop="feedbackContent" label="反馈内容"></el-table-column>
+            <el-table-column type="index" label="序号" show-overflow-tooltip width="100"></el-table-column>
+            <el-table-column prop="tsRegister" label="登记编号" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="tsProvider" label="投诉方" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="tsContent" label="内容" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="tsType" label="类型" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="tsDefendantName" label="被投诉对象" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="tsConMedType" label="消费类型(中类)" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="tsHandlingStatus" label="办结状态" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="tsFeedContent" label="反馈内容" show-overflow-tooltip></el-table-column>
           </el-table>
         </template>
         <div class="block" style="margin-top:2rem">
-            <el-pagination align='center' @size-change="handleSizeChange" @current-change="handleCurrentChange"
-            :current-page="currentPage"
-            :page-sizes="[10,20]"
-            :page-size="pageSize"
-            background
-            layout=" prev, pager, next"
-            :total="tableData.length">
+            <el-pagination
+              align='center'
+              @current-change="handleCurrentChange"
+              :current-page="currentPage"
+              :page-sizes="[10,20]"
+              :page-size="pageSize"
+              background
+              layout=" prev, pager, next"
+              :total="total">
             </el-pagination>
-            <div class="zts">共{{tableData.length}}条</div>
+            <div class="zts">共{{total}}条</div>
         </div>
       </div>
-      <div class="two" v-show="!leabeShow">
+      <div class="two" v-if="!leabeShow">
         <div class="coun">
           <div class="tabs">
             <div
-            v-for="(item, index) in twoList"
+            v-for="(item, index) in titList"
             :key="item.id"
             :class="twoTab === index ? 'clie' : ''"
-            @click="clickF(item, index)">{{item.text}}</div>
+            @click="clickF(item, index)">{{item}}</div>
           </div>
         </div>
         <div class="labse">
@@ -82,31 +86,31 @@
               <div class="xx">
                 <div class="xx_const">
                   <div class="num">职能：</div>
-                  <div class="conts">{{twoList[0].data.xtxx.zn}}</div>
+                  <div class="conts">{{detail.register.tsFunction}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">登记编号：</div>
-                  <div class="conts">{{twoList[0].data.xtxx.djbh}}</div>
+                  <div class="conts">{{detail.register.tsRegistration}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">登记时间：</div>
-                  <div class="conts">{{twoList[0].data.xtxx.djsj}}</div>
+                  <div class="conts">{{detail.register.tsRegistrationtime}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">信息来源：</div>
-                  <div class="conts">{{twoList[0].data.xtxx.xxly}}</div>
+                  <div class="conts">{{detail.register.tsInformation}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">接收方式：</div>
-                  <div class="conts">{{twoList[0].data.xtxx.jsfs}}</div>
+                  <div class="conts">{{detail.register.tsAcceptance}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">登记部门：</div>
-                  <div class="conts">{{twoList[0].data.xtxx.djbm}}</div>
+                  <div class="conts">{{detail.register.tsDepartment}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">受理登记人：</div>
-                  <div class="conts">{{twoList[0].data.xtxx.sldjr}}</div>
+                  <div class="conts">{{detail.register.tsAcceptances}}</div>
                 </div>
               </div>
             </div>
@@ -115,81 +119,85 @@
               <div class="xx">
                 <div class="xx_const">
                   <div class="num">姓名/名称：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.nume}}</div>
+                  <div class="conts">{{detail.register.tsName}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">联系电话：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.lxdh}}</div>
+                  <div class="conts">{{detail.register.tsContact}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">通讯地址：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.txdz}}</div>
+                  <div class="conts">{{detail.register.tsAddress}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">事发地：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.sfd}}</div>
+                  <div class="conts">{{detail.register.tsIncident}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">事发时间：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.sfdate}}</div>
+                  <div class="conts">{{detail.register.tsIncidenttime}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">性别：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.sex}}</div>
+                  <div class="conts">{{detail.register.tsSex}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">投诉方身份：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.tsfsf}}</div>
+                  <div class="conts">{{detail.register.tsComplainant}}</div>
                 </div>
 
                 <div class="xx_const">
                   <div class="num">投诉主体：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.tszt}}</div>
+                  <div class="conts">{{detail.register.tsSubject}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">关键字：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.gjz}}</div>
+                  <div class="conts">{{detail.register.tsKeyword}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">消费方式：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.xffs}}</div>
+                  <div class="conts">{{detail.register.tsConsumption}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">是否预付式消费：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.sfyfxx}}</div>
+                  <div class="conts">{{detail.register.tsAdvance}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">消费类型中类：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.xflxzx}}</div>
+                  <div class="conts">{{detail.register.tsMiddle}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">消费类型小类：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.xflxxx}}</div>
+                  <div class="conts">{{detail.register.tsSubclass}}</div>
+                </div>
+                <div class="xx_const">
+                  <div class="num">消费类型品种：</div>
+                  <div class="conts">{{detail.register.tsVarieties}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">投诉内容大类：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.tsnrdl}}</div>
+                  <div class="conts">{{detail.register.tsContent}}</div>
                 </div>
 
                 <div class="xx_const">
                   <div class="num">投诉内容中类：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.tsnrzl}}</div>
+                  <div class="conts">{{detail.register.tsMiddleclass}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">投诉内容小类：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.tsnrxl}}</div>
+                  <div class="conts">{{detail.register.tsSubc}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">是否长三角地区：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.sfcsjdq}}</div>
+                  <div class="conts">{{detail.register.tsTriangle}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">残疾人标志：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.cjrbz}}</div>
+                  <div class="conts">{{detail.register.tsDisability}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">具体内容：</div>
-                  <div class="conts">{{twoList[0].data.tsfxx.jtnr}}</div>
+                  <div class="conts">{{detail.register.tsSpecific}}</div>
                 </div>
               </div>
             </div>
@@ -198,47 +206,47 @@
               <div class="xx">
                 <div class="xx_const">
                   <div class="num">涉及主体名称：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.ztname}}</div>
+                  <div class="conts">{{detail.register.tsInvolve}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">所在行业类别：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.szhylb}}</div>
+                  <div class="conts">{{detail.register.tsIndustry}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">联系电话：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.lxdh}}</div>
+                  <div class="conts">{{detail.register.tsContacts}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">统一社会信用代码：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.tyshxydm}}</div>
+                  <div class="conts">{{detail.register.tsSociology}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">涉及主体地址：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.sjztdz}}</div>
+                  <div class="conts">{{detail.register.tsDesign}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">品牌：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.pp}}</div>
+                  <div class="conts">{{detail.register.tsBrand}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">商品名称：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.spmc}}</div>
+                  <div class="conts">{{detail.register.tsCommodity}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">型号规格：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.xhgg}}</div>
+                  <div class="conts">{{detail.register.tsModel}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">涉及金额：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.sjje}}</div>
+                  <div class="conts">{{detail.register.tsMoney}}</div>
                 </div>
                 <div class="xx_const">
-                  <div class="num">数量：{{twoList[0].data.btsfxx.sl}}</div>
-                  <div class="conts">单位：{{twoList[0].data.btsfxx.dw}}</div>
+                  <div class="num">数量：{{detail.register.tsNum}}</div>
+                  <div class="conts">单位：{{detail.register.tsDw}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">商品进口标致：</div>
-                  <div class="conts">{{twoList[0].data.btsfxx.spjkbz}}</div>
+                  <div class="conts">{{detail.register.tsImport}}</div>
                 </div>
               </div>
             </div>
@@ -262,18 +270,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="item in twoList[1].data"
+                <tr v-for="(item,index) in detail.approvaList"
                       :key="item.id">
-                  <td>{{item.id}}</td>
-                  <td>{{item.sslx}}</td>
-                  <td>{{item.ssbm}}</td>
-                  <td>{{item.sssj}}</td>
-                  <td>{{item.spbm}}</td>
-                  <td>{{item.spry}}</td>
-                  <td>{{item.spsj}}</td>
-                  <td>{{item.ssfy}}</td>
-                  <td>{{item.shfy}}</td>
-                  <td>{{item.shzt}}</td>
+                  <td>{{index+1}}</td>
+                  <td>{{item.tsType}}</td>
+                  <td>{{item.tsApproval}}</td>
+                  <td>{{item.tsApersonnel}}</td>
+                  <td>{{item.tsApprovalTime}}</td>
+                  <td>{{item.tsDept}}</td>
+                  <td>{{item.tsPersonnel}}</td>
+                  <td>{{item.tsSubmittime}}</td>
+                  <td>{{item.tsPostscript}}</td>
+                  <td>{{item.tsExamine}}</td>
+                  <td>{{item.tsState}}</td>
                 </tr>
               </tbody>
             </table>
@@ -285,47 +294,47 @@
               <div class="xx">
                 <div class="xx_const">
                   <div class="num">受理编号：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.slbh}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsAcceptance}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">信息类型：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.xxlx}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsInformation}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">当前状态：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.dqzt}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsCurrent}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">受理登记人：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.sldjr}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsRegistrant}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">催问次数：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.cwcs}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsUrge}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">登记日期：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.djrq}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsDate}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">办理期限：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.blqx}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsHandle}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">是否重大案件：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.sfzdaj}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsMajor}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">登记部门：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.djbm}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsDept}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">所在部门：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.szbm}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsWheredept}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">转向部门：</div>
-                  <div class="conts">{{twoList[2].data.dqjlxx.zxbm}}</div>
+                  <div class="conts">{{detail.circulationList[detail.circulationList.length-1].tsTurn}}</div>
                 </div>
               </div>
             </div>
@@ -354,112 +363,112 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="item in twoList[2].data.lzjlqk"
+                    <tr v-for="(item,index) in detail.circulationList"
                       :key="item.id">
-                      <td>{{item.id}}</td>
-                      <td>{{item.lzsj}}</td>
-                      <td>{{item.zcbm}}</td>
-                      <td>{{item.jsbm}}</td>
-                      <td>{{item.lzlx}}</td>
-                      <td>{{item.lzr}}</td>
-                      <td>{{item.lxdh}}</td>
-                      <td>{{item.fy}}</td>
-                      <td>{{item.fhyy}}</td>
-                      <td>{{item.csrlxdh}}</td>
-                      <td>{{item.dbjs}}</td>
-                      <td>{{item.jsr}}</td>
-                      <td>{{item.jsbm}}</td>
-                      <td>{{item.jssj}}</td>
-                      <td>{{item.jsnr}}</td>
+                      <td>{{index+1}}</td>
+                      <td>{{item.cCirculation}}</td>
+                      <td>{{item.cTransfer}}</td>
+                      <td>{{item.tsAccept}}</td>
+                      <td>{{item.tsType}}</td>
+                      <td>{{item.tsTransferor}}</td>
+                      <td>{{item.tsContact}}</td>
+                      <td>{{item.tsPostscript}}</td>
+                      <td>{{item.tsReturn}}</td>
+                      <td>{{item.tsWithdrawing}}</td>
+                      <td>{{item.tsContacts}}</td>
+                      <td>{{item.tsSupervise}}</td>
+                      <td>{{item.tsInterpreter}}</td>
+                      <td>{{item.tsInterpreterdept}}</td>
+                      <td>{{item.tsInterpretertime}}</td>
+                      <td>{{item.tsContent}}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-
           <!-- 投诉 调解反馈 -->
-          <div class="lab_dis" v-show="twoTab===3 && twoList[twoTab].text==='调解反馈'">
+          <div class="lab_dis" v-show="twoTab===3 && detail.circulationList[detail.circulationList.length-1].tsInformation==='投诉'">
             <div class="ify">
               <div class="tatl">反馈信息</div>
               <div class="xx">
                 <div class="xx_const">
                   <div class="num">办理类型：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.bllx}}</div>
+                  <div class="conts">{{detail.mediate.tsHandling}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">调解人：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.tjr}}</div>
+                  <div class="conts">{{detail.mediate.tsMediator}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">调解人联系电话：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.tjrlxdh}}</div>
+                  <div class="conts">{{detail.mediate.tsContact}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">调解结束日期：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.tjjsrq}}</div>
+                  <div class="conts">{{detail.mediate.tsEnddate}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">调解信息：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.tjxx}}</div>
+                  <div class="conts">{{detail.mediate.tsInformation}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">行政调解书文号：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.xzjtswh}}</div>
+                  <div class="conts">{{detail.mediate.tsDocument}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">案值：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.az}}</div>
+                  <div class="conts">{{detail.mediate.tsCase}}</div>
                 </div>
 
                 <div class="xx_const">
                   <div class="num">争议金额：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.jyje}} 元</div>
+                  <div class="conts">{{detail.mediate.tsAmount}} 元</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">挽回经济损失：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.whjjss}} 元</div>
+                  <div class="conts">{{detail.mediate.tsRedeem}} 元</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">加倍赔偿金额：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.jbpcj}} 元</div>
+                  <div class="conts">{{detail.mediate.tsDouble}} 元</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">精神赔偿金额：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.jspcje}} 元</div>
+                  <div class="conts">{{detail.mediate.tsSpirit}} 元</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">案件涉及类型：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.ansjlx}}</div>
+                  <div class="conts">{{detail.mediate.tsInvolve}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">是否进行行政处罚：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.sfjxxzcf}}</div>
+                  <div class="conts">{{detail.mediate.tsPunish}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">反馈登记人：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.fkdjr}}</div>
+                  <div class="conts">{{detail.mediate.tsFeedback}}</div>
                 </div>
 
                 <div class="xx_const">
                   <div class="num">反馈登记人部门：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.fxdjrbm}}</div>
+                  <div class="conts">{{detail.mediate.tsRegister}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">反馈时间：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.fksj}}</div>
+                  <div class="conts">{{detail.mediate.tsTime}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">告知方式：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.gzfs}}</div>
+                  <div class="conts">{{detail.mediate.tsInform}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">是否出现场：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.sfcxc}}</div>
+                  <div class="conts">{{detail.mediate.tsAppear}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">回复内容：</div>
-                  <div class="conts">{{twoList[3].data.fkxx.hfnr}}</div>
+                  <div class="conts">{{detail.mediate.tsHfnr}}</div>
                 </div>
               </div>
             </div>
@@ -468,77 +477,76 @@
               <div class="xx">
                 <div class="xx_const">
                   <div class="num">被诉方：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.bsf}}</div>
+                  <div class="conts">{{detail.mediate.tsDefendant}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">侵权人类型：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.qqrlx}}</div>
+                  <div class="conts">{{detail.mediate.tsTort}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">统一社会信用代码：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.tyshxydm}}</div>
+                  <div class="conts">{{detail.mediate.tsUnified}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">联系电话：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.lxdh}}</div>
+                  <div class="conts">{{detail.mediate.tsContacts}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">地址：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.dz}}</div>
+                  <div class="conts">{{detail.mediate.tsAddress}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">消费类型中类：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.xflxzl}}</div>
+                  <div class="conts">{{detail.mediate.tsConsumption}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">消费类型小类：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.xflxxl}}</div>
+                  <div class="conts">{{detail.mediate.tsSubclass}}</div>
                 </div>
 
                 <div class="xx_const">
                   <div class="num">消费类型品种：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.xflxpz}}</div>
+                  <div class="conts">{{detail.mediate.tsVarieties}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">性质大类：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.xzdl}}</div>
+                  <div class="conts">{{detail.mediate.tsNature}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">性质中类：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.xzzl}}</div>
+                  <div class="conts">{{detail.mediate.tsMiddle}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">性质小类：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.xzxl}}</div>
+                  <div class="conts">{{detail.mediate.tsSubc}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">商品名称：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.spmc}}</div>
+                  <div class="conts">{{detail.mediate.tsCommodity}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">品牌名称：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.ppmc}}</div>
+                  <div class="conts">{{detail.mediate.tsBrand}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">类型规格：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.lxgg}}</div>
+                  <div class="conts">{{detail.mediate.tsModel}}</div>
                 </div>
 
                 <div class="xx_const">
                   <div class="num">销售地所在行政区别：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.xsdszxzqb}}</div>
+                  <div class="conts">{{detail.mediate.tsSale}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">销售地：</div>
-                  <div class="conts">{{twoList[3].data.tsxx.xsd}}</div>
+                  <div class="conts">{{detail.mediate.tsPlace}}</div>
                 </div>
-
               </div>
             </div>
           </div>
 
           <!-- 举报 查处结果反馈 -->
-          <div class="lab_dis" v-show="twoTab===3 && twoList[twoTab].text==='查处结果反馈'">
+          <div class="lab_dis" v-show="twoTab===3 && detail.circulationList[detail.circulationList.length-1].tsInformation==='举报'">
             <div class="ify">
               <div class="tatl">反馈信息</div>
               <div class="xx">
@@ -703,29 +711,29 @@
               <div class="xx">
                 <div class="xx_const">
                   <div class="num">回访状态：</div>
-                  <div class="conts">{{twoList[4].data.hfzt}}</div>
+                  <div class="conts">{{detail.returnvisit?detail.returnvisit.tsReturn:""}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">回访人：</div>
-                  <div class="conts">{{twoList[4].data.hfr}}</div>
+                  <div class="conts">{{detail.returnvisit?detail.returnvisit.tsVisitors:""}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">回访时间：</div>
-                  <div class="conts">{{twoList[4].data.hfsj}}</div>
+                  <div class="conts">{{detail.returnvisit?detail.returnvisit.tsReturntime:""}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">回访方式：</div>
-                  <div class="conts">{{twoList[4].data.hffs}}</div>
+                  <div class="conts">{{detail.returnvisit?detail.returnvisit.tsReturnmode:""}}</div>
                 </div>
                 <div class="xx_const">
                   <div class="num">满意度：</div>
-                  <div class="conts">{{twoList[4].data.myd}}</div>
+                  <div class="conts">{{detail.returnvisit?detail.returnvisit.tsSatisfaction:""}}</div>
                 </div>
               </div>
             </div>
           </div>
           <!-- 抄告记录 -->
-          <div class="lab_dis" v-show="twoTab===5">
+          <div class="lab_dis" v-show="twoTab===9">
             <table>
               <thead>
                 <tr>
@@ -755,7 +763,7 @@
             </table>
           </div>
           <!-- 文件附录 -->
-          <div class="lab_dis" v-show="twoTab===6">
+          <div class="lab_dis" v-show="twoTab===9">
             <table>
               <thead>
                 <tr>
@@ -788,15 +796,30 @@
             </table>
           </div>
           <!-- 时间轴 -->
-          <div class="lab_dis" v-show="twoTab===7">
-            <div class="sjcons" v-for="item in twoList[7].data"
-                      :key="item.id">
-              <div class="data">时间：{{item.date}}</div>
-              <div class="cons">
-                <div>{{item.name}}</div>
-                <div>该记录由<span>{{item.jg}}</span>机构的<span>{{item.mz}}</span>，于<span>{{item.date}}</span>进行<span>{{item.name}}</span>。审批结果为：<span>{{item.spjg}}</span></div>
-              </div>
+          <div class="lab_dis" v-show="twoTab===5">
+            <div style="padding: 0 1.5rem">
+              <el-timeline :reverse="true">
+                <el-timeline-item
+                  v-for="(item, index) in detail.ctimeaxisList"
+                  :key="index"
+                  placement="top"
+                  :timestamp="item.tsHandletime">
+                  <div class="item">
+                    <h3>{{item.tsStatus}}</h3>
+                    <p>{{item.tsContent}}</p>
+                  </div>
+                </el-timeline-item>
+              </el-timeline>
             </div>
+
+<!--            <div class="sjcons" v-for="item in twoList[7].data"-->
+<!--                      :key="item.id">-->
+<!--              <div class="data">时间：{{item.date}}</div>-->
+<!--              <div class="cons">-->
+<!--                <div>{{item.name}}</div>-->
+<!--                <div>该记录由<span>{{item.jg}}</span>机构的<span>{{item.mz}}</span>，于<span>{{item.date}}</span>进行<span>{{item.name}}</span>。审批结果为：<span>{{item.spjg}}</span></div>-->
+<!--              </div>-->
+<!--            </div>-->
           </div>
         </div>
         <div class="retu" @click="rowClick">返回</div>
@@ -819,7 +842,7 @@ import xiaobaowei from "@/components/tousu/xiaobaowei.vue";
 import rightbom from "@/components/tousu/rightbom.vue"
 
 
-import {list} from "@/assets/api/tousu"
+import {list,getComplaintlistDetails} from "@/assets/api/tousu"
 export default {
   data() {
     return {
@@ -828,23 +851,19 @@ export default {
       // 内容显示隐藏
       leabeShow: true,
       //列表
-      tableData: [
-            {
-              id:1,
-              categoryName:3305230000000202105312269,
-              complainants:"周先生",
-              content:"（信访标题：[来电]浙江省湖州市安吉县；信访编号：HZDH20210528210013）我在网上购买了安吉县孝丰镇狮古桥工业宝蝶竹业有限公司的竹席，商家宣传竹席有刺绣包边，但是收到货并没有刺绣包边，而且竹席做工很差，有很多毛刺，竹席编织的很不紧凑，现在我要求商家退一赔三，请相关单位处理。",
-              complaint:"宝蝶竹业有限公司",
-              start:'代办理',
-              consumptionType:"一般食品",
-              feedbackContent:"你好！接到你的投诉后，我局工作人员及时与你进行了联系，了解了相关情况，你所投诉的内容我局工作人员已经在全国12315平台上进行处理了，会按规定在平台上给你相关处理答复，请耐心等待。回复人朱金勇，电话0572-5052627。"
-            }],
+      // 列表用于请求的参数
+      listPostData:null,
+      tableData: [],
       currentPage: 1, // 当前页码
-      total: 20, // 总条数
+      total: 0, // 总条数
       pageSize: 10, // 每页的数据条数
 
       //详情
       twoTab:0,
+      detail:{
+
+      },
+      titList:["登记记录","审批记录","流转记录","调解反馈","回访信息","时间轴"],
       twoList: [
         {
           id: Math.random(),
@@ -911,31 +930,57 @@ export default {
   },
   methods: {
     //每页条数改变时触发 选择一页显示多少行
-    handleSizeChange(val) {
-        // console.log(`每页 ${val} 条`);
-        this.currentPage = 1;
-        this.pageSize = val;
-    },
-    //当前页改变时触发 跳转其他页
     handleCurrentChange(val) {
-        // console.log(`当前页: ${val}`);
-        this.currentPage = val;
+      this.listPostData.page = val.toString();
+      list(this.listPostData).then(res => {
+        console.log(res.count)
+        this.total = res.count
+        this.tableData = res.data
+      })
     },
     // 点击图标数字显示列表
     tkshowCli(boll,data){
       //显示弹窗
-      this.dialogTableVisible=boll
+      this.dialogTableVisible=boll;
       //详情隐藏，显示列表
+<<<<<<< HEAD
       this.leabeShow=true
 
       // list(data).then(res => {
 
       // })
+=======
+      this.leabeShow=true;
+      this.listPostData = data
+      this.$nextTick(() => {
+        this.listPostData.page = '1'
+        this.listPostData.limit = this.pageSize.toString();
+
+        list(this.listPostData).then(res => {
+          console.log(res.count)
+          this.total = res.count
+          this.tableData = res.data
+        })
+      })
+>>>>>>> 14b8d7dc8929818161c9a2788ad83a469cddb1c3
     },
     // 详细信息显示隐藏
     rowClick(row, column, event){
       // console.log(row, column, event);
       this.leabeShow=!this.leabeShow
+    },
+    backList(){
+      this.leabeShow = true
+    },
+    //点击列表跳转详情
+    toDetail(row){
+      this.leabeShow = false;
+      // getComplaintlistDetails({registration:row.tsRegister}).then(res => {
+      getComplaintlistDetails({registration:"3305220000000202106111355"}).then(res => {
+        this.detail = res.data
+        console.log(res)
+      })
+
     },
     // two table切换
     clickF(data,index){
@@ -993,4 +1038,18 @@ export default {
   }
 
 }
+.item{
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+</style>
+<style lang="scss">
+.el-timeline-item__tail{
+  border-color: #ffffff;
+}
+.el-timeline-item__timestamp{
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
 </style>

@@ -208,7 +208,7 @@ body{
 }
 
 //弹出框
-  
+
 .content{
   .el-dialog__wrapper{
     position: absolute;
@@ -243,7 +243,7 @@ body{
           background: rgba($color: #061a5b, $alpha: 1);
         }
         .el-table, .el-table--fit, .el-table--border, .el-table--scrollable-y, .el-table--enable-row-hover, .el-table--enable-row-transition{
-          background: rgba($color: #061a5b, $alpha: .9);
+          //background: rgba($color: #061a5b, $alpha: .9);
         }
         .el-table td, .el-table th{
           text-align: center;
@@ -300,10 +300,6 @@ body{
         }
         .el-table th, .el-table tr{
           background-color: rgba($color: #061a5b, $alpha: 1);
-        }
-        
-        .el-table th:hover, .el-table tr:hover{
-          color: #00F0FF;
         }
         .block{
           margin-bottom: 2rem;
@@ -387,7 +383,7 @@ body{
                       text-align: right;
                     }
                   }
-                  
+
                 }
               }
               table{
@@ -453,7 +449,7 @@ body{
         }
       }
     }
-    
+
   }
   .el-dialog {
     position: absolute;
@@ -461,10 +457,10 @@ body{
     background: rgba($color: #061a5b, $alpha: .9);
     border: .3rem solid #00F0FF;
     box-shadow: 0rem 0rem 2.5rem #0096ff;
-    width: 150rem;
+    width: 180rem;
     left: 50%;
     transform: translate(-50%);
   }
-  
-}   
+
+}
 
