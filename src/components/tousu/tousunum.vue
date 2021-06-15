@@ -42,6 +42,7 @@ export default {
   },
   methods: {
     tousunmap(monthData,complaint,report){
+      let thit=this;
       var tousunmap = document.getElementById('tousunmap');
       var myChart = echarts.init(tousunmap);
       function huanzhuang(charts, showLable, mygraphic,monthData,complaint,report){
@@ -169,6 +170,14 @@ export default {
             ]
         };
         option && charts.setOption(option);
+        charts.on('click', function (params) {
+            console.log(params);
+            // thit.dialogTableVisible = true;
+            var data = {
+              tsType:"投诉",
+            }
+            thit.$emit("tkshow", true,data);
+        });
         window.addEventListener("resize", function () {
           charts.resize();
         });

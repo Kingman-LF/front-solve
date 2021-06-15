@@ -38,6 +38,8 @@ export default {
       ],
       obj:[],
       peo:[],
+      phones:[]
+
     };
   },
   mounted() {
@@ -52,13 +54,14 @@ export default {
         this.obj = res.data
         let xData = this.obj[this.areaCode].names,
             yData = this.obj[this.areaCode].values;
-        this.zhuzhuangtu2(this.complainedChart,xData,yData)
+        this.zhuzhuangtu2(this.complainedChart,xData,yData,1)
       })
-      bottomright({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+      bottomright({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
         this.peo = res.data
-        let xData = this.obj[this.areaCode].names,
-            yData = this.obj[this.areaCode].values;
-        this.zhuzhuangtu2(this.complainantChart,xData,yData)
+        let xData = this.peo[this.areaCode].names,
+            yData = this.peo[this.areaCode].values;
+        this.phones=this.peo[this.areaCode].phones
+        this.zhuzhuangtu2(this.complainantChart,xData,yData,2,this.phones)
       })
     },
     clickF(item, index) {
@@ -66,13 +69,15 @@ export default {
       this.areaCode = item.areaCode;
       let xData1 = this.obj[this.areaCode].names,
           yData1 = this.obj[this.areaCode].values;
+      this.zhuzhuangtu2(this.complainedChart,xData1,yData1,1)
 
-      this.zhuzhuangtu2(this.complainedChart,xData1,yData1)
       let xData2 = this.peo[this.areaCode].names,
           yData2 = this.peo[this.areaCode].values;
-      this.zhuzhuangtu2(this.complainantChart,xData2,yData2)
+      this.phones=this.peo[this.areaCode].phones
+      this.zhuzhuangtu2(this.complainantChart,xData2,yData2,2,this.phones)
     },
-    zhuzhuangtu2(charts, xdata, ydata) {
+    zhuzhuangtu2(charts, xdata, ydata,nam,phones) {
+      let thit=this;
       var colors =new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
               offset: 1,
               color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
@@ -174,6 +179,28 @@ export default {
         }]
       }
       option && charts.setOption(option)
+      charts.on('click', function (params) {
+            // console.log(params);
+            // thit.dialogTableVisible = true;
+            if(nam===1){
+              var data = {
+                tsType:"投诉",
+                tsDefendantName:params.name,
+                pageNo:0,
+                pageSize:10
+              }
+              thit.$emit("tkshow", true,data);
+            }else{
+              var data = {
+                tsType:"投诉",
+                tsInformation:phones[params.dataIndex],
+                pageNo:0,
+                pageSize:10
+              }
+              thit.$emit("tkshow", true,data);
+            }
+            
+        });
       window.addEventListener('resize', function () {
         charts.resize()
       })

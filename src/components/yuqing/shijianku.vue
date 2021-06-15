@@ -18,21 +18,10 @@
     <div class="con">
       <div class="first">
         <ul>
-          <li>
-            <p>总数</p>
-            <p>55782</p>
-          </li>
-          <li>
-            <p>负面信息</p>
-            <p>55782</p>
-          </li>
-          <li>
-            <p>中性信息</p>
-            <p>55782</p>
-          </li>
-          <li>
-            <p>正面信息</p>
-            <p>55782</p>
+          <li v-for="(item,index) in titList1[tabIndex1].firstArr"
+              :key="index">
+            <p>{{item.info}}</p>
+            <p>{{item.num}}</p>
           </li>
         </ul>
       </div>
@@ -71,17 +60,17 @@ export default {
             {info:'正面信息',num:55782}
           ],
           DataTxt:[
-            {value:'16',name:'网媒 16 12%'},
-            {value:'15',name:'微博 15 12%'},
-            {value:'10',name:'微信 10 10%'},
-            {value:'20',name:'贴吧 20 18'},
-            {value:'20',name:'论坛 20 18%'},
-            {value:'18',name:'小视频 18 16%'},
-            {value:'16',name:'网路视频 16 14%'},
-            {value:'8',name:'电视视频 8 10%'},
-            {value:'25',name:'App 25 24%'},
-            {value:'0',name:'报刊 0 0%'},
-            {value:'13',name:'其他 13 12%'}
+            {value:'16',name:'网媒'},
+            {value:'15',name:'微博'},
+            {value:'10',name:'微信'},
+            {value:'20',name:'贴吧'},
+            {value:'20',name:'论坛'},
+            {value:'18',name:'小视频'},
+            {value:'16',name:'网路视频'},
+            {value:'8',name:'电视视频'},
+            {value:'25',name:'App'},
+            {value:'0',name:'报刊'},
+            {value:'13',name:'其他'}
           ],
           xData:['6月3日','6月4日','6月5日','6月7日','6月8日','6月9日'],
           yData: [520, 530, 470, 490, 600,500,500]
@@ -96,17 +85,17 @@ export default {
             {info:'正面信息',num:53782}
           ],
           DataTxt:[
-            {value:'18',name:'网媒 18 12%'},
-            {value:'15',name:'微博 15 12%'},
-            {value:'10',name:'微信 10 10%'},
-            {value:'30',name:'贴吧 30 18%'},
-            {value:'20',name:'论坛 20 18%'},
-            {value:'18',name:'小视频 18 16%'},
-            {value:'19',name:'网路视频 19 14%'},
-            {value:'8',name:'电视视频 8 10%'},
-            {value:'24',name:'App 24 24%'},
-            {value:'0',name:'报刊 0 0%'},
-            {value:'13',name:'其他 13 12%'}
+            {value:'18',name:'网媒'},
+            {value:'15',name:'微博'},
+            {value:'10',name:'微信'},
+            {value:'30',name:'贴吧'},
+            {value:'20',name:'论坛'},
+            {value:'18',name:'小视频'},
+            {value:'19',name:'网路视频'},
+            {value:'8',name:'电视视频'},
+            {value:'24',name:'App'},
+            {value:'0',name:'报刊'},
+            {value:'13',name:'其他'}
           ],
           xData:['6月3日','6月4日','6月5日','6月7日','6月8日','6月9日'],
           yData: [510, 520, 440, 470, 590,480,500]
@@ -145,15 +134,14 @@ export default {
             fontSize:35,
           },
           formatter(e){
-              return ` <div style="width:20px;height:20px;border-radius:20px;background-color:${e.color};display:inline-block"></div> ${e.name}`
+              return ` <div style="width:20px;height:20px;border-radius:20px;background-color:${e.color};display:inline-block"></div> ${e.name} ${e.value} ${e.percent}%`
               // console.log(e);
             }
         },
         legend: {
           show: false,
         },
-        graphic: mygraphic
-            ? [
+        graphic:[
               {
                 tooltip: {
                   formatter(e){
@@ -186,8 +174,7 @@ export default {
                   font: "16px PingFang",
                 },
               },
-            ]
-            : [],
+            ],
         series: [
           {
             type: "pie",

@@ -10,7 +10,7 @@
       >
     </div>
     <div class="lv">
-      <div v-for="item in lvList" :key="item.id">
+      <div v-for="item in lvList" :key="item.id" @click="showtk(true,item.text)">
         <span>{{ item.text }}</span>
         <span>{{ item.number }}</span>
       </div>
@@ -29,7 +29,7 @@ export default {
           id: Math.random(),
           name:'HZS',
           text: "湖州市",
-          number:"8381",
+          number:"6993",
           tjcgl:'',
           bjygd:'',
           clz:'',
@@ -100,34 +100,31 @@ export default {
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "投诉举报",
-          number: "8381",
+          number: "6993",
         },
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "调解成功率",
-          number: "100%",
+          number: "63.23%",
         },
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "办结已归档",
-          number: "8175",
+          number: "8281",
         },
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "处理中",
-          number: "153",
+          number: "28",
         },
         {
           id: Math.random() + new Date().valueOf() + "",
           text: "待办理",
-          number: "53",
+          number: "18",
         },
       ]
     };
   },
-  // watch:{
-  //       this.$data.lvList[0].number=this.$data.qxdata[index-1].number
-  //     },
   mounted() {
     complaintRate({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       for (const i in res.data) {
@@ -142,8 +139,17 @@ export default {
         });
       }
     })
+    
   },
   methods: {
+    showtk(boll,text){
+      // console.log(this.topList[this.tabIndex].text);
+      var data = {
+        tsProcessingDept: this.topList[this.tabIndex].text,
+        tsHandlingStatus:text,
+      }
+      this.$emit("tkshow", boll,data);
+    },
     clickF(item, index) {
       this.tabIndex = index;
       this.$data.lvList[0].number=this.$data.topList[index].number||0
@@ -190,6 +196,7 @@ export default {
     justify-content: space-around;
     div {
       @extend .flex-col;
+      cursor: pointer;
       align-items: center;
       margin-top: 1.5rem;
       span {

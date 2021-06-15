@@ -127,3 +127,19 @@ export function getComplaintlistDetails(parameter){
         data:parameter
     })
 }
+// 投诉率统计穿透
+export function listDept(parameter){
+    return axios({
+        url:'/api/complaintlist/xzzf/listDept',
+        method:'post',
+        data:parameter
+    })
+}
+// 超期区县分布穿透
+export function listOverDept(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/listOverDept',
+        method:'post',
+        data:parameter
+    })
+}

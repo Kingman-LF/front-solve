@@ -14,7 +14,7 @@ import {sortKey,tousuwenti} from "@/assets/api/tousu"
 
 export default {
   mounted() {
-    tousuwenti({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+    tousuwenti({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       let resdata=res.data;
       this.dataList=[]
       let num=0;
@@ -40,6 +40,7 @@ export default {
   },
   methods: {
     tousuissue(data,sum) {
+      let thit=this;
       let tousuissue = document.getElementById("tousuissue");
       let tousuissueChart = echarts.init(tousuissue);
       function huanzhuang(charts, showLable, mygraphic,data,sum) {
@@ -158,6 +159,15 @@ export default {
           ],
         };
         option && charts.setOption(option);
+        charts.on('click', function (params) {
+            console.log(params);
+            // thit.dialogTableVisible = true;
+            var data = {
+              tsType:"投诉",
+              tsNatureType:params.name
+            }
+            thit.$emit("tkshow", true,data);
+        });
         window.addEventListener("resize", function () {
           charts.resize();
         });
