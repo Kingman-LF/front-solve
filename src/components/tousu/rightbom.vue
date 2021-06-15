@@ -37,64 +37,7 @@ export default {
       ],
       obj:[],
       peo:[],
-      topList: [
-        {
-          id: Math.random(),
-          text: "湖州市",
-          be_complainedXData:['棋牌室', '永辉超市', '德清乡巴佬纸制品有限公司', '某店家', '奥园', '老太婆粥摊', '世纪华联生鲜超市（湖州康山街道荟海永鲜食品商行）', '安吉浙北购物有限责任公司', '中石化加油站', '废旧轮胎加工厂'],
-          be_complainedYData:[2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
-          complainantXData:['张学战', '周敏杰', '吴建松', '许红霞', '田先生', '褚锡炯', '胡女士', '徐达', '接先生', '王伟'],
-          complainantYData:[9, 4, 4, 3, 2, 2, 2, 2, 2, 2],
-        },
-        {
-          id: Math.random(),
-          text: "吴兴区",
-          be_complainedXData:['喜多多休闲食品', '湖州吴兴曙光威兹曼医疗美容门诊部有限公司', '吴兴区衣裳街的串意十足烧烤店', '湖州辣椒医疗美容诊所有限公司', '湖州恒颜美医疗美容门诊部有限公司', '湖州倍美医疗美容诊所有限公司', '浙江二虎贸易有限公司', '金迪木门', '上海发联购物中心', '吴兴兴博房产中介所'],
-          be_complainedYData:[126, 101, 99, 57, 49, 38, 27, 24, 20, 18],
-          complainantXData:['张学战', '许红霞', '吴建松', '周敏杰', '刘晓东', '杨先生', '陈杰', '孟四军', '李女士', '徐先生'],
-          complainantYData:[9, 7, 5, 5, 5, 4, 4, 4, 4, 4],
-        },
-        {
-          id: Math.random(),
-          text: "南浔区",
-          be_complainedXData:['棋牌室', '宾馆', '商户', '私营加油', '私人加油站', '晓优副食品店', '练市镇花林村佳良粮油股份有限公司', '标龙项目部工地', '兆弟技术有限公司', '水泥砖厂'],
-          be_complainedYData:[4, 3, 1, 1, 1, 1, 1, 1, 1, 1],
-          complainantXData:['杨先生', '沈先生', '沈先生', '某先生', '姚先生', '杨先生', '邱先生', '杨女士', '张学战', '吴际明'],
-          complainantYData:[3, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        },
-        {
-          id: Math.random(),
-          text: "德清县",
-          be_complainedXData:['德清乡巴佬纸制品有限公司', '某店家', '废旧轮胎加工厂', '浙江雪海梅乡食品有限公司', '老太婆粥摊', '某棋牌室', '棋牌室', '上海如海超市', '花圈店', '新街酒家'],
-          be_complainedYData:[7, 5, 4, 4, 4, 3, 3, 3, 3, 3],
-          complainantXData:['张学战', '周敏杰', '王伟', '一先生', '一先生', '郭建峰', '先生', '钱先生', '钱先生', '马女士'],
-          complainantYData:[7, 4, 3, 2, 2, 2, 2, 2, 2, 2],
-        },
-        {
-          id: Math.random(),
-          text: "长兴县",
-          be_complainedXData:['融悦东方', '奥园', '金陵菜场售卖狗肉', '融悦锦园', '辣子狗肉馆', '李家巷大桥附近的综合物流园区百世汇通快递旁', '好朋友大酒店', '虹星桥镇签忆烧烤店', '恒大悦龙台小区17-2-1302室', '融悦锦苑'],
-          be_complainedYData:[4, 4, 3, 3, 3, 3, 3, 3, 2, 2],
-          complainantXData:['田先生', '接先生', '胡女士', '荆先生', '张学战', '陈先生', '吴女士', '刘先生', '乔先生', '胡女士'],
-          complainantYData:[5, 3, 3, 2, 2, 2, 2, 2, 2, 2],
-        },
-        {
-          id: Math.random(),
-          text: "安吉县",
-          be_complainedXData:['碧桂园凤凰府开发商', '友佳大药房', '香溪丽舍丽园开发商', '妙英超市', '安吉奇恒竹制品厂', '大康', '浙江精通科技股份有限公司', '恒隆府房地产开发商', '孝源菜场西门进去左手第一个肉摊', '孝源街道孝苑东区的5幢10号储藏室'],
-          be_complainedYData:[3, 3, 2, 2, 2, 2, 2, 1, 1, 1],
-          complainantXData:['秦先生', '黄女士', '先生', '朱女士', '女士', '施女士', '宋先生', '徐女士', '张女士', '彭女士'],
-          complainantYData:[2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        },
-        {
-          id: Math.random(),
-          text: "南太湖新区",
-          be_complainedXData:['无'],
-          be_complainedYData:[0],
-          complainantXData:['无'],
-          complainantYData:[0],
-        },
-      ]
+      
     };
   },
   mounted() {
@@ -124,7 +67,7 @@ export default {
     clickF(item, index) {
       if(this.obj[item.areaCode].names.length === 0) return
       this.areaCode = item.areaCode;
-      console.log(this.obj[this.areaCode])
+      // console.log(this.obj[this.areaCode])
       let xData1 = this.obj[this.areaCode].names,
           yData1 = this.obj[this.areaCode].values;
 

@@ -5,58 +5,9 @@
       <p>信访总量</p>
     </div>
     <div class="cons">
-      <!-- <div class="total">
-        <span>总量</span>
-        <span>37</span>
-      </div>
-      <div class="area">
-        <div class="item">
-          <p>6</p>
-          <p>特检院</p>
-        </div>
-        <div class="item">
-          <p>6</p>
-          <p>办公室</p>
-        </div>
-        <div class="item">
-          <p>3</p>
-          <p>机关党委</p>
-        </div>
-        <div class="item">
-          <p>4</p>
-          <p>执法队</p>
-        </div>
-      </div>
-      <div class="area">
-        <div class="item">
-          <p>0</p>
-          <p>吴兴区</p>
-        </div>
-        <div class="item">
-          <p>4</p>
-          <p>南浔区</p>
-        </div>
-        <div class="item">
-          <p>2</p>
-          <p>德清县</p>
-        </div>
-        <div class="item">
-          <p>3</p>
-          <p>长兴县</p>
-        </div>
-        <div class="item">
-          <p>3</p>
-          <p>安吉县</p>
-        </div>
-        <div class="item">
-          <p>6</p>
-          <p>南太湖新区</p>
-        </div>
-      </div> -->
-      
       <div class="zl">
         <div class="num">总量</div>
-        <div class="number">37</div>
+        <div class="number">{{this.count}}</div>
       </div>
       <div class="fb">
         <div class="lb">
@@ -69,10 +20,10 @@
         </div>
         <div class="dw">
           <div 
-            v-for="(item, index) in lvList[tabIndex]"
+            v-for="(item, index) in topList[tabIndex].data"
             :key="index"
             :style="tabIndex==0?'width:33.33%':'width:50%'"
-          ><span>{{item.num}}</span><span class="numb">{{item.value}}</span></div>
+          ><span>{{item.area}}</span><span class="numb">{{item.value}}</span></div>
 
         </div>
       </div>
@@ -81,42 +32,43 @@
 </template>
 
 <script>
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {petitionCount} from "@/assets/api/jiufen"
 export default {
   name: "jagl",
   data() {
     return {
       tabIndex: 0,
+      count:0,
       topList: [
         {
           id: Math.random(),
           text: "区县",
+          data:[],
         },
         {
           id: Math.random(),
           text: "处室",
+          data:[
+            {id: Math.random() + new Date().valueOf() + "",area:'特检院',value:'0'},
+            {id: Math.random() + new Date().valueOf() + "",area:'办公室',value:'0'},
+            {id: Math.random() + new Date().valueOf() + "",area:'机关党委',value:'0'},
+            {id: Math.random() + new Date().valueOf() + "",area:'执法大队',value:'0'},
+            // {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'156'},
+            // {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'1241'},
+            // {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'156'},
+            // {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'1241'},
+          ]
         },
       ],
-      lvList:[
-        [
-          {id: Math.random() + new Date().valueOf() + "",num:'吴兴区',value:'0'},
-          {id: Math.random() + new Date().valueOf() + "",num:'南浔区',value:'4'},
-          {id: Math.random() + new Date().valueOf() + "",num:'德清县',value:'2'},
-          {id: Math.random() + new Date().valueOf() + "",num:'长兴县',value:'3'},
-          {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'3'},
-          {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'6'},
-        ],
-        [
-          {id: Math.random() + new Date().valueOf() + "",num:'特检院',value:'6'},
-          {id: Math.random() + new Date().valueOf() + "",num:'办公室',value:'6'},
-          {id: Math.random() + new Date().valueOf() + "",num:'机关党委',value:'3'},
-          {id: Math.random() + new Date().valueOf() + "",num:'执法大队',value:'4'},
-          // {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'156'},
-          // {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'1241'},
-          // {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'156'},
-          // {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'1241'},
-        ]
-      ]
     }
+  },
+  mounted() {
+    petitionCount({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+      let resdata=res.data;
+      this.count=resdata.count
+      this.topList[0].data=resdata.list
+    })
   },
   methods: {
     clickF(item, index) {

@@ -928,11 +928,9 @@ export default {
       //详情隐藏，显示列表
       this.leabeShow=true
 
-      list(data).then(res => {
+      // list(data).then(res => {
 
-      })
-      // console.log(boll,data);
-
+      // })
     },
     // 详细信息显示隐藏
     rowClick(row, column, event){

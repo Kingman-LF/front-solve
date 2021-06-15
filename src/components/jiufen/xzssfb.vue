@@ -10,18 +10,28 @@
 
 <script>
 import * as echarts from "echarts";
-
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {litigationArea} from "@/assets/api/jiufen"
 export default {
   name: "xzssfb",
   mounted() {
-    let susong = document.getElementById("susong");
-    let susongChart = echarts.init(susong);
-    this.huanzhuang(susongChart);
+    litigationArea({startTime: getDate('2018-01-01'),endTime: getNowDate()}).then(res => {
+      let resdata=res.data;
+      console.log(resdata);
+      this.sum=0
+      resdata.forEach((v,i) => {
+        this.sum+=Number(v.value) 
+      });
+      let susong = document.getElementById("susong");
+      let susongChart = echarts.init(susong);
+      this.huanzhuang(susongChart,this.sum);
+    })
+    
   },
   methods:{
-    huanzhuang(charts, showLable, mygraphic) {
+    huanzhuang(charts,sum, showLable, mygraphic) {
       charts.clear()
-      let gailanTotal = 12
+      let gailanTotal = sum
       let option = {
         tooltip: {
           trigger: 'item',
@@ -92,7 +102,6 @@ export default {
               fontFamily: 'PingFang SC',
               fontSize: '1.5rem',
               formatter(e){
-                console.log(e)
                 return `${e.name}\n${e.value}个 ${e.percent}%`
               }
             },

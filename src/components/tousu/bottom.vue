@@ -8,11 +8,11 @@
     </div>
     <div class="list">
       <span
-        v-for="(item, index) in topList"
+        v-for="(item, index) in areaList"
         :key="item.id"
-        :class="tabIndex === index ? 'current' : ''"
+        :class="{current:areaCode === item.areaCode,hasData:obj[item.areaCode] && obj[item.areaCode].names.length>0}"
         @click="clickF(item, index)"
-        >{{ item.text }}</span>
+        >{{ item.name }}</span>
     </div>
     <div id="be_complained"></div>
     <div id="complainant"></div>
@@ -26,130 +26,60 @@ import {bottomleft,bottomright} from "@/assets/api/tousu"
 export default {
   data() {
     return {
-      tabIndex: 0,
-      topList: [
-        {
-          id: Math.random(),
-          name:'HZS',
-          text: "湖州市",
-          be_complainedXData:[],
-          be_complainedYData:[],
-          complainantXData:[],
-          complainantYData:[],
-        },
-        {
-          id: Math.random(),
-          name:'WX',
-          text: "吴兴区",
-          be_complainedXData:[],
-          be_complainedYData:[],
-          complainantXData:[],
-          complainantYData:[],
-        },
-        {
-          id: Math.random(),
-          name:'NX',
-          text: "南浔区",
-          be_complainedXData:[],
-          be_complainedYData:[],
-          complainantXData:[],
-          complainantYData:[],
-        },
-        {
-          id: Math.random(),
-          name:'DQ',
-          text: "德清县",
-          be_complainedXData:[],
-          be_complainedYData:[],
-          complainantXData:[],
-          complainantYData:[],
-        },
-        {
-          id: Math.random(),
-          name:'CX',
-          text: "长兴县",
-          be_complainedXData:[],
-          be_complainedYData:[],
-          complainantXData:[],
-          complainantYData:[],
-        },
-        {
-          id: Math.random(),
-          name:'AJ',
-          text: "安吉县",
-          be_complainedXData:[],
-          be_complainedYData:[],
-          complainantXData:[],
-          complainantYData:[],
-        },
-        {
-          id: Math.random(),
-          name:'NTHXQ',
-          text: "南太湖新区",
-          be_complainedXData:[],
-          be_complainedYData:[],
-          complainantXData:[],
-          complainantYData:[],
-        },
+      areaCode: "HZS",
+      areaList:[
+        {name:"湖州市",areaCode:"HZS"},
+        {name:"吴兴区",areaCode:"WX"},
+        {name:"南浔区",areaCode:"NX"},
+        {name:"德清县",areaCode:"DQ"},
+        {name:"长兴县",areaCode:"CX"},
+        {name:"安吉县",areaCode:"AJ"},
+        {name:"南太湖新区",areaCode:"NTHXQ"},
       ],
+      obj:[],
+      peo:[],
     };
   },
   mounted() {
-    bottomleft({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-      for (const i in res.data) {
-        this.topList.forEach((v,j) => {
-          if(i===v.name){
-            v.be_complainedXData=res.data[i].names
-            v.be_complainedYData=res.data[i].values
-          }
-        });
-      }
-      let complained = document.getElementById("be_complained");
-      this.complainedChart = echarts.init(complained);
-      this.zhuzhuangtu2(this.complainedChart);
-    })
-    bottomright({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
-      for (const i in res.data) {
-        this.topList.forEach((v,j) => {
-          if(i===v.name){
-            v.complainantXData=res.data[i].names
-            v.complainantYData=res.data[i].values
-          }
-        });
-      }
-      let complainant = document.getElementById("complainant");
-      this.complainantChart = echarts.init(complainant);
-      this.zhuzhuangtu2(this.complainantChart);
-    })
+    this.getData()
+    this.complainedChart = echarts.init(document.getElementById("be_complained"));
+    // this.complainantChart = echarts.init(document.getElementById("complainant"));
+    this.complainantChart = echarts.init(complainant);
   },
   methods: {
-    clickF(item, index) {
-      this.tabIndex = index;
-      this.zhuzhuangtu2(this.complainedChart);
-      this.zhuzhuangtu2(this.complainantChart);
+    getData(){
+      bottomleft({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+        this.obj = res.data
+        let xData = this.obj[this.areaCode].names,
+            yData = this.obj[this.areaCode].values;
+        this.zhuzhuangtu2(this.complainedChart,xData,yData)
+      })
+      bottomright({startTime: "2021-06-07",endTime: "2021-06-08"}).then(res => {
+        this.peo = res.data
+        let xData = this.obj[this.areaCode].names,
+            yData = this.obj[this.areaCode].values;
+        this.zhuzhuangtu2(this.complainantChart,xData,yData)
+      })
     },
-    zhuzhuangtu2(charts, xdata, ydata,color, rotate) {
-      if(charts._dom.id==='be_complained'){
-        var xData = this.topList[this.tabIndex].be_complainedXData
-        var yData = this.topList[this.tabIndex].be_complainedYData
-        var colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+    clickF(item, index) {
+      if(this.obj[item.areaCode].names.length === 0) return
+      this.areaCode = item.areaCode;
+      let xData1 = this.obj[this.areaCode].names,
+          yData1 = this.obj[this.areaCode].values;
+
+      this.zhuzhuangtu2(this.complainedChart,xData1,yData1)
+      let xData2 = this.peo[this.areaCode].names,
+          yData2 = this.peo[this.areaCode].values;
+      this.zhuzhuangtu2(this.complainantChart,xData2,yData2)
+    },
+    zhuzhuangtu2(charts, xdata, ydata) {
+      var colors =new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
               offset: 1,
               color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
               },{
               offset: 0,
               color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
             }], false)
-      }else{
-        var xData = this.topList[this.tabIndex].complainantXData
-        var yData = this.topList[this.tabIndex].complainantYData
-        var colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-              offset: 1,
-              color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
-              },{
-              offset: 0,
-              color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
-            }], false)
-      }
       charts.clear()
       let option = {
         tooltip: {
@@ -191,7 +121,7 @@ export default {
               }
           },
           nameLocation:"middle",
-          data: xData
+          data: xdata
         },
         yAxis: {
           splitLine: {
@@ -229,7 +159,7 @@ export default {
         },
         
         series: [{
-          data: yData,
+          data: ydata,
           type: 'bar',
           barWidth: "60%",
           color: colors,

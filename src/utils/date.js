@@ -15,9 +15,10 @@ export function getNowDate(){
 }
 // 当前时间
 export function getDate(date){
-    let Y = date.getFullYear();
-    let M = date.getMonth()+1;
-    let D = date.getDate();
+    const dates = new Date(date);
+    let Y = dates.getFullYear();
+    let M = dates.getMonth()+1;
+    let D = dates.getDate();
     M = M<10?"0"+M:M
     D = D<10?"0"+D:D
     return Y+'-'+M+'-'+D

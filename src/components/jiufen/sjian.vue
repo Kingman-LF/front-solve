@@ -3,7 +3,7 @@
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>省级积案</p>
-      <div class="tips">1件  化解率100%</div>
+      <div v-if="this.count?true:false" class="tips">{{this.count}}件  化解率{{this.resolution}}</div>
     </div>
     <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
       <div class="ul" :style = {transform:transform} :class="{ul_unanim:num===0}">
@@ -12,20 +12,20 @@
           :key=index
           :style="{height:height+'rem'}"
         >
-          <div class="t">标题:{{item.type}}</div>
-          <div class="c">内容分类:{{item.cont}}</div>
+          <div class="t">标题:{{item.title}}</div>
+          <div class="c">内容分类:{{item.content}}</div>
           <div class="area">地区:{{item.area}}</div>
-          <div class="date">时间:{{item.date}}</div>
+          <div class="date">时间:{{item.time}}</div>
         </div>
         <div class="data"
           v-for="(item,index) in contentArr"
           :key=index+contentArr.length
           :style="{height:height+'rem'}"
         >
-          <div class="t">标题:{{item.type}}</div>
-          <div class="c">内容分类:{{item.cont}}</div>
-          <div class="area">地址:{{item.area}}</div>
-          <div class="date">时间:{{item.date}}</div>
+          <div class="t">标题:{{item.title}}</div>
+          <div class="c">内容分类:{{item.content}}</div>
+          <div class="area">地区:{{item.area}}</div>
+          <div class="date">时间:{{item.time}}</div>
         </div>
       </div>
     </div>
@@ -36,7 +36,8 @@
 <script>
 import * as echarts from "echarts";
 import {getBarJiaoNang, getZhexian, huanzhuang, sangshen, zhuzhuangtu} from "@/utils/getCharts";
-
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {nationalProvincialPendingCase} from "@/assets/api/jiufen"
 export default {
   name: "sjian",
   props: {
@@ -51,27 +52,34 @@ export default {
   },
   data: function () {
     return {
-      contentArr: [
-                    {type:'对湖州质量技术监督局的处理态度极其不满',cont:'市场监管_市场秩序_制售假冒伪劣商品',date:'2019-09-26 08:56:33',area:'市本级',},
-                  ],
-      num: 0
+      count:'',
+      resolution:'',
+      contentArr: [],
+      num: 0,
     }
+  },
+  mounted() {
+    nationalProvincialPendingCase({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+      let resdata=res.data.provincial;
+      console.log(resdata);
+      this.contentArr=resdata.list;
+      this.count=resdata.count;
+      this.resolution=resdata.resolution;
+      let _this = this
+      setInterval(function () {
+        if (_this.num !== _this.contentArr.length) {
+          _this.num++
+        } else {
+          _this.num = 0
+        }
+      }, 2000)
+    })
   },
   computed: {
     transform: function () {
       return 'translateY(-' + this.num * this.height + 'rem)'
     }
   },
-  created: function () {
-    let _this = this
-    setInterval(function () {
-      if (_this.num !== _this.contentArr.length) {
-        _this.num++
-      } else {
-        _this.num = 0
-      }
-    }, 2000)
-  }
 }
 </script>
 

@@ -10,16 +10,21 @@
 
 <script>
 import * as echarts from "echarts";
-
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {petitionAppeal} from "@/assets/api/jiufen"
 export default {
   name: "xfmd",
   mounted() {
-    let mudiChart = echarts.init(document.getElementById("mudi"));
-    this.zhuzhuangtu(mudiChart);
+    petitionAppeal({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+      let resdata=res.data;
+      let mudiChart = echarts.init(document.getElementById("mudi"));
+      this.zhuzhuangtu(mudiChart,resdata.name,resdata.count);
+    })
+    
   },
   methods:{
     // 绘制柱状图
-    zhuzhuangtu(charts, color, xdata, ydata, rotate) {
+    zhuzhuangtu(charts, xdata, ydata, color, rotate) {
       let xData = xdata ? xdata : ['揭发控告', '其他', '申诉', '求决', '咨询', '意见建议']
       let yData = ydata ? ydata : [23, 17, 15, 6, 0, 0]
       let colors = color ? color : '#00F0FF'

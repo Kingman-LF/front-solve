@@ -37,22 +37,6 @@ export default {
     })
   },
   methods: {
-    date(){
-        var date = new Date();
-        // 本年的第一天
-        var bn = date.getFullYear(); //年
-        var bndytdate= new Date(`${bn}-01-01`);
-        var ys = bndytdate.getFullYear(); //年
-        var ms = bndytdate.getMonth() + 1; //月
-        var ds = bndytdate.getDate(); //日
-        console.log(ys + "-" + ms + "-" + ds);
-        // 当前时间的前一天
-        var preDate = new Date(date.getTime() - 24*60*60*1000); //前一天
-        var y = preDate.getFullYear(); //年
-        var m = preDate.getMonth() + 1; //月
-        var d = preDate.getDate(); //日
-        console.log(y + "-" + m + "-" + d);
-    },
     shopType(datas,sum) {
       let thit=this;
       let shopType = document.getElementById("shopType");

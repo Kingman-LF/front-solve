@@ -10,10 +10,15 @@
 
 <script>
 import * as echarts from "echarts"
-
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {reconsideration} from "@/assets/api/jiufen"
 export default {
   name: "xzfyfb",
   mounted() {
+    reconsideration({startTime: getDate('2018-01-01'),endTime: getNowDate()}).then(res => {
+      let resdata=res.data;
+      console.log(resdata);
+    })
     let fuyi = document.getElementById("fuyi");
     let fuyiChart = echarts.init(fuyi);
     this.huanzhuang1(fuyiChart);
@@ -92,7 +97,6 @@ export default {
               fontFamily: 'PingFang SC',
               fontSize: '1.5rem',
               formatter(e){
-                console.log(e)
                 return `${e.name}\n${e.value}个 ${e.percent}%`
               }
             },

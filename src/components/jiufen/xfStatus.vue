@@ -4,44 +4,41 @@
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>信访状态</p>
     </div>
-    <div id="status">
-      <!-- <div class="staItem">
-        <div class="t">已办结</div>
-        <div class="tiao">
-          <div class="in" style="width: 60%"></div>
-        </div>
-        <div class="num">1154(30%)</div>
-      </div>
-      <div class="staItem">
-        <div class="t">待办理</div>
-        <div class="tiao">
-          <div class="in" style="width: 60%"></div>
-        </div>
-        <div class="num">1154(30%)</div>
-      </div> -->
-    </div>
+    <div id="status"></div>
   </div>
 </template>
 
 <script>
 import * as echarts from "echarts";
 import {getBarJiaoNang} from "@/utils/getCharts";
-
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {petitionStatus} from "@/assets/api/jiufen"
 export default {
   name: "xfStatus",
   mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.status();
-      }, 500);
-    });
+    petitionStatus({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+      let resdata=res.data;
+      this.list=[]
+      resdata.forEach((v,i) => {
+        let obj={}
+        obj.name=v.status
+        obj.value=v.value
+        this.list.push(obj)
+      });
+      this.$nextTick(() => {
+        // setTimeout(() => {
+          this.status(this.list);
+        // }, 500);
+      });
+    })
+    
   },
   methods: {
-    status() {
+    status(list) {
       let thit=this;
       let status = document.getElementById("status");
       let statusChart = echarts.init(status);
-      function huanzhuang(charts, showLable, mygraphic) {
+      function huanzhuang(charts, showLable, mygraphic,list) {
         charts.clear();
         let gailanTotal = 4521;
         let option = {
@@ -140,10 +137,7 @@ export default {
                 // length: 20,
                 // length2: 10
               },
-              data: [
-                { value: 1154, name: "已办结" },
-                { value: 254, name: "待办理" },
-              ],
+              data: list,
             },
             {},
           ],
@@ -157,7 +151,7 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(statusChart, true, true);
+      huanzhuang(statusChart, true, true,list);
     },
   },
 }
