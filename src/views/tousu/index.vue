@@ -943,13 +943,14 @@ export default {
       //显示弹窗
       this.dialogTableVisible=boll;
       //详情隐藏，显示列表
-<<<<<<< HEAD
+//<<<<<<<
+ HEAD
       this.leabeShow=true
 
       // list(data).then(res => {
 
       // })
-=======
+//=======
       this.leabeShow=true;
       this.listPostData = data
       this.$nextTick(() => {
@@ -962,7 +963,7 @@ export default {
           this.tableData = res.data
         })
       })
->>>>>>> 14b8d7dc8929818161c9a2788ad83a469cddb1c3
+//>>>>>>> 14b8d7dc8929818161c9a2788ad83a469cddb1c3
     },
     // 详细信息显示隐藏
     rowClick(row, column, event){

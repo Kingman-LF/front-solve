@@ -16,8 +16,10 @@ export default {
   name: "xzssfb",
   mounted() {
     litigationArea({startTime: getDate('2018-01-01'),endTime: getNowDate()}).then(res => {
+      console.log(res);
       let resdata=res.data;
       console.log(resdata);
+      console.log(startTime);
       this.sum=0
       resdata.forEach((v,i) => {
         this.sum+=Number(v.value) 
