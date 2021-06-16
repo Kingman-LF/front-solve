@@ -13,9 +13,18 @@ export function getNowDate(){
     D = D<10?"0"+D:D
     return Y+'-'+M+'-'+D
 }
+export function getPorSevenData(){
+    const date = new Date();
+    let Y = date.getFullYear();
+    let M = date.getMonth()+1;
+    let D = date.getDate()-7;
+    M = M<10?"0"+M:M
+    D = D<10?"0"+D:D
+    return Y+'-'+M+'-'+D
+}
 // 当前时间
 export function getDate(date){
-    const dates = new Date(date);
+    const dates = date?new Date(date):new Date();
     let Y = dates.getFullYear();
     let M = dates.getMonth()+1;
     let D = dates.getDate();
