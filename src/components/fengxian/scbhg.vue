@@ -15,7 +15,7 @@
 <script>
 import * as echarts from "echarts";
 export default {
-  
+
   mounted() {
     //广告发布类型排名
     this.$nextTick(() => {
@@ -45,7 +45,7 @@ export default {
               type: "shadow",
             },
           },
-          
+
           legend: {
             top:"5%",
             textStyle: {
@@ -147,8 +147,8 @@ export default {
               },
               data: [120, 132, 101, 134, 90, 230, 210],
             },
-            
-            
+
+
           ],
         };
         option && charts.setOption(option);
@@ -186,13 +186,13 @@ export default {
               color:"#fff",
               fontSize: '2rem',
             },
-            formatter(e){
-              if(e.length>4){
-                return (e.slice(0,4)+"...")
-              }else{
-                return e
-              }
-            }
+            // formatter(e){
+            //   if(e.length>4){
+            //     return (e.slice(0,4)+"...")
+            //   }else{
+            //     return e
+            //   }
+            // }
           },
           graphic: mygraphic
             ? [
@@ -203,7 +203,7 @@ export default {
                     }
                   },
                   type: "text",
-                  left: "28%",
+                  left: "30%",
                   top: "center",
                   z: 10,
                   style: {
@@ -273,13 +273,10 @@ export default {
               //   length2: 5
               // },
               data: [
-                { value: 8113, name: "湖州市" },
-                { value: 0, name: "吴兴县" },
-                { value: 0, name: "南浔区" },
+                { value: 8113, name: "湖州市本机" },
                 { value: 2464, name: "德清县" },
                 { value: 1433, name: "长兴县" },
                 { value: 4068, name: "安吉县" },
-                { value: 0, name: "南太湖新区" },
               ],
             },
             {},
@@ -304,5 +301,5 @@ export default {
     margin-top: 1rem;
   }
 }
-  
+
 </style>

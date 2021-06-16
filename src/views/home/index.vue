@@ -42,9 +42,9 @@ import {yqInfo} from "@/assets/api/index"
 export default {
   name: "index",
   mounted() {
-    yqInfo({session:'5957cc0591c84fd28cd007fa5e4e8391',userid:'75479',btime:'20210529000000',etime:'20210601000000',pageSize:'10'}).then(res => {
-      console.log(res)
-    })
+    // yqInfo({session:'5957cc0591c84fd28cd007fa5e4e8391',userid:'75479',btime:'20210529000000',etime:'20210601000000',pageSize:'10'}).then(res => {
+    //   console.log(res)
+    // })
   },
   components: {
     assign,//一键交办

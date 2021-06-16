@@ -30,6 +30,7 @@ export default {
       })
     },
     zhuzhuang(charts,xData,yData) {
+      let thit=this;
       charts.clear()
       let option = {
         tooltip: {
@@ -119,12 +120,18 @@ export default {
         }]
       }
       option && charts.setOption(option)
+      charts.on('click', function (params) {
+            console.log(params);
+            // thit.dialogTableVisible = true;
+            var data = {
+              tsProcessingDept: params.name,
+              tsHandlingStatus:"待办理"
+            }
+            thit.$emit("tkshow", true,data);
+        });
       window.addEventListener('resize', function () {
         charts.resize()
       })
-      charts.on('click', function (params) {
-        console.log(params);
-      });
     },
 
   },

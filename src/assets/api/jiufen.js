@@ -2,7 +2,11 @@ import { axios } from '@/utils/request'
 // 省级/国家积案
 export function nationalProvincialPendingCase(parameter){
     return axios({
+<<<<<<< HEAD
         url:'dispute/nationalProvincialPendingCase',
+=======
+        url:'api/dispute/nationalProvincialPendingCase',
+>>>>>>> 16b7682e4ccdc33514b187693469b7b4b1639e17
         method:'post',
         data:parameter
     })
@@ -10,7 +14,11 @@ export function nationalProvincialPendingCase(parameter){
 // 重点案件地区分布
 export function keyCaseAreas(parameter){
     return axios({
+<<<<<<< HEAD
         url:'dispute/keyCaseAreas',
+=======
+        url:'api/dispute/keyCaseAreas',
+>>>>>>> 16b7682e4ccdc33514b187693469b7b4b1639e17
         method:'post',
         data:parameter
     })
@@ -18,7 +26,11 @@ export function keyCaseAreas(parameter){
 // 信访总量
 export function petitionCount(parameter){
     return axios({
+<<<<<<< HEAD
         url:'dispute/petitionCount',
+=======
+        url:'api/dispute/petitionCount',
+>>>>>>> 16b7682e4ccdc33514b187693469b7b4b1639e17
         method:'post',
         data:parameter
     })
@@ -26,7 +38,11 @@ export function petitionCount(parameter){
 // 信访总量
 export function petitionStatus(parameter){
     return axios({
+<<<<<<< HEAD
         url:'dispute/petitionStatus',
+=======
+        url:'api/dispute/petitionStatus',
+>>>>>>> 16b7682e4ccdc33514b187693469b7b4b1639e17
         method:'post',
         data:parameter
     })

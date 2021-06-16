@@ -11,7 +11,7 @@
       </div>
       <div class="fb">
         <div class="lb">
-          <div  
+          <div
             v-for="(item, index) in topList"
             :key="item.id"
             :class="tabIndex === index ? 'clie' : ''"
@@ -19,7 +19,7 @@
           <!-- <div>处室</div> -->
         </div>
         <div class="dw">
-          <div 
+          <div
             v-for="(item, index) in topList[tabIndex].data"
             :key="index"
             :style="tabIndex==0?'width:33.33%':'width:50%'"
@@ -84,9 +84,6 @@ export default {
 .myborder{
   height: 40rem;
   position: relative;
-  .title{
-    width: 16.08rem;
-  }
   .cons{
     width: 100%;
     height: 33rem;
@@ -96,18 +93,18 @@ export default {
       display: flex;
       font-family: PingFang Bold;
       justify-content: center;
+      align-items: flex-end;
       div{
-        height: 8rem;
-        line-height: 8rem;
         color: #fff;
+        margin: 0 0.5rem;
       }
       .num{
         font-size: 2.5rem;
       }
       .number{
-        font-weight: bold;
         font-family: 'digifaw';
-        font-size: 4rem;
+        font-size: 3.5rem;
+        line-height: 4rem;
         text-shadow: 2px 2px 5px #0096ff;
       }
     }
@@ -153,7 +150,6 @@ export default {
             font-family: PingFang Bold;
           }
           .numb{
-            font-weight: bold;
             font-family: 'digifaw';
             font-size: 2rem;
             text-shadow: 2px 2px 5px #0096ff;

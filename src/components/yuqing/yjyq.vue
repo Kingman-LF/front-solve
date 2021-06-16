@@ -56,6 +56,7 @@ export default {
             overflow: hidden;
             text-overflow:ellipsis;
             white-space: nowrap;
+            word-break: break-all;
           }
           &:nth-child(2){
              height: 1.5rem;

@@ -65,7 +65,6 @@
             <ajzt></ajzt>
           </el-col>
         </el-row>
-
       </el-col>
     </el-row>
   </div>

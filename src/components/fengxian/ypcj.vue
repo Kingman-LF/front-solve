@@ -271,7 +271,7 @@ export default {
         },
         series: [{
           name:"实际完成",
-          data: [10,10,10,10,10,10,10],
+          data: [19,111,42,22,99,61,129],
           type: 'bar',
           barWidth: "30%",
           color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
@@ -290,7 +290,7 @@ export default {
           // },
         },{
           name:"计划完成",
-          data: [10,10,10,10,10,10,10],
+          data: [30,150,100,70,150,150,150],
           type: 'bar',
           barWidth: "30%",
           color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{

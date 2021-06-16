@@ -1,14 +1,19 @@
 <template>
     <div class="boxs myborder">
-        <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
+        <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx" 
+          @mouseover="mouseOver"
+          @mouseleave="mouseLeave">
             <div class="ul" :style = {transform:transform} :class="{ul_unanim:num===0}">
-                <div class="li" v-for="(item,index) in contentArr" :key=index :style="{height:height+'rem'}">
+                <div class="li" v-for="(item,index) in contentArr" 
+                :key=index 
+                :style="{height:height+'rem'}"
+                @click="showtk(item)">
                     <div class="type">{{item.tsType}}</div>
                     <div class="cont">内容:{{item.tsContent}}</div>
                     <div class="date">时间:{{item.tsHandleTerm}}</div>
                     <div class="agency">{{item.tsHandlingStatus}}</div>
                 </div>
-                <div class="li" v-for="(item,index) in contentArr" :key=index+contentArr.length :style="{height:height+'rem'}">
+                <div class="li" v-for="(item,index) in contentArr" :key=index+contentArr.length :style="{height:height+'rem'}" @click="showtk(item)">
                     <div class="type">{{item.tsType}}</div>
                     <div class="cont">内容:{{item.tsContent}}</div>
                     <div class="date">时间:{{item.tsHandleTerm}}</div>
@@ -39,12 +44,34 @@ export default {
       num: 0
     }
   },
+  methods: {
+    // 移入停止
+    mouseOver(){
+      clearInterval(this.setint);
+    },
+    // 移出轮播
+    mouseLeave(){
+      let _this = this
+      _this.setint=setInterval(function () {
+        if (_this.num !== _this.contentArr.length) {
+          _this.num++
+        } else {
+          _this.num = 0
+        }
+      }, 2000)
+    },
+    // 点击详情显示
+    showtk(data){
+      console.log(data);
+      this.$emit("tkshow",data);
+    }
+  },
   mounted() {
     overdue({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       let resdata=res.data;
       this.contentArr=resdata
       let _this = this
-      setInterval(function () {
+      _this.setint=setInterval(function () {
         if (_this.num !== _this.contentArr.length) {
           _this.num++
         } else {
@@ -89,7 +116,11 @@ export default {
                 font-family: PingFang SC;
                 font-weight: bold;
                 font-style: italic;
+                cursor: pointer;
                 color: #FFFFFF;
+            }
+            .li:hover{
+              color: #00F0FF;
             }
             .type{
                 width: 7rem;

@@ -1,11 +1,11 @@
 import { axios } from '@/utils/request'
 // 排序
 export function sortKey(array,key){
- return array.sort(function(a,b){
-  var x = a[key];
-  var y = b[key];
-  return ((y<x)?-1:(y>x)?1:0)
- })
+    return array.sort(function(a,b){
+        var x = a[key];
+        var y = b[key];
+        return ((y<x)?-1:(y>x)?1:0)
+    })
 }
 // 商品类别投诉接收量
 export function shopTypes(parameter){
@@ -123,6 +123,22 @@ export function list(parameter){
 export function getComplaintlistDetails(parameter){
     return axios({
         url:'api/complaintlist/xzzf/getComplaintlistDetails',
+        method:'post',
+        data:parameter
+    })
+}
+// 投诉率统计穿透
+export function listDept(parameter){
+    return axios({
+        url:'/api/complaintlist/xzzf/listDept',
+        method:'post',
+        data:parameter
+    })
+}
+// 超期区县分布穿透
+export function listOverDept(parameter){
+    return axios({
+        url:'api/complaintlist/xzzf/listOverDept',
         method:'post',
         data:parameter
     })

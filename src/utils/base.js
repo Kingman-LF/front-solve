@@ -10,7 +10,7 @@ export function Decrypt(param) {
     }
     data.data = JSON.stringify(param)
     data.sign = md5(data.data)
-    console.log(data)
+    // console.log(data)
     let srcs = CryptoJS.enc.Utf8.parse(JSON.stringify(data));
     let key = CryptoJS.enc.Utf8.parse(keys);
     let datas = CryptoJS.AES.encrypt(srcs, key, {mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7});
@@ -43,7 +43,7 @@ export function Encrypt(encrypt) {
     }
     data.data = JSON.stringify(encrypt)
     data.sign = md5(data.data).toUpperCase()
-    console.log(data)
+    // console.log(data)
     var key = CryptoJS.enc.Utf8.parse(aesPrivateKey);
 
     var srcs = CryptoJS.enc.Utf8.parse(JSON.stringify(data));
