@@ -64,10 +64,11 @@
         </div>
       </div>
       <div class="jiaobanBOx" v-if="jiaobanShow">
-        <div class="jbSuccess" v-if="jbSuccess">
+        <div class="jbSuccess" v-if="jbSuccess" @click="jbSuccess = false;jiaobanShow = false">
           <img :src="require('@/assets/images/jiaoFuSuccess.png')" alt="">
+          <p>任务交办成功</p>
         </div>
-        <div class="jiaobanTitle">任务交办</div>
+        <div class="jiaobanTitle">重要任务交办</div>
         <div class="jiaobanList">
           <div class="jiaobanItem" v-for="item in jiaobanList">
             <div class="wenti">
@@ -102,8 +103,7 @@
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(2)">
             <div class="innerTitle num">纠纷多</div>
-            <div class="innerTitle number">{{a}}</div>
-<!--            <div class="innerTitle number">{{list2.length}}</div>-->
+            <div class="innerTitle number">{{list2.length}}</div>
           </div>
         </div>
         <div class="sm-circle sm_3">
@@ -112,7 +112,7 @@
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(3)">
             <div class="innerTitle num">风险多</div>
-            <div class="innerTitle number">{{b}}</div>
+            <div class="innerTitle number">{{list3.length}}</div>
           </div>
         </div>
         <div class="sm-circle sm_4">
@@ -121,8 +121,7 @@
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(4)">
             <div class="innerTitle num">舆情多</div>
-            <div class="innerTitle number">{{c}}</div>
-<!--            <div class="innerTitle number">{{list4.length}}</div>-->
+            <div class="innerTitle number">{{list4.length}}</div>
           </div>
         </div>
         <div class="sm-circle sm_5">
@@ -131,7 +130,7 @@
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(5)">
             <div class="innerTitle num">事故多</div>
-            <div class="innerTitle number">{{d}}</div>
+            <div class="innerTitle number">{{list5.length}}</div>
           </div>
         </div>
         <div class="big-circle sm_6">
@@ -160,14 +159,7 @@ export default {
       wentiList:[],
       //投诉
       list1:[
-        {id:1,name:'豪丰木业厂',tips:'投诉',class:'家居用品',type:'质量',color:'#4103FB',bumen:"南浔镇分局"},
-        {id:2,name:'工商所',tips:'投诉',class:'行政事业性服务',type:'其他',color:'#4103FB',bumen:"组宣人事科"},
-        {id:3,name:'闹闹便利店',tips:'投诉',class:'一般食品',type:'包装标识',color:'#4103FB',bumen:"康山所"},
-        {id:4,name:'苏杭超市',tips:'投诉',class:'一般食品',type:'质量',color:'#4103FB',bumen:"长兴县消保分局"},
-        {id:5,name:'浙江佐力药业股份有限公司',tips:'举报',class:'药品',type:'违反药品管理法法规',color:'#4103FB',bumen:"德清消保分局"},
-        {id:6,name:'浙江默客机电有限公司',tips:'举报',class:'其他商品',type:'违反《产品质量法》的违法行为',color:'#4103FB',bumen:"德清消保分局"},
-        {id:7,name:'橘南小巷',tips:'举报',class:'烟、酒和饮料',type:'违反食品安全法法规',color:'#4103FB',bumen:"安吉昌硕市场监管所"},
-        {id:8,name:'湖州圣岛酒店有限公司',tips:'举报',class:'餐饮和住宿服务',type:'违反市场监督管理法规',color:'#4103FB',bumen:"埭溪所"},
+
       ],
       //纠纷
       list2:[
@@ -188,10 +180,6 @@ export default {
       jiaobanList:[],
       showItemTime:null,
 
-      a:3,
-      b:6,
-      c:19,
-      d:2
     }
   },
   mounted() {
@@ -252,29 +240,17 @@ export default {
     },
     jiaoban(){
       this.jiaobanShow = true
+      this.jbSuccess = true;
       this.jiaobanList = [];
-      var l = this.list1.concat(this.list2).concat(this.list3).concat(this.list4).concat(this.list5);
-      var i = 0
-      this.interval = setInterval(()=>{
-        this.jiaobanList.push(l.splice(i,1)[0])
-        if(i === l.length-1){
-          clearInterval(this.interval);
-          this.jbSuccess = true;
-          setTimeout(()=>{
-            this.jbSuccess = false;
-            this.jiaobanShow = false;
-            this.list1 = [];
-            this.list2 = [];
-            this.list3 = [];
-            this.list4 = [];
-            this.list5 = [];
-            this.a = 0;
-            this.b = 0;
-            this.c = 0;
-            this.d = 0;
-          },2000)
-        }
-      },500)
+      // var l = []
+      // var i = 0
+      // this.interval = setInterval(()=>{
+      //   this.jiaobanList.push(l.splice(i,1)[0])
+      //   if(i === l.length-1){
+      //     clearInterval(this.interval);
+      //     this.jbSuccess = true;
+      //   }
+      // },500)
     }
   }
 }
@@ -306,7 +282,6 @@ export default {
   &.wentiListShow{
     left: -26.16rem;
   }
-
   .wentiConut{
     position: absolute;
     left: 35%;
@@ -620,6 +595,10 @@ export default {
       margin: auto;
       z-index: 999;
       .jbSuccess{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: absolute;
         width: 38rem;
         height: 38rem;
@@ -629,6 +608,25 @@ export default {
         bottom: 0;
         margin:auto;
         z-index: 66;
+        border: 1rem solid #00F0FF;
+        box-shadow: 0rem 0rem 2rem 0rem #00F0FF inset;
+        background-color: #061a5b;
+        border-radius: 50%;
+        text-align: center;
+        cursor: pointer;
+        img{
+          width: 50%;
+        }
+        p{
+          font-size: 3rem;
+          color: #fff;
+          font-family: "PingFang SC";
+          font-weight: bold;
+          margin: 1rem 0;
+        }
+        &:hover{
+          background-color: #0a57ff;
+        }
       }
       .jiaobanTitle{
         font-size: 4rem;
