@@ -13,7 +13,7 @@
                     <div class="date">时间:{{item.tsHandleTerm}}</div>
                     <div class="agency">{{item.tsHandlingStatus}}</div>
                 </div>
-                <div class="li" v-for="(item,index) in contentArr" :key=index+contentArr.length :style="{height:height+'rem'}">
+                <div class="li" v-for="(item,index) in contentArr" :key=index+contentArr.length :style="{height:height+'rem'}" @click="showtk(item)">
                     <div class="type">{{item.tsType}}</div>
                     <div class="cont">内容:{{item.tsContent}}</div>
                     <div class="date">时间:{{item.tsHandleTerm}}</div>

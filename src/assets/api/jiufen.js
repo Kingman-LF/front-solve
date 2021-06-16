@@ -2,7 +2,7 @@ import { axios } from '@/utils/request'
 // 省级/国家积案
 export function nationalProvincialPendingCase(parameter){
     return axios({
-        url:'/api/dispute/nationalProvincialPendingCase',
+        url:'http://192.168.3.203:8089/api/dispute/nationalProvincialPendingCase',
         method:'post',
         data:parameter
     })
@@ -10,7 +10,7 @@ export function nationalProvincialPendingCase(parameter){
 // 重点案件地区分布
 export function keyCaseAreas(parameter){
     return axios({
-        url:'/api/dispute/keyCaseAreas',
+        url:'http://192.168.3.203:8089/api/dispute/keyCaseAreas',
         method:'post',
         data:parameter
     })
@@ -18,7 +18,7 @@ export function keyCaseAreas(parameter){
 // 信访总量
 export function petitionCount(parameter){
     return axios({
-        url:'/api/dispute/petitionCount',
+        url:'http://192.168.3.203:8089/api/dispute/petitionCount',
         method:'post',
         data:parameter
     })
@@ -26,7 +26,7 @@ export function petitionCount(parameter){
 // 信访总量
 export function petitionStatus(parameter){
     return axios({
-        url:'/api/dispute/petitionStatus',
+        url:'http://192.168.3.203:8089/api/dispute/petitionStatus',
         method:'post',
         data:parameter
     })
@@ -34,7 +34,7 @@ export function petitionStatus(parameter){
 // 信访目的
 export function petitionAppeal(parameter){
     return axios({
-        url:'/api/dispute/petitionAppeal',
+        url:'http://192.168.3.203:8089/api/dispute/petitionAppeal',
         method:'post',
         data:parameter
     })
@@ -42,7 +42,7 @@ export function petitionAppeal(parameter){
 // 行政诉讼地区分布
 export function litigationArea(parameter){
     return axios({
-        url:'/api/dispute/litigationArea',
+        url:'http://192.168.3.203:8089/api/dispute/litigationArea',
         method:'post',
         data:parameter
     })
@@ -50,7 +50,7 @@ export function litigationArea(parameter){
 // 行政复议地区分布
 export function reconsideration(parameter){
     return axios({
-        url:'/api/dispute/reconsideration',
+        url:'http://192.168.3.203:8089/api/dispute/reconsideration',
         method:'post',
         data:parameter
     })

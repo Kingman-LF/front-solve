@@ -29,7 +29,7 @@ export default {
           id: Math.random(),
           name:'HZS',
           text: "湖州市",
-          number:"6993",
+          number:"",
           tjcgl:'',
           bjygd:'',
           clz:'',
@@ -39,7 +39,7 @@ export default {
           id: Math.random(),
           name:'WXQ',
           text: "吴兴区",
-          number:"1609",
+          number:"",
           tjcgl:'',
           bjygd:'',
           clz:'',
@@ -49,7 +49,7 @@ export default {
           id: Math.random(),
           name:'NXQ',
           text: "南浔区",
-          number:"487",
+          number:"",
           tjcgl:'',
           bjygd:'',
           clz:'',
@@ -59,7 +59,7 @@ export default {
           id: Math.random(),
           name:'DQX',
           text: "德清县",
-          number:"893",
+          number:"",
           tjcgl:'',
           bjygd:'',
           clz:'',
@@ -69,7 +69,7 @@ export default {
           id: Math.random(),
           name:'CXX',
           text: "长兴县",
-          number:"1515",
+          number:"",
           tjcgl:'',
           bjygd:'',
           clz:'',
@@ -79,7 +79,7 @@ export default {
           id: Math.random(),
           name:'AJX',
           text: "安吉县",
-          number:"217",
+          number:"",
           tjcgl:'',
           bjygd:'',
           clz:'',
@@ -89,7 +89,7 @@ export default {
           id: Math.random(),
           name:'NTHXQ',
           text: "南太湖新区",
-          number:"1",
+          number:"",
           tjcgl:'',
           bjygd:'',
           clz:'',
@@ -126,22 +126,25 @@ export default {
     };
   },
   mounted() {
-    complaintRate({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-      for (const i in res.data) {
-        this.topList.forEach((v,j) => {
-          if(i===v.name){
-            v.number=res.data[i].tsjb
-            v.tjcgl=res.data[i].tjcgl
-            v.bjygd=res.data[i].bjygd
-            v.clz=res.data[i].clz
-            v.dbl=res.data[i].dbl
-          }
-        });
-      }
-    })
+    this.getData()
     
   },
   methods: {
+    getData(){
+      complaintRate({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+        for (const i in res.data) {
+          this.topList.forEach((v,j) => {
+            if(i===v.name){
+              v.number=res.data[i].tsjb
+              v.tjcgl=res.data[i].tjcgl
+              v.bjygd=res.data[i].bjygd
+              v.clz=res.data[i].clz
+              v.dbl=res.data[i].dbl
+            }
+          });
+        }
+      })
+    },
     showtk(boll,text){
       // console.log(this.topList[this.tabIndex].text);
       var data = {
