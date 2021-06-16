@@ -43,7 +43,6 @@ export default {
       let statusChart = echarts.init(status);
       function huanzhuang(charts, showLable, mygraphic, list) {
         charts.clear();
-        let gailanTotal = 4521;
         let option = {
           tooltip: {
             trigger: "item",

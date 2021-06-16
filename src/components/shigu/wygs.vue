@@ -53,7 +53,8 @@
 </template>
 <script>
 import * as echarts from "echarts";
-
+import { getYearStartDate, getNowDate, getDate } from "@/utils/date";
+import { equipmentArea } from "@/assets/api/shigu";
 export default {
   data(){
     return {
@@ -91,7 +92,12 @@ export default {
     }
   },
   mounted() {
-
+    // equipmentArea({ startTime: getYearStartDate(), endTime: getNowDate() }).then(
+    //   (res) => {
+    //     let resdata = res.data;
+    //     console.log(resdata);
+    //   }
+    // );
   },
   methods: {
 
