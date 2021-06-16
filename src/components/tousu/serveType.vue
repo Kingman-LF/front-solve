@@ -146,9 +146,14 @@ export default {
         };
         option && charts.setOption(option);
         serveTypeChart.on('click', function (params) {
-            // console.log(params);
+            console.log(params);
             // thit.dialogTableVisible = true;
-            thit.$emit("tkshow", true,params);
+            var data = {
+              tsType:"投诉",
+              tsNatureBigType:"服务",
+              tsConMedType:params.name,
+            }
+            thit.$emit("tkshow", true,data);
         });
         window.addEventListener("resize", function () {
           charts.resize();

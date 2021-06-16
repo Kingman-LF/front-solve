@@ -37,7 +37,7 @@ export default {
       ],
       obj:[],
       peo:[],
-      
+      phones:[]
     };
   },
   mounted() {
@@ -55,13 +55,14 @@ export default {
         this.obj = res.data
         let xData = this.obj[this.areaCode].names,
             yData = this.obj[this.areaCode].values;
-        this.zhuzhuangtu3(this.complainedChart2,xData,yData)
+        this.zhuzhuangtu3(this.complainedChart2,xData,yData,1)
       })
       reporter({startTime:getYearStartDate(),endTime:getNowDate()}).then(res => {
         this.peo = res.data
-        let xData = this.obj[this.areaCode].names,
-            yData = this.obj[this.areaCode].values;
-        this.zhuzhuangtu3(this.complainantChart2,xData,yData)
+        let xData = this.peo[this.areaCode].names,
+            yData = this.peo[this.areaCode].values;
+        this.phones=this.peo[this.areaCode].phones
+        this.zhuzhuangtu3(this.complainantChart2,xData,yData,2,this.phones)
       })
     },
     clickF(item, index) {
@@ -70,13 +71,14 @@ export default {
       // console.log(this.obj[this.areaCode])
       let xData1 = this.obj[this.areaCode].names,
           yData1 = this.obj[this.areaCode].values;
-
-      this.zhuzhuangtu3(this.complainedChart2,xData1,yData1)
+      this.zhuzhuangtu3(this.complainedChart2,xData1,yData1,1)
       let xData2 = this.peo[this.areaCode].names,
           yData2 = this.peo[this.areaCode].values;
-      this.zhuzhuangtu3(this.complainantChart2,xData2,yData2)
+      this.phones=this.peo[this.areaCode].phones
+      this.zhuzhuangtu3(this.complainantChart2,xData2,yData2,2,this.phones)
     },
-    zhuzhuangtu3(charts,xData, yData) {
+    zhuzhuangtu3(charts,xData, yData,nam,phones) {
+      let thit=this;
       charts.clear()
       let option = {
         tooltip: {
@@ -172,6 +174,28 @@ export default {
         }]
       }
       option && charts.setOption(option)
+      charts.on('click', function (params) {
+            // console.log(params);
+            // thit.dialogTableVisible = true;
+            if(nam===1){
+              var data = {
+                tsType:"投诉",
+                tsDefendantName:params.name,
+                pageNo:0,
+                pageSize:10
+              }
+              thit.$emit("tkshow", true,data);
+            }else{
+              console.log(phones[params.dataIndex]);
+              var data = {
+                tsType:"投诉",
+                tsInformation:phones[params.dataIndex],
+                pageNo:0,
+                pageSize:10
+              }
+              thit.$emit("tkshow", true,data);
+            }
+        });
       window.addEventListener('resize', function () {
           charts.resize()
       })

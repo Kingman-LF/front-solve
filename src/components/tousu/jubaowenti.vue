@@ -40,6 +40,7 @@ export default {
   },
   methods: {
     jubaowentis(data,sum) {
+      let thit=this;
       let jubaowentis = document.getElementById("jubaowentis");
       let jubaowentisChart = echarts.init(jubaowentis);
       function huanzhuang(charts, showLable, mygraphic,data,sum) {
@@ -160,6 +161,15 @@ export default {
           ],
         };
         option && charts.setOption(option);
+        charts.on('click', function (params) {
+            console.log(params);
+            // thit.dialogTableVisible = true;
+            var data = {
+              tsType:"举报",
+              tsNatureType:params.name
+            }
+            thit.$emit("tkshow", true,data);
+        });
         window.addEventListener("resize", function () {
           charts.resize();
         });
