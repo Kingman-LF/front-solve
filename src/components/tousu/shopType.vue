@@ -9,52 +9,54 @@
 </template>
 <script>
 import * as echarts from "echarts";
-import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
-import {sortKey,shopTypes} from "@/assets/api/tousu"
+import { getYearStartDate, getNowDate, getDate } from "@/utils/date";
+import { sortKey, shopTypes } from "@/assets/api/tousu";
 export default {
   mounted() {
-    shopTypes({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-      let resdata=res.data;
-      this.dataList=[]
-      let num=0;
-      let sums=0;
-      sortKey(resdata,'value')
-      resdata.forEach((v,i) => {
-        sums+=v.value;
-        if(v.name.substring(0,2)==="其他"){
-          resdata.splice(i,1)
-        }else if(num<10){
-          num+=1;
-          this.dataList.push(v)
-        }
-      });
-      this.sums=sums
-      this.$nextTick(() => {
-        // setTimeout(() => {
-          this.shopType(this.dataList,this.sums);
-        // }, 500);
-      });
-    })
+    shopTypes({ startTime: getYearStartDate(), endTime: getNowDate() }).then(
+      (res) => {
+        let resdata = res.data;
+        this.dataList = [];
+        let num = 0;
+        let sums = 0;
+        sortKey(resdata, "value");
+        resdata.forEach((v, i) => {
+          sums += v.value;
+          if (v.name.substring(0, 2) === "其他") {
+            resdata.splice(i, 1);
+          } else if (num < 10) {
+            num += 1;
+            this.dataList.push(v);
+          }
+        });
+        this.sums = sums;
+        this.$nextTick(() => {
+          // setTimeout(() => {
+          this.shopType(this.dataList, this.sums);
+          // }, 500);
+        });
+      }
+    );
   },
   methods: {
-    shopType(datas,sum) {
-      let thit=this;
+    shopType(datas, sum) {
+      let thit = this;
       let shopType = document.getElementById("shopType");
       let shopTypeChart = echarts.init(shopType);
-      huanzhuang(shopTypeChart, true, true,datas,sum);
-      function huanzhuang(charts, showLable, mygraphic,datas,sum) {
+      huanzhuang(shopTypeChart, true, true, datas, sum);
+      function huanzhuang(charts, showLable, mygraphic, datas, sum) {
         charts.clear();
         let gailanTotal = sum;
         let option = {
           tooltip: {
             trigger: "item",
-            borderWidth:0,
+            borderWidth: 0,
             textStyle: {
-              fontSize:26,
+              fontSize: 26,
             },
-            formatter(e){
-              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
-            }
+            formatter(e) {
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`;
+            },
           },
           legend: {
             show: false,
@@ -63,9 +65,9 @@ export default {
             ? [
                 {
                   tooltip: {
-                    formatter(e){
-                      return `总量：${gailanTotal}`
-                    }
+                    formatter(e) {
+                      return `总量：${gailanTotal}`;
+                    },
                   },
                   type: "text",
                   left: "center",
@@ -79,7 +81,7 @@ export default {
                     rich: {
                       value: {
                         color: "#303133",
-                        fontSize: '3rem',
+                        fontSize: "3rem",
                         lineHeight: 30,
                         fontFamily: "digifaw",
                         textShadowColor: "#0096ff",
@@ -88,7 +90,7 @@ export default {
                       name: {
                         color: "#909399",
                         lineHeight: 30,
-                        fontSize: '2rem',
+                        fontSize: "2rem",
                       },
                     },
                     font: "16px PingFang",
@@ -105,9 +107,9 @@ export default {
               label: {
                 show: true,
                 color: "#fff",
-                fontWeight: 'bold',
-                fontFamily: 'PingFang Bold',
-                fontSize: '1.5rem',
+                fontWeight: "bold",
+                fontFamily: "PingFang Bold",
+                fontSize: "1.5rem",
                 // formatter(e){
                 //   console.log(e)
                 //   return `${e.name}`
@@ -132,9 +134,9 @@ export default {
               },
               labelLine: {
                 show: true,
-                lineStyle:{
-                  width:2
-                }
+                lineStyle: {
+                  width: 2,
+                },
                 // length: 20,
                 // length2: 10
               },
@@ -144,15 +146,15 @@ export default {
           ],
         };
         option && charts.setOption(option);
-        shopTypeChart.on('click', function (params) {
-            console.log(params);
-            // thit.dialogTableVisible = true;
-            var data = {
-              tsType:"投诉",
-              tsNatureBigType:"商品",
-              tsConMedType:params.name,
-            }
-            thit.$emit("tkshow", true,data);
+        shopTypeChart.on("click", function (params) {
+          console.log(params);
+          // thit.dialogTableVisible = true;
+          var data = {
+            tsType: "投诉",
+            tsNatureBigType: "商品",
+            tsConMedType: params.name,
+          };
+          thit.$emit("tkshow", true, data);
         });
         window.addEventListener("resize", function () {
           charts.resize();

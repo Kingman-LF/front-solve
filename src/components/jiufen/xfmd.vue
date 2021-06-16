@@ -1,7 +1,7 @@
 <template>
   <div class="myborder">
     <div class="title">
-      <img :src="require('@/assets/images/titlelogo.png')" alt="">
+      <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>信访目的</p>
     </div>
     <div id="mudi"></div>
@@ -10,122 +10,147 @@
 
 <script>
 import * as echarts from "echarts";
-import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
-import {petitionAppeal} from "@/assets/api/jiufen"
+import { getYearStartDate, getNowDate, getDate } from "@/utils/date";
+import { petitionAppeal } from "@/assets/api/jiufen";
 export default {
   name: "xfmd",
   mounted() {
-    petitionAppeal({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-      let resdata=res.data;
+    petitionAppeal({
+      startTime: getYearStartDate(),
+      endTime: getNowDate(),
+    }).then((res) => {
+      let resdata = res.data;
+      resdata.name = ["咨询", "求决", "申诉", "揭发控告", "意见建议", "其他"];
+      resdata.count = ["53", "49", "40", "37", "1", "17"];
+      console.log(resdata, "resdata");
+      //  resdata.forEach((ele,index) => {
+      //  console.log(ele,index);
+      // })
       let mudiChart = echarts.init(document.getElementById("mudi"));
-      this.zhuzhuangtu(mudiChart,resdata.name,resdata.count);
-    })
-    
+      this.zhuzhuangtu(mudiChart, resdata.name, resdata.count);
+    });
   },
-  methods:{
+  methods: {
     // 绘制柱状图
     zhuzhuangtu(charts, xdata, ydata, color, rotate) {
-      let xData = xdata ? xdata : ['揭发控告', '其他', '申诉', '求决', '咨询', '意见建议']
-      let yData = ydata ? ydata : [23, 17, 15, 6, 0, 0]
-      let colors = color ? color : '#00F0FF'
-      charts.clear()
+      let xData = xdata
+        ? xdata
+        : ["揭发控告", "其他", "申诉", "求决", "咨询", "意见建议"];
+      console.log(xdata, "xdata");
+      console.log(xdata);
+      console.log(xData);
+      let yData = ydata ? ydata : [23, 17, 15, 6, 0, 0];
+      let colors = color ? color : "#00F0FF";
+      charts.clear();
       let option = {
         tooltip: {
-            trigger: "axis",
-            borderWidth:0,
-            textStyle: {
-              fontSize:26,
-            },
-            formatter(e){
-              return `${e[0].name}：${e[0].value}`
-              // console.log(e);
-            }
-          },  
+          trigger: "axis",
+          borderWidth: 0,
+          textStyle: {
+            fontSize: 26,
+          },
+          formatter(e) {
+            return `${e[0].name}：${e[0].value}`;
+            console.log(e[0].name);
+            // console.log(e);
+          },
+        },
         xAxis: {
-          type: 'category',
+          type: "category",
           axisLine: {
             lineStyle: {
-              color: 'rgba(255, 255, 255, 0.4)'
-            }
+              color: "rgba(255, 255, 255, 0.4)",
+            },
           },
           axisTick: {
-            show: false
+            show: false,
           },
           axisLabel: {
-            rotate:20,
+            rotate: 20,
             color: "#fff",
-            fontSize: '1.5rem',
-            fontFamily: "PingFang SC"
+            fontSize: "1.5rem",
+            fontFamily: "PingFang SC",
           },
-          data: xData
+          data: xData,
         },
         yAxis: {
           splitLine: {
             lineStyle: {
-              type: 'dashed',
-              color: 'rgba(255, 255, 255, 0.1)',
-              fontSize: '1.5rem',
-            }
+              type: "dashed",
+              color: "rgba(255, 255, 255, 0.1)",
+              fontSize: "1.5rem",
+            },
           },
           axisLine: {
             show: true,
             lineStyle: {
-              color: 'rgba(255, 255, 255, 0.4)',
-              fontSize: '1.5rem',
-            }
+              color: "rgba(255, 255, 255, 0.4)",
+              fontSize: "1.5rem",
+            },
           },
           axisTick: {
-            show: false
+            show: false,
           },
           axisLabel: {
             color: "#fff",
-            fontSize: '1.5rem',
-            fontFamily: "PingFang SC"
+            fontSize: "1.5rem",
+            fontFamily: "PingFang SC",
           },
-          type: 'value'
+          type: "value",
         },
         grid: {
-          top: '10%',
-          left: '3%',
-          right: '4%',
-          bottom:0,
-          containLabel: true
+          top: "10%",
+          left: "3%",
+          right: "4%",
+          bottom: 0,
+          containLabel: true,
         },
-        series: [{
-          data: yData,
-          type: 'bar',
-          barWidth: "60%",
-          itemStyle: {
-            normal: {
-              fontSize: '1.5rem',
-              color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-                offset: 1,
-                color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
-              },{
-                offset: 0,
-                color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
-              }], false),
-            }
+        series: [
+          {
+            data: yData,
+            type: "bar",
+            barWidth: "60%",
+            itemStyle: {
+              normal: {
+                fontSize: "1.5rem",
+                color: new echarts.graphic.LinearGradient(
+                  0,
+                  1,
+                  0,
+                  0,
+                  [
+                    {
+                      offset: 1,
+                      color: "rgba(0, 240, 255, 1)", // 100% 处的颜色
+                    },
+                    {
+                      offset: 0,
+                      color: "rgba(0, 240, 255, 0)", // 100% 处的颜色
+                    },
+                  ],
+                  false
+                ),
+              },
+            },
+            label: {
+              show: true,
+              position: "top",
+              color: "#fff",
+              fontSize: "1.5rem",
+            },
           },
-          label: {
-            show: true,
-            position: 'top',
-            color: '#fff',
-            fontSize: '1.5rem',
-          }
-        }]
-      }
-      option && charts.setOption(option)
-      window.addEventListener('resize', function () {
-        charts.resize()
-      })
-
+        ],
+      };
+      option && charts.setOption(option);
+      window.addEventListener("resize", function () {
+        charts.resize();
+      });
     },
-  }
-}
+  },
+};
 </script>
 <style scoped>
-.myborder{
+.myborder {
   height: 40.6rem;
   border-radius: 4px;
 }

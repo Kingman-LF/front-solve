@@ -3,6 +3,11 @@ export function getYearStartDate (){
     const date = new Date();
     return date.getFullYear()+"-01-01"
 }
+//当前年份
+export function getYear(){
+    const date=new Date();
+    return date.getFullYear();
+}
 // 当前时间的前一天
 export function getNowDate(){
     const date = new Date();
