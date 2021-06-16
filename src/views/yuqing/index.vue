@@ -83,6 +83,8 @@ import yjyq from '../../components/yuqing/yjyq.vue';
 import mtfb from '../../components/yuqing/meitifenbu.vue';
 import infoFb from '../../components/yuqing/infoFb';
 import shijianku from '../../components/yuqing/shijianku';
+
+import {common,subjectTree,yqInfo} from "@/assets/api/yuqing"
   export default{
     components: {
       leibie,
@@ -95,11 +97,52 @@ import shijianku from '../../components/yuqing/shijianku';
       infoFb,
       shijianku
     },
+    mounted() {
+      // this.common();
+      // this.subjectTree()
+      this.yqInfo()
+    },
     methods:{
       toHome() {
         this.$router.replace("/home");
       },
+      common(){
+        console.log(this.getPorSevenData())
+        common({method:'ECharts_pie_Test!list.do',btime:this.getPorSevenData(),etime:this.getDate()}).then(res => {
+          console.log(res)
+        })
+      },
+      subjectTree(){
+        subjectTree().then(res => {
+          console.log(res)
+        })
+      },
+      yqInfo(){
+        yqInfo({btime:this.getPorSevenData(),etime:this.getDate(),pageSize:'500'}).then(res => {
+          console.log(res)
+        })
+      },
+      getPorSevenData(){
+        const date = new Date();
+        let Y = date.getFullYear();
+        let M = date.getMonth()+1;
+        let D = date.getDate()-7;
+        M = M<10?"0"+M:M
+        D = D<10?"0"+D:D
+        return Y+''+M+''+D
+      },
+      // 当前时间
+      getDate(date){
+        const dates = date?new Date(date):new Date();
+        let Y = dates.getFullYear();
+        let M = dates.getMonth()+1;
+        let D = dates.getDate();
+        M = M<10?"0"+M:M
+        D = D<10?"0"+D:D
+        return Y+''+M+''+D
+      }
     }
+
   }
 </script>
 

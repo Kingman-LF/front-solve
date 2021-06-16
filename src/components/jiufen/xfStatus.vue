@@ -31,16 +31,15 @@ export default {
         // }, 500);
       });
     })
-    
+
   },
   methods: {
     status(list) {
       let thit=this;
       let status = document.getElementById("status");
       let statusChart = echarts.init(status);
-      function huanzhuang(charts, showLable, mygraphic,list) {
+      function huanzhuang(charts, showLable, mygraphic,list,gailanTotal) {
         charts.clear();
-        let gailanTotal = 4521;
         let option = {
           tooltip: {
             trigger: "item",
@@ -151,7 +150,11 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(statusChart, true, true,list);
+      let gailanTotal = 0;
+      list.forEach(item => {
+        gailanTotal+=item.value
+      })
+      huanzhuang(statusChart, true, true,list,gailanTotal);
     },
   },
 }
