@@ -11,23 +11,37 @@
 
 <script>
 import * as echarts from "echarts";
+import {getPorSevenData2,getDate2} from '@/utils/date'
+import {common} from "@/assets/api/yuqing"
 
 export default {
   name: "meitifenbu",
   mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.mtfb();
-      }, 500);
-    });
+    this.common()
   },
   methods:{
-    mtfb() {
+    common(){
+       common({method:'ECharts_pie_Test!list.do',btime:getPorSevenData2(),etime:getDate2()}).then(res => {
+         console.log(resdata);
+         let resdata=res.data.SOURCETYPE
+         this.num=0
+         resdata.forEach((v,i) => {
+          this.num+=Number(v.value) 
+         });
+         console.log(this.num,resdata);
+         this.$nextTick(() => {
+          // setTimeout(() => {
+            this.mtfb(resdata,this.num);
+          // }, 500);
+        });
+       })
+     },
+    mtfb(datas,num) {
       let mtfb = document.getElementById("mtfb");
       let mtfbChart = echarts.init(mtfb);
-      function huanzhuang(charts, showLable, mygraphic) {
+      function huanzhuang(charts, showLable, mygraphic,datas,num) {
         charts.clear();
-        let gailanTotal = 7754;
+        let gailanTotal = num;
         let option = {
           tooltip: {
             trigger: "item",
@@ -117,19 +131,7 @@ export default {
                   width:3,
                 }
               },
-              data: [
-                { value: 16, name: "网媒" },
-                { value: 15, name: "微博" },
-                { value: 10, name: "微信" },
-                { value: 20, name: "贴吧" },
-                { value: 20, name: "论坛" },
-                { value: 18, name: "小视频" },
-                { value: 16, name: "网络视频" },
-                { value: 8, name: "电视视频" },
-                { value: 25, name: "App" },
-                { value: 0, name: "报刊" },
-                // { value: 13, name: "其他" },
-              ],
+              data: datas,
             },
             {},
           ],
@@ -139,7 +141,7 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(mtfbChart, true, true);
+      huanzhuang(mtfbChart, true, true,datas,num);
     },
   }
 }

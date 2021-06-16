@@ -85,6 +85,9 @@ import infoFb from '../../components/yuqing/infoFb';
 import shijianku from '../../components/yuqing/shijianku';
 
 import {common,subjectTree,yqInfo} from "@/assets/api/yuqing"
+
+import yqLIst from '@/utils/1'
+import yqsubjectTree from '@/utils/2'
   export default{
     components: {
       leibie,
@@ -97,29 +100,41 @@ import {common,subjectTree,yqInfo} from "@/assets/api/yuqing"
       infoFb,
       shijianku
     },
+    data() {
+      return {
+        datas:[]
+      }
+    },
     mounted() {
-      // this.common();
+      this.common();
       // this.subjectTree()
-      this.yqInfo()
+      // console.log(yqsubjectTree);
+      // this.yqInfo()
     },
     methods:{
       toHome() {
         this.$router.replace("/home");
       },
       common(){
-        console.log(this.getPorSevenData())
         common({method:'ECharts_pie_Test!list.do',btime:this.getPorSevenData(),etime:this.getDate()}).then(res => {
           console.log(res)
         })
       },
       subjectTree(){
         subjectTree().then(res => {
-          console.log(res)
+          this.datas = this.datas.concat(res.data)
+          // console.log(JSON.stringify(this.datas))
+          // console.log(res)
         })
       },
       yqInfo(){
-        yqInfo({btime:this.getPorSevenData(),etime:this.getDate(),pageSize:'500'}).then(res => {
-          console.log(res)
+        yqInfo({btime:this.getPorSevenData(),etime:this.getDate(),pageSize:'200',pageNo:"1"}).then(res => {
+          this.datas = this.datas.concat(res.data.dataList)
+          if(this.datas.length<res.data.totalrows){
+            this.yqInfo()
+          }else{
+            console.log(JSON.stringify(this.datas))
+          }
         })
       },
       getPorSevenData(){

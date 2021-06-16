@@ -38,10 +38,10 @@ import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
 import {inspectionStatistics} from "@/assets/api/shigu"
 export default {
   mounted() {
-    inspectionStatistics({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-        // this.obj = res.data
-        console.log(res.data);
-      })
+    // inspectionStatistics({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+    //     // this.obj = res.data
+    //     console.log(res.data);
+    //   })
   },
 
 };

@@ -11,19 +11,37 @@
 
 <script>
 import * as echarts from "echarts";
-
+import {getPorSevenData2,getDate2} from '@/utils/date'
+import {common} from "@/assets/api/yuqing"
 export default {
   name: "jcs",
   mounted() {
-    this.jcs();
+    this.common()
+    
   },
   methods: {
-    jcs() {
+    common(){
+       common({method:'ECharts_pie_Test!list.do',btime:getPorSevenData2(),etime:getDate2()}).then(res => {
+         console.log(resdata);
+         let resdata=res.data.ORIENTATION
+         this.num=0
+         resdata.forEach((v,i) => {
+          this.num+=Number(v.value) 
+         });
+         console.log(this.num,resdata);
+         this.$nextTick(() => {
+          // setTimeout(() => {
+            this.jcs(resdata,this.num);
+          // }, 500);
+        });
+       })
+     },
+    jcs(datas,num) {
       let jcs = document.getElementById("jcs");
       let jcsChart = echarts.init(jcs);
-      function huanzhuang(charts, showLable, mygraphic) {
+      function huanzhuang(charts, showLable, mygraphic,datas,num) {
         charts.clear();
-        let gailanTotal = 7754;
+        let gailanTotal = num;
         let option = {
           tooltip: {
             trigger: "item",
@@ -115,11 +133,7 @@ export default {
               //   length: 10,
               //   length2: 5
               // },
-              data: [
-                { value:2000, name: "负面信息" },
-                { value: 2800, name: "中性信息" },
-                { value: 3640, name: "正面信息" }
-              ],
+              data: datas,
             },
           ],
         };
@@ -128,7 +142,7 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(jcsChart, true, true);
+      huanzhuang(jcsChart, true, true,datas,num);
     },
   },
 }
