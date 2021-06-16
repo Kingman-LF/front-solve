@@ -28,13 +28,14 @@ export default {
         this.sum = 0;
         this.resdata.forEach((v, i) => {
           this.sum += Number(v.value);
+          console.log(this.sum);
         });
         let susong = document.getElementById("susong");
         let susongChart = echarts.init(susong);
-        this.huanzhuang(susongChart, this.sum,this.resdata);
+        this.huanzhuang(susongChart, this.sum, this.resdata);
       });
     },
-    huanzhuang(charts, sum,resdata, showLable, mygraphic) {
+    huanzhuang(charts, sum, resdata, showLable, mygraphic) {
       charts.clear();
       let gailanTotal = sum;
       let option = {
