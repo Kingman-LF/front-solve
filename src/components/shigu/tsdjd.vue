@@ -77,6 +77,8 @@ export default {
           visualMap: {
             min: 10000,
             max: 25000,
+            right:0,
+            bottom:"20",
             // text: ['最高', '最低'],
             realtime: false,
             calculable: true,
@@ -166,10 +168,10 @@ export default {
 
 <style lang="scss" scoped>
 .box{
-  height: 80.92rem;
+  height: 60rem;
   position: relative;
   #num{
-    height: 70.92rem;
+    height: 54rem;
   }
   .total{
     position: absolute;

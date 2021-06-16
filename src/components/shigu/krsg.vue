@@ -4,30 +4,33 @@
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>检查统计</p>
     </div>
-    <div class="filed dis">
-      <div class="num">检查单位</div>
-      <div class="number"><span class="p1">3515</span><span class="p2">家</span></div>
+    <div class="diss">
+      <div class="dis">
+        <div class="num">检查单位</div>
+        <div class="number"><span class="p1">3515</span><span class="p2">家</span></div>
+      </div>
+      <div class="dis">
+        <div class="num">检查设备</div>
+        <div class="number"><span class="p1">6900</span><span class="p2">台</span></div>
+      </div>
+      <div class="dis">
+        <div class="num">排查隐患</div>
+        <div class="number"><span class="p1">887</span><span class="p2">项</span></div>
+      </div>
+      <div class="dis">
+        <div class="num">已整改</div>
+        <div class="number"><span class="p1">846</span><span class="p2">项</span></div>
+      </div>
+      <div class="dis">
+        <div class="num">督察指令书</div>
+        <div class="number"><span class="p1">474</span><span class="p2">份</span></div>
+      </div>
+      <div class="dis">
+        <div class="num">立案数</div>
+        <div class="number"><span class="p1">74</span><span class="p2">件</span></div>
+      </div>
     </div>
-    <div class="in_hand dis">
-      <div class="num">检查设备</div>
-      <div class="number"><span class="p1">6900</span><span class="p2">台</span></div>
-    </div>
-    <div class="filed dis">
-      <div class="num">排查隐患</div>
-      <div class="number"><span class="p1">887</span><span class="p2">项</span></div>
-    </div>
-    <div class="coms dis">
-      <div class="num">已整改</div>
-      <div class="number"><span class="p1">846</span><span class="p2">项</span></div>
-    </div>
-    <div class="in_hand dis">
-      <div class="num">督察指令书</div>
-      <div class="number"><span class="p1">474</span><span class="p2">份</span></div>
-    </div>
-    <div class="coms dis">
-      <div class="num">立案数</div>
-      <div class="number"><span class="p1">74</span><span class="p2">件</span></div>
-    </div>
+
   </div>
 </template>
 <script>
@@ -39,12 +42,18 @@ export default {
 <style lang="scss" scoped>
 .box {
   height: 39.92rem;
-  .dis{
-      width: 14rem;
-      height: 10rem;
-      float: left;
+  .diss{
+    display: flex;
+    flex-wrap: wrap;
+    height: 32.89rem;
+    .dis{
+      width: 50%;
+      height: 33.33%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       .num{
-        width: 13.67rem;
         height: 4.7rem;
         line-height: 4.7rem;
         text-align: center;
@@ -55,7 +64,6 @@ export default {
         color: #FFFFFF;
       }
       .number{
-        width: 13.67rem;
         height: 4.7rem;
         text-align: center;
         line-height: 4.7rem;
@@ -76,10 +84,12 @@ export default {
       }
 
       .filed::after {
-          width: 16.33rem;
-          height: 0.17rem;
-          background: linear-gradient(90deg, rgba(0, 240, 255, 0));
-        }
+        width: 16.33rem;
+        height: 0.17rem;
+        background: linear-gradient(90deg, rgba(0, 240, 255, 0));
+      }
     }
+  }
+
 }
 </style>

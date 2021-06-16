@@ -7,7 +7,7 @@
     <div class="ggfx" id="cpzl"></div>
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>行业产品质量合格率</p>
+      <p>行业产品质量不合格率</p>
     </div>
     <div class="ggfx" id="hyspzl"></div>
   </div>
@@ -27,8 +27,8 @@ export default {
   },
   methods: {
     zhuzhuangtu2(charts, color, xdata, ydata, rotate) {
-        let xData = xdata ? xdata : ['纺织行业', '化工行业', '机械行业', '建材行业', '轻工行业', '冶金行业']
-        let yData = ydata ? ydata : [55, 84, 95, 100, 78, 100]
+        let xData = xdata ? xdata : ['电子行业','纺织行业', '化工行业', '机械行业', '建材行业', '轻工行业', '冶金行业']
+        let yData = ydata ? ydata : [0, 12.7, 2.14, 2.61, 2.66, 8.32, 1.93]
         let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,
             color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
@@ -45,13 +45,13 @@ export default {
               fontSize:26,
             },
             axisPointer: {
-              type: "shadow", 
+              type: "shadow",
             },
             formatter(e){
               return `${e[0].name}：${e[0].value}%`
               // console.log(e);
             }
-          },  
+          },
           xAxis: {
             type: 'category',
             axisLine: {
@@ -81,6 +81,8 @@ export default {
                 fontSize:'1.5rem',
               }
             },
+            min:0,
+            max:50,
             axisLine: {
               show: true,
               lineStyle: {
@@ -97,7 +99,7 @@ export default {
               fontSize:"1.5rem"
             },
             type: 'value',
-            
+
           },
           grid: {
             top: '15%',
@@ -117,7 +119,7 @@ export default {
               color: '#fff',
               fontSize:'1.5rem',
             },
-            
+
 
           }]
         }
@@ -149,7 +151,7 @@ export default {
                 return `${e[0].name}<br/>${e[0].seriesName}：${e[0].value}<br/>${e[0].seriesName}：${e[1].value}`
                 // console.log(e);
               },
-              
+
               axisPointer: {
                   type: 'shadow',
                   crossStyle: {
@@ -212,7 +214,7 @@ export default {
                   color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
                   },{
                   offset: 0,
-                  
+
                   color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
                   }], false),
                       data: [70.0, 60.9, 50.0, 30.2, 25.6]
@@ -249,5 +251,5 @@ export default {
     margin-top: 1rem;
   }
 }
-  
+
 </style>

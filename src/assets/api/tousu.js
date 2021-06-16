@@ -1,11 +1,11 @@
 import { axios } from '@/utils/request'
 // 排序
 export function sortKey(array,key){
- return array.sort(function(a,b){
-  var x = a[key];
-  var y = b[key];
-  return ((y<x)?-1:(y>x)?1:0)
- })
+    return array.sort(function(a,b){
+        var x = a[key];
+        var y = b[key];
+        return ((y<x)?-1:(y>x)?1:0)
+    })
 }
 // 商品类别投诉接收量
 export function shopTypes(parameter){

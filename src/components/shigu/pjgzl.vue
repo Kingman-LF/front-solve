@@ -7,18 +7,20 @@
     <div class="squareChart" id="wuye">
 
         <div class="wu_dis">
-          <div class="county">安吉县</div>
           <div class="company">永艺家具股份有限公司</div>
-          <div class="village">安吉县灵峰灵峰街道永艺西路1号</div>
-          <div class="mark">913300007284720000</div>
+          <div class="county">安吉县</div>
+
+          <!--          <div class="village">安吉县灵峰灵峰街道永艺西路1号</div>-->
+<!--          <div class="mark">913300007284720000</div>-->
           <div class="stauts stauts_gao">高风险</div>
           <div class="taskStauts">核实不符</div>
         </div>
         <div class="wu_dis">
-          <div class="county">德清县</div>
           <div class="company">德华兔宝宝装饰新材股份有限公司</div>
-          <div class="village">德清县洛舍镇工业区</div>
-          <div class="mark">913300006095805007</div>
+          <div class="county">德清县</div>
+
+          <!--          <div class="village">德清县洛舍镇工业区</div>-->
+<!--          <div class="mark">913300006095805007</div>-->
           <div class="stauts stauts_gao">高风险</div>
           <div class="taskStauts">核实不符</div>
         </div>
@@ -37,20 +39,24 @@ export default {
 </script>
 <style lang="scss" scoped>
 .box{
-  height: 40rem;
+  height: 20rem;
   #wuye {
-    height: 30rem;
+    height: 12.9rem;
     .wu_dis{
       width: 100%;
-      height: 7rem;
+      height: 6.45rem;
       font-size: 1.5rem;
       font-family: PingFang SC;
       font-weight: bold;
       font-style: italic;
       color: #FFFFFF;
+      cursor: pointer;
+      &:hover{
+        color: #00F0FF;
+      }
       div{
         float: left;
-        line-height: 7rem;
+        line-height: 6.45rem;
         margin-left: 1.5rem;
         overflow:hidden;
         white-space: nowrap;
@@ -63,7 +69,7 @@ export default {
 
       }
       .company{
-        width: 25rem;
+        width: 32rem;
       }
       .village{
         width: 25rem;
@@ -72,7 +78,7 @@ export default {
         width: 17rem;
       }
       .stauts {
-        width: 5rem;
+        width: 8rem;
       }
       .taskStauts{
         width: 8rem;

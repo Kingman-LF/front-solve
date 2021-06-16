@@ -19,7 +19,7 @@ export default {
     this.$nextTick(() => {
     // 案件总体情况结案数分布
       this.ajzt();
-    //案件来源分布 
+    //案件来源分布
       this.ajlyfb();
     }, 500);
 
@@ -38,11 +38,11 @@ export default {
               fontSize:26,
             },
             axisPointer: {
-              type: "shadow", 
+              type: "shadow",
             },
           },
           legend: {
-            top:"5%",
+            top:"0",
             textStyle: {
               color: "#fff",
               fontfamily: "PingFang",
@@ -54,7 +54,7 @@ export default {
             data: ["侵害消费者权益", "食品安全",  "质量领域", "知识产权", "药械化","其它"],
           },
           grid: {
-            top: "15%",
+            top: "20%",
             left: "3%",
             right: "4%",
             width: "90%",
@@ -120,7 +120,7 @@ export default {
                 focus: "series",
               },
               data: [320, 302, 301, 334, 390, 330, 320],
-              
+
             },
             {
               name: "食品安全",
@@ -218,68 +218,35 @@ export default {
         };
         let data = [
           {
-            name: "来源1",
-            children: [
-              {
-                name: "来源1-1",
-                value: 15,
-              },
-              {
-                name: "来源1-2",
-                value: 15,
-              },
-              {
-                name: "来源1-3",
-                value: 15,
-              },
-            ],
+            name: "监督检查",
+            value:1926,
           },
           {
-            name: "来源2",
-            children: [
-              {
-                name: "来源2-1",
-                value: 15,
-              },
-              {
-                name: "来源2-2",
-                value: 15,
-              },
-              {
-                name: "来源2-3",
-                value: 15,
-              },
-            ],
+            name: "监督抽检",
+            value:211,
           },
           {
-            name: "来源3",
-            children: [
-              {
-                name: "来源3-1",
-                value: 15,
-              },
-              {
-                name: "来源3-2",
-                value: 15,
-              },
-              {
-                name: "来源3-3",
-                value: 15,
-              },
-            ],
+            name: "监测发现",
+            value: 4,
+          },
+          {
+            name: "投诉举报",
+            value: 114,
+          },
+          {
+            name: "上级机关交办",
+            value: 35,
+          },
+          {
+            name: "有关部门移送",
+            value:57,
+          },
+          {
+            name: "其他",
+            value: 9,
           },
         ];
         let option = {
-          series: {
-            type: "sunburst",
-            data: data,
-            radius: [0, "90%"],
-            label: {
-              rotate: "radial",
-              color: "#000",
-              fontSize:16
-            },
-          },
           tooltip: {
             trigger: "item",
             borderWidth:0,
@@ -287,10 +254,106 @@ export default {
               fontSize:26,
             },
             formatter(e){
-              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value}`
-              
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+              // console.log(e);
             }
           },
+          legend: {
+            // show: false,
+            orient: 'vertical',
+            left: '70%',
+            top:'center',
+            textStyle:{
+              color:"#fff",
+              fontSize: '2rem',
+            },
+            formatter(e){
+              if(e.length>4){
+                return (e.slice(0,4)+"...")
+              }else{
+                return e
+              }
+            }
+          },
+          graphic:[
+            {
+              tooltip: {
+                formatter(e){
+                  return `总量：${2332 }`
+                }
+              },
+              type: "text",
+              left: "32%",
+              top: "center",
+              z: 10,
+              style: {
+                fill: "#fff",
+                textAlign: "center",
+                text: ["{value|" + 2332 + "}"].join(
+                    "\n"
+                ),
+                rich: {
+                  value: {
+                    color: "#303133",
+                    fontSize: '3rem',
+                    lineHeight: 30,
+                    fontFamily: "digifaw",
+                    textShadowColor: "#0096ff",
+                    textShadowBlur: "12"
+                  },
+                  name: {
+                    color: "#909399",
+                    lineHeight: 30,
+                    fontSize: '2rem',
+                  },
+                },
+                font: "16px PingFang",
+              },
+            },
+          ],
+          series: [
+            {
+              type: "pie",
+              radius: ["50%", "75%"],
+              center: ["40%", "center"],
+              // avoidLabelOverlap: false,
+              label: {
+                show: false,
+                color: "#fff",
+                fontWeight: 'bold',
+                fontFamily: 'PingFang Bold',
+                fontSize: '1.5rem',
+                formatter(e){
+                  // console.log(e)
+                  return `${e.name}\n${e.value}个 ${e.percent}%`
+                }
+              },
+              itemStyle: {
+                color: function (params) {
+                  var colorlist = [
+                    "#0F5ED6",
+                    "#79FFB5",
+                    "#843DFF",
+                    "#4304B1",
+                    "#688FD8",
+                    "#F25334",
+                    "#49A732",
+                    "#EB3633",
+                    "#FCBD01",
+                    "#CAD9F0",
+                  ];
+                  return colorlist[params.dataIndex];
+                },
+              },
+              // labelLine: {
+              //   show: true,
+              //   length: 10,
+              //   length2: 5
+              // },
+              data: data,
+            },
+            {},
+          ],
         };
         option && charts.setOption(option);
         window.addEventListener("resize", function () {
@@ -311,6 +374,6 @@ export default {
     height: 34.5rem;
   }
 }
-  
+
 </style>
 
