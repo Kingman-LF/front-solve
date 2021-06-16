@@ -9,9 +9,14 @@
 </template>
 <script>
 import * as echarts from "echarts";
-
+import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
+import {unitArea} from "@/assets/api/shigu"
 export default {
   mounted() {
+    // unitArea({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+    //     // this.obj = res.data
+    //     console.log(res.data);
+    //   })
     this.$nextTick(() => {
       setTimeout(() => {
         this.spcc();
@@ -116,6 +121,7 @@ export default {
           ],
         };
         option && charts.setOption(option);
+
         window.addEventListener("resize", function () {
           charts.resize();
         });

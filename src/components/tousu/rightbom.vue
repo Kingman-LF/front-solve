@@ -186,7 +186,6 @@ export default {
               }
               thit.$emit("tkshow", true,data);
             }else{
-              console.log(phones[params.dataIndex]);
               var data = {
                 tsType:"投诉",
                 tsInformation:phones[params.dataIndex],
