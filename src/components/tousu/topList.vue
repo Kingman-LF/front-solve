@@ -2,17 +2,32 @@
   <div class="box myborder">
     <div class="list">
       <span
-        v-for="(item, index) in topList"
+        v-for="(item, index) in areaList"
         :key="item.id"
         :class="tabIndex === index ? 'current' : ''"
         @click="clickF(item, index)"
-        >{{ item.text }}</span
-      >
+        >{{ item.name }}</span>
     </div>
     <div class="lv">
-      <div v-for="item in lvList" :key="item.id" @click="showtk(true,item.text)">
-        <span>{{ item.text }}</span>
-        <span>{{ item.number }}</span>
+      <div @click="showtk(true,'投诉举报')">
+        <span>投诉举报</span>
+        <span>{{ datalist[areaCode]?datalist[areaCode].tsjb?datalist[areaCode].tsjb:0:0 }}</span>
+      </div>
+      <div @click="showtk(true,'调解成功率')">
+        <span>调解成功率</span>
+        <span>{{ datalist[areaCode]?datalist[areaCode].tjcgl?datalist[areaCode].tjcgl:0:'0.00%' }}</span>
+      </div>
+      <div @click="showtk(true,'办结已归档')">
+        <span>办结已归档</span>
+        <span>{{ datalist[areaCode]?datalist[areaCode].bjygd?datalist[areaCode].bjygd:0:0 }}</span>
+      </div>
+      <div @click="showtk(true,'处理中')">
+        <span>处理中</span>
+        <span>{{ datalist[areaCode]?datalist[areaCode].clz?datalist[areaCode].clz:0:0 }}</span>
+      </div>
+      <div @click="showtk(true,'待办理')">
+        <span>待办理</span>
+        <span>{{ datalist[areaCode]?datalist[areaCode].dbl?datalist[areaCode].dbl:0:0 }}</span>
       </div>
     </div>
   </div>
@@ -24,143 +39,35 @@ export default {
   data() {
     return {
       tabIndex: 0,
-      topList: [
-        {
-          id: Math.random(),
-          name:'HZS',
-          text: "湖州市",
-          number:"",
-          tjcgl:'',
-          bjygd:'',
-          clz:'',
-          dbl:''
-        },
-        {
-          id: Math.random(),
-          name:'WXQ',
-          text: "吴兴区",
-          number:"",
-          tjcgl:'',
-          bjygd:'',
-          clz:'',
-          dbl:''
-        },
-        {
-          id: Math.random(),
-          name:'NXQ',
-          text: "南浔区",
-          number:"",
-          tjcgl:'',
-          bjygd:'',
-          clz:'',
-          dbl:''
-        },
-        {
-          id: Math.random(),
-          name:'DQX',
-          text: "德清县",
-          number:"",
-          tjcgl:'',
-          bjygd:'',
-          clz:'',
-          dbl:''
-        },
-        {
-          id: Math.random(),
-          name:'CXX',
-          text: "长兴县",
-          number:"",
-          tjcgl:'',
-          bjygd:'',
-          clz:'',
-          dbl:''
-        },
-        {
-          id: Math.random(),
-          name:'AJX',
-          text: "安吉县",
-          number:"",
-          tjcgl:'',
-          bjygd:'',
-          clz:'',
-          dbl:''
-        },
-        {
-          id: Math.random(),
-          name:'NTHXQ',
-          text: "南太湖新区",
-          number:"",
-          tjcgl:'',
-          bjygd:'',
-          clz:'',
-          dbl:''
-        },
+      areaCode: "HZS",
+      areaList:[
+        {name:"湖州市",areaCode:"HZS"},
+        {name:"吴兴区",areaCode:"WXQ"},
+        {name:"南浔区",areaCode:"NXQ"},
+        {name:"德清县",areaCode:"DQX"},
+        {name:"长兴县",areaCode:"CXX"},
+        {name:"安吉县",areaCode:"AJX"},
+        {name:"南太湖新区",areaCode:"NTHXQ"},
       ],
-      lvList: [
-        {
-          id: Math.random() + new Date().valueOf() + "",
-          text: "投诉举报",
-          number: "6993",
-        },
-        {
-          id: Math.random() + new Date().valueOf() + "",
-          text: "调解成功率",
-          number: "63.23%",
-        },
-        {
-          id: Math.random() + new Date().valueOf() + "",
-          text: "办结已归档",
-          number: "8281",
-        },
-        {
-          id: Math.random() + new Date().valueOf() + "",
-          text: "处理中",
-          number: "28",
-        },
-        {
-          id: Math.random() + new Date().valueOf() + "",
-          text: "待办理",
-          number: "18",
-        },
-      ]
+      datalist:{}
     };
   },
   mounted() {
-    this.getData()
-    
+    complaintRate({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+        this.datalist=res.data
+      })
   },
   methods: {
-    getData(){
-      complaintRate({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-        for (const i in res.data) {
-          this.topList.forEach((v,j) => {
-            if(i===v.name){
-              v.number=res.data[i].tsjb
-              v.tjcgl=res.data[i].tjcgl
-              v.bjygd=res.data[i].bjygd
-              v.clz=res.data[i].clz
-              v.dbl=res.data[i].dbl
-            }
-          });
-        }
-      })
-    },
     showtk(boll,text){
-      // console.log(this.topList[this.tabIndex].text);
       var data = {
-        tsProcessingDept: this.topList[this.tabIndex].text,
+        tsProcessingDept: this.areaList[this.tabIndex].name,
         tsHandlingStatus:text,
       }
       this.$emit("tkshow", boll,data);
     },
     clickF(item, index) {
       this.tabIndex = index;
-      this.$data.lvList[0].number=this.$data.topList[index].number||0
-      this.$data.lvList[1].number=this.$data.topList[index].tjcgl||0
-      this.$data.lvList[2].number=this.$data.topList[index].bjygd||0
-      this.$data.lvList[3].number=this.$data.topList[index].clz||0
-      this.$data.lvList[4].number=this.$data.topList[index].dbl||0
-      // console.log(this.$data.topList[index].number);
+      this.areaCode=this.areaList[index].areaCode
     },
   },
 };

@@ -63,7 +63,7 @@ export default {
     // 点击详情显示
     showtk(data){
       console.log(data);
-      this.$emit("tkshow",data);
+      this.$emit("tkshow",data,false);
     }
   },
   mounted() {

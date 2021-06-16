@@ -20,14 +20,9 @@
         </el-row>
         <el-row :gutter="12">
           <el-col :span="24">
-
             <!-- 预警设备地区分布 -->
             <wygs></wygs>
           </el-col>
-<!--          <el-col :span="8">-->
-<!--            &lt;!&ndash; 检查统计 &ndash;&gt;-->
-<!--            <krsg></krsg>-->
-<!--          </el-col>-->
         </el-row>
       </el-col>
       <el-col :span="8">

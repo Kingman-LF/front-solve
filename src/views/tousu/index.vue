@@ -813,7 +813,7 @@
             </div>
           </div>
         </div>
-        <div class="retu" @click="rowClick">返回</div>
+        <div v-if="num" class="retu" @click="rowClick">返回</div>
       </div>
     </el-dialog>
   </div>
@@ -992,8 +992,9 @@ export default {
       this.leabeShow = true
     },
     //点击列表跳转详情
-    toDetail(row){
-      console.log(row.tsRegister);
+    toDetail(row,num){
+      this.num=num
+      // console.log(row.tsRegister);
       // let rows=row?row.tsRegister:"3305220000000202106111355";
       // getComplaintlistDetails({registration:row.tsRegister}).then(res => {
       getComplaintlistDetails({registration:"3305220000000202106111355"}).then(res => {
