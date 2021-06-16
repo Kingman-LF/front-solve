@@ -16,19 +16,16 @@ export default {
   name: "xzssfb",
   mounted() {
     litigationArea({startTime: getDate('2018-01-01'),endTime: getNowDate()}).then(res => {
-      console.log(res);
       let resdata=res.data;
-      console.log(resdata);
-      console.log(startTime);
       this.sum=0
       resdata.forEach((v,i) => {
-        this.sum+=Number(v.value) 
+        this.sum+=Number(v.value)
       });
       let susong = document.getElementById("susong");
       let susongChart = echarts.init(susong);
       this.huanzhuang(susongChart,this.sum);
     })
-    
+
   },
   methods:{
     huanzhuang(charts,sum, showLable, mygraphic) {

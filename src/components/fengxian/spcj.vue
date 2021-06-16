@@ -31,8 +31,8 @@ export default {
   methods: {
     // 食品抽查不合格食品类别
     zhuzhuangtu2(charts, color, xdata, ydata, rotate) {
-        let xData = xdata ? xdata : ['龙之梦动...', '太湖古镇...', '浙江唯品...', '龙之梦动...', '龙之梦雅...', '龙之梦钻...', '大润发超市', '湖州宝迪...', '德清开元...', '孔雀城二...']
-        let yData = ydata ? ydata : [126, 101, 99, 57, 49, 38, 27, 24, 20, 18]
+        let xData = xdata ? xdata : ['水产制', '淀粉及淀粉制品', '粮食加工品', '糕点', '肉制品', '蔬菜制品', '薯类和膨化食品', '酒类', '食用农产品', '餐饮食品']
+        let yData = ydata ? ydata : [3, 2, 36, 2, 5, 24, 2, 12, 123, 38]
         let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,
             color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
@@ -191,6 +191,7 @@ export default {
             {
               type: "category",
               scale: true,
+              inverse:true,
               axisLine: {
                 // 坐标轴 轴线
                 show: false, // 是否显示
@@ -208,6 +209,7 @@ export default {
             {
               type: "category",
               scale: true,
+              inverse:true,
               axisLine: {
                 // 坐标轴 轴线
                 show: false, // 是否显示
@@ -216,12 +218,12 @@ export default {
                 color: "#fff",
                 fontSize: "1.5rem",
                 fontWeight: "bold",
-                formatter: function (data) {
-                  let obj = JSON.parse(data);
-                  let str =
-                    obj.state === 0 ? `({b|${obj.lv}})` : `({a|${obj.lv}})`;
-                  return obj.num + str;
-                },
+                // formatter: function (data) {
+                //   let obj = JSON.parse(data);
+                //   let str =
+                //     obj.state === 0 ? `({b|${obj.lv}})` : `({a|${obj.lv}})`;
+                //   return obj.num;
+                // },
                 rich: {
                   a: {
                     color: "#FF4657",
@@ -257,7 +259,7 @@ export default {
                 normal: {
                   barBorderRadius: 9,
                   color: function (params) {
-                    return clist[params.dataIndex];
+                    return params.dataIndex === 0?clist[0]:clist[1];
                   },
                 },
               },
@@ -282,34 +284,29 @@ export default {
         JSON.stringify({
           state: 0,
           num: 875,
-          lv: "30%",
         }),
         JSON.stringify({
           state: 1,
           num: 1154,
-          lv: "30%",
         }),
         JSON.stringify({
           state: 1,
           num: 900,
-          lv: "30%",
         }),
         JSON.stringify({
           state: 0,
           num: 1300,
-          lv: "30%",
         }),
         JSON.stringify({
           state: 0,
           num: 600,
-          lv: "30%",
         }),
       ];
-      let data = [2225, 1785, 1158, 1999, 788];
-      let colorlist = ["#FF4657", "#FF9600", "#FF9600", "#00F0FF", "#43FF55"];
+      let data = [2225, 1999, 1785, 1158, 788];
+      let colorlist = ["#ff4a4a", "#FF9600"];
       let spcc = document.getElementById("spcc");
       let spccChart = echarts.init(spcc);
-      getBarJiaoNang(spccChart, leftData, rightData, colorlist, data);
+      getBarJiaoNang(spccChart, leftData, data, colorlist, data);
     },
   },
 };

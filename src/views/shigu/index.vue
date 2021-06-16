@@ -9,19 +9,20 @@
     <el-row :gutter="12">
       <el-col :span="8">
         <el-row :gutter="12">
-          <el-col :span="8" >
+          <el-col :span="12" >
             <!-- 风险单位地区分布 -->
             <gzl></gzl>
           </el-col>
-          <el-col :span="16">
-            <!-- 预警设备地区分布 -->
-            <wygs></wygs>
+          <el-col :span="12">
+            <!-- 检查统计 -->
+            <krsg></krsg>
           </el-col>
         </el-row>
         <el-row :gutter="12">
           <el-col :span="24">
-            <!-- 风险单位 -->
-            <pjgzl></pjgzl>
+
+            <!-- 预警设备地区分布 -->
+            <wygs></wygs>
           </el-col>
 <!--          <el-col :span="8">-->
 <!--            &lt;!&ndash; 检查统计 &ndash;&gt;-->
@@ -32,22 +33,25 @@
       <el-col :span="8">
         <el-row :gutter="12">
           <el-col :span="24">
-            <!-- 故障量分布 -->
+            <!-- 设备总数据分布 -->
             <tsdjd></tsdjd>
           </el-col>
         </el-row>
+        <el-row :gutter="12">
+          <el-col :span="24">
+            <!-- 风险单位 -->
+            <pjgzl></pjgzl>
+          </el-col>
+        </el-row>
+
       </el-col>
       <el-col :span="8">
         <el-row :gutter="12">
-          <el-col :span="8">
-            <!-- 检查统计 -->
-            <krsg></krsg>
-          </el-col>
           <el-col :span="5">
 <!--            智能识别-->
             <znsb></znsb>
           </el-col>
-          <el-col :span="11">
+          <el-col :span="19">
 <!--            不文明乘梯-->
             <bts></bts>
           </el-col>
