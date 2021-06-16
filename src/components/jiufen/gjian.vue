@@ -60,9 +60,9 @@ export default {
   },
   mounted() {
     nationalProvincialPendingCase({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-      console.log(res.startTime);
+      // console.log(res.startTime);
       let resdata=res.data.national;
-      console.log(resdata);
+      // console.log(resdata);
       this.contentArr=resdata.list;
       this.count=resdata.count;
       this.resolution=resdata.resolution;
