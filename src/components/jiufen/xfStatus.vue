@@ -1,7 +1,7 @@
 <template>
   <div class="myborder">
     <div class="title">
-      <img :src="require('@/assets/images/titlelogo.png')" alt="">
+      <img :src="require('@/assets/images/titlelogo.png')" alt="" />
       <p>信访状态</p>
     </div>
     <div id="status"></div>
@@ -10,47 +10,50 @@
 
 <script>
 import * as echarts from "echarts";
-import {getBarJiaoNang} from "@/utils/getCharts";
-import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
-import {petitionStatus} from "@/assets/api/jiufen"
+import { getBarJiaoNang } from "@/utils/getCharts";
+import { getYearStartDate, getNowDate, getDate } from "@/utils/date";
+import { petitionStatus } from "@/assets/api/jiufen";
 export default {
   name: "xfStatus",
   mounted() {
-    petitionStatus({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-      let resdata=res.data;
-      this.list=[]
-      resdata.forEach((v,i) => {
-        let obj={}
-        obj.name=v.status
-        obj.value=v.value
-        this.list.push(obj)
+    petitionStatus({
+      startTime: getYearStartDate(),
+      endTime: getNowDate(),
+    }).then((res) => {
+      let resdata = res.data;
+      console.log(resdata);
+      this.list = [];
+      resdata.forEach((v, i) => {
+        let obj = {};
+        obj.name = v.status;
+        obj.value = v.value;
+        this.list.push(obj);
       });
       this.$nextTick(() => {
         // setTimeout(() => {
-          this.status(this.list);
+        this.status(this.list);
         // }, 500);
       });
-    })
-
+    });
   },
   methods: {
     status(list) {
-      let thit=this;
+      let thit = this;
       let status = document.getElementById("status");
       let statusChart = echarts.init(status);
-      function huanzhuang(charts, showLable, mygraphic,list,gailanTotal) {
+      function huanzhuang(charts, showLable, mygraphic, list) {
         charts.clear();
         let option = {
           tooltip: {
             trigger: "item",
-            borderWidth:0,
+            borderWidth: 0,
             textStyle: {
-              fontSize:26,
+              fontSize: 26,
             },
-            formatter(e){
-              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
+            formatter(e) {
+              return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`;
               // console.log(e);
-            }
+            },
           },
           legend: {
             show: false,
@@ -59,9 +62,9 @@ export default {
             ? [
                 {
                   tooltip: {
-                    formatter(e){
-                      return `总量：${gailanTotal}`
-                    }
+                    formatter(e) {
+                      return `总量：${gailanTotal}`;
+                    },
                   },
                   type: "text",
                   left: "center",
@@ -71,13 +74,11 @@ export default {
                     fill: "#fff",
                     text: gailanTotal,
                     textAlign: "center",
-                    text: ["{value|" + gailanTotal + "}"].join(
-                      "\n"
-                    ),
+                    text: ["{value|" + gailanTotal + "}"].join("\n"),
                     rich: {
                       value: {
                         color: "#303133",
-                        fontSize: '3.5rem',
+                        fontSize: "3.5rem",
                         lineHeight: 30,
                         fontFamily: "digifaw",
                         textShadowColor: "#0096ff",
@@ -86,7 +87,7 @@ export default {
                       name: {
                         color: "#909399",
                         lineHeight: 30,
-                        fontSize: '3rem',
+                        fontSize: "3rem",
                       },
                     },
                     font: "16px PingFang",
@@ -103,9 +104,9 @@ export default {
               label: {
                 show: true,
                 color: "#fff",
-                fontWeight: 'bold',
-                fontFamily: 'PingFang Bold',
-                fontSize: '2rem',
+                fontWeight: "bold",
+                fontFamily: "PingFang Bold",
+                fontSize: "2rem",
                 // formatter(e){
                 //   console.log(e)
                 //   return `${e.name}`
@@ -130,9 +131,9 @@ export default {
               },
               labelLine: {
                 show: true,
-                lineStyle:{
-                  width:2
-                }
+                lineStyle: {
+                  width: 2,
+                },
                 // length: 20,
                 // length2: 10
               },
@@ -142,29 +143,25 @@ export default {
           ],
         };
         option && charts.setOption(option);
-        statusChart.on('click', function (params) {
-            thit.dialogTableVisible = true;
-            thit.gridData[0]=params.data
+        statusChart.on("click", function (params) {
+          thit.dialogTableVisible = true;
+          thit.gridData[0] = params.data;
         });
         window.addEventListener("resize", function () {
           charts.resize();
         });
       }
-      let gailanTotal = 0;
-      list.forEach(item => {
-        gailanTotal+=item.value
-      })
-      huanzhuang(statusChart, true, true,list,gailanTotal);
+      huanzhuang(statusChart, true, true, list);
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.myborder{
+.myborder {
   height: 40rem;
   border-radius: 4px;
-  #status{
+  #status {
     margin-top: 1rem;
     height: 32rem;
   }

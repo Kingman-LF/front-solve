@@ -85,7 +85,9 @@ import infoFb from '../../components/yuqing/infoFb';
 import shijianku from '../../components/yuqing/shijianku';
 
 import {common,subjectTree,yqInfo} from "@/assets/api/yuqing"
-import yqLIst from "@/utils/1.js"
+
+import yqLIst from '@/utils/1'
+import yqsubjectTree from '@/utils/2'
   export default{
     components: {
       leibie,
@@ -98,16 +100,15 @@ import yqLIst from "@/utils/1.js"
       infoFb,
       shijianku
     },
-    data(){
+    data() {
       return {
-        datas:[],
-        pageNo:1
+        datas:[]
       }
     },
     mounted() {
-      console.log(yqLIst)
-      // this.common();
-      this.subjectTree()
+      this.common();
+      // this.subjectTree()
+      // console.log(yqsubjectTree);
       // this.yqInfo()
     },
     methods:{
@@ -126,13 +127,11 @@ import yqLIst from "@/utils/1.js"
         })
       },
       yqInfo(){
-        yqInfo({btime:this.getPorSevenData(),etime:this.getDate(),pageSize:'200',pageNo:this.pageNo.toString()}).then(res => {
-          this.pageNo++
+        yqInfo({btime:this.getPorSevenData(),etime:this.getDate(),pageSize:'200',pageNo:"1"}).then(res => {
           this.datas = this.datas.concat(res.data.dataList)
           if(this.datas.length<res.data.totalrows){
             this.yqInfo()
           }else{
-            console.log(this.datas.length)
             console.log(JSON.stringify(this.datas))
           }
         })

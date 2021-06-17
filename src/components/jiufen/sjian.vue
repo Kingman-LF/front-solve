@@ -7,7 +7,9 @@
         {{ this.count }}件 化解率{{ this.resolution }}
       </div>
     </div>
-    <div class="disx" :style="{ height: height * lineNum + 'rem' }" id="disx">
+    <div class="disx" :style="{ height: height * lineNum + 'rem' }" id="disx"
+    @mouseover="mouseOver"
+    @mouseleave="mouseLeave">
       <div
         class="ul"
         :style="{ transform: transform }"
@@ -71,6 +73,23 @@ export default {
       num: 0,
     };
   },
+  methods: {
+    // 移入停止
+    mouseOver(){
+      clearInterval(this.setint);
+    },
+    // 移出轮播
+    mouseLeave(){
+      let _this = this
+      _this.setint=setInterval(function () {
+        if (_this.num !== _this.contentArr.length) {
+          _this.num++
+        } else {
+          _this.num = 0
+        }
+      }, 2000)
+    },
+  },
   mounted() {
     nationalProvincialPendingCase({
       startTime: getYearStartDate(),
@@ -82,7 +101,7 @@ export default {
       this.count = resdata.count;
       this.resolution = resdata.resolution;
       let _this = this;
-      setInterval(function () {
+      _this.setint=setInterval(function () {
         if (_this.num !== _this.contentArr.length) {
           _this.num++;
         } else {

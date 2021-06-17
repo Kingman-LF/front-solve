@@ -12,19 +12,68 @@
 <script>
 import * as echarts from "echarts";
 import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
-import {petitionAppeal} from "@/assets/api/yuqing"
+import {yqInfo} from "@/assets/api/yuqing"
+import yqsubjectTree from '@/utils/2'
+import yqLIst from '@/utils/1'
 export default {
   name: "leibie",
+  data() {
+    return {
+      xdatas:[],
+      ydata:[],
+      yqsubject:{}
+    }
+  },
   mounted() {
-    let leibie = document.getElementById("leibie");
-    let leibieChart = echarts.init(leibie);
-    this.zhuzhuang(leibieChart,"#42cbff");
+    // let dates=new Date()
+    // console.log(dates);
+    this.yqInfo()
+    // let dates2=new Date()
+    // console.log(dates2-dates);
+
   },
   methods: {
-    zhuzhuang(charts, color, xdata, ydata, rotate) {
-      let xData = xdata ? xdata : ['食品', '药品', '特种设备', '产品质量', '消费','价格','违法线索','其他']
-      let yData = ydata ? ydata : [700, 600,600, 600, 600, 600, 600, 600]
-      let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+    yqInfo(){
+      let yqsubject = {}
+      yqsubjectTree.forEach((v,i) => {
+        if(v.name==='消费投诉'||v.name==='食品安全'||v.name==='工作作风'||v.name==='药品安全'||v.name==='产品质量'||v.name==='特种设备'||v.name==='违法线索'||v.name==='短视频专题'||v.name==='本地媒体专题'||v.name==='省级信息'){
+          let id=v.id
+          yqsubject[id]={name:v.name,value:0}
+        }
+      });
+      yqLIst.forEach((vs,is) => {
+        if(yqsubject[vs.keyWordId]){
+          yqsubject[vs.keyWordId].value++
+        }
+      });
+      this.yqsubject=Object.values(yqsubject)
+      let leibie = document.getElementById("leibie");
+      let leibieChart = echarts.init(leibie);
+      this.zhuzhuang(leibieChart);
+    },
+    getPorSevenData(){
+        const date = new Date();
+        let Y = date.getFullYear();
+        let M = date.getMonth()+1;
+        let D = date.getDate()-7;
+        M = M<10?"0"+M:M
+        D = D<10?"0"+D:D
+        return Y+''+M+''+D
+    },
+    // 当前时间
+    getDate(date){
+        const dates = date?new Date(date):new Date();
+        let Y = dates.getFullYear();
+        let M = dates.getMonth()+1;
+        let D = dates.getDate();
+        M = M<10?"0"+M:M
+        D = D<10?"0"+D:D
+        return Y+''+M+''+D
+    },
+    zhuzhuang(charts) {
+      // let xData = xdata ? xdata : ['食品', '药品', '特种设备', '产品质量', '消费','价格','违法线索','其他']
+      // let yData = ydata ? ydata : [700, 600,600, 600, 600, 600, 600, 600]
+      let colors = new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
         offset: 1,
         color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
       },{
@@ -59,9 +108,10 @@ export default {
             show: false
           },
           axisLabel: {
+            margin:20,
             interval: 0,
             color: "#fff",
-
+            rotate:30,
             fontSize:"1.5rem",
             fontfamily: 'PingFang Bold',
             fontweight: 'bold',
@@ -73,7 +123,9 @@ export default {
               }
             }
           },
-          data: xData
+          data: this.yqsubject.map(item => {
+            return item.name
+          })
         },
         yAxis: {
           splitLine: {
@@ -104,11 +156,13 @@ export default {
           top: '15%',
           left: '5%',
           right: '4%',
-          height: '85%',
+          bottom:0,
           containLabel: true
         },
         series: [{
-          data: yData,
+          data: this.yqsubject.map(item => {
+            return item.value
+          }),
           type: 'bar',
           barWidth: "60%",
           fontSize:"1.5rem",
@@ -158,7 +212,6 @@ export default {
     #leibie{
       margin-top: 1rem;
       height: 33rem;
-      padding-bottom:2.5rem;
     }
   }
 </style>

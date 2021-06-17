@@ -5,7 +5,9 @@
       <p>国家积案</p>
       <div v-if="this.count?true:false" class="tips">{{this.count}}件  化解率{{this.resolution}}</div>
     </div>
-    <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx">
+    <div class="disx" :style="{height:height*lineNum + 'rem'}" id ="disx"
+    @mouseover="mouseOver"
+    @mouseleave="mouseLeave">
       <div class="ul" :style = {transform:transform} :class="{ul_unanim:num===0}">
         <div class="data"
           v-for="(item,index) in contentArr"
@@ -58,6 +60,23 @@ export default {
       num: 0
     }
   },
+  methods: {
+    // 移入停止
+    mouseOver(){
+      clearInterval(this.setint);
+    },
+    // 移出轮播
+    mouseLeave(){
+      let _this = this
+      _this.setint=setInterval(function () {
+        if (_this.num !== _this.contentArr.length) {
+          _this.num++
+        } else {
+          _this.num = 0
+        }
+      }, 2000)
+    },
+  },
   mounted() {
     nationalProvincialPendingCase({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       // console.log(res.startTime);
@@ -67,7 +86,7 @@ export default {
       this.count=resdata.count;
       this.resolution=resdata.resolution;
       let _this = this
-      setInterval(function () {
+      _this.setint=setInterval(function () {
         if (_this.num !== _this.contentArr.length) {
           _this.num++
         } else {
