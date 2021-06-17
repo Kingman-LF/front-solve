@@ -20,7 +20,7 @@ export default {
       endTime: getNowDate(),
     }).then((res) => {
       let resdata = res.data;
-      console.log(resdata, "new");
+      // console.log(resdata, "new");
       let xData = Object.keys(resdata);
       let yData = [];
       let values = Object.values(resdata);
@@ -92,6 +92,7 @@ export default {
           type: "category",
           boundaryGap: false,
           axisLabel: {
+            rotate: 30,
             color: "#fff",
             fontSize: "1.5rem",
             fontFamily: "PingFang SC",

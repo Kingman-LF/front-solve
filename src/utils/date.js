@@ -57,3 +57,14 @@ export function getDate2(date){
     D = D<10?"0"+D:D
     return Y+''+M+''+D
   }
+
+  // 当前时间的前七天
+export function getentDate(){
+    const date = new Date();
+    let Y = date.getFullYear();
+    let M = date.getMonth()+1;
+    let D = date.getDate()-6;
+    M = M<10?"0"+M:M
+    D = D<10?"0"+D:D
+    return Y+''+M+''+D
+}

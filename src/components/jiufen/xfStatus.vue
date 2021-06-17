@@ -21,9 +21,11 @@ export default {
       endTime: getNowDate(),
     }).then((res) => {
       let resdata = res.data;
-      console.log(resdata);
+      // console.log(resdata);
       this.list = [];
+      this.num=0
       resdata.forEach((v, i) => {
+        this.num+=v.value
         let obj = {};
         obj.name = v.status;
         obj.value = v.value;
@@ -31,18 +33,19 @@ export default {
       });
       this.$nextTick(() => {
         // setTimeout(() => {
-        this.status(this.list);
+        this.status(this.list,this.num);
         // }, 500);
       });
     });
   },
   methods: {
-    status(list) {
+    status(list,num) {
       let thit = this;
       let status = document.getElementById("status");
       let statusChart = echarts.init(status);
-      function huanzhuang(charts, showLable, mygraphic, list) {
+      function huanzhuang(charts, showLable, mygraphic, list,num) {
         charts.clear();
+        let gailanTotal = num;
         let option = {
           tooltip: {
             trigger: "item",
@@ -151,7 +154,7 @@ export default {
           charts.resize();
         });
       }
-      huanzhuang(statusChart, true, true, list);
+      huanzhuang(statusChart, true, true, list,num);
     },
   },
 };
