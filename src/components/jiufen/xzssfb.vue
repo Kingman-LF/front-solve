@@ -23,19 +23,45 @@ export default {
   methods: {
     litigationArea(obj) {
       litigationArea(obj).then((res) => {
-        this.resdata = res.data;
-        console.log(this.resdata);
+        let resdata = res.data;
+        let resdatas=[
+              { value: 0, name: "市本级" },
+              { value: 0, name: "吴兴区" },
+              { value: 0, name: "南浔区" },
+              { value: 0, name: "德清县" },
+              { value: 0, name: "长兴县" },
+              { value: 0, name: "安吉县" },
+              { value: 0, name: "南太湖新区" },
+            ]
         this.sum = 0;
-        this.resdata.forEach((v, i) => {
+        let obj={}
+        resdata.forEach((v, i) => {
           this.sum += Number(v.value);
-          console.log(this.sum);
+          obj[v.area]={value:v.value}
         });
+        for (const key in obj) {
+          if(key.indexOf('市局')!==-1){
+              resdatas[0].value+=Number(obj[key].value)
+          }else if(key.indexOf('安吉')!==-1){
+            resdatas[5].value+=Number(obj[key].value)
+          }else if(key.indexOf('长兴')!==-1){
+            resdatas[4].value+=Number(obj[key].value)
+          }else if(key.indexOf('德清')!==-1){
+            resdatas[3].value+=Number(obj[key].value)
+          }else if(key.indexOf('南浔')!==-1){
+            resdatas[2].value+=Number(obj[key].value)
+          }else if(key.indexOf('吴兴')!==-1){
+            resdatas[1].value+=Number(obj[key].value)
+          }else if(key.indexOf('南太湖')!==-1||key.indexOf('开发')!==-1){
+            resdatas[6].value+=Number(obj[key].value)
+          }
+        }
         let susong = document.getElementById("susong");
         let susongChart = echarts.init(susong);
-        this.huanzhuang(susongChart, this.sum, this.resdata);
+        this.huanzhuang(susongChart, this.sum, resdatas);
       });
     },
-    huanzhuang(charts, sum, resdata, showLable, mygraphic) {
+    huanzhuang(charts, sum, resdatas, showLable, mygraphic) {
       charts.clear();
       let gailanTotal = sum;
       let option = {
@@ -68,7 +94,7 @@ export default {
               },
             },
             type: "text",
-            left: "20%",
+            left: "22%",
             top: "center",
             z: 10,
             style: {
@@ -129,15 +155,7 @@ export default {
               length: 20,
               length2: 20,
             },
-            data: [
-              { value: 2, name: "市本级" },
-              { value: 1, name: "吴兴区" },
-              { value: 0, name: "南浔区" },
-              { value: 3, name: "德清县" },
-              { value: 4, name: "长兴县" },
-              { value: 1, name: "安吉县" },
-              { value: 1, name: "南太湖新区" },
-            ],
+            data: resdatas,
           },
           {},
         ],

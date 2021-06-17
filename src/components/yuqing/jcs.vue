@@ -2,7 +2,7 @@
   <div class="myborder">
     <div class="title" @click.stop="jcsTitle">
       <img :src="require('../../assets/images/titlelogo.png')" alt="">
-      <p>舆情监测数</p>
+      <p>舆情监测倾向性统计</p>
     </div>
 
     <div id="jcs"></div>

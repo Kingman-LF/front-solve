@@ -96,7 +96,7 @@ export default {
       endTime: getNowDate(),
     }).then((res) => {
       let resdata = res.data.provincial;
-      console.log(resdata);
+      // console.log(resdata);
       this.contentArr = resdata.list;
       this.count = resdata.count;
       this.resolution = resdata.resolution;

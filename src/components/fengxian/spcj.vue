@@ -274,11 +274,11 @@ export default {
         });
       }
       let leftData = [
-        "其他",
-        "餐饮具卫生问题",
-        "农药残留指标风险",
-        "重金属超标风险",
-        "食品添加剂超标",
+        "农兽药残留",
+        "添加剂",
+        "重金属超标",
+        "质量指标不合标准",
+        "微生物",
       ];
       let rightData = [
         JSON.stringify({
@@ -302,7 +302,7 @@ export default {
           num: 600,
         }),
       ];
-      let data = [2225, 1999, 1785, 1158, 788];
+      let data = [123, 50, 10, 12, 5];
       let colorlist = ["#ff4a4a", "#FF9600"];
       let spcc = document.getElementById("spcc");
       let spccChart = echarts.init(spcc);

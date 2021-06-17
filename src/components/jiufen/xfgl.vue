@@ -39,36 +39,40 @@ export default {
   data() {
     return {
       tabIndex: 0,
-      count:0,
+      count:124,
       topList: [
         {
           id: Math.random(),
           text: "区县",
-          data:[],
+          data:[
+            {id: Math.random() + new Date().valueOf() + "",area:'吴兴区',value:'29'},
+            {id: Math.random() + new Date().valueOf() + "",area:'南浔区',value:'8'},
+            {id: Math.random() + new Date().valueOf() + "",area:'德清县',value:'6'},
+            {id: Math.random() + new Date().valueOf() + "",area:'长兴县',value:'23'},
+            {id: Math.random() + new Date().valueOf() + "",area:'安吉县',value:'23'},
+            {id: Math.random() + new Date().valueOf() + "",area:'南太湖新区',value:'17'},
+          ],
         },
         {
           id: Math.random(),
           text: "处室",
           data:[
-            {id: Math.random() + new Date().valueOf() + "",area:'特检院',value:'0'},
-            {id: Math.random() + new Date().valueOf() + "",area:'办公室',value:'0'},
-            {id: Math.random() + new Date().valueOf() + "",area:'机关党委',value:'0'},
-            {id: Math.random() + new Date().valueOf() + "",area:'执法大队',value:'0'},
-            // {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'156'},
-            // {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'1241'},
-            // {id: Math.random() + new Date().valueOf() + "",num:'安吉县',value:'156'},
-            // {id: Math.random() + new Date().valueOf() + "",num:'南太湖新区',value:'1241'},
+            {id: Math.random() + new Date().valueOf() + "",area:'特检院',value:'6'},
+            {id: Math.random() + new Date().valueOf() + "",area:'办公室',value:'6'},
+            {id: Math.random() + new Date().valueOf() + "",area:'机关党委',value:'5'},
+            {id: Math.random() + new Date().valueOf() + "",area:'综合执法队',value:'1'},
           ]
         },
       ],
     }
   },
   mounted() {
-    petitionCount({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
-      let resdata=res.data;
-      this.count=resdata.count
-      this.topList[0].data=resdata.list
-    })
+    // petitionCount({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
+    //   let resdata=res.data;
+    //   // console.log(resdata);
+    //   this.count=resdata.count
+    //   this.topList[0].data=resdata.list
+    // })
   },
   methods: {
     clickF(item, index) {

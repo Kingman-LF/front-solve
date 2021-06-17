@@ -15,6 +15,7 @@ import { negativeSentiment } from "@/assets/api/yuqing";
 export default {
   name: "yqxqfb",
   mounted() {
+    // this.yqInfo()
     this.$nextTick(() => {
       setTimeout(() => {
         this.negativeSentiment();
