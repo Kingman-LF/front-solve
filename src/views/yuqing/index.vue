@@ -51,13 +51,13 @@
       <el-col :span="6">
         <el-row :gutter="12">
           <!--     媒体分布       -->
-          <el-col :span="12">
+          <el-col :span="24">
             <mtfb></mtfb>
           </el-col>
           <!--      信息范围分布      -->
-          <el-col :span="12">
-            <infoFb></infoFb>
-          </el-col>
+<!--          <el-col :span="12">-->
+<!--            <infoFb></infoFb>-->
+<!--          </el-col>-->
         </el-row>
       </el-col>
       <!--事件库-->
@@ -96,7 +96,7 @@
               {{ list[scope.$index][item.keyWord] }}
             </template>
           </el-table-column>
-          <!-- 
+          <!--
             <el-table-column prop="tsRegister" label="登记编号" show-overflow-tooltip></el-table-column>
             <el-table-column prop="tsProvider" label="投诉方" show-overflow-tooltip></el-table-column>
             <el-table-column prop="tsContent" label="内容" show-overflow-tooltip></el-table-column>

@@ -5,7 +5,7 @@ import { axios } from '@/utils/request'
  */
  export function sentimentType(parameter){
     return axios({
-        url:'/secreInfoTem/sentimentType',
+        url:'api/secreInfoTem/sentimentType',
         method:'post',
         data:parameter
     })
@@ -15,7 +15,7 @@ import { axios } from '@/utils/request'
  */
  export function sentimentRegion(parameter){
     return axios({
-        url:'/secreInfoTem/sentimentRegion',
+        url:'api/secreInfoTem/sentimentRegion',
         method:'post',
         data:parameter
     })
@@ -25,7 +25,7 @@ import { axios } from '@/utils/request'
  */
  export function sentimentMonitor(parameter){
     return axios({
-        url:'/secreInfoTem/sentimentMonitor',
+        url:'api/secreInfoTem/sentimentMonitor',
         method:'post',
         data:parameter
     })
@@ -35,7 +35,7 @@ import { axios } from '@/utils/request'
  */
  export function negativeSentiment(parameter){
     return axios({
-        url:'/secreInfoTem/negativeSentiment',
+        url:'api/secreInfoTem/negativeSentiment',
         method:'post',
         data:parameter
     })
@@ -45,7 +45,7 @@ import { axios } from '@/utils/request'
  */
  export function mediaDistribution(parameter){
     return axios({
-        url:'/secreInfoTem/mediaDistribution',
+        url:'api/secreInfoTem/mediaDistribution',
         method:'post',
         data:parameter
     })
@@ -55,7 +55,7 @@ import { axios } from '@/utils/request'
  */
  export function sentimentDetails(parameter){
     return axios({
-        url:'/secreInfoTem/sentimentDetails',
+        url:'api/secreInfoTem/sentimentDetails',
         method:'post',
         data:parameter
     })

@@ -1,13 +1,8 @@
 <template>
   <div class="myborder">
     <div class="title">
-<<<<<<< HEAD
-      <img :src="require('../../assets/images/titlelogo.png')" alt="" />
-      <p>媒体分布</p>
-=======
       <img :src="require('../../assets/images/titlelogo.png')" alt="">
       <p>舆情监测媒体分布</p>
->>>>>>> 146d93dfeb77b83c6e2eba60bd8fe1622c0661fb
     </div>
 
     <div id="mtfb"></div>
@@ -58,85 +53,134 @@ export default {
               return `${e.name}<br> <div style="width:20px;height:20px;border-radius:20px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`;
             },
           },
+          grid: {
+            top: "5%",
+            left: "5%",
+            right: "5%",
+            bottom:"5%",
+            containLabel: true,
+          },
+          xAxis: {
+            data:datas.map(item => {
+              return item.name
+            }),
+            splitLine: {
+              lineStyle: {
+                type: "dashed",
+                color: "rgba(255, 255, 255, 0.1)",
+                fontSize:'1.5rem',
+              },
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
+              },
+            },
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              show:true,
+              color: "#fff",
+              fontFamily: "PingFang",
+              fontWeight: "bold",
+              fontSize:'1.5rem',
+            },
+            type: "category",
+          },
+          yAxis: {
+            splitLine: {
+              lineStyle: {
+                type: "dashed",
+                color: "rgba(255, 255, 255, 0.1)",
+                fontSize:'1.5rem',
+              },
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: "rgba(255, 255, 255, 0.4)",
+                fontSize:'1.5rem',
+              },
+            },
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              show:true,
+              color: "#fff",
+              fontfamily: "PingFang",
+              fontweight: "bold",
+              fontSize:'1.5rem',
+            },
+            type: "value",
+          },
           legend: {
             show: false,
           },
-          graphic: mygraphic
-            ? [
-                {
-                  tooltip: {
-                    formatter(e) {
-                      return `总量：${gailanTotal}`;
-                    },
-                  },
-                  type: "text",
-                  left: "center",
-                  top: "center",
-                  z: 10,
-                  style: {
-                    fill: "#fff",
-                    textAlign: "center",
-                    text: ["{value|" + gailanTotal + "}"].join("\n"),
-                    rich: {
-                      value: {
-                        color: "#303133",
-                        fontSize: "3rem",
-                        lineHeight: 30,
-                        fontFamily: "digifaw",
-                        textShadowColor: "#0096ff",
-                        textShadowBlur: "12",
-                      },
-                      name: {
-                        color: "#909399",
-                        lineHeight: 30,
-                        fontSize: "2rem",
-                      },
-                    },
-                    font: "16px PingFang",
-                  },
-                },
-              ]
-            : [],
           series: [
             {
-              type: "pie",
-              radius: ["40%", "60%"],
-              center: ["center", "center"],
-              // avoidLabelOverlap: false,
+              data: datas.map(item => {
+                return item.value
+              }),
+              type: "bar",
+              barWidth: "60%",
+              fontSize:'1.5rem',
+              color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                offset: 0,
+                color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+              },{
+                offset: 1,
+                color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+              }], false),
               label: {
                 show: true,
+                position: "top",
                 color: "#fff",
-                fontWeight: "bold",
-                fontFamily: "PingFang Bold",
-                fontSize: "1.5rem",
+                fontSize:'1.5rem',
               },
-              itemStyle: {
-                color: function(params) {
-                  var colorlist = [
-                    "#0F5ED6",
-                    "#79FFB5",
-                    "#843DFF",
-                    "#4304B1",
-                    "#688FD8",
-                    "#F25334",
-                    "#49A732",
-                    "#EB3633",
-                    "#FCBD01",
-                    "",
-                    "#CAD9F0",
-                  ];
-                  return colorlist[params.dataIndex];
-                },
-              },
-              labelLine: {
-                show: true,
-                lineStyle: {
-                  width: 3,
-                },
-              },
-              data: datas,
             },
-            {},
+          //   {
+          //     type: "pie",
+          //     radius: ["40%", "60%"],
+          //     center: ["center", "center"],
+          //     // avoidLabelOverlap: false,
+          //     label: {
+          //       show: true,
+          //       color: "#fff",
+          //       fontWeight: "bold",
+          //       fontFamily: "PingFang Bold",
+          //       fontSize: "1.5rem",
+          //     },
+          //     itemStyle: {
+          //       color: function(params) {
+          //         var colorlist = [
+          //           "#0F5ED6",
+          //           "#79FFB5",
+          //           "#843DFF",
+          //           "#4304B1",
+          //           "#688FD8",
+          //           "#F25334",
+          //           "#49A732",
+          //           "#EB3633",
+          //           "#FCBD01",
+          //           "",
+          //           "#CAD9F0",
+          //         ];
+          //         return colorlist[params.dataIndex];
+          //       },
+          //     },
+          //     labelLine: {
+          //       show: true,
+          //       lineStyle: {
+          //         width: 3,
+          //       },
+          //     },
+          //     data: datas,
+          //   },
+          //   {},
           ],
         };
         option && charts.setOption(option);
