@@ -16,8 +16,12 @@ import {common} from "@/assets/api/yuqing"
 export default {
   name: "jcs",
   mounted() {
-    this.common()
-    
+    // this.common()
+    // this.$nextTick(() => {
+    //       // setTimeout(() => {
+    //         this.jcs(resdata,this.num);
+    //       // }, 500);
+    //     });
   },
   methods: {
     common(){

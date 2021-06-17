@@ -16,27 +16,27 @@ import { petitionStatus } from "@/assets/api/jiufen";
 export default {
   name: "xfStatus",
   mounted() {
-    petitionStatus({
-      startTime: getYearStartDate(),
-      endTime: getNowDate(),
-    }).then((res) => {
-      let resdata = res.data;
-      // console.log(resdata);
-      this.list = [];
-      this.num = 0;
-      resdata.forEach((v, i) => {
-        this.num += v.value;
-        let obj = {};
-        obj.name = v.status;
-        obj.value = v.value;
-        this.list.push(obj);
-      });
-      this.$nextTick(() => {
-        // setTimeout(() => {
-        this.status(this.list, this.num);
-        // }, 500);
-      });
+    // petitionStatus({
+    //   startTime: getYearStartDate(),
+    //   endTime: getNowDate(),
+    // }).then((res) => {
+    //   let resdata = res.data;
+    //   // console.log(resdata);
+    //   this.list = [];
+    //   this.num=0
+    //   resdata.forEach((v, i) => {
+    //     this.num+=v.value
+    //     let obj = {};
+    //     obj.name = v.status;
+    //     obj.value = v.value;
+    //     this.list.push(obj);
+    //   });
+    this.$nextTick(() => {
+      // setTimeout(() => {
+      this.status(this.list, this.num);
+      // }, 500);
     });
+    // });
   },
   methods: {
     status(list, num) {
@@ -45,7 +45,7 @@ export default {
       let statusChart = echarts.init(status);
       function huanzhuang(charts, showLable, mygraphic, list, num) {
         charts.clear();
-        let gailanTotal = num;
+        let gailanTotal = 124;
         let option = {
           tooltip: {
             trigger: "item",
@@ -140,7 +140,10 @@ export default {
                 // length: 20,
                 // length2: 10
               },
-              data: list,
+              data: [
+                { name: "已办结", value: "124" },
+                { name: "未办结", value: "0" },
+              ],
             },
             {},
           ],

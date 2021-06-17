@@ -30,9 +30,9 @@ export default {
     // this.yqInfo()
     // let dates2=new Date()
     // console.log(dates2-dates);
-    let leibie = document.getElementById("leibie");
-      let leibieChart = echarts.init(leibie);
-      this.zhuzhuang(leibieChart);
+    // let leibie = document.getElementById("leibie");
+    //   let leibieChart = echarts.init(leibie);
+    //   this.zhuzhuang(leibieChart);
   },
   methods: {
     yqInfo(){

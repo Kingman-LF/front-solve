@@ -23,13 +23,13 @@ export default {
     let hyspzlChart = echarts.init(hyspzl);
     this.zhuzhuangtu2(hyspzlChart);
     // 产品质量不合格率TOP5
-    industryQualifiedRate({
-      startTime: getYearStartDate("2018-01-01"),
-      endTime: getNowDate(),
-    }).then((res) => {
-      let resdata = res.data;
-      console.log(resdata);
-    });
+    // industryQualifiedRate({
+    //   startTime: getYearStartDate("2018-01-01"),
+    //   endTime: getNowDate(),
+    // }).then((res) => {
+    //   let resdata = res.data;
+    //   console.log(resdata);
+    // });
     var cpzlDom = document.getElementById("cpzl");
     var myChart = echarts.init(cpzlDom);
     this.zhuzhuangtu3(myChart);
@@ -47,7 +47,7 @@ export default {
             "轻工行业",
             "冶金行业",
           ];
-      let yData = ydata ? ydata : [0, 12.7, 2.14, 2.61, 2.66, 8.32, 1.93];
+      let yData = ydata ? ydata : [0, 12.7, 2.14, 2.61, 2.69, 8.25, 1.93];
       let colors = color
         ? color
         : new echarts.graphic.LinearGradient(
@@ -105,6 +105,9 @@ export default {
           data: xData,
         },
         yAxis: {
+          min: 0,
+          max: 50,
+          interval: 25,
           splitLine: {
             lineStyle: {
               type: "dashed",
@@ -112,8 +115,6 @@ export default {
               fontSize: "1.5rem",
             },
           },
-          min: 0,
-          max: 50,
           axisLine: {
             show: true,
             lineStyle: {
@@ -128,8 +129,13 @@ export default {
             fontfamily: "PingFang",
             fontweight: "bold",
             fontSize: "1.5rem",
+            formatter(e) {
+              return `${e}%`;
+              // console.log(e);
+            },
           },
           type: "value",
+
         },
         grid: {
           top: "15%",
@@ -161,8 +167,8 @@ export default {
     zhuzhuangtu3(charts, color, xdata, ydata, rotate) {
       let xData = xdata
         ? xdata
-        : ["针织服装", "童装", "纸尿裤", "童装", "针织服装"];
-      let yData = ydata ? ydata : [80.6, 70.9, 60.0, 40.4, 35.7];
+        : ["非医用口罩", "儿童服装", "办公椅", "水泥", "竹席"];
+      let yData = ydata ? ydata : [0, 0, 0, 0, 0];
       let colors = color
         ? color
         : new echarts.graphic.LinearGradient(
@@ -191,7 +197,7 @@ export default {
             fontSize: 26,
           },
           formatter(e) {
-            return `${e[0].name}<br/>${e[0].seriesName}：${e[0].value}<br/>${e[0].seriesName}：${e[1].value}`;
+            return `${e[0].name}<br/>${e[0].seriesName}：${e[0].value}%`;//<br/>${e[0].seriesName}：${e[1].value}%
             // console.log(e);
           },
 
@@ -204,7 +210,7 @@ export default {
           },
         },
         legend: {
-          data: ["2020", "2021"],
+          data: ["2020"],
           textStyle: {
             color: "rgba(255, 255, 225, 1)",
             fontSize: 20,
@@ -223,6 +229,13 @@ export default {
               rotate: 20,
               color: "rgba(255, 255, 255, 1)",
               fontSize: "1.5rem",
+              formatter(e){
+                if(e.length>5){
+                  return (e.slice(0,5)+"...")
+                }else{
+                  return e
+                }
+              }
             },
           },
         ],
@@ -230,8 +243,8 @@ export default {
           {
             type: "value",
             min: 0,
-            max: 100,
-            interval: 50,
+            max: 50,
+            interval: 25,
             axisLabel: {
               formatter: "{value}%",
               fontSize: "1.5rem",
@@ -239,6 +252,10 @@ export default {
             axisLabel: {
               color: "rgba(255, 255, 255, 1)",
               fontSize: "1.5rem",
+              formatter(e) {
+                return `${e}%`;
+                // console.log(e);
+              },
             },
           },
           {
@@ -263,37 +280,36 @@ export default {
                 },
                 {
                   offset: 0,
-
                   color: "rgba(0, 240, 255, 0)", // 100% 处的颜色
                 },
               ],
               false
             ),
-            data: [70.0, 60.9, 50.0, 30.2, 25.6],
+            data: [34.38, 16.44, 7.25, 3.03, 2.5],
           },
-          {
-            name: "2021",
-            type: "bar",
-            fontSize: "1.5rem",
-            color: new echarts.graphic.LinearGradient(
-              0,
-              1,
-              0,
-              0,
-              [
-                {
-                  offset: 1,
-                  color: "rgba(120,255,182, 1)", // 100% 处的颜色
-                },
-                {
-                  offset: 0,
-                  color: "rgba(120,255,182, 0)", // 100% 处的颜色
-                },
-              ],
-              false
-            ),
-            data: yData,
-          },
+          // {
+          //   name: "2021",
+          //   type: "bar",
+          //   fontSize: "1.5rem",
+          //   color: new echarts.graphic.LinearGradient(
+          //     0,
+          //     1,
+          //     0,
+          //     0,
+          //     [
+          //       {
+          //         offset: 1,
+          //         color: "rgba(120,255,182, 1)", // 100% 处的颜色
+          //       },
+          //       {
+          //         offset: 0,
+          //         color: "rgba(120,255,182, 0)", // 100% 处的颜色
+          //       },
+          //     ],
+          //     false
+          //   ),
+          //   data: yData,
+          // },
         ],
       };
       options && charts.setOption(options);

@@ -199,10 +199,10 @@ export default {
           axisPointer: {
             type: "shadow",
           },
-          formatter(e){
-            return `${e[0].name}：${e[0].value}%`
-            // console.log(e);
-          }
+          // formatter(e){
+          //   return `${e[0].name}：${e[0].value}`
+          //   // console.log(e);
+          // }
         },
         legend: {
           top:"2%",
@@ -318,7 +318,6 @@ export default {
     getyxhcj(){
       let yxhcj = document.getElementById("yxhcj");
       let yxhcjChart = echarts.init(yxhcj);
-
       let option = {
         tooltip: {
           trigger: "axis",
@@ -329,10 +328,20 @@ export default {
           axisPointer: {
             type: "shadow",
           },
-          formatter(e){
-            return `${e[0].name}：${e[0].value}%`
-            // console.log(e);
-          }
+          // formatter(e){
+          //   return `${e[0].name}：${e[0].value}`
+          //   // console.log(e);
+          // }
+        },
+        legend: {
+          top:"2%",
+          data: ['任务数', '已完成'],
+          textStyle: {
+            color: "rgba(255, 255, 225, 1)",
+            fontSize: 25
+          },
+          itemWidth:40,
+          itemHeight:20,
         },
         xAxis: {
           type: 'category',
@@ -347,22 +356,15 @@ export default {
           },
           axisLabel: {
             interval: 0,
-            rotate: -20,
-            margin:"30",
-            align:"center",
+            rotate: 5,
+            margin:"20",
+            align: "center",
             color: "#fff",
             fontSize:'1.5rem',
             fontFamily: 'PingFang',
             fontWeight: 'bold',
-            formatter(e){
-              if(e.length>5){
-                return (e.slice(0,5)+"...")
-              }else{
-                return e
-              }
-            }
           },
-          data: ["自粘接树脂水门汀.", "一次性使用医用口罩", "一次性使用精密过啊啊啊啊啊啊", "一次性使用无菌手术膜", "肌酸激酶测定试剂盒", "肌酸激酶MB同工啊啊啊啊啊啊","医用外科口罩"]
+          data: ["市本级", "吴兴区", "南浔区", "德清县", "长兴县", "安吉县","南太湖新区"]
         },
         yAxis: {
           splitLine: {
@@ -390,14 +392,34 @@ export default {
           type: 'value',
         },
         grid: {
-          top: '10%',
+          top: '15%',
           left: '5%',
           right: '5%',
-          bottom:'5%',
+          bottom:'0%',
           containLabel: true
         },
         series: [{
-          data: [10,10,10,10,10,10,10],
+          name:"任务数",
+          data: [9,11,11,14,12,19,12],
+          type: 'bar',
+          barWidth: "30%",
+          color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(200, 250, 100, 1)" // 100% 处的颜色
+          },{
+            offset: 0,
+
+            color: "rgba(200, 250, 100, 0)" // 100% 处的颜色
+          }], false),
+          // label: {
+          //   show: true,
+          //   position: 'top',
+          //   color: '#fff',
+          //   fontSize:'1.5rem',
+          // },
+        },{
+          name:"已完成",
+          data: [6,10,11,14,11,13,10],
           type: 'bar',
           barWidth: "30%",
           color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
@@ -417,6 +439,7 @@ export default {
         }
         ]
       }
+      
       yxhcjChart.setOption(option);
       window.addEventListener("resize", function () {
         yxhcjChart.resize();
