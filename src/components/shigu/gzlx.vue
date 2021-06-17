@@ -7,23 +7,23 @@
      <div class="disList">
         <div class="filed dis">
           <div class="num">总管辖</div>
-          <div class="number">43023 </div>
+          <div class="number">43042 </div>
         </div>
         <div class="in_hand dis">
           <div class="num">在用电梯</div>
-          <div class="number">33899 </div>
+          <div class="number">34001 </div>
         </div>
         <div class="coms dis">
           <div class="num">电梯维保中</div>
-          <div class="number">27</div>
+          <div class="number">23</div>
         </div>
         <div class="filed dis">
           <div class="num">待复核</div>
-          <div class="number">2755</div>
+          <div class="number">3132</div>
         </div>
         <div class="in_hand dis">
           <div class="num">待上传</div>
-          <div class="number">0</div>
+          <div class="number">10</div>
         </div>
         <div class="coms dis">
           <div class="num">当前困人处置中</div>
