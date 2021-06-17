@@ -1,13 +1,8 @@
 <template>
   <div class="myborder">
     <div class="title">
-<<<<<<< HEAD
-      <img :src="require('../../assets/images/titlelogo.png')" alt="" />
-      <p>媒体分布</p>
-=======
       <img :src="require('../../assets/images/titlelogo.png')" alt="">
       <p>舆情监测媒体分布</p>
->>>>>>> 146d93dfeb77b83c6e2eba60bd8fe1622c0661fb
     </div>
 
     <div id="mtfb"></div>
