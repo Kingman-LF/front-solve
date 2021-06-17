@@ -1,6 +1,6 @@
 <template>
   <div class="myborder">
-    <div class="title">
+    <div class="title" @click.stop="jcsTitle">
       <img :src="require('../../assets/images/titlelogo.png')" alt="">
       <p>舆情监测数</p>
     </div>
@@ -11,31 +11,33 @@
 
 <script>
 import * as echarts from "echarts";
-import {getPorSevenData2,getDate2} from '@/utils/date'
-import {common} from "@/assets/api/yuqing"
+import { sentimentMonitor } from "@/assets/api/yuqing"
 export default {
   name: "jcs",
   mounted() {
-    this.common()
-    
+    this.$nextTick(() =>{
+      setTimeout(() => {
+        this.sentimentMonitor()
+      },500)
+    })
   },
   methods: {
-    common(){
-       common({method:'ECharts_pie_Test!list.do',btime:getPorSevenData2(),etime:getDate2()}).then(res => {
-         console.log(resdata);
-         let resdata=res.data.ORIENTATION
-         this.num=0
-         resdata.forEach((v,i) => {
-          this.num+=Number(v.value) 
-         });
-         console.log(this.num,resdata);
-         this.$nextTick(() => {
-          // setTimeout(() => {
-            this.jcs(resdata,this.num);
-          // }, 500);
-        });
-       })
-     },
+    jcsTitle() {
+      this.$emit("jcsTitle")
+    },
+    sentimentMonitor() {
+      sentimentMonitor({}).then(res => {
+        if(res.code === 200) {
+          let sum = 0
+          res.data.forEach(ele => {
+            sum += Number(ele.value)
+          })
+          this.jcs(res.data,sum);
+        }else {
+          this.$message.error(res.message)
+        }
+      })
+    },
     jcs(datas,num) {
       let jcs = document.getElementById("jcs");
       let jcsChart = echarts.init(jcs);
@@ -51,14 +53,10 @@ export default {
             },
             formatter(e){
               return `${e.name}<br> <div style="width:18px;height:18px;border-radius:18px;background-color:${e.color};display:inline-block"></div> ${e.value} ${e.percent}%`
-              // console.log(e);
             }
           },
           legend: {
             left: 'center',
-            // width:"100%",
-            // itemWidth:'3',
-            // itemHeight:'10',
             textStyle:{
               color:"#fff",
               fontSize: '1.5rem',
