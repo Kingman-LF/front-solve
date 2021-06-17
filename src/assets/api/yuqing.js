@@ -60,3 +60,11 @@ import { axios } from '@/utils/request'
         data:parameter
     })
 }
+// 重点舆情专题
+export function secreInfoArea(parameter){
+    return axios({
+        url:'api/secreInfoTem/secreInfoArea',
+        method:'post',
+        data:parameter
+    })
+}

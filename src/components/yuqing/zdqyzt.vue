@@ -44,6 +44,7 @@
 <script>
 import * as echarts from "echarts";
 
+import {secreInfoArea} from "@/assets/api/yuqing"
 export default {
   name: "zdqyzt",
   data(){
@@ -72,8 +73,8 @@ export default {
               {value:'0',name:'报刊'},
               {value:'13',name:'其他'}
             ],
-            xData:['6月3日','6月4日','6月5日','6月7日','6月8日','6月9日'],
-            yData: [520, 530, 470, 490, 600,500,500]
+          xData:['6月10日','6月11日','6月12日','6月13日','6月14日','6月15日','6月16日'],
+            yData: [520, 530, 470, 490, 600,500,490,500]
         },
         {
           id:Math.random(),
@@ -97,7 +98,7 @@ export default {
             {value:'0',name:'报刊'},
             {value:'13',name:'其他'}
           ],
-          xData:['6月3日','6月4日','6月5日','6月7日','6月8日','6月9日'],
+          xData:['6月10日','6月11日','6月12日','6月13日','6月14日','6月15日','6月16日'],
           yData: [510, 520, 440, 470, 590,480,500]
         }
       ]
@@ -112,8 +113,14 @@ export default {
     this.qushiChart = echarts.init(qushi);
     this.bolang(this.qushiChart);
 
+    this.getData()
   },
   methods:{
+    getData(){
+      secreInfoArea({}).then(res => {
+        console.log(res)
+      })
+    },
     tabFn(item,index){
       this.tabIndex = index;
       this.huanzhuang(this.meitiChart);
@@ -141,6 +148,7 @@ export default {
               // console.log(e);
             }
           },
+
           legend: {
             show: false,
           },
@@ -267,7 +275,7 @@ export default {
           },
           grid: {
             left: '3%',
-            right: '4%',
+            right: '10%',
             bottom: '3%',
             containLabel: true,
           },

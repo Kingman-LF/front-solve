@@ -4,13 +4,13 @@
       <img :src="require('../../assets/images/titlelogo.png')" alt="">
       <p>预警舆情</p>
     </div>
-    
-    <div class="yj_list" :style="{height:height*lineNum + 'rem'}" 
-          @mouseover="mouseOver"
-          @mouseleave="mouseLeave">
+
+    <div class="yj_list" :style="{height:height*lineNum + 'rem'}"
+         @mouseover="mouseOver"
+         @mouseleave="mouseLeave">
       <ul class="ul"  :style = {transform:transform} :class="{ul__unanim:num===0}">
         <li v-for="(item,index) in listArr" :key=index
-        :style="{height:height+'rem'}"
+            :style="{height:height+'rem'}"
         >
           <p>{{ item.txt }}</p>
           <p>
@@ -19,7 +19,7 @@
           </p>
         </li>
         <li v-for="(item,index) in listArr" :key=index+listArr.length
-        :style="{height:height+'rem'}"
+            :style="{height:height+'rem'}"
         >
           <p>{{ item.txt }}</p>
           <p>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { warnSentiment } from "@/assets/api/yuqing";
 export default {
   name: "yjyq",
   props: {
@@ -59,6 +60,16 @@ export default {
     }
   },
   methods: {
+    // 预警舆情
+    warnSentiment() {
+      warnSentiment({}).then(res => {
+        if(res.code === 200) {
+          console.log(res.data)
+        }else {
+          this.$message.error(res.message)
+        }
+      })
+    },
     // 移入停止
     mouseOver(){
       clearInterval(this.setint);
@@ -82,6 +93,7 @@ export default {
   },
   created: function () {
     let _this = this
+    this.warnSentiment()
     _this.setint=setInterval(function () {
       if (_this.num !== _this.listArr.length) {
         _this.num++
@@ -89,7 +101,7 @@ export default {
         _this.num = 0
       }
     }, 3000)
-  }
+  },
 }
 </script>
 
@@ -125,13 +137,13 @@ export default {
             word-break: break-all;
           }
           &:nth-child(2){
-             height: 1.5rem;
-             float: right;
+            height: 1.5rem;
+            float: right;
             padding-top:1.58rem;
             .luntan{
               padding-left:3.25rem;
             }
-           }
+          }
         }
       }
       li:hover{
