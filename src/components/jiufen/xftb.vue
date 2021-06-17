@@ -10,14 +10,13 @@
 
 <script>
 import * as echarts from "echarts";
-import { getYearStartDate, getNowDate, getDate } from "@/utils/date";
+import { getYear } from "@/utils/date";
 import { trendDistribution } from "@/assets/api/jiufen";
 export default {
   name: "xftb",
   mounted() {
     trendDistribution({
-      startTime: getYearStartDate(),
-      endTime: getNowDate(),
+      startTime: getYear(),
     }).then((res) => {
       let resdata = res.data;
       console.log(resdata, "new");

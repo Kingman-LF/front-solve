@@ -42,6 +42,7 @@ export default {
       let status = document.getElementById("status");
       let statusChart = echarts.init(status);
       function huanzhuang(charts, showLable, mygraphic, list) {
+        let gailanTotal = 197;
         charts.clear();
         let option = {
           tooltip: {
