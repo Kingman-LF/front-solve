@@ -11,14 +11,14 @@
         </div>
         <div class="bos">
             <div class="assignment" v-for="(item,index) in list" :key="index">
-                <div class="trapezoid">{{item.department}}</div>
+                <div class="trapezoid">{{item.departmentName}}</div>
                 <div class="rectangle">
                     <div class="classify">
-                        <div class="rw">任务：{{item.name}}</div>
-                        <div class="fzr">负责人：{{item.principal}}</div>
-                        <div class="jbsj">交办时间：{{item.date}}</div>
+                        <div class="rw">任务：{{item.task}}</div>
+                        <div class="fzr">负责人：{{item.person}}</div>
+                        <div class="jbsj">交办时间：{{item.issuingTime}}</div>
                     </div>
-                    <div class="w_schedule"><div class="n_schedule" :style="'width: '+item.percentage+'%'"><div class="bfb" >{{item.percentage}}%</div></div></div>
+                    <div class="w_schedule"><div class="n_schedule" :style="'width: '+item.speed+'%'"><div class="bfb" >{{item.speed}}%</div></div></div>
 
                 </div>
             </div>
@@ -30,44 +30,34 @@
     </div>
 </template>
 <script>
-    export default {
-      data(){
-        return {
-          show:false,
-          selData:{
-            name:"全部",
-            value:0
-          },
-          options:[
-            {name:'全部',value:0},
-            {name:'投诉多',value:1},
-            {name:'纠纷多',value:2},
-            {name:'风险多',value:3},
-            {name:'舆论多',value:4},
-            {name:'事故多',value:5},
-          ],
-          page:1,
-          total:0,
-          task:[
-            {name:'监管领域舆情',department:"办公室",principal:'杨小红',date:'2021-5-17 10:00:00',percentage:60,type:4},
-            {name:'行政发案率高、行政纠错率高问题',department:"法规处",principal:'匡一锋',date:'2021-5-17 10:00:00',percentage:60,type:2},
-            {name:'重点领域虚假违法',department:"商标广告处",principal:'史琰',date:'2021-5-17 10:00:00',percentage:60,type:3},
-            {name:'用品产品质量问题',department:"产品监管处",principal:'钟荣根',date:'2021-5-17 10:00:00',percentage:60,type:3},
-            {name:'保健食品投诉举报',department:"食品生产处",principal:'邢峰',date:'2021-5-17 10:00:00',percentage:60,type:3},
-            {name:'食品安全风险隐患',department:"食品抽检处",principal:'鲍金荣',date:'2021-5-17 10:00:00',percentage:60,type:3},
-            {name:'网络销售药品',department:"药品流通处",principal:'邢晓峰',date:'2021-5-17 10:00:00',percentage:60,type:3},
-            {name:'电梯故障增多',department:"特种设备处",principal:'许则春',date:'2021-5-17 10:00:00',percentage:60,type:5},
-            {name:'投诉举报处理程序',department:"消保分局",principal:'陈晓冰',date:'2021-5-17 10:00:00',percentage:60,type:1},
-            {name:'监管领域违法',department:"综合执法队",principal:'章健',date:'2021-5-17 10:00:00',percentage:60,type:3},
-
-          ]
-        }
+import {noAssignment} from "@/assets/api/index"
+export default {
+  props: ['taskList'],
+  data(){
+    return {
+      show:false,
+      selData:{
+        name:"全部",
+        value:0
       },
+      options:[
+        {name:'全部',value:0},
+        {name:'投诉多',value:1},
+        {name:'纠纷多',value:2},
+        {name:'风险多',value:3},
+        {name:'舆论多',value:4},
+        {name:'事故多',value:5},
+      ],
+      page:1,
+      total:0,
+      task:[]
+    }
+  },
       computed:{
         list:function (){
-          var l= this.task.filter(item => {
+          var l= this.taskList.filter(item => {
             if(this.selData.value){
-              if(item.type === this.selData.value)
+              if(item.model.indexOf(this.selData.value) !== -1)
                 return item
             }else{
               return item
@@ -77,9 +67,17 @@
           return l.splice((this.page-1)*4,4);
         }
       },
+      mounted() {
+        // this.noAssignment()
+      },
       methods:{
         showOptions(){
           this.show = !this.show
+        },
+        noAssignment(){
+          noAssignment().then(res => {
+            this.task = res.data
+          })
         },
         select(e){
           this.selData = e;
@@ -183,7 +181,8 @@
                 height: 16rem;
                 margin-top: 1.42rem;
                 .trapezoid{
-                    width: 29.33rem;
+                  padding: 0 3rem;
+                    width: 34rem;
                     height: 5.92rem;
                     text-align: center;
                     line-height: 5.52rem;
@@ -193,16 +192,18 @@
                     font-style: italic;
                     color: #FFFFFF;
                     float: right;
-                    margin-right: 2rem;
                     position: relative;
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
                 }
                 .trapezoid::before{
                     content: '';
                     position: absolute;
                     top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0.2rem;
+                    left: 2rem;
+                    right: 2rem;
+                    bottom: 0;
                     border-bottom: none;
                     border: 0.2rem solid #03B1CC;
                     transform:  perspective(2em) rotateX(15deg);
@@ -255,7 +256,7 @@
                         position: relative;
                         .n_schedule{
                             width: 0;
-                            transition: width .5s;
+                            //transition: width .5s;
                             height: 2rem;
                             background: rgba(27,153,237,1);
                             border-radius: 1rem;
