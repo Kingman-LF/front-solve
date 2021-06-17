@@ -173,7 +173,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [4, 0, 5, 0, 0, 3, 0],
+              data: [4, 0, 5, 0, 3, 0, 0],
             },
 
           ],
@@ -270,25 +270,6 @@ export default {
           containLabel: true
         },
         series: [{
-          name:"实际完成",
-          data: [19,111,42,22,99,61,129],
-          type: 'bar',
-          barWidth: "30%",
-          color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-            offset: 1,
-            color: "rgba(250, 200, 88, 1)" // 100% 处的颜色
-          },{
-            offset: 0,
-
-            color: "rgba(250, 200, 88, 0)" // 100% 处的颜色
-          }], false),
-          // label: {
-          //   show: true,
-          //   position: 'top',
-          //   color: '#fff',
-          //   fontSize:'1.5rem',
-          // },
-        },{
           name:"计划完成",
           data: [30,150,100,70,150,150,150],
           type: 'bar',
@@ -307,7 +288,26 @@ export default {
           //   color: '#fff',
           //   fontSize:'1.5rem',
           // },
-        }
+        },{
+          name:"实际完成",
+          data: [19,111,42,22,99,61,129],
+          type: 'bar',
+          barWidth: "30%",
+          color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(250, 200, 88, 1)" // 100% 处的颜色
+          },{
+            offset: 0,
+
+            color: "rgba(250, 200, 88, 0)" // 100% 处的颜色
+          }], false),
+          // label: {
+          //   show: true,
+          //   position: 'top',
+          //   color: '#fff',
+          //   fontSize:'1.5rem',
+          // },
+        },
         ]
       }
       ypcjChart.setOption(option);

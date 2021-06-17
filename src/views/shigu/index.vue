@@ -42,16 +42,6 @@
       </el-col>
       <el-col :span="8">
         <el-row :gutter="12">
-          <el-col :span="5">
-<!--            智能识别-->
-            <znsb></znsb>
-          </el-col>
-          <el-col :span="19">
-<!--            不文明乘梯-->
-            <bts></bts>
-          </el-col>
-        </el-row>
-        <el-row :gutter="12">
           <el-col :span="8">
             <!-- 电梯概览 -->
             <gzlx></gzlx>
@@ -61,6 +51,17 @@
             <jyjc></jyjc>
           </el-col>
         </el-row>
+        <el-row :gutter="12">
+          <el-col :span="5">
+<!--            智能识别-->
+            <znsb></znsb>
+          </el-col>
+          <el-col :span="19">
+<!--            不文明乘梯-->
+            <bts></bts>
+          </el-col>
+        </el-row>
+        
       </el-col>
     </el-row>
   </div>

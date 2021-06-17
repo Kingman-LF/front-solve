@@ -21,13 +21,13 @@
     <div class="lv">
       <div>
         <span>广告监测总数</span>
-        <span>11210</span>
+        <span>10210</span>
       </div>
     </div>
     <div class="lv">
       <div>
         <span>执法案件总数</span>
-        <span>2332</span>
+        <span>2427</span>
       </div>
     </div>
   </div>

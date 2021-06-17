@@ -135,7 +135,7 @@ export default {
               labelLine: {
                 show: true,
                 lineStyle: {
-                  width: 2,
+                  width: 5,
                 },
                 // length: 20,
                 // length2: 10

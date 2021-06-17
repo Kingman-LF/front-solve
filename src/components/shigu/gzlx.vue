@@ -27,7 +27,7 @@
         </div>
         <div class="coms dis">
           <div class="num">当前困人处置中</div>
-          <div class="number">2</div>
+          <div class="number">0</div>
         </div>
      </div>
   </div>

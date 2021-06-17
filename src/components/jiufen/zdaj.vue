@@ -16,34 +16,43 @@ import { keyCaseAreas } from "@/assets/api/jiufen";
 export default {
   name: "zdaj",
   mounted() {
-    keyCaseAreas({ startTime: getYearStartDate(), endTime: getNowDate() }).then(
-      (res) => {
-        let resdata = res.data;
-        // console.log(resdata);
-        this.datalist = [];
-        for (const i in resdata) {
-          let obj = {};
-          obj.name = i;
-          obj.value = resdata[i];
-          if (i === "吴兴区") {
-            obj.label = { offset: [-70, 40] };
-          } else if (i === "南太湖新区") {
-            obj.label = { offset: [-20, 0] };
-          }
-          this.datalist.push(obj);
-        }
-        this.datalist.push({
-          name: "南太湖新区",
-          value: 0,
-          label: { offset: [-20, 0] },
-        });
+    // keyCaseAreas({ startTime: getYearStartDate(), endTime: getNowDate() }).then(
+    //   (res) => {
+    //     let resdata = res.data;
+    //     // console.log(resdata);
+    //     this.datalist = [];
+    //     for (const i in resdata) {
+    //       let obj = {};
+    //       obj.name = i;
+    //       obj.value = resdata[i];
+    //       if (i === "吴兴区") {
+    //         obj.label = { offset: [-70, 40] };
+    //       } else if (i === "南太湖新区") {
+    //         obj.label = { offset: [-20, 0] };
+    //       }
+    //       this.datalist.push(obj);
+    //     }
+    //     this.datalist.push({
+    //       name: "南太湖新区",
+    //       value: 0,
+    //       label: { offset: [-20, 0] },
+    //     });
+        this.datalist=[
+          {name: "长兴县", value: 1},
+          {name: "德清县", value: 1},
+          {name: "南浔区", value: 1},
+          {name: "吴兴区", value: 0, label: { offset: [-70, 40] }},
+          {name: "安吉县", value: 1},
+          {name: "南太湖新区", value: 0, label: { offset: [-20, 0] }},
+        ]
+        console.log(this.datalist);
         this.$nextTick(() => {
           // setTimeout(() => {
           this.mtop(this.datalist);
           // }, 500);
         });
-      }
-    );
+      // }
+    // );
   },
   methods: {
     mtop(list) {

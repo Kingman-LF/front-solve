@@ -119,7 +119,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [320, 302, 301, 334, 390, 330, 320],
+              data: [4, 4, 31, 21, 24, 50, 1],
 
             },
             {
@@ -133,7 +133,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [120, 132, 101, 134, 90, 230, 210],
+              data: [3, 243, 437, 195, 257, 326, 45],
             },
             {
               name: "质量领域",
@@ -146,7 +146,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [220, 182, 191, 234, 290, 330, 310],
+              data: [6, 71, 23, 27, 37, 35, 1],
             },
             {
               name: "知识产权",
@@ -159,7 +159,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [220, 182, 191, 234, 290, 330, 310],
+              data: [2, 21, 12, 12, 8, 3, 1],
             },
             {
               name: "药械化",
@@ -172,7 +172,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [220, 182, 191, 234, 290, 330, 310],
+              data: [5, 42, 31, 20, 41, 14, 0],
             },
             {
               name: "其它",
@@ -185,7 +185,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [220, 182, 191, 234, 290, 330, 310],
+              data: [1, 25, 86, 100, 81, 78, 6],
             },
           ],
         };
@@ -219,31 +219,31 @@ export default {
         let data = [
           {
             name: "监督检查",
-            value:1926,
+            value:1825,
           },
           {
             name: "监督抽检",
-            value:211,
+            value:313,
           },
           {
             name: "监测发现",
-            value: 4,
+            value: 6,
           },
           {
             name: "投诉举报",
-            value: 114,
+            value: 174,
           },
           {
             name: "上级机关交办",
-            value: 35,
+            value: 25,
           },
           {
             name: "有关部门移送",
-            value:57,
+            value:84,
           },
           {
             name: "其他",
-            value: 9,
+            value: 0,
           },
         ];
         let option = {
@@ -279,7 +279,7 @@ export default {
             {
               tooltip: {
                 formatter(e){
-                  return `总量：${2332 }`
+                  return `总量：${2427}`
                 }
               },
               type: "text",
@@ -289,7 +289,7 @@ export default {
               style: {
                 fill: "#fff",
                 textAlign: "center",
-                text: ["{value|" + 2332 + "}"].join(
+                text: ["{value|" + 2427 + "}"].join(
                     "\n"
                 ),
                 rich: {

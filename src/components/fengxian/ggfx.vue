@@ -196,122 +196,213 @@ export default {
           textStyle: {
             fontSize: 26,
           },
-          formatter(e) {
-            return `${e[0].name}<br/>${e[0].seriesName}：${e[0].value}%`;//<br/>${e[0].seriesName}：${e[1].value}%
-            // console.log(e);
-          },
-
           axisPointer: {
             type: "shadow",
-            crossStyle: {
-              color: "#fff",
-              fontSize: 26,
-            },
+          },
+          formatter(e) {
+            return `${e[0].name}：${e[0].value}%`;
+            // console.log(e);
           },
         },
-        legend: {
-          data: ["2020"],
-          textStyle: {
-            color: "rgba(255, 255, 225, 1)",
-            fontSize: 20,
+        xAxis: {
+          type: "category",
+          axisLine: {
+            lineStyle: {
+              color: "rgba(255, 255, 255, 0.4)",
+              fontSize: "1.5rem",
+            },
           },
-          itemWidth: 50,
-          itemHeight: 20,
+          axisTick: {
+            show: false,
+          },
+          axisLabel: {
+            interval: 0,
+            rotate: 20,
+            color: "#fff",
+            fontSize: "1.5rem",
+            fontfamily: "PingFang",
+            fontweight: "bold",
+          },
+          data: xData,
         },
-        xAxis: [
-          {
-            type: "category",
-            data: xData,
-            axisPointer: {
-              type: "shadow",
-            },
-            axisLabel: {
-              rotate: 20,
-              color: "rgba(255, 255, 255, 1)",
-              fontSize: "1.5rem",
-              formatter(e){
-                if(e.length>5){
-                  return (e.slice(0,5)+"...")
-                }else{
-                  return e
-                }
-              }
-            },
-          },
-        ],
-        yAxis: [
-          {
-            type: "value",
-            min: 0,
-            max: 50,
-            interval: 25,
-            axisLabel: {
-              formatter: "{value}%",
+        yAxis: {
+          min: 0,
+          max: 50,
+          interval: 25,
+          splitLine: {
+            lineStyle: {
+              type: "dashed",
+              color: "rgba(255, 255, 255, 0.1)",
               fontSize: "1.5rem",
             },
-            axisLabel: {
-              color: "rgba(255, 255, 255, 1)",
-              fontSize: "1.5rem",
-              formatter(e) {
-                return `${e}%`;
-                // console.log(e);
-              },
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: "rgba(255, 255, 255, 0.4)",
             },
           },
-          {
-            type: "value",
-            interval: 5,
+          axisTick: {
+            show: false,
           },
-        ],
+          axisLabel: {
+            color: "#fff",
+            fontfamily: "PingFang",
+            fontweight: "bold",
+            fontSize: "1.5rem",
+            formatter(e) {
+              return `${e}%`;
+              // console.log(e);
+            },
+          },
+          type: "value",
+
+        },
+        grid: {
+          top: "15%",
+          left: "5%",
+          right: "4%",
+          height: "80%",
+          containLabel: true,
+        },
         series: [
           {
-            name: "2020",
-            type: "bar",
-            fontSize: "1.5rem",
-            color: new echarts.graphic.LinearGradient(
-              0,
-              1,
-              0,
-              0,
-              [
-                {
-                  offset: 1,
-                  color: "rgba(0, 240, 255, 1)", // 100% 处的颜色
-                },
-                {
-                  offset: 0,
-                  color: "rgba(0, 240, 255, 0)", // 100% 处的颜色
-                },
-              ],
-              false
-            ),
             data: [34.38, 16.44, 7.25, 3.03, 2.5],
+            type: "bar",
+            barWidth: "60%",
+            color: colors,
+            label: {
+              show: true,
+              position: "top",
+              color: "#fff",
+              fontSize: "1.5rem",
+            },
           },
-          // {
-          //   name: "2021",
-          //   type: "bar",
-          //   fontSize: "1.5rem",
-          //   color: new echarts.graphic.LinearGradient(
-          //     0,
-          //     1,
-          //     0,
-          //     0,
-          //     [
-          //       {
-          //         offset: 1,
-          //         color: "rgba(120,255,182, 1)", // 100% 处的颜色
-          //       },
-          //       {
-          //         offset: 0,
-          //         color: "rgba(120,255,182, 0)", // 100% 处的颜色
-          //       },
-          //     ],
-          //     false
-          //   ),
-          //   data: yData,
-          // },
         ],
       };
+      // let options = {
+      //   tooltip: {
+      //     trigger: "axis",
+      //     borderWidth: 0,
+      //     textStyle: {
+      //       fontSize: 26,
+      //     },
+      //     formatter(e) {
+      //       return `${e[0].name}<br/>${e[0].seriesName}：${e[0].value}%`;//<br/>${e[0].seriesName}：${e[1].value}%
+      //       // console.log(e);
+      //     },
+
+      //     axisPointer: {
+      //       type: "shadow",
+      //       crossStyle: {
+      //         color: "#fff",
+      //         fontSize: 26,
+      //       },
+      //     },
+      //   },
+      //   legend: {
+      //     data: ["2020"],
+      //     textStyle: {
+      //       color: "rgba(255, 255, 225, 1)",
+      //       fontSize: 20,
+      //     },
+      //     itemWidth: 50,
+      //     itemHeight: 20,
+      //   },
+      //   xAxis: [
+      //     {
+      //       type: "category",
+      //       data: xData,
+      //       axisPointer: {
+      //         type: "shadow",
+      //       },
+      //       axisLabel: {
+      //         rotate: 20,
+      //         color: "rgba(255, 255, 255, 1)",
+      //         fontSize: "1.5rem",
+      //         formatter(e){
+      //           if(e.length>5){
+      //             return (e.slice(0,5)+"...")
+      //           }else{
+      //             return e
+      //           }
+      //         }
+      //       },
+      //     },
+      //   ],
+      //   yAxis: [
+      //     {
+      //       type: "value",
+      //       min: 0,
+      //       max: 50,
+      //       interval: 25,
+      //       axisLabel: {
+      //         formatter: "{value}%",
+      //         fontSize: "1.5rem",
+      //       },
+      //       axisLabel: {
+      //         color: "rgba(255, 255, 255, 1)",
+      //         fontSize: "1.5rem",
+      //         formatter(e) {
+      //           return `${e}%`;
+      //           // console.log(e);
+      //         },
+      //       },
+      //     },
+      //     {
+      //       type: "value",
+      //       interval: 5,
+      //     },
+      //   ],
+      //   series: [
+      //     {
+      //       name: "2020",
+      //       type: "bar",
+      //       fontSize: "1.5rem",
+      //       color: new echarts.graphic.LinearGradient(
+      //         0,
+      //         1,
+      //         0,
+      //         0,
+      //         [
+      //           {
+      //             offset: 1,
+      //             color: "rgba(0, 240, 255, 1)", // 100% 处的颜色
+      //           },
+      //           {
+      //             offset: 0,
+      //             color: "rgba(0, 240, 255, 0)", // 100% 处的颜色
+      //           },
+      //         ],
+      //         false
+      //       ),
+      //       data: [34.38, 16.44, 7.25, 3.03, 2.5],
+      //     },
+      //     // {
+      //     //   name: "2021",
+      //     //   type: "bar",
+      //     //   fontSize: "1.5rem",
+      //     //   color: new echarts.graphic.LinearGradient(
+      //     //     0,
+      //     //     1,
+      //     //     0,
+      //     //     0,
+      //     //     [
+      //     //       {
+      //     //         offset: 1,
+      //     //         color: "rgba(120,255,182, 1)", // 100% 处的颜色
+      //     //       },
+      //     //       {
+      //     //         offset: 0,
+      //     //         color: "rgba(120,255,182, 0)", // 100% 处的颜色
+      //     //       },
+      //     //     ],
+      //     //     false
+      //     //   ),
+      //     //   data: yData,
+      //     // },
+      //   ],
+      // };
       options && charts.setOption(options);
       window.addEventListener("resize", function () {
         charts.resize();

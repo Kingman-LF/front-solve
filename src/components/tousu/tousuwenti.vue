@@ -23,7 +23,7 @@ export default {
       resdata.forEach((v,i) => {
         sums+=v.value;
         if(v.name.substring(0,2)==="其他"){
-          resdata.splice(i,1)
+          // resdata.splice(i,1)
         }else if(num<10){
           num+=1;
           this.dataList.push(v)

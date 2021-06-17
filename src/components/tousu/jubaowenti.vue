@@ -16,6 +16,7 @@ export default {
   mounted() {
     jubaowenti({startTime: getYearStartDate(),endTime: getNowDate()}).then(res => {
       let resdata=res.data;
+      console.log(resdata);
       this.dataList=[]
       let num=0;
       let sums=0;
@@ -23,7 +24,7 @@ export default {
       resdata.forEach((v,i) => {
         sums+=v.value;
         if(v.name.substring(0,4)==="违反其他"||v.name.substring(0,2)==="其他"){
-          resdata.splice(i,1)
+          // resdata.splice(i,1)
         }else if(num<10){
           num+=1;
           this.dataList.push(v)

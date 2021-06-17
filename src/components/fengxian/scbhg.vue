@@ -147,7 +147,7 @@ export default {
       let ggwfdqfbChart = echarts.init(ggwfdqfb);
       function huanzhuang(charts, showLable, mygraphic) {
         charts.clear();
-        let gailanTotal = 16078;
+        let gailanTotal = 10210;
         let option = {
           tooltip: {
             trigger: "item",
@@ -256,10 +256,10 @@ export default {
               //   length2: 5
               // },
               data: [
-                { value: 8113, name: "湖州市本级" },
-                { value: 2464, name: "德清县" },
-                { value: 1433, name: "长兴县" },
-                { value: 4068, name: "安吉县" },
+                { value: 7523, name: "市本级" },
+                { value: 894, name: "德清县" },
+                { value: 584, name: "长兴县" },
+                { value: 1209, name: "安吉县" },
               ],
             },
             {},
