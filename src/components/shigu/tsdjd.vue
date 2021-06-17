@@ -6,15 +6,15 @@
     </div>
     <div id="num"></div>
     <div class="total">
-      <h3>特种设备总数：<span>95152</span></h3>
-      <div class="i"><span>锅炉<i></i></span>1298</div>
-      <div class="i"><span>压力容器<i></i></span>28225</div>
-      <div class="i"><span>电梯<i></i></span>41968</div>
-      <div class="i"><span>起重机械<i></i></span>1298</div>
-      <div class="i"><span>场内车辆<i></i></span>20173</div>
+      <h3>特种设备总数：<span>116039</span></h3>
+      <div class="i"><span>锅炉<i></i></span>1292</div>
+      <div class="i"><span>压力容器<i></i></span>28220</div>
+      <div class="i"><span>电梯<i></i></span>42049</div>
+      <div class="i"><span>起重机械<i></i></span>20209</div>
+      <div class="i"><span>场内车辆<i></i></span>21957</div>
       <div class="i"><span>大型游乐设施<i></i></span>196</div>
-      <div class="i"><span>压力管道<i></i></span>1985</div>
-      <div class="i"><span>客运索道<i></i></span>9</div>
+      <div class="i"><span>压力管道<i></i></span>2108</div>
+      <div class="i"><span>客运索道<i></i></span>8</div>
     </div>
   </div>
 </template>
@@ -53,22 +53,22 @@ export default {
               var r
               switch (e.name){
                 case "吴兴区":
-                  r = `${e.name}<br>锅炉：146<br>压力容器：4009<br>电梯：9735<br>起重机械：3807<br>场内车辆：2164<br>大型游乐设施：13<br>压力管道：130<br>客运索道：3`
+                  r = `${e.name}<br>锅炉：145<br>压力容器：4011<br>电梯：9741<br>起重机械：3799<br>场内车辆：2172<br>大型游乐设施：13<br>压力管道：131<br>客运索道：3`
                   break;
                 case "南浔区":
-                  r = `${e.name}<br>锅炉：342<br>压力容器：6644<br>电梯：5128<br>起重机械：2798<br>场内车辆：5168<br>大型游乐设施：7<br>压力管道：394<br>客运索道：0`
+                  r = `${e.name}<br>锅炉：337<br>压力容器：6665<br>电梯：5158<br>起重机械：2804<br>场内车辆：5145<br>大型游乐设施：7<br>压力管道：405<br>客运索道：0`
                   break;
                 case "南太湖新区":
-                  r = `${e.name}<br>锅炉：52<br>压力容器：2201<br>电梯：6714<br>起重机械：1678<br>场内车辆：838<br>大型游乐设施：22<br>压力管道：262<br>客运索道：0`
+                  r = `${e.name}<br>锅炉：52<br>压力容器：2201<br>电梯：6733<br>起重机械：1700<br>场内车辆：846<br>大型游乐设施：22<br>压力管道：262<br>客运索道：0`
                   break;
                 case "长兴县":
-                  r = `${e.name}<br>锅炉：194<br>压力容器：6299<br>电梯：6768<br>起重机械：3903<br>场内车辆：5650<br>大型游乐设施：75<br>压力管道：349<br>客运索道：0`
+                  r = `${e.name}<br>锅炉：194<br>压力容器：6287<br>电梯：6768<br>起重机械：3920<br>场内车辆：5666<br>大型游乐设施：75<br>压力管道：361<br>客运索道：0`
                   break;
                 case "安吉县":
-                  r = `${e.name}<br>锅炉：375<br>压力容器：2910<br>电梯：7071<br>起重机械：2176<br>场内车辆：3745<br>大型游乐设施：61<br>压力管道：455<br>客运索道：5`
+                  r = `${e.name}<br>锅炉：375<br>压力容器：2895<br>电梯：7073<br>起重机械：2173<br>场内车辆：3770<br>大型游乐设施：61<br>压力管道：497<br>客运索道：4`
                   break;
                 case "德清县":
-                  r = `${e.name}<br>锅炉：189<br>压力容器：6162<br>电梯：6552<br>起重机械：5811<br>场内车辆：4345<br>大型游乐设施：18<br>压力管道：395<br>客运索道：1`
+                  r = `${e.name}<br>锅炉：189<br>压力容器：6161<br>电梯：6576<br>起重机械：5813<br>场内车辆：4358<br>大型游乐设施：18<br>压力管道：452<br>客运索道：1`
                   break;
               }
               return r

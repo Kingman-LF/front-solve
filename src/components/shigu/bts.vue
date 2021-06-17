@@ -115,7 +115,7 @@ export default {
           },
           series: [
             {
-              data: [4313, 1678, 850,5,0,0,0],
+              data: [5159, 2238, 1038,6,0,0,0],
               type: "bar",
               barWidth: "60%",
               fontSize:'1.5rem',
