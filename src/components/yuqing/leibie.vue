@@ -13,8 +13,8 @@
 import * as echarts from "echarts";
 import {getYearStartDate,getNowDate,getDate} from '@/utils/date'
 import {yqInfo} from "@/assets/api/yuqing"
-import yqsubjectTree from '@/utils/2'
-import yqLIst from '@/utils/1'
+// import yqsubjectTree from '@/utils/2'
+// import yqLIst from '@/utils/1'
 export default {
   name: "leibie",
   data() {
@@ -27,10 +27,12 @@ export default {
   mounted() {
     // let dates=new Date()
     // console.log(dates);
-    this.yqInfo()
+    // this.yqInfo()
     // let dates2=new Date()
     // console.log(dates2-dates);
-
+    let leibie = document.getElementById("leibie");
+      let leibieChart = echarts.init(leibie);
+      this.zhuzhuang(leibieChart);
   },
   methods: {
     yqInfo(){

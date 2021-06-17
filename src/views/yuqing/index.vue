@@ -86,8 +86,8 @@ import shijianku from '../../components/yuqing/shijianku';
 
 import {common,subjectTree,yqInfo} from "@/assets/api/yuqing"
 
-import yqLIst from '@/utils/1'
-import yqsubjectTree from '@/utils/2'
+// import yqLIst from '@/utils/1'
+// import yqsubjectTree from '@/utils/2'
   export default{
     components: {
       leibie,
@@ -106,7 +106,7 @@ import yqsubjectTree from '@/utils/2'
       }
     },
     mounted() {
-      this.common();
+      // this.common();
       // this.subjectTree()
       // console.log(yqsubjectTree);
       // this.yqInfo()
@@ -116,25 +116,25 @@ import yqsubjectTree from '@/utils/2'
         this.$router.replace("/home");
       },
       common(){
+        console.log(this.getPorSevenData())
         common({method:'ECharts_pie_Test!list.do',btime:this.getPorSevenData(),etime:this.getDate()}).then(res => {
           console.log(res)
         })
       },
       subjectTree(){
         subjectTree().then(res => {
-          this.datas = this.datas.concat(res.data)
-          // console.log(JSON.stringify(this.datas))
-          // console.log(res)
+          console.log(res)
         })
       },
       yqInfo(){
-        yqInfo({btime:this.getPorSevenData(),etime:this.getDate(),pageSize:'200',pageNo:"1"}).then(res => {
+        console.log({btime:this.getPorSevenData(),etime:this.getDate()});
+        yqInfo({btime:this.getPorSevenData(),etime:this.getDate(),state:"jing",pageSize:'500',pageNo:"9"}).then(res => {
           this.datas = this.datas.concat(res.data.dataList)
-          if(this.datas.length<res.data.totalrows){
-            this.yqInfo()
-          }else{
-            console.log(JSON.stringify(this.datas))
-          }
+          // if(this.datas.length<res.data.totalrows){
+            // this.yqInfo()
+          // }else{
+            console.log(this.datas)
+          // }
         })
       },
       getPorSevenData(){
@@ -144,7 +144,7 @@ import yqsubjectTree from '@/utils/2'
         let D = date.getDate()-7;
         M = M<10?"0"+M:M
         D = D<10?"0"+D:D
-        return Y+''+M+''+D
+        return Y+''+M+''+D+"000000"
       },
       // 当前时间
       getDate(date){
@@ -154,7 +154,7 @@ import yqsubjectTree from '@/utils/2'
         let D = dates.getDate();
         M = M<10?"0"+M:M
         D = D<10?"0"+D:D
-        return Y+''+M+''+D
+        return Y+''+M+''+D+"000000"
       }
     }
 

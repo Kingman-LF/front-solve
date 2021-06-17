@@ -11,17 +11,43 @@
 
 <script>
 import * as echarts from "echarts";
+import {getentDate} from '@/utils/date'
+// import yqLIst from '@/utils/1'
 
 export default {
   name: "yqxqfb",
   mounted() {
+    // this.yqInfo()
     this.$nextTick(() => {
-      setTimeout(() => {
-        this.fmyqzs();
-      }, 500);
-    });
+        // setTimeout(() => {
+          this.fmyqzs();
+        // }, 500);
+      });
   },
   methods: {
+    yqInfo(){
+      console.log(getentDate());
+      let fmyuqing = []
+      yqLIst.forEach((v,i) => {
+        console.log(v.orientation);
+        if(v.orientation==2){
+          fmyuqing.push(v)
+        }
+      });
+      console.log(fmyuqing);
+      let objs={}
+      fmyuqing.forEach((v,i) => {
+        let str=v.collectTime.substring(0,8)
+        console.log(str);
+        // objs[]
+        
+      });
+      this.$nextTick(() => {
+        // setTimeout(() => {
+          this.fmyqzs();
+        // }, 500);
+      });
+    },
     fmyqzs(){
       var fmyqzs = document.getElementById('fmyqzs');
       var myChart = echarts.init(fmyqzs);

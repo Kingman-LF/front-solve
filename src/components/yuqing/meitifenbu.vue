@@ -2,7 +2,7 @@
   <div class="myborder">
     <div class="title">
       <img :src="require('../../assets/images/titlelogo.png')" alt="">
-      <p>媒体分布</p>
+      <p>舆情监测媒体分布</p>
     </div>
 
     <div id="mtfb"></div>
@@ -22,13 +22,14 @@ export default {
   methods:{
     common(){
        common({method:'ECharts_pie_Test!list.do',btime:getPorSevenData2(),etime:getDate2()}).then(res => {
-         console.log(resdata);
          let resdata=res.data.SOURCETYPE
+        //  console.log(resdata);
+
          this.num=0
          resdata.forEach((v,i) => {
           this.num+=Number(v.value) 
          });
-         console.log(this.num,resdata);
+        //  console.log(this.num,resdata);
          this.$nextTick(() => {
           // setTimeout(() => {
             this.mtfb(resdata,this.num);

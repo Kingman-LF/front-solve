@@ -19,7 +19,7 @@ export default {
     keyCaseAreas({ startTime: getYearStartDate(), endTime: getNowDate() }).then(
       (res) => {
         let resdata = res.data;
-        console.log(resdata);
+        // console.log(resdata);
         this.datalist = [];
         for (const i in resdata) {
           let obj = {};
