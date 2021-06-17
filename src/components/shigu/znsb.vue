@@ -7,11 +7,11 @@
     <div id="znsb">
       <div class="dis">
         <div class="num">电瓶车次数</div>
-        <div class="number"><span class="p1">4501</span></div>
+        <div class="number"><span class="p1">6287</span></div>
       </div>
       <div class="dis">
         <div class="num">跳跃次数</div>
-        <div class="number"><span class="p1">6900</span></div>
+        <div class="number"><span class="p1">2154</span></div>
       </div>
     </div>
 

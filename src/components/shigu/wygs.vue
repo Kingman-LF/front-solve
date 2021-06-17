@@ -78,16 +78,16 @@ export default {
         backgroundColor: "transparent"
       },
 
-      tableData: [
-        {name:"锅炉", using:907, deactivate:243, yibaojian:1,weibaojian:5, baojian:37},
-        {name:"压力管道", using:67, deactivate:1, yibaojian:0,weibaojian:0, baojian:0},
+      tableData: [   
+        {name:"锅炉", using:906, deactivate:244, yibaojian:1,weibaojian:5, baojian:21},
+        {name:"压力管道", using:1413, deactivate:1, yibaojian:0,weibaojian:0, baojian:0},
         {name:"客运索道", using:2, deactivate:0, yibaojian:0,weibaojian:0, baojian:0},
         {name:"大型游乐设施", using:119, deactivate:9, yibaojian:0,weibaojian:5, baojian:0},
-        {name:"压力容器", using:22001, deactivate:4753, yibaojian:1,weibaojian:220, baojian:87},
-        {name:"电梯", using:33827, deactivate:2495, yibaojian:"24/372",weibaojian:"11/6", baojian:"503/354"},
-        {name:"场内车辆", using:19121, deactivate:968, yibaojian:35,weibaojian:54, baojian:595},
-        {name:"起重机械", using:14030, deactivate:3434, yibaojian:12,weibaojian:29, baojian:222},
-        {name:"合计", using:90074, deactivate:11903, yibaojian:49,weibaojian:313, baojian:941},
+        {name:"压力容器", using:21975, deactivate:4755, yibaojian:1,weibaojian:41, baojian:85},
+        {name:"电梯", using:33947, deactivate:2520, yibaojian:"5/14",weibaojian:"9/7", baojian:"519/218"},
+        {name:"场内车辆", using:19121, deactivate:966, yibaojian:25,weibaojian:42, baojian:487},
+        {name:"起重机械", using:14017, deactivate:3430, yibaojian:10,weibaojian:29, baojian:207},
+        {name:"合计", using:91500, deactivate:11925, yibaojian:42,weibaojian:131, baojian:1319},
       ]
     }
   },

@@ -26,7 +26,7 @@ export default {
         let xData = xdata
           ? xdata
           : ["检验检测", "安全监察", "维保单位", "使用单位", "保险单位", "公众监督"];
-        let yData = ydata ? ydata : [0, 0, 38711, 291, 291, 1716];
+        let yData = ydata ? ydata : [0, 0, 118225, 1029, 1029, 7413];
         let colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
             offset: 1,
             color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
