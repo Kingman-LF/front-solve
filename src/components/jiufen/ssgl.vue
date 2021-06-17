@@ -109,6 +109,7 @@ export default {
           left: "40%",
           right: "5%",
           top: "10%",
+          bottom:'15%'
         },
         xAxis: {
           type: "category",

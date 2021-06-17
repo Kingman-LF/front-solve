@@ -21,6 +21,10 @@
         <span>办结已归档</span>
         <span>{{ datalist[areaCode]?datalist[areaCode].bjygd?datalist[areaCode].bjygd:0:0 }}</span>
       </div>
+      <div @click="showtk(true,'办结未归档')">
+        <span>办结未归档</span>
+        <span>{{ datalist[areaCode]?datalist[areaCode].bjwgd?datalist[areaCode].bjwgd:0:0 }}</span>
+      </div>
       <div @click="showtk(true,'处理中')">
         <span>处理中</span>
         <span>{{ datalist[areaCode]?datalist[areaCode].clz?datalist[areaCode].clz:0:0 }}</span>

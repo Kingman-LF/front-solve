@@ -59,9 +59,13 @@ export default {
       })
       reporter({startTime:getYearStartDate(),endTime:getNowDate()}).then(res => {
         this.peo = res.data
+        this.peo[this.areaCode].names.forEach((v,i) => {
+          this.peo[this.areaCode].names[i]=v.slice(0,1)+'某某'
+        });
         let xData = this.peo[this.areaCode].names,
             yData = this.peo[this.areaCode].values;
         this.phones=this.peo[this.areaCode].phones
+        
         this.zhuzhuangtu3(this.complainantChart2,xData,yData,2,this.phones)
       })
     },
@@ -72,6 +76,10 @@ export default {
       let xData1 = this.obj[this.areaCode].names,
           yData1 = this.obj[this.areaCode].values;
       this.zhuzhuangtu3(this.complainedChart2,xData1,yData1,1)
+
+      this.peo[this.areaCode].names.forEach((v,i) => {
+          this.peo[this.areaCode].names[i]=v.slice(0,1)+'某某'
+        });
       let xData2 = this.peo[this.areaCode].names,
           yData2 = this.peo[this.areaCode].values;
       this.phones=this.peo[this.areaCode].phones

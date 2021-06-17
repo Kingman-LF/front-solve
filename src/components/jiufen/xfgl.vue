@@ -39,28 +39,28 @@ export default {
   data() {
     return {
       tabIndex: 0,
-      count:124,
+      count:127,
       topList: [
         {
           id: Math.random(),
           text: "区县",
           data:[
-            {id: Math.random() + new Date().valueOf() + "",area:'吴兴区',value:'29'},
-            {id: Math.random() + new Date().valueOf() + "",area:'南浔区',value:'8'},
-            {id: Math.random() + new Date().valueOf() + "",area:'德清县',value:'6'},
-            {id: Math.random() + new Date().valueOf() + "",area:'长兴县',value:'23'},
+            {id: Math.random() + new Date().valueOf() + "",area:'吴兴区',value:'30'},
+            {id: Math.random() + new Date().valueOf() + "",area:'南浔区',value:'10'},
+            {id: Math.random() + new Date().valueOf() + "",area:'德清县',value:'9'},
+            {id: Math.random() + new Date().valueOf() + "",area:'长兴县',value:'22'},
             {id: Math.random() + new Date().valueOf() + "",area:'安吉县',value:'23'},
-            {id: Math.random() + new Date().valueOf() + "",area:'南太湖新区',value:'17'},
+            {id: Math.random() + new Date().valueOf() + "",area:'南太湖新区',value:'23'},
           ],
         },
         {
           id: Math.random(),
           text: "处室",
           data:[
-            {id: Math.random() + new Date().valueOf() + "",area:'特检院',value:'6'},
-            {id: Math.random() + new Date().valueOf() + "",area:'办公室',value:'6'},
-            {id: Math.random() + new Date().valueOf() + "",area:'机关党委',value:'5'},
-            {id: Math.random() + new Date().valueOf() + "",area:'综合执法队',value:'1'},
+            {id: Math.random() + new Date().valueOf() + "",area:'特检院',value:'4'},
+            {id: Math.random() + new Date().valueOf() + "",area:'办公室',value:'1'},
+            {id: Math.random() + new Date().valueOf() + "",area:'机关党委',value:'2'},
+            {id: Math.random() + new Date().valueOf() + "",area:'综合执法队',value:'3'},
           ]
         },
       ],

@@ -22,7 +22,8 @@ export default {
       let resdata = res.data;
       console.log(resdata);
       resdata.name = ["咨询", "求决", "申诉", "揭发控告", "意见建议", "其他"];
-      resdata.count = ["53", "49", "40", "37", "1", "17"];
+      resdata.count = ["45", "30", "25", "18", "1", "10"];
+      
       // console.log(resdata, "resdata");
       //  resdata.forEach((ele,index) => {
       //  console.log(ele,index);

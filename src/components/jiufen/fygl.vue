@@ -109,7 +109,7 @@ export default {
             },
             axisLabel: {
               color: "#fff",
-              rotate:30,
+              rotate:20,
               interval:0,
               fontSize: '1.5rem',
               fontFamily: "PingFang SC",

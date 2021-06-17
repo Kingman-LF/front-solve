@@ -45,7 +45,7 @@ export default {
       let statusChart = echarts.init(status);
       function huanzhuang(charts, showLable, mygraphic, list, num) {
         charts.clear();
-        let gailanTotal = 124;
+        let gailanTotal = 127;
         let option = {
           tooltip: {
             trigger: "item",
@@ -66,7 +66,7 @@ export default {
                 {
                   tooltip: {
                     formatter(e) {
-                      return `总量：${gailanTotal}`;
+                      return `总量：${127}`;
                     },
                   },
                   type: "text",
@@ -75,9 +75,9 @@ export default {
                   z: 10,
                   style: {
                     fill: "#fff",
-                    text: gailanTotal,
+                    text: 154,
                     textAlign: "center",
-                    text: ["{value|" + gailanTotal + "}"].join("\n"),
+                    text: ["{value|" + 127 + "}"].join("\n"),
                     rich: {
                       value: {
                         color: "#303133",
@@ -141,7 +141,7 @@ export default {
                 // length2: 10
               },
               data: [
-                { name: "已办结", value: "124" },
+                { name: "已办结", value: "127" },
                 { name: "未办结", value: "0" },
               ],
             },
