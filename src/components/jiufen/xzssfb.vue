@@ -94,7 +94,7 @@ export default {
               },
             },
             type: "text",
-            left: "20%",
+            left: "22%",
             top: "center",
             z: 10,
             style: {

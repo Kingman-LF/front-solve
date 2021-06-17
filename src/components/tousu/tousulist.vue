@@ -8,15 +8,13 @@
                 :key=index 
                 :style="{height:height+'rem'}"
                 @click="showtk(item)">
-                    <div class="type">{{item.tsType}}</div>
-                    <div class="cont">内容:{{item.tsContent}}</div>
-                    <div class="date">时间:{{item.tsHandleTerm}}</div>
+                    <div class="cont">{{item.tsContent}}</div>
+                    <div class="date">{{item.tsHandleTerm}}</div>
                     <div class="agency">{{item.tsHandlingStatus}}</div>
                 </div>
                 <div class="li" v-for="(item,index) in contentArr" :key=index+contentArr.length :style="{height:height+'rem'}" @click="showtk(item)">
-                    <div class="type">{{item.tsType}}</div>
-                    <div class="cont">内容:{{item.tsContent}}</div>
-                    <div class="date">时间:{{item.tsHandleTerm}}</div>
+                    <div class="cont">{{item.tsContent}}</div>
+                    <div class="date">{{item.tsHandleTerm}}</div>
                     <div class="agency">{{item.tsHandlingStatus}}</div>
                 </div>
             </div>
@@ -126,13 +124,13 @@ export default {
                 width: 7rem;
             }
             .cont{
-                width: 27rem;
+                width: 50rem;
                 overflow:hidden; //超出的文本隐藏
                 text-overflow:ellipsis; //溢出用省略号显示
                 white-space:nowrap; //溢出不换行
             }
             .date{
-                width: 20rem;
+                width: 13rem;
             }
             .agency{
                 font-size: 1.67rem;

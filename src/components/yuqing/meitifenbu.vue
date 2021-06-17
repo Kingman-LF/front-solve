@@ -17,7 +17,8 @@ import {common} from "@/assets/api/yuqing"
 export default {
   name: "meitifenbu",
   mounted() {
-    this.common()
+    // this.common()
+    
   },
   methods:{
     common(){

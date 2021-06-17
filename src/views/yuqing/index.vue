@@ -123,7 +123,7 @@ import {common,subjectTree,yqInfo} from "@/assets/api/yuqing"
       },
       subjectTree(){
         subjectTree().then(res => {
-          console.log(res)
+          console.log(JSON.stringify(res.data))
         })
       },
       yqInfo(){

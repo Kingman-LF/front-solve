@@ -2,12 +2,12 @@
   <div class="myborder">
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>广告发布类型排名</p>
+      <p>广告违法类型排名</p>
     </div>
     <div id="scbhg"></div>
     <div class="title">
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
-      <p>广告违法地区分布</p>
+      <p>广告监测地区分布</p>
     </div>
     <div id="ggwfdqfb"></div>
   </div>
@@ -17,11 +17,11 @@ import * as echarts from "echarts";
 export default {
 
   mounted() {
-    //广告发布类型排名
+    //广告违法类型排名
     this.$nextTick(() => {
       this.scbhg();
     }, 500);
-    //广告违法地区分布
+    //广告监测地区分布
     this.$nextTick(() => {
       setTimeout(() => {
         this.ggwfdqfb();
@@ -29,128 +29,111 @@ export default {
     });
   },
   methods: {
-    // 广告发布类型排名
+    // 广告违法类型排名
     scbhg() {
       let scbhg = document.getElementById("scbhg");
       let scbhgChart = echarts.init(scbhg);
       function zhuzhuangDuidie(charts, rotate) {
+        let colors = new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+            offset: 1,
+            color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
+            },{
+            offset: 0,
+            color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
+            }], false)
         charts.clear();
         let option = {
           tooltip: {
             trigger: "axis",
+            borderWidth:0,
             textStyle: {
               fontSize:26,
             },
             axisPointer: {
               type: "shadow",
             },
-          },
-
-          legend: {
-            top:"5%",
-            textStyle: {
-              color: "#fff",
-              fontfamily: "PingFang",
-              fontweight: "bold",
-              fontSize:20,
-            },
-            itemWidth:50,
-            itemHeight:20,
-            data: ["违法广告", "正常"],
-          },
-          grid: {
-            top: "15%",
-            left: "3%",
-            right: "4%",
-            width: "90%",
-            height: "80%",
-            containLabel: true,
+            formatter(e){
+              return `${e[0].name}：${e[0].value}`
+            }
           },
           xAxis: {
-            type: "category",
-            axisLabel: {
-              interval: 0,
-              rotate: rotate ? rotate : 30,
-              color: "#fff",
-              fontSize:'1.5rem',
-              fontfamily: "PingFang",
-              fontweight: "bold",
-            },
-            axisTick: {
-              show: false,
-            },
+            type: 'category',
             axisLine: {
               lineStyle: {
-                color: "rgba(255, 255, 255, 0.4)",
-              },
+                color: 'rgba(255, 255, 255, 0.4)',
+                fontSize:'1.5rem',
+              }
             },
-            data: ["非商业类", "普通服务类", "普通商品类", "金融服务类", "形象宣传类", "房地产类", "知识产品类"],
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              interval: 0,
+              rotate: 30,
+              fontSize:"1.5rem",
+              color: "#fff",
+              fontfamily: 'PingFang',
+              fontweight: 'bold',
+              formatter(e){
+                if(e.length>5){
+                  return (e.slice(0,5)+"...")
+                }else{
+                  return e
+                }
+              }
+            },
+            data: ["房地产类", "医疗服务类", "普通食品类", "教育培训服务类", "商业招商投资", "其它类"]
           },
           yAxis: {
-            type: "value",
             splitLine: {
               lineStyle: {
-                type: "dashed",
-                color: "rgba(255, 255, 255, 0.1)",
+                type: 'dashed',
+                color: 'rgba(255, 255, 255, 0.1)',
                 fontSize:'1.5rem',
-              },
+              }
             },
             axisLine: {
               show: true,
               lineStyle: {
-                color: "rgba(255, 255, 255, 0.4)",
+                color: 'rgba(255, 255, 255, 0.4)',
                 fontSize:'1.5rem',
-              },
+              }
             },
             axisTick: {
-              show: false,
+              show: false
             },
             axisLabel: {
               color: "#fff",
-              fontSize:'1.5rem',
+              fontfamily: 'PingFang',
+              fontSize:"1.5rem",
+              fontweight: 'bold'
             },
+            type: 'value',
+
           },
-          series: [
-            {
-              name: "正常",
-              type: "bar",
-              stack: "total",
-              barWidth: 30,
-              label: {
-                show: false,
-              },
-              color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-            offset: 1,
-            color: "rgba(120,255,182, 1)" // 100% 处的颜色
-            },{
-            offset: 0,
-            color: "rgba(120,255,182, 0)" // 100% 处的颜色
-            }], false),
-            fontSize:'1.5rem',
-              emphasis: {
-                focus: "series",
-              },
-              data: [320, 302, 301, 334, 390, 330, 320],
-            },
-            {
-              name: "违法广告",
-              type: "bar",
-              stack: "total",
-              barWidth: 30,
-              label: {
-                show: false,
-              },
+          grid: {
+            top: '15%',
+            left: '5%',
+            right: '4%',
+            height: '80%',
+            containLabel: true
+          },
+          series: [{
+            data: [1, 11, 4, 6, 2, 1],
+            type: 'bar',
+            barWidth: "60%",
+            color: colors,
+            label: {
+              show: true,
+              position: 'top',
+              color: '#fff',
               fontSize:'1.5rem',
-              color:"rgba(127,60,249)",
-              emphasis: {
-                focus: "series",
-              },
-              data: [120, 132, 101, 134, 90, 230, 210],
             },
 
 
-          ],
-        };
+          }]
+        }
+        
         option && charts.setOption(option);
         window.addEventListener("resize", function () {
           charts.resize();
@@ -158,7 +141,7 @@ export default {
       }
       zhuzhuangDuidie(scbhgChart);
     },
-    //广告违法地区分布
+    //广告监测地区分布
     ggwfdqfb() {
       let ggwfdqfb = document.getElementById("ggwfdqfb");
       let ggwfdqfbChart = echarts.init(ggwfdqfb);
@@ -203,7 +186,7 @@ export default {
                     }
                   },
                   type: "text",
-                  left: "30%",
+                  left: "28%",
                   top: "center",
                   z: 10,
                   style: {
@@ -273,7 +256,7 @@ export default {
               //   length2: 5
               // },
               data: [
-                { value: 8113, name: "湖州市本机" },
+                { value: 8113, name: "湖州市本级" },
                 { value: 2464, name: "德清县" },
                 { value: 1433, name: "长兴县" },
                 { value: 4068, name: "安吉县" },
