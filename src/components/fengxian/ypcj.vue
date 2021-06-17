@@ -356,7 +356,7 @@ export default {
           },
           axisLabel: {
             interval: 0,
-            rotate: 5,
+            rotate: 18,
             margin:"20",
             align: "center",
             color: "#fff",

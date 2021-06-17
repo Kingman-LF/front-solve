@@ -58,11 +58,21 @@ export default {
               trigger: "axis",
               borderWidth:0,
               textStyle: {
-                fontSize:40,
+                fontSize:20,
               },
-            formatter(e){
-              return `${e[0].value[0]}(${e[0].value[1]}):${e[0].value[2]}`
-            }
+            formatter: function (a) {
+              let list = [];
+              let listItem = "";
+              for (var i = 0; i < a.length; i++) {
+                list.push(
+                    a[i].value[0] +'('+
+                    a[i].value[1]+')' +':'+
+                    a[i].value[2]
+                );
+              }
+              listItem = list.join("<br>");
+              return '<div class="showBox">' + listItem + "</div>";
+            },
             },
           legend: {
               right: '10%',
