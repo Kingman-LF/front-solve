@@ -12,14 +12,13 @@
           <fenbu />
 <!--        </el-col>-->
 <!--        <el-col :span="8">-->
-          <task></task>
+          <task :taskList="taskList"></task>
 <!--        </el-col>-->
 <!--      </el-row>-->
     </div>
 
   </div>
 </template>
-
 <script>
 // 小模块
 import fenbu from "@/components/shouye/fenbu";
@@ -38,13 +37,28 @@ import spcjbhg from "@/components/shouye/spcjbhg";
 import dtjcbhg from "@/components/shouye/dtjcbhg";
 import jbwt from "@/components/shouye/jbwt";
 import jacontent from "@/components/shouye/jacontent";
-import {yqInfo} from "@/assets/api/index"
+import {noAssignment, yqInfo} from "@/assets/api/index"
+
+
 export default {
   name: "index",
+  data(){
+    return {
+      taskList:[]
+    }
+  },
   mounted() {
     // yqInfo({session:'5957cc0591c84fd28cd007fa5e4e8391',userid:'75479',btime:'20210529000000',etime:'20210601000000',pageSize:'10'}).then(res => {
     //   console.log(res)
     // })
+    this.noAssignment()
+  },
+  methods:{
+    noAssignment(){
+      noAssignment().then(res => {
+        this.taskList = res.data
+      })
+    },
   },
   components: {
     assign,//一键交办

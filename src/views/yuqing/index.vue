@@ -86,8 +86,8 @@ import shijianku from '../../components/yuqing/shijianku';
 
 import {common,subjectTree,yqInfo} from "@/assets/api/yuqing"
 
-import yqLIst from '@/utils/1'
-import yqsubjectTree from '@/utils/2'
+// import yqLIst from '@/utils/1'
+// import yqsubjectTree from '@/utils/2'
   export default{
     components: {
       leibie,
@@ -109,22 +109,21 @@ import yqsubjectTree from '@/utils/2'
       // this.common();
       // this.subjectTree()
       // console.log(yqsubjectTree);
-      this.yqInfo()
+      // this.yqInfo()
     },
     methods:{
       toHome() {
         this.$router.replace("/home");
       },
       common(){
+        console.log(this.getPorSevenData())
         common({method:'ECharts_pie_Test!list.do',btime:this.getPorSevenData(),etime:this.getDate()}).then(res => {
           console.log(res)
         })
       },
       subjectTree(){
         subjectTree().then(res => {
-          this.datas = this.datas.concat(res.data)
-          // console.log(JSON.stringify(this.datas))
-          // console.log(res)
+          console.log(res)
         })
       },
       yqInfo(){

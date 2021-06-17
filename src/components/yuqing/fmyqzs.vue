@@ -12,12 +12,17 @@
 <script>
 import * as echarts from "echarts";
 import {getentDate} from '@/utils/date'
-import yqLIst from '@/utils/1'
+// import yqLIst from '@/utils/1'
 
 export default {
   name: "yqxqfb",
   mounted() {
     // this.yqInfo()
+    this.$nextTick(() => {
+        // setTimeout(() => {
+          this.fmyqzs();
+        // }, 500);
+      });
   },
   methods: {
     yqInfo(){
