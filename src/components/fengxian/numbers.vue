@@ -3,31 +3,31 @@
     <div class="lv">
       <div>
         <span>食品抽检总数</span>
-        <span>269</span>
+        <span>6954</span>
       </div>
     </div>
     <div class="lv">
       <div>
         <span>药械化抽查总数</span>
-        <span>20</span>
+        <span>503</span>
       </div>
     </div>
     <div class="lv">
       <div>
         <span>产品抽检总数</span>
-        <span>1233</span>
+        <span>1062</span>
       </div>
     </div>
     <div class="lv">
       <div>
         <span>广告监测总数</span>
-        <span>192</span>
+        <span>11210</span>
       </div>
     </div>
     <div class="lv">
       <div>
         <span>执法案件总数</span>
-        <span>0</span>
+        <span>2332</span>
       </div>
     </div>
   </div>

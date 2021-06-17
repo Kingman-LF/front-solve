@@ -39,7 +39,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .box{
-  height: 20rem;
+  height: 20rem; 
+  
   #wuye {
     height: 12.9rem;
     .wu_dis{
@@ -64,12 +65,12 @@ export default {
         -o-text-overflow:ellipsis;
       }
       .county{
-        width: 10rem;
+        width: 15rem;
         text-align: center;
 
       }
       .company{
-        width: 32rem;
+        width: 45rem;
       }
       .village{
         width: 25rem;
@@ -78,10 +79,12 @@ export default {
         width: 17rem;
       }
       .stauts {
-        width: 8rem;
+        width: 15rem;
+        text-align: center;
       }
       .taskStauts{
-        width: 8rem;
+        width: 15rem;
+        text-align: center;
       }
       .stauts_gao{
         color: #EB3633;

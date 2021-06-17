@@ -4,30 +4,32 @@
       <img :src="require('@/assets/images/titlelogo.png')" alt="">
       <p>电梯概览</p>
     </div>
-    <div class="filed dis">
-      <div class="num">总管辖</div>
-      <div class="number">43023 </div>
-    </div>
-    <div class="in_hand dis">
-      <div class="num">在用电梯</div>
-      <div class="number">33899 </div>
-    </div>
-    <div class="coms dis">
-      <div class="num">电梯维保中</div>
-      <div class="number">27</div>
-    </div>
-    <div class="filed dis">
-      <div class="num">待复核</div>
-      <div class="number">2755</div>
-    </div>
-    <div class="in_hand dis">
-      <div class="num">待上传</div>
-      <div class="number">0</div>
-    </div>
-    <div class="coms dis">
-      <div class="num">当前困人处置中</div>
-      <div class="number">2</div>
-    </div>
+     <div class="disList">
+        <div class="filed dis">
+          <div class="num">总管辖</div>
+          <div class="number">43023 </div>
+        </div>
+        <div class="in_hand dis">
+          <div class="num">在用电梯</div>
+          <div class="number">33899 </div>
+        </div>
+        <div class="coms dis">
+          <div class="num">电梯维保中</div>
+          <div class="number">27</div>
+        </div>
+        <div class="filed dis">
+          <div class="num">待复核</div>
+          <div class="number">2755</div>
+        </div>
+        <div class="in_hand dis">
+          <div class="num">待上传</div>
+          <div class="number">0</div>
+        </div>
+        <div class="coms dis">
+          <div class="num">当前困人处置中</div>
+          <div class="number">2</div>
+        </div>
+     </div>
   </div>
 </template>
 <script>
@@ -38,6 +40,9 @@ export default {
 <style lang="scss" scoped>
 .box{
   height: 40rem;
+  .disList{
+    padding-top: 2rem;
+  }
   .dis{
       width: 14rem;
       height: 10rem;
