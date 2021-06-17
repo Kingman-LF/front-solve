@@ -150,7 +150,7 @@
           <img class="img_ty2" :src="require('@/assets/images/shouye/ty4.png')" alt="">
           <img class="img_ty3" :src="require('@/assets/images/shouye/ty3.png')" alt="">
           <div class="test" @click="showWentiList(4)">
-            <div class="innerTitle num">舆情多</div>
+            <div class="innerTitle num">舆论多</div>
             <div class="innerTitle number">{{list4.length}}</div>
           </div>
         </div>
@@ -267,7 +267,7 @@ export default {
           obj.model.indexOf("1") !== -1 && obj.wentiType.push("投诉多")
           obj.model.indexOf("2") !== -1 && obj.wentiType.push("纠纷多")
           obj.model.indexOf("3") !== -1 && obj.wentiType.push("风险多")
-          obj.model.indexOf("4") !== -1 && obj.wentiType.push("舆情多")
+          obj.model.indexOf("4") !== -1 && obj.wentiType.push("舆论多")
           obj.model.indexOf("5") !== -1 && obj.wentiType.push("事故多")
           obj.wentiType = obj.wentiType.join(",")
           this.jiaobanList.push(obj)

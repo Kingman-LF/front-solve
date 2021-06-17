@@ -9,11 +9,13 @@
         <el-row :gutter="12">
           <!--  舆情类别-->
           <el-col :span="16">
-            <leibie @typeTitle="typeTitle"></leibie>
+            <leibie></leibie>
+<!--            <leibie @typeTitle="typeTitle"></leibie>-->
           </el-col>
           <!--  舆情检测数-->
           <el-col :span="8">
-            <jcs @jcsTitle="jcsTitle"></jcs>
+            <jcs></jcs>
+<!--            <jcs @jcsTitle="jcsTitle"></jcs>-->
           </el-col>
         </el-row>
       </el-col>
@@ -38,12 +40,12 @@
       <el-col :span="9">
         <el-row :gutter="12">
           <!--  舆情区县分布-->
-          <el-col :span="16">
-            <xqfb @xqfbTitle="xqfbTitle"></xqfb>
+          <el-col :span="14">
+            <xqfb></xqfb>
           </el-col>
           <!--  预警舆情-->
-          <el-col :span="8">
-            <yjyq></yjyq>
+          <el-col :span="10">
+            <yjyq @showDetail="showDetail"></yjyq>
           </el-col>
         </el-row>
       </el-col>
@@ -72,30 +74,30 @@
     <!-- 弹框 -->
     <el-dialog title="详细信息" :visible.sync="dialogTableVisible">
       <!-- :data="list" -->
-      <template>
-        <el-table
-          height="53rem"
-          highlight-current-row
-          style="margin-top: 1rem"
-          @row-click="toDetail"
-        >
-          <el-table-column
-            type="index"
-            label="序号"
-            show-overflow-tooltip
-            width="100"
-          ></el-table-column>
-          <el-table-column
-            v-for="item in headerList"
-            :key="item.id"
-            :prop="item.keyWord"
-            :label="item.text"
-            show-overflow-tooltip
-          >
-            <template slot-scope="scope">
-              {{ list[scope.$index][item.keyWord] }}
-            </template>
-          </el-table-column>
+<!--      <template>-->
+<!--        <el-table-->
+<!--          height="53rem"-->
+<!--          highlight-current-row-->
+<!--          style="margin-top: 1rem"-->
+<!--          @row-click="toDetail"-->
+<!--        >-->
+<!--          <el-table-column-->
+<!--            type="index"-->
+<!--            label="序号"-->
+<!--            show-overflow-tooltip-->
+<!--            width="100"-->
+<!--          ></el-table-column>-->
+<!--          <el-table-column-->
+<!--            v-for="item in headerList"-->
+<!--            :key="item.id"-->
+<!--            :prop="item.keyWord"-->
+<!--            :label="item.text"-->
+<!--            show-overflow-tooltip-->
+<!--          >-->
+<!--            <template slot-scope="scope">-->
+<!--              {{ list[scope.$index][item.keyWord] }}-->
+<!--            </template>-->
+<!--          </el-table-column>-->
           <!--
             <el-table-column prop="tsRegister" label="登记编号" show-overflow-tooltip></el-table-column>
             <el-table-column prop="tsProvider" label="投诉方" show-overflow-tooltip></el-table-column>
@@ -105,22 +107,30 @@
             <el-table-column prop="tsConMedType" label="消费类型(中类)" show-overflow-tooltip></el-table-column>
             <el-table-column prop="tsHandlingStatus" label="办结状态" show-overflow-tooltip></el-table-column>
             <el-table-column prop="tsFeedContent" label="反馈内容" show-overflow-tooltip></el-table-column> -->
-        </el-table>
-      </template>
-      <div class="block" style="margin-top: 2rem">
-        <el-pagination
-          align="center"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :page-sizes="[10, 20]"
-          :page-size="limit"
-          background
-          layout=" prev, pager, next"
-          :total="total"
-        >
-        </el-pagination>
-        <div class="zts">共{{ total }}条</div>
+<!--        </el-table>-->
+<!--      </template>-->
+<!--      <div class="block" style="margin-top: 2rem">-->
+<!--        <el-pagination-->
+<!--          align="center"-->
+<!--          @current-change="handleCurrentChange"-->
+<!--          :current-page="currentPage"-->
+<!--          :page-sizes="[10, 20]"-->
+<!--          :page-size="limit"-->
+<!--          background-->
+<!--          layout=" prev, pager, next"-->
+<!--          :total="total"-->
+<!--        >-->
+<!--        </el-pagination>-->
+<!--        <div class="zts">共{{ total }}条</div>-->
+<!--      </div>-->
+      <div class="labse">
+          <div class="title" v-html="detail.title"></div>
+          <div class="xinxi"></div>
+          <div style="color: #FFFFFF;font-size: 1.5rem;margin: 1rem 0"><span>{{detail.ctime}}</span> / <span>{{detail.author}}</span> / <span>{{detail.site}}</span></div>
+          <div style="font-size: 2rem;color: #FFFFFF" class="cons" v-html="detail.content"></div>
       </div>
+
+
     </el-dialog>
   </div>
 </template>
@@ -136,7 +146,7 @@ import mtfb from "../../components/yuqing/meitifenbu.vue";
 import infoFb from "../../components/yuqing/infoFb";
 import shijianku from "../../components/yuqing/shijianku";
 
-import { sentimentDetails } from "@/assets/api/yuqing";
+import { sentimentDetails,yqyjDetails,yqyj } from "@/assets/api/yuqing";
 export default {
   components: {
     leibie,
@@ -158,6 +168,9 @@ export default {
       currentPage: 1,
       headerList: [],
       dialogTableVisible: false,
+
+
+      detail:{}
     };
   },
   created() {
@@ -256,6 +269,23 @@ export default {
       let obj = { ...e, page: this.page + "", limit: this.limit + "" };
       this.dialogTableVisible = true;
       this.sentimentDetails(obj);
+    },
+    showDetail(id) {
+      console.log(id)
+      if(id){
+        this.dialogTableVisible = true;
+
+        yqyjDetails({uuids:id.toString()}).then(res => {
+          this.detail = res.data.dataList[0];
+
+          this.detail.ctime = this.detail.ctime.slice(0,4)+"-"+this.detail.ctime.slice(0,2)+"-"+this.detail.ctime.slice(0,2)+" "+this.detail.ctime.slice(0,2)+":"+this.detail.ctime.slice(0,2)+":"+this.detail.ctime.slice(0,2)
+
+
+        })
+
+      }
+
+
     },
     jcsTitle() {
       //舆情检测数

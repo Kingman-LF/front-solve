@@ -68,3 +68,27 @@ export function secreInfoArea(parameter){
         data:parameter
     })
 }
+// 预警舆情
+export function warnSentiment(parameter) {
+    return axios({
+        url: 'api/secreWarningDetailed/warnSentiment',
+        method: 'post',
+        data: parameter
+    })
+}
+// 预警舆情详情
+export function yqyjDetails(parameter) {
+    return axios({
+        url: 'api/yqyjDetails/yqyjDetails',
+        method: 'post',
+        data: parameter
+    })
+}
+// 推送预警接口
+export function yqyj(parameter) {
+    return axios({
+        url: 'api/secreWarning/yqyj',
+        method: 'post',
+        data: parameter
+    })
+}

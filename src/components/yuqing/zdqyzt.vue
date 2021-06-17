@@ -6,11 +6,11 @@
       <div class="titList">
         <ul>
           <li
-              v-for="(item,index) in titList"
+              v-for="(item,index) in list"
               :key="item.id"
               :class="tabIndex===index?'current1':''"
               @click="tabFn(item,index)"
-          >{{item.txt}}</li>
+          >{{item.name}}</li>
         </ul>
       </div>
     </div>
@@ -18,10 +18,10 @@
     <div class="con">
       <div class="first">
         <ul>
-          <li v-for="(item,index) in titList[tabIndex].firstArr"
+          <li v-for="(item,index) in list[tabIndex].orientation"
               :key="index">
-            <p>{{item.info}}</p>
-            <p>{{item.num}}</p>
+            <p>{{item.name}}</p>
+            <p>{{item.value}}</p>
           </li>
         </ul>
       </div>
@@ -50,6 +50,11 @@ export default {
   data(){
     return{
       tabIndex:0,
+      list:[{
+        name:"",
+        orientation:[],
+
+      }],
       titList:[
         {
             id:Math.random(),
@@ -107,18 +112,121 @@ export default {
   mounted() {
     let meiti = document.getElementById("meiti");
     this.meitiChart = echarts.init(meiti);
-    this.huanzhuang(this.meitiChart);
+    // this.huanzhuang(this.meitiChart);
 
     let qushi = document.getElementById('qushi');
     this.qushiChart = echarts.init(qushi);
-    this.bolang(this.qushiChart);
+    // this.bolang(this.qushiChart);
 
     this.getData()
   },
   methods:{
     getData(){
       secreInfoArea({}).then(res => {
-        console.log(res)
+        let list = res.data.mapList.map(item => {
+          // 处理倾向性
+          if(item.orientation.length){
+            let obj = [
+              {name:"总数",value:0},
+              {name:"正面信息",value:0},
+              {name:"中性信息",value:0},
+              {name:"负面信息",value:0},
+            ]
+            item.orientation.forEach(item => {
+              if(item.name === "正面"){
+                obj[0].value += item.value;
+                obj[1].value = item.value;
+              };
+              if(item.name === "中性"){
+                obj[0].value += item.value;
+                obj[2].value = item.value;
+              }
+              if(item.name === "中性"){
+                obj[0].value += item.value;
+                obj[3].value = item.value;
+              }
+            })
+            item.orientation = obj
+          }else{
+            item.orientation = [
+              {name:"总数",value:0},
+              {name:"正面信息",value:0},
+              {name:"中性信息",value:0},
+              {name:"负面信息",value:0},
+            ]
+          }
+          // 处理媒体来源
+          if(item.sourceType.length){
+            let obj = [
+              {value:'0',name:'网媒'},
+              {value:'0',name:'微博'},
+              {value:'0',name:'微信'},
+              {value:'0',name:'贴吧'},
+              {value:'0',name:'论坛'},
+              {value:'0',name:'小视频'},
+              {value:'0',name:'网路视频'},
+              {value:'0',name:'电视视频'},
+              {value:'0',name:'App'},
+              {value:'0',name:'报刊'},
+              {value:'0',name:'其他'}
+            ]
+            item.sourceType.forEach(item => {
+              if(item.name === "网媒"){
+                obj[0].value = item.value;
+              }
+              if(item.name === "微博"){
+                obj[1].value = item.value;
+              }
+              if(item.name === "微信"){
+                obj[2].value = item.value;
+              }
+              if(item.name === "贴吧"){
+                obj[3].value = item.value;
+              }
+              if(item.name === "论坛"){
+                obj[4].value = item.value;
+              }
+              if(item.name === "小视频"){
+                obj[5].value = item.value;
+              }
+              if(item.name === "网路视频"){
+                obj[6].value = item.value;
+              }
+              if(item.name === "电视视频"){
+                obj[7].value = item.value;
+              }
+              if(item.name === "App"){
+                obj[8].value = item.value;
+              }
+              if(item.name === "报刊"){
+                obj[9].value = item.value;
+              }
+              if(item.name === "其他"){
+                obj[10].value = item.value;
+              }
+            })
+            item.sourceType = obj
+          }else{
+            item.sourceType = [
+              {value:'0',name:'网媒'},
+              {value:'0',name:'微博'},
+              {value:'0',name:'微信'},
+              {value:'0',name:'贴吧'},
+              {value:'0',name:'论坛'},
+              {value:'0',name:'小视频'},
+              {value:'0',name:'网路视频'},
+              {value:'0',name:'电视视频'},
+              {value:'0',name:'App'},
+              {value:'0',name:'报刊'},
+              {value:'0',name:'其他'}
+            ]
+          }
+          return item
+        })
+
+        this.list = list;
+        this.huanzhuang(this.meitiChart);
+        this.bolang(this.qushiChart);
       })
     },
     tabFn(item,index){
@@ -126,66 +234,58 @@ export default {
       this.huanzhuang(this.meitiChart);
       this.bolang(this.qushiChart);
     },
-
-
-    huanzhuang(charts,showLable, mygraphic, dataval,rotate) {
-      // console.log(dataval);
+    huanzhuang(charts) {
       charts.clear();
-
-      if(charts._dom.id === 'meiti'){
-        var dataVal = this.titList[this.tabIndex].DataTxt;
-      }
-        let gailanTotal = 7754;
-        let option = {
-          tooltip: {
-            trigger: "item",
-            borderWidth:0,
-            textStyle: {
-              fontSize:35,
-            },
-            formatter(e){
-              return ` <div style="width:20px;height:20px;border-radius:20px;background-color:${e.color};display:inline-block"></div> ${e.name} ${e.value} ${e.percent}%`
-              // console.log(e);
-            }
+      let gailanTotal = this.list[this.tabIndex].orientation[0].value;
+      let option = {
+        tooltip: {
+          trigger: "item",
+          borderWidth:0,
+          textStyle: {
+            fontSize:35,
           },
-
-          legend: {
-            show: false,
-          },
+          formatter(e){
+            return ` <div style="width:20px;height:20px;border-radius:20px;background-color:${e.color};display:inline-block"></div> ${e.name} ${e.value} ${e.percent}%`
+            // console.log(e);
+          }
+        },
+        legend: {
+          show: false,
+        },
           graphic:[
-                {
-                  tooltip: {
-                    formatter(e){
-                      return `总量：${gailanTotal}`
-                    }
+            {
+              tooltip: {
+                formatter(e){
+                  return `总量：${gailanTotal}`
+                }
+              },
+              type: "text",
+              left: "center",
+              top: "center",
+              z: 10,
+              style: {
+                fill: "#fff",
+                text: ["{value|" + gailanTotal + "}"],
+                textAlign: "center",
+                rich: {
+                  value: {
+                    color: "#303133",
+                    fontSize: '3rem',
+                    lineHeight: 30,
+                    fontFamily: "digifaw",
+                    textShadowColor: "#0096ff",
+                    textShadowBlur: "12"
                   },
-                  type: "text",
-                  left: "center",
-                  top: "center",
-                  z: 10,
-                  style: {
-                    fill: "#fff",
-                    text: ["{value|" + gailanTotal + "}"],
-                    textAlign: "center",
-                    rich: {
-                      value: {
-                        color: "#303133",
-                        fontSize: '3rem',
-                        lineHeight: 30,
-                        fontFamily: "digifaw",
-                        textShadowColor: "#0096ff",
-                        textShadowBlur: "12"
-                      },
-                      name: {
-                        color: "#909399",
-                        lineHeight: 30,
-                        fontSize: '2rem',
-                      },
-                    },
-                    font: "16px PingFang",
+                  name: {
+                    color: "#909399",
+                    lineHeight: 30,
+                    fontSize: '2rem',
                   },
                 },
-              ],
+                font: "16px PingFang",
+              },
+            },
+          ],
           series: [
             {
               type: "pie",
@@ -222,7 +322,7 @@ export default {
                   width:3
                 }
               },
-              data: dataVal
+              data: this.list[this.tabIndex].sourceType
             },
             {},
           ],
@@ -234,17 +334,6 @@ export default {
       },
 
     bolang(charts, xdata, ydata,color,rotate){
-      if(charts._dom.id === 'qushi'){
-        var xData = this.titList[this.tabIndex].xData;
-        var yData = this.titList[this.tabIndex].yData;
-        var colors = color ? color : new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
-          offset: 1,
-          color: "rgba(0, 240, 255, 1)" // 100% 处的颜色
-        },{
-          offset: 0,
-          color: "rgba(0, 240, 255, 0)" // 100% 处的颜色
-        }], false)
-      }
         charts.clear();
         let option = {
           color: ['#00DDFF','#80FFA5', ],
@@ -291,7 +380,9 @@ export default {
                 fontSize:"1.5rem"
               },
               boundaryGap: false,
-              data:xData,
+              data:this.list[this.tabIndex].dateList.map(item => {
+                return item.name
+              }),
             }
           ],
           yAxis: [
@@ -329,7 +420,9 @@ export default {
               emphasis: {
                 focus: 'series'
               },
-              data:yData
+              data:this.list[this.tabIndex].dateList.map(item => {
+                return item.value
+              }),
             }
           ]
         };
@@ -379,12 +472,14 @@ export default {
         background-image: -webkit-linear-gradient(bottom, #3b5ee2, white, white);
         -webkit-background-clip: text;
         text-shadow:0rem 0rem .5rem #00f0ff;
+        opacity: 1;
       }
       .current1{
         color: #FFFFFF;
         background-image: -webkit-linear-gradient(bottom, #3b5ee2, white, white);
         -webkit-background-clip: text;
         text-shadow:0rem 0rem .5rem #00f0ff;
+        opacity: 1;
       }
     }
   }

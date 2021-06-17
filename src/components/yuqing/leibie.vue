@@ -16,7 +16,7 @@ export default {
   name: "leibie",
   data() {
     return {
-      
+
     };
   },
   mounted() {
@@ -163,9 +163,9 @@ export default {
           },
         ],
       };
-      charts.on("click", (params) => {
-        this.$emit("typeTitle",{keyWordId:params.name});
-      });
+      // charts.on("click", (params) => {
+      //   this.$emit("typeTitle",{keyWordId:params.name});
+      // });
       option && charts.setOption(option);
       window.addEventListener("resize", function () {
         charts.resize();
